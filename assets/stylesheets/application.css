@@ -75,7 +75,7 @@ body.description #section article {padding-bottom:20px;}
 
 article.comments {margin-top: 60px; padding-top: 10px; border-top: solid 1px; border-color: #DADADA;}
 
-#section aside {position:absolute; left: 740px; width:380px;}
+#section aside {position:absolute; left: 740px; width:250px;}
 #section aside.menu {margin-top:20px;}
 #section aside.menu ul.media-grid {list-style-type: none;}
 aside.menu {position:fixed !important; margin-left:270px;}
