@@ -60,21 +60,23 @@ there is a place where you can collect all the developers best practices.
 <h1><a name="describe">How to describe your methods</a></h1>
 
 <p>
-Keep clear the methods you are describing using <code>.</code> as prefix for class
-methods and <code>#</code> as prefix for instance methods.
+Keep clear the methods you are describing. As convention use <code>.</code> as prefix for
+class methods and <code>#</code> as prefix for instance methods.
 </p>
 
-<div class="wrong">
-<pre><code lang="ruby"># wrong
-describe 'the authenticate method for User' do
+<p class="wrong">Wrong</p>
+
+<div>
+<pre><code class="ruby">describe 'the authenticate method for User' do
 describe 'if the user is an admin' do
 </code></pre>
 </div>
 
-<div class="correct">
-<pre><code lang="ruby"># correct
-describe '.authenticate' do
-describe '#admin?'
+<p class="correct">Correct</p>
+
+<div>
+<pre><code class="ruby">describe '.authenticate' do
+describe '#admin?' do
 </code></pre>
 </div>
 
@@ -91,7 +93,7 @@ always using the keys <code>when</code> and <code>with</code>.
 </p>
 
 <div class="wrong">
-<pre><code lang="ruby"># wrong
+<pre><code class="ruby"># wrong
 it 'should have 200 status code if logged in' do
   response.should respond_with 200
 end
@@ -102,7 +104,7 @@ end
 </div>
 
 <div class="correct">
-<pre><code lang="ruby"># correct
+<pre><code class="ruby"># correct
 context 'when logged in' do
   it { should respond_with 200 }
 end
@@ -124,13 +126,13 @@ it suggests you should split it using a context (some exceptions are allowed).
 </p>
 
 <div class="wrong">
-<pre><code lang="ruby"># wrong
+<pre><code class="ruby"># wrong
 it 'should have 422 status code if an unexpected params will be added' do
 </code></pre>
 </div>
 
 <div class="correct">
-<pre><code lang="ruby"># correct
+<pre><code class="ruby"># correct
 context 'when not valid'
   it { should respond_with 422 }
 </code></pre>
@@ -141,7 +143,7 @@ As a side effect, in the example we removed the description related to the statu
 </p>
 
 <div>
-<pre><code lang="ruby">when not valid
+<pre><code class="ruby">when not valid
   it should respond with 422
 </code></pre>
 </div>
@@ -159,7 +161,7 @@ code readable.
 </p>
 
 <div class="wrong">
-<pre><code lang="ruby"># wrong
+<pre><code class="ruby"># wrong
 it 'should create a resource' do
   response.should respond_with_content_type(:json)
   response.should assign_to(:resource)
@@ -168,7 +170,7 @@ end
 </div>
 
 <div class="correct">
-<pre><code lang="ruby"># correct
+<pre><code class="ruby"># correct
 it { should respond_with_content_type(:json) }
 it { should assign_to(:resource) }
 </code></pre>
@@ -191,7 +193,7 @@ be so useful. Test valid, edge and invalid case. For example, consider the follo
 </p>
 
 <div>
-<pre><code lang="ruby">
+<pre><code class="ruby">
 def destroy
   @resource = Resource.find id
   if @resource
@@ -212,7 +214,7 @@ especially the strangest ones.
 </p>
 
 <div class="correct">
-<pre><code lang="ruby"># correct
+<pre><code class="ruby"># correct
 describe '#destroy' do
 
   context 'when resource is found' do
@@ -241,7 +243,7 @@ When you have several tests related to the same subject you can use the
 </p>
 
 <div class="wrong">
-<pre><code lang="ruby"># wrong
+<pre><code class="ruby"># wrong
 it { assigns('message').should match /The resource name is Genoveffa/ }
 it { assigns('message').should match /it was born in Billyville/ }
 it { assigns('message').creator.should match /Claudiano/ }
@@ -249,7 +251,7 @@ it { assigns('message').creator.should match /Claudiano/ }
 </div>
 
 <div class="correct">
-<pre><code lang="ruby"># correct
+<pre><code class="ruby"># correct
 subject { assigns('message') }
 it { should match /The resource name is Genoveffa/ }
 it { should match /it was born in Billville/ }
@@ -263,7 +265,7 @@ specs difficult to read.
 </p>
 
 <div class="wrong">
-<pre><code lang="ruby"># wrong
+<pre><code class="ruby"># wrong
 subject { Hero.first }
 it "should be equipped with a sword" do
   subject.equipment.should include "sword"
@@ -272,7 +274,7 @@ end
 </div>
 
 <div class="correct">
-<pre><code lang="ruby"># correct
+<pre><code class="ruby"># correct
 subject { Hero.first }
 its(:equipment) { should include 'sward' }
 </code></pre>
@@ -291,7 +293,7 @@ specific test is finished.
 </p>
 
 <div class="wrong">
-<pre><code lang="ruby"># wrong
+<pre><code class="ruby"># wrong
 describe "a house" do
   before do
     @house = Factory(:house)
@@ -307,7 +309,7 @@ end
 </div>
 
 <div class="correct">
-<pre><code lang="ruby"># correct
+<pre><code class="ruby"># correct
 describe "a house"
   let(:house) { Factory(:house) }
   ... # any example that does not use house will not call factory
@@ -330,7 +332,7 @@ be really useful, for example if you want to get back a 'not found resource'.
 </p>
 
 <div class="correct">
-<pre><code lang="ruby"># correct
+<pre><code class="ruby"># correct
 # simulate a not found resource
 context "when not found"
   before(:each) do
@@ -355,7 +357,7 @@ Also if you think you need dozens of records, usually you are wrong.
 </p>
 
 <div class="correct">
-<pre><code lang="ruby"># correct
+<pre><code class="ruby"># correct
 describe "User"
   describe ".top" do
     before { 3.times { Factory(:user) } }
@@ -378,7 +380,7 @@ on creating new data.
 </p>
 
 <div class="wrong">
-<pre><code lang="ruby"># wrong
+<pre><code class="ruby"># wrong
 user = User.create(
   name: 'Genoveffa',
   surname: 'Piccolina',
@@ -390,7 +392,7 @@ user = User.create(
 </div>
 
 <div class="correct">
-<pre><code lang="ruby"># correct
+<pre><code class="ruby"># correct
 user = FactoryGirl.create :user
 </code></pre>
 </div>
@@ -407,14 +409,14 @@ matchers. Check out rspec matcher.
 </p>
 
 <div class="wrong">
-<pre><code lang="ruby"># wrong
+<pre><code class="ruby"># wrong
 lambda { model.save! }.should raise_error(ActiveRecord::RecordNotFound)
 collection.size.should == 4
 </code></pre>
 </div>
 
 <div class="correct">
-<pre><code lang="ruby"># correct
+<pre><code class="ruby"># correct
 expect { model.save! }.to raise_error(ActiveRecord::RecordNotFound)
 collection.should have(4).items
 </code></pre>
@@ -433,7 +435,7 @@ shared examples to DRY out your test suite.
 </p>
 
 <div class="wrong">
-<pre><code lang="ruby"># wrong
+<pre><code class="ruby"># wrong
 describe '#show'
   context 'when own resources' do
     it 'should have it' do 
@@ -456,7 +458,7 @@ In this example we use the method it_behaves_like which refers to the shared exa
 </p>
 
 <div class="correct">
-<pre><code lang="ruby"># correct
+<pre><code class="ruby"># correct
 describe "#show" do 
   it_should_behave_like "a secure resource"
 end
