@@ -1,0 +1,11 @@
+--- 
+text_extensions: [ 'css', 'erb', 'haml', 'htm', 'html', 'js', 'less', 'markdown', 'md', 'php', 'rb', 'sass', 'scss', 'txt', 'xhtml', 'xml' ]
+output_dir: public
+index_filenames: [ 'index.html' ]
+enable_output_diff: false
+base_url: 'http://dev.lelylan.com'
+
+data_sources:
+- type: 'filesystem_unified'
+  items_root: /
+  layouts_root: /

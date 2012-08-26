@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: http://betterspecs.com/sitemap.xml

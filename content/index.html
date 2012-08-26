@@ -1,0 +1,593 @@
+---
+title: 'Better Specs'
+---
+
+<article>
+
+<aside class="menu">
+
+<h1>Suggested books</h1>
+
+  <p>
+  If you enjoyed the site and you are going to buy one of those books, please click on the 
+  affiliate links below.
+  </p>
+
+  <ul class="media-grid">
+    <li>
+    <a href="http://www.amazon.com/gp/product/1934356646/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356646&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/rails-test-prescription-thumb.jpg" alt="ioBridge"></a>
+    </li>
+    <li>
+    <a href="http://www.amazon.com/gp/product/1934356379/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356379&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/the-rspec-book-thumb.jpg" alt="ioBridge"></a>
+    </li>
+    <li>
+    <a href="http://www.amazon.com/gp/product/1934356808/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356808&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/continuous-testing-thumb.jpg" alt="ioBridge"></a>
+    </li>
+    <li>
+    <a href="http://www.amazon.com/gp/product/1934356700/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356700&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/the-cucumber-book-thumb.jpg" alt="ioBridge"></a>
+    </li>
+  </ul>
+
+</aside>
+
+</article>
+
+<article>
+
+<h1><a name="introduction">Introduction</a></h1>
+
+<p>
+<a href="">RSpec</a> is a great tool in the behavior driven design process of
+writing human readable specifications that direct and validate the development
+of your application. 
+</p>
+
+<p>
+Out there you can find several books and articles explaining how to use RSpec.
+The problem is that those resources are not always enough because most of them
+explains only the 'technicalities' of how rspec works.
+</p>
+
+<p>
+Instead, what we need to learn is how to write specs in a real project. Finally
+there is a place where you can collect all the developers best practices.
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="describe">How to describe your methods</a></h1>
+
+<p>
+Keep clear the methods you are describing using <code>.</code> as prefix for class
+methods and <code>#</code> as prefix for instance methods.
+</p>
+
+<div class="wrong">
+<pre><code lang="ruby"># wrong
+describe 'the authenticate method for User' do
+describe 'if the user is an admin' do
+</code></pre>
+</div>
+
+<div class="correct">
+<pre><code lang="ruby"># correct
+describe '.authenticate' do
+describe '#admin?'
+</code></pre>
+</div>
+
+</article>
+
+<article>
+
+<h1><a name="contexts">Overuse contexts</a></h1>
+
+<p>
+Contexts are a powerful method to make your tests clear and well organized.
+In the long term this practice will keep tests easy to read. make them start
+always using the keys <code>when</code> and <code>with</code>.
+</p>
+
+<div class="wrong">
+<pre><code lang="ruby"># wrong
+it 'should have 200 status code if logged in' do
+  response.should respond_with 200
+end
+it 'should have 401 status code if not logged in' do
+  response.should respond_with 401
+end
+</code></pre>
+</div>
+
+<div class="correct">
+<pre><code lang="ruby"># correct
+context 'when logged in' do
+  it { should respond_with 200 }
+end
+context 'when logged out' do
+  it { should respond_with 401 }
+end
+</code></pre>
+</div>
+
+</article>
+
+<article>
+
+<h1><a name="short">Keep your description short</a></h1>
+
+<p>
+A spec description should never be longer than 40 characters. If this happens,
+it suggests you should split it using a context (some exceptions are allowed).
+</p>
+
+<div class="wrong">
+<pre><code lang="ruby"># wrong
+it 'should have 422 status code if an unexpected params will be added' do
+</code></pre>
+</div>
+
+<div class="correct">
+<pre><code lang="ruby"># correct
+context 'when not valid'
+  it { should respond_with 422 }
+</code></pre>
+</div>
+
+<p>
+As a side effect, in the example we removed the description related to the status code, which has been replaced by the expectation it { should respond_with 422 }. As confirm, if you run this test with the command rspec filename you will obtain an output similar to this.
+</p>
+
+<div>
+<pre><code lang="ruby">when not valid
+  it should respond with 422
+</code></pre>
+</div>
+
+</article>
+
+<article>
+
+<h1><a name="single">Single expectation test</a></h1>
+
+<p>
+The 'one expectation' tip is more broadly expressed as 'each test should make only one assertion'.
+This helps you on finding possible errors, going directly to the failing test, and to make your
+code readable.
+</p>
+
+<div class="wrong">
+<pre><code lang="ruby"># wrong
+it 'should create a resource' do
+  response.should respond_with_content_type(:json)
+  response.should assign_to(:resource)
+end
+</code></pre>
+</div>
+
+<div class="correct">
+<pre><code lang="ruby"># correct
+it { should respond_with_content_type(:json) }
+it { should assign_to(:resource) }
+</code></pre>
+</div>
+
+<p>
+<span class="label notice">Notice</span>
+keep in mind that single expectation test does not mean single line test.
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="all">Test all possible cases</a></h1>
+
+<p>
+Testing is a good practice, but if you do not test the edge cases, it will not
+be so useful. Test valid, edge and invalid case. For example, consider the following action.
+</p>
+
+<div>
+<pre><code lang="ruby">
+def destroy
+  @resource = Resource.find id
+  if @resource
+    @resource.destroy
+    head 204
+  else
+    render template; 'shared/404', status: 404,
+  end
+end
+</code></pre>
+</div>
+
+<p>
+The error I usually see lies in testing only whether the resource has been removed.
+But, there is also an edge case where the resource is not found, which is also important
+to test. As a rule of thumb, try to think of all the possible inputs and states you can,
+especially the strangest ones.
+</p>
+
+<div class="correct">
+<pre><code lang="ruby"># correct
+describe '#destroy' do
+
+  context 'when resource is found' do
+    it 'should respond with 204'
+    it 'should assign @resource'
+  end
+
+  context 'when resource is not found' do
+    it 'should respond with 404'
+    it 'should not assign @resource'
+  end
+
+end
+</code></pre>
+</div>
+
+</article>
+
+<article>
+
+<h1><a name="subject">Use the subject</a></h1>
+
+<p>
+When you have several tests related to the same subject you can use the
+<code>subject{}</code> method to DRY them up.
+</p>
+
+<div class="wrong">
+<pre><code lang="ruby"># wrong
+it { assigns('message').should match /The resource name is Genoveffa/ }
+it { assigns('message').should match /it was born in Billyville/ }
+it { assigns('message').creator.should match /Claudiano/ }
+</code></pre>
+</div>
+
+<div class="correct">
+<pre><code lang="ruby"># correct
+subject { assigns('message') }
+it { should match /The resource name is Genoveffa/ }
+it { should match /it was born in Billville/ }
+its(:creator) { should match /Claudiano/ }
+</code></pre>
+</div>
+
+<p>
+When possible do not use an explicit subject within a specification as it makes
+specs difficult to read.
+</p>
+
+<div class="wrong">
+<pre><code lang="ruby"># wrong
+subject { Hero.first }
+it "should be equipped with a sword" do
+  subject.equipment.should include "sword"
+end
+</code></pre>
+</div>
+
+<div class="correct">
+<pre><code lang="ruby"># correct
+subject { Hero.first }
+its(:equipment) { should include 'sward' }
+</code></pre>
+</div>
+
+</article>
+
+<article>
+
+<h1><a name="let">Use let and let!</a></h1>
+
+<p>
+When you have to assign a variable to test, instead of using a before each block, use let.
+It will load only when the variable is firstly used in the test and get cached until that
+specific test is finished.
+</p>
+
+<div class="wrong">
+<pre><code lang="ruby"># wrong
+describe "a house" do
+  before do
+    @house = Factory(:house)
+  end# correct
+context "when logged in" do
+  it { should respond_with 200 }
+end
+
+  subject { @house }
+  its(:size) { should == 10 }
+end
+</code></pre>
+</div>
+
+<div class="correct">
+<pre><code lang="ruby"># correct
+describe "a house"
+  let(:house) { Factory(:house) }
+  ... # any example that does not use house will not call factory
+  subject { house }
+  its(:size) { should == 10 }
+end
+</code></pre>
+</div>
+
+</article>
+
+<article>
+
+<h1><a name="mock">Mock or not to mock</a></h1>
+
+<p>
+Do not (over)use mocks and test real behavior when possible. As far as I can tell you from 
+my experience you need to experiment all possible 'real cases. Anyway, sometimes they can
+be really useful, for example if you want to get back a 'not found resource'.
+</p>
+
+<div class="correct">
+<pre><code lang="ruby"># correct
+# simulate a not found resource
+context "when not found"
+  before(:each) do
+    Resource.stub(:where).with(:created_from => params[:id]).and_return(false)
+    # ...
+  end
+  it { should respond_with 404 }
+end
+</code></pre>
+</div>
+
+</article>
+
+<article>
+
+<h1><a name="data">Create only tha data you need</a></h1>
+
+<p>
+If you have ever worked in a medium size project (but also in a small ones), test suites
+can be heavy to run. To solve this problem, is important to not load more data than needed.
+Also if you think you need dozens of records, usually you are wrong.
+</p>
+
+<div class="correct">
+<pre><code lang="ruby"># correct
+describe "User"
+  describe ".top" do
+    before { 3.times { Factory(:user) } }
+    it { User.top(2).should have(2).item }
+  end
+end
+</code></pre>
+</div>
+
+</article>
+
+<article>
+
+<h1><a name="factories">Use factories and not fixtures</a></h1>
+
+<p>
+This is an old topic, but it's still good to remember. Do not use fixtures which are
+difficult to control, instead use factories/blueprints. Use them to reduce the verbosity
+on creating new data.
+</p>
+
+<div class="wrong">
+<pre><code lang="ruby"># wrong
+user = User.create(
+  name: 'Genoveffa',
+  surname: 'Piccolina',
+  city: 'Billyville',
+  birth: '17 Agoust 1982',
+  active: true
+)
+</code></pre>
+</div>
+
+<div class="correct">
+<pre><code lang="ruby"># correct
+user = FactoryGirl.create :user
+</code></pre>
+</div>
+
+</article>
+
+<article>
+
+<h1><a name="matchers">Easy to read matcher</a></h1>
+
+<p>
+This is taken directly from carbonfive article. Sometimes you feel the need of having readable
+matchers. Check out rspec matcher.
+</p>
+
+<div class="wrong">
+<pre><code lang="ruby"># wrong
+lambda { model.save! }.should raise_error(ActiveRecord::RecordNotFound)
+collection.size.should == 4
+</code></pre>
+</div>
+
+<div class="correct">
+<pre><code lang="ruby"># correct
+expect { model.save! }.to raise_error(ActiveRecord::RecordNotFound)
+collection.should have(4).items
+</code></pre>
+</div>
+
+</article>
+
+<article>
+
+<h1><a name="shared-examples">Shared Examples</a></h1>
+
+<p>
+Making tests is great and you get more confident day after day. But there will be a
+point where you will start to see code duplication coming up everywhere. RSpec offers
+shared examples to DRY out your test suite.
+</p>
+
+<div class="wrong">
+<pre><code lang="ruby"># wrong
+describe '#show'
+  context 'when own resources' do
+    it 'should have it' do 
+      resource = Factory('user') do_get format: json   
+      assigns(users).should include(resource)
+    end  
+  end
+  context 'when does not own resource' do
+    it 'should not have it' do 
+      not_owned_resource = Factory('unknown') do_get     
+      format: json assigns(users).should_not include(not_owned_resource)
+    end
+  end
+end
+</code></pre>
+</div>
+
+<p>
+In this example we use the method it_behaves_like which refers to the shared example below.
+</p>
+
+<div class="correct">
+<pre><code lang="ruby"># correct
+describe "#show" do 
+  it_should_behave_like "a secure resource"
+end
+
+shared_examples_for "a secure resource" do
+  context "when own the resource" do 
+    it "should have it" do
+      resource = Factory("user") 
+      do_get format: json 
+      assigns(users).should include(resource)
+    end 
+  end
+  context "when does not own resource" do 
+    it "should not have it" do
+      not_owned_resource = Factory("unknown") 
+      do_get format: json 
+      assigns(users).should_not include(not_owned_resource)
+    end 
+  end
+end
+</code></pre>
+</div>
+
+</article>
+
+<article>
+
+<h1><a name="integration">Integration tests are better</a></h1>
+
+<p>
+<span class="label notice warning">todo</span>
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="should">Do not use should</a></h1>
+
+<p>
+<span class="label notice warning">todo</span>
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="spork">Faster tests with spork</a></h1>
+
+<p>
+<span class="label notice warning">todo</span>
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="guard">Automatic tests with guard</a></h1>
+
+<p>
+<span class="label notice warning">todo</span>
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="time-specs">Build specs based on time</a></h1>
+
+<p>
+<span class="label notice warning">todo</span>
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="http-mocking">Mocking HTTP requests</a></h1>
+
+<p>
+<span class="label notice warning">todo</span>
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="formatter">Use a useful formatter</a></h1>
+
+<p>
+<span class="label notice warning">todo</span>
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="books">Books</a></h1>
+
+<p>
+<span class="label notice warning">todo</span>
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="resources">Resources on the web</a></h1>
+
+<p>
+<span class="label notice warning">todo</span>
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="libraries">Libraries</a></h1>
+
+<p>
+<span class="label notice warning">todo</span>
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="styleguide">Styleguide</a></h1>
+
+<p>
+<span class="label notice warning">todo</span>
+</p>
+
+</article>

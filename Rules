@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+# General
+preprocess do
+  copy_static # add assets to the output directory
+end
+
+
+# Sitemap
+compile '/sitemap/' do
+  filter :erb
+end
+
+route '/sitemap/' do
+  '/sitemap.xml'
+end
+
+
+# General 
+compile '*' do
+  filter :erb
+  layout 'default'
+end
+
+route '*' do
+  item.identifier + 'index.html'
+end
+
+layout '*', :erb

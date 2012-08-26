@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Better Specs</title>
+
+    <link href="/stylesheets/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/stylesheets/highlight/hemisu-light.css" media="screen" rel="stylesheet" type="text/css" />
+
+    <script src="/javascripts/jquery.min.js" type="text/javascript"></script>
+    <script src="/javascripts/raphael.js" type="text/javascript"></script>
+    <script src="/javascripts/bootstrap-tabs.js" type="text/javascript"></script>
+    <script src="/javascripts/highlight/highlight.pack.js" type="text/javascript"></script>
+    <script src="/javascripts/application.js" type="text/javascript"></script>
+
+  </head>
+
+  <body class="docs  description %>">
+
+    <header id="header">
+    <h1><a href="/">Better Specs <span>{ with ruby }</span></a></h1>
+    <h2>
+      <a href="/">Documentation</a>
+    </h2>
+    </header>
+
+    <article id="article">
+
+    <nav id="nav">
+
+    <ul>
+
+      <li><a href="#introduction">Introduction to best practices</a></li>
+      <li class="little">&raquo; <a href="#describe">How to describe your methods</a></li>
+      <li class="little">&raquo; <a href="#contexts">Overuse contexts</a></li>
+      <li class="little">&raquo; <a href="#short">Keep your description short</a></li>
+      <li class="little">&raquo; <a href="#single">Single expectation</a></li>
+      <li class="little">&raquo; <a href="#all">Test all possible cases</a></li>
+      <li class="little">&raquo; <a href="#subject">Use the subject</a></li>
+      <li class="little">&raquo; <a href="#let">Use let and let!</a></li>
+      <li class="little">&raquo; <a href="#mock">Mock or not to mock</a></li>
+      <li class="little">&raquo; <a href="#data">Create only tha data you need</a></li>
+      <li class="little">&raquo; <a href="#factories">Use factories and not fixtures</a></li>
+      <li class="little">&raquo; <a href="#matchers">Easy to use matchers</a></li>
+      <li class="little">&raquo; <a href="#shared-examples">Shared examples</a></li>
+      <li class="little">&raquo; <a href="#should">Do not use should</a></li>
+      <li class="little">&raquo; <a href="#spork">Faster tests with spork</a></li>
+      <li class="little">&raquo; <a href="#guard">Automatic tests with guard</a></li>
+      <li class="little">&raquo; <a href="#time-specs">Build specs based on time</a></li>
+      <li class="little">&raquo; <a href="#http-mocking">Mocking HTTP requests</a></li>
+      <li class="little">&raquo; <a href="#formatter">Use a useful formatter</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#resources">Resources on the web</a></li>
+      <li><a href="#libraries">Libraries</a></li>
+      <li><a href="#styleguide">Styleguide</a></li>
+    </ul>
+
+    <!--<div id="search">-->
+      <!--<form accept-charset="UTF-8" action="/docs/search" method="get">-->
+        <!--<div style="margin:0;padding:0;display:inline">-->
+          <!--</div>-->
+        <!--<input type="search" name="query" value="" placeholder="Search..." results="0" />-->
+        <!--</form>-->
+      <!--</div>-->
+    </nav>
+
+    <section id="section"> 
+    <%= yield %> 
+
+    <article class="comments">
+    <%= render 'partials/services/disqus' %>
+    </article>
+    </section>
+
+    </article>
+
+  </body>
+</html>
