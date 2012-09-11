@@ -123,29 +123,35 @@ end
 <h1><a name="short">Keep your description short</a></h1>
 
 <p>
-A spec description should never be longer than 40 characters. If this happens,
-it suggests you should split it using a context (some exceptions are allowed).
+A spec description should never be longer than 40 characters. If this happens
+you should split it using a context.
 </p>
 
-<div class="wrong">
-<pre><code class="ruby"># wrong
-it 'should have 422 status code if an unexpected params will be added' do
+<p class="wrong">Wrong</p>
+
+<div>
+<pre><code class="ruby">it 'should have 422 status code if an unexpected params will be added' do
 </code></pre>
 </div>
 
-<div class="correct">
-<pre><code class="ruby"># correct
-context 'when not valid'
+<p class="correct">Correct</p>
+
+<div>
+<pre><code class="ruby">context 'when not valid'
   it { should respond_with 422 }
 </code></pre>
 </div>
 
 <p>
-As a side effect, in the example we removed the description related to the status code, which has been replaced by the expectation it { should respond_with 422 }. As confirm, if you run this test with the command rspec filename you will obtain an output similar to this.
+In the example we removed the description related to the status code,
+which has been replaced by the expectation <code>it { should respond_with 422 }</code>.
+If you run this test typing <code>rspec filename</code> you will obtain a readable output.
 </p>
 
+<p class="base">Readable Specs</p>
+
 <div>
-<pre><code class="ruby">when not valid
+<pre><code>when not valid
   it should respond with 422
 </code></pre>
 </div>

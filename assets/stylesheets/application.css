@@ -54,8 +54,9 @@ h2{font:20px arial,lucida,helvetica,arial,sans-serif;font-weight:normal}
 #section p,#section hr,#section h2,#section h3,#section ul,#section ol{max-width:650px}
 #section h1{margin:10px 0 20px 0; font-weight:normal}
 #section h2{font-size:28px;margin:25px 0 10px 0;line-height:1.4em;}
-#section p.wrong, #section p.correct{text-transform:uppercase;margin-top:10px;background: #1D1F21; margin-bottom:0; padding: 5px 10px 5px 10px;}
+#section p.wrong, #section p.correct, #section p.base{text-transform:uppercase;margin-top:10px; margin-bottom:0; padding: 5px 10px 5px 10px;}
 #section p.wrong {background:red;color:#fff;}
+#section p.base {background-color:#ddd; color:#777;}
 #section p.correct {background:green;color:#fff;}
 #section pre {margin:0; padding:0; margin-bottom:10px;}
 #section code {border:0px !important;}
