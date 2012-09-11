@@ -39,9 +39,9 @@ the development of your application.
 
 <p>
 On the web you can find several resources explaining how to
-use RSpec and they gives you a complete overview of what you it can do. What you'll
-rarely find is a book or an article explaining <em>how to use RSpec to create a
-great test suite</em>.
+use RSpec and all they gives you a complete overview of what you can do. What you'll
+rarely find is a book or an article explaining how to use RSpec to create a
+great test suite.
 <p>
 
 <p>
@@ -80,17 +80,17 @@ describe '#admin?' do
 
 <article>
 
-<h1><a name="contexts">Overuse contexts</a></h1>
+<h1><a name="contexts">Use contexts</a></h1>
 
 <p>
 Contexts are a powerful method to make your tests clear and well organized.
-In the long term this practice will keep tests easy to read. make them start
-always using the keys <code>when</code> and <code>with</code>.
+In the long term this practice will keep tests easy to read.
 </p>
 
-<div class="wrong">
-<pre><code class="ruby"># wrong
-it 'should have 200 status code if logged in' do
+<p class="wrong">Wrong</p>
+
+<div>
+<pre><code class="ruby">it 'should have 200 status code if logged in' do
   response.should respond_with 200
 end
 it 'should have 401 status code if not logged in' do
@@ -99,9 +99,10 @@ end
 </code></pre>
 </div>
 
-<div class="correct">
-<pre><code class="ruby"># correct
-context 'when logged in' do
+<p class="correct">Correct</p>
+
+<div>
+<pre><code class="ruby">context 'when logged in' do
   it { should respond_with 200 }
 end
 context 'when logged out' do
@@ -109,6 +110,11 @@ context 'when logged out' do
 end
 </code></pre>
 </div>
+
+<p>
+  When describing contexts, make them start always using the keys
+  <code>when</code> and <code>with</code>.
+</p>
 
 </article>
 
