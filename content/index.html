@@ -252,48 +252,42 @@ end
 
 <article>
 
-<h1><a name="subject">Use the subject</a></h1>
+<h1><a name="subject">Use subject</a></h1>
 
 <p>
-When you have several tests related to the same subject you can use the
-<code>subject{}</code> method to DRY them up.
+If you have several tests related to the same subject use
+<code>subject{}</code> to DRY them up.
 </p>
 
-<div class="wrong">
-<pre><code class="ruby"># wrong
-it { assigns('message').should match /The resource name is Genoveffa/ }
-it { assigns('message').should match /it was born in Billyville/ }
-it { assigns('message').creator.should match /Claudiano/ }
+<p class="wrong">Wrong</p>
+
+<div>
+<pre><code class="ruby">it { assigns('message').should match /it was born in Belville/ }
+it { assigns('message').creator.should match /Topolino/ }
 </code></pre>
 </div>
 
-<div class="correct">
-<pre><code class="ruby"># correct
-subject { assigns('message') }
-it { should match /The resource name is Genoveffa/ }
+<p class="correct">Correct</p>
+
+<div>
+<pre><code class="ruby">subject { assigns('message') }
 it { should match /it was born in Billville/ }
-its(:creator) { should match /Claudiano/ }
+its(:creator) { should match /Topolino/ }
 </code></pre>
 </div>
 
 <p>
-When possible do not use an explicit subject within a specification as it makes
-specs difficult to read.
+Remember that using an explicit subject within a specification makes the specs
+difficult to read.
 </p>
 
-<div class="wrong">
-<pre><code class="ruby"># wrong
-subject { Hero.first }
+<p class="wrong">Wrong</p>
+
+<div>
+<pre><code class="ruby">subject { Hero.first }
 it "should be equipped with a sword" do
   subject.equipment.should include "sword"
 end
-</code></pre>
-</div>
-
-<div class="correct">
-<pre><code class="ruby"># correct
-subject { Hero.first }
-its(:equipment) { should include 'sward' }
 </code></pre>
 </div>
 
