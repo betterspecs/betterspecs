@@ -298,37 +298,61 @@ end
 <h1><a name="let">Use let and let!</a></h1>
 
 <p>
-When you have to assign a variable to test, instead of using a before each block, use let.
-It will load only when the variable is firstly used in the test and get cached until that
-specific test is finished.
+When you have to assign a variable instead of using a <code>before</code> block to create
+an instance variable, use <code>let</code>. Using <code>let</code> the variable lazy loads
+only when it is firstly used in the test and get cached until that specific test is finished.
 </p>
 
-<div class="wrong">
-<pre><code class="ruby"># wrong
-describe "a house" do
-  before do
-    @house = Factory(:house)
-  end# correct
-context "when logged in" do
-  it { should respond_with 200 }
-end
+<p class="wrong">Wrong</p>
 
-  subject { @house }
-  its(:size) { should == 10 }
+<div>
+<pre><code class="ruby">describe '#type_id' do
+  before { @resource = FactoryGirl.create :device }
+  before { @type     = Type.find resource.type_id }
+
+  it 'sets the type_id field' do
+    @resource.type_id.should == type.id
+  end
 end
 </code></pre>
 </div>
 
-<div class="correct">
-<pre><code class="ruby"># correct
-describe "a house"
-  let(:house) { Factory(:house) }
-  ... # any example that does not use house will not call factory
-  subject { house }
-  its(:size) { should == 10 }
+<p class="correct">Correct</p>
+
+<div>
+<pre><code class="ruby">describe '#type_id' do
+  let(:resource) { FactoryGirl.create :device }
+  let(:type)     { Type.find resource.type_id }
+
+  it 'sets the type_id field' do
+    resource.type_id.should == type.id
+  end
 end
 </code></pre>
 </div>
+
+<p>
+Use <code>let</code> to initialize actions that are lazy loaded to test your specs.
+</p>
+
+<p class="correct">Correct</p>
+
+<div>
+<pre><code class="ruby">context 'when updates a not existing property value' do
+  let(:properties) { { id: Settings.resource_id, value: 'on'} }
+  let(:update)     { resource.properties = properties }
+
+  it 'raises a not found error' do
+    expect { update }.to raise_error Mongoid::Errors::DocumentNotFound
+  end
+end
+</code></pre>
+</div>
+
+<p>
+Use <code>let!</code> if you want to define the variable when the block is defined.
+This can be useful to populate your database to test queries or scopes.
+</p>
 
 </article>
 
