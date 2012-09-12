@@ -41,3 +41,6 @@ pre code {
   border: 1px solid #ccc;
   padding: 10px;
 }
+
+
+pre {border: 1px solid #dddddd; border-top:none;}

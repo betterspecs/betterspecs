@@ -148,7 +148,7 @@ which has been replaced by the expectation <code>it { should respond_with 422 }<
 If you run this test typing <code>rspec filename</code> you will obtain a readable output.
 </p>
 
-<p class="base">Readable Specs</p>
+<p class="base">Formatted Output</p>
 
 <div>
 <pre><code>when not valid
@@ -168,25 +168,26 @@ This helps you on finding possible errors, going directly to the failing test, a
 code readable.
 </p>
 
-<div class="wrong">
-<pre><code class="ruby"># wrong
-it 'should create a resource' do
+<p class="wrong">Wrong</p>
+
+<div>
+<pre><code class="ruby">it 'should create a resource' do
   response.should respond_with_content_type(:json)
   response.should assign_to(:resource)
 end
 </code></pre>
 </div>
 
-<div class="correct">
-<pre><code class="ruby"># correct
-it { should respond_with_content_type(:json) }
+<p class="correct">Correct</p>
+
+<div>
+<pre><code class="ruby">it { should respond_with_content_type(:json) }
 it { should assign_to(:resource) }
 </code></pre>
 </div>
 
 <p>
-<span class="label notice">Notice</span>
-keep in mind that single expectation test does not mean single line test.
+Note that single expectation test does not mean single line test.
 </p>
 
 </article>
@@ -197,44 +198,52 @@ keep in mind that single expectation test does not mean single line test.
 
 <p>
 Testing is a good practice, but if you do not test the edge cases, it will not
-be so useful. Test valid, edge and invalid case. For example, consider the following action.
+be useful. Test valid, edge and invalid case. For example, consider the following action.
 </p>
 
+<p class="base">Destroy action</p>
+
 <div>
-<pre><code class="ruby">
+<pre><code class="ruby">before_filter :find_owned_resources
+before_filter :find_resource
+
 def destroy
-  @resource = Resource.find id
-  if @resource
-    @resource.destroy
-    head 204
-  else
-    render template; 'shared/404', status: 404,
-  end
-end
-</code></pre>
+  render 'show'
+  @consumption.destroy
+end</code></pre>
 </div>
 
 <p>
 The error I usually see lies in testing only whether the resource has been removed.
-But, there is also an edge case where the resource is not found, which is also important
-to test. As a rule of thumb, try to think of all the possible inputs and states you can,
-especially the strangest ones.
+But there are at least two edge case: when the resource is not found and when it's not
+owned. As a rule of thumb think of all the possible inputs and states you can.
 </p>
 
+<p class="wrong">Wrong</p>
+
+<div>
+<pre><code class="ruby">it 'shows the resource'
+</code></pre>
+</div>
+
+<p class="correct">Correct</p>
+
+<div>
 <div class="correct">
-<pre><code class="ruby"># correct
-describe '#destroy' do
+<pre><code class="ruby">describe '#destroy' do
 
   context 'when resource is found' do
-    it 'should respond with 204'
-    it 'should assign @resource'
+    it 'responds with 200'
+    it 'shows the resource'
   end
 
   context 'when resource is not found' do
-    it 'should respond with 404'
-    it 'should not assign @resource'
+    it 'responds with 404'
   end
 
+  context 'when resource is not owned' do
+    it 'responds with 404'
+  end
 end
 </code></pre>
 </div>
