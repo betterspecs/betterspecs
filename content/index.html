@@ -416,13 +416,14 @@ end
 
 <p>
 This is an old topic, but it's still good to remember. Do not use fixtures which are
-difficult to control, instead use factories/blueprints. Use them to reduce the verbosity
+difficult to control, instead use factories. Use them to reduce the verbosity
 on creating new data.
 </p>
 
-<div class="wrong">
-<pre><code class="ruby"># wrong
-user = User.create(
+<p class="wrong">Wrong</p>
+
+<div>
+<pre><code class="ruby">user = User.create(
   name: 'Genoveffa',
   surname: 'Piccolina',
   city: 'Billyville',
@@ -432,9 +433,10 @@ user = User.create(
 </code></pre>
 </div>
 
-<div class="correct">
-<pre><code class="ruby"># correct
-user = FactoryGirl.create :user
+<p class="correct">Correct</p>
+
+<div>
+<pre><code class="ruby">user = FactoryGirl.create :user
 </code></pre>
 </div>
 
@@ -445,21 +447,22 @@ user = FactoryGirl.create :user
 <h1><a name="matchers">Easy to read matcher</a></h1>
 
 <p>
-This is taken directly from carbonfive article. Sometimes you feel the need of having readable
-matchers. Check out rspec matcher.
+Use readable matchers and double check available <a href="/" class="see">rspec matcher</a>.
 </p>
 
-<div class="wrong">
-<pre><code class="ruby"># wrong
-lambda { model.save! }.should raise_error(ActiveRecord::RecordNotFound)
-collection.size.should == 4
+<p class="wrong">Wrong</p>
+
+<div>
+<pre><code class="ruby">lambda { model.save! }.should raise_error Mongoid::Errors::DocumentNotFound
+collection.size.should == 2
 </code></pre>
 </div>
 
-<div class="correct">
-<pre><code class="ruby"># correct
-expect { model.save! }.to raise_error(ActiveRecord::RecordNotFound)
-collection.should have(4).items
+<p class="correct">Correct</p>
+
+<div>
+<pre><code class="ruby">expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
+collection.should have(2).items
 </code></pre>
 </div>
 
@@ -471,57 +474,60 @@ collection.should have(4).items
 
 <p>
 Making tests is great and you get more confident day after day. But there will be a
-point where you will start to see code duplication coming up everywhere. RSpec offers
-shared examples to DRY out your test suite.
+point where you will start to see code duplication coming up everywhere. 
+Use shared examples to DRY your test suite up.
 </p>
 
-<div class="wrong">
-<pre><code class="ruby"># wrong
-describe '#show'
-  context 'when own resources' do
-    it 'should have it' do 
-      resource = Factory('user') do_get format: json   
-      assigns(users).should include(resource)
-    end  
+<p class="wrong">Wrong</p>
+
+<div>
+<pre><code class="ruby">describe 'GET /devices' do
+  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let(:uri) { '/devices' }
+
+  context 'when shows all resources' do
+    let!(:not_owned) { FactoryGirl.create factory }
+
+    it 'shows all owned resources' do
+      page.driver.get uri
+      page.status_code.should == 200
+      contains_owned_resource resource
+      does_not_contain_resource not_owned
+    end
   end
-  context 'when does not own resource' do
-    it 'should not have it' do 
-      not_owned_resource = Factory('unknown') do_get     
-      format: json assigns(users).should_not include(not_owned_resource)
+
+  describe '?start=:uri' do
+    it 'shows the next page' do
+      page.driver.get uri, start: resource.uri
+      page.status_code.should == 200
+      contains_resource resources.first
+      page.should_not have_content resource.id.to_s
     end
   end
 end
 </code></pre>
 </div>
 
-<p>
-In this example we use the method it_behaves_like which refers to the shared example below.
-</p>
+<p class="correct">Correct</p>
 
-<div class="correct">
-<pre><code class="ruby"># correct
-describe "#show" do 
-  it_should_behave_like "a secure resource"
-end
+<div>
+<pre><code class="ruby">describe 'GET /devices' do
 
-shared_examples_for "a secure resource" do
-  context "when own the resource" do 
-    it "should have it" do
-      resource = Factory("user") 
-      do_get format: json 
-      assigns(users).should include(resource)
-    end 
-  end
-  context "when does not own resource" do 
-    it "should not have it" do
-      not_owned_resource = Factory("unknown") 
-      do_get format: json 
-      assigns(users).should_not include(not_owned_resource)
-    end 
-  end
+  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let(:uri)       { '/devices' }
+
+  it_behaves_like 'a listable resource'
+  it_behaves_like 'a paginable resource'
+  it_behaves_like 'a searchable resource'
+  it_behaves_like 'a filterable list'
 end
 </code></pre>
 </div>
+
+<p>
+From our experience shared examples are used mainly for controllers. Being models pretty
+different from each other they (usually) do not share much logic.
+</p>
 
 </article>
 
@@ -587,7 +593,7 @@ end
 
 <article>
 
-<h1><a name="formatter">Use a useful formatter</a></h1>
+<h1><a name="formatter">Useful formatter</a></h1>
 
 <p>
 <span class="label notice warning">todo</span>
