@@ -2,6 +2,7 @@ body,html{height:100%;width:100%;margin:0;padding:0;overflow:auto}
 body{color:#52585d;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;font:15px "helvetica neue",helvetica,arial,sans-serif;background:#f4f4f4}
 p{margin:0 0 10px 0;line-height:1.5em}
 a{color:#52585D;text-shadow:0 1px 0 #fff;text-decoration:none}
+a.see{color:red;text-shadow:0 1px 0 #fff;text-decoration:none}
 ::selection,::-moz-selection,::-webkit-selection{background:#e0edf8;text-shadow:none}
 @font-face {
   font-family: "agb";

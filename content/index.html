@@ -361,23 +361,28 @@ This can be useful to populate your database to test queries or scopes.
 <h1><a name="mock">Mock or not to mock</a></h1>
 
 <p>
-Do not (over)use mocks and test real behavior when possible. As far as I can tell you from 
-my experience you need to experiment all possible 'real cases. Anyway, sometimes they can
-be really useful, for example if you want to get back a 'not found resource'.
+This is really opinioneted. Do not (over)use mocks and test real behavior when possible. 
+As far as I can tell you from my experience you need to test real cases. Anyway, sometimes
+they can be pretty useful to updated your application flow.
 </p>
 
-<div class="correct">
-<pre><code class="ruby"># correct
-# simulate a not found resource
-context "when not found"
-  before(:each) do
-    Resource.stub(:where).with(:created_from => params[:id]).and_return(false)
-    # ...
-  end
+<p class="correct">Correct</p>
+
+<div>
+<pre><code class="ruby"># simulate a not found resource
+context "when not found" do
+  before { Resource.stub(:where).with(created_from: params[:id]).and_return(false) }
   it { should respond_with 404 }
 end
 </code></pre>
 </div>
+
+<p>
+Some people will tell you that mocking is one of the best way to make your specs fast. It's
+true, but it also complicates your test suite. You can have fast tests in other ways (see
+<a href="#spork" class="see">faster tests with spork</a> and
+<a href="#guard" class="see">automatic tests with guard</a>).
+</p>
 
 </article>
 
