@@ -470,7 +470,7 @@ collection.should have(2).items
 
 <article>
 
-<h1><a name="shared-examples">Shared Examples</a></h1>
+<h1><a name="sharedexamples">Shared Examples</a></h1>
 
 <p>
 Making tests is great and you get more confident day after day. But there will be a
@@ -533,10 +533,32 @@ different from each other they (usually) do not share much logic.
 
 <article>
 
-<h1><a name="integration">Integration tests are better</a></h1>
+<h1><a name="integration">Test what you see</a></h1>
 
 <p>
-<span class="label notice warning">todo</span>
+<strong>Deeply test your models and your application behaviour (integration tests).
+Do not add useless complexity testing controllers.</strong>
+</p>
+
+<p>
+When I first started testing my apps I was testing controllers, now I don't.
+Now I only create integration tests using RSpec and Capybara. Why? Because I truly 
+believe that you should test what you see and because testing controllers is an 
+extra step you don't need. You'll find out that most of your tests goes into the
+models and that integration tests can be easily grouped into shared examples,
+building a clear and readable test suite.
+</p>
+
+<p>
+This is an open debate in the Ruby community and both sides have good arguments
+support their idea. People supporting the need of testing controllers will tell
+you that your integration tests don't cover all use cases and that they are slow.
+</p>
+
+<p>
+Both are wrong. You can easily cover all use cases (why shouldn't you?) and you
+can run single file specs using automated tools like Guard. In this way will run
+only the specs you need to test blazing fast without stopping your flow.
 </p>
 
 </article>
@@ -546,18 +568,26 @@ different from each other they (usually) do not share much logic.
 <h1><a name="should">Do not use should</a></h1>
 
 <p>
-<span class="label notice warning">todo</span>
+Do not use should when describing your tests. Use the third person in the present tense.
 </p>
 
-</article>
+<p class="wrong">Wrong</p>
 
-<article>
+<div>
+<pre><code class="ruby">it 'should not change timings' do
+  consumption.occur_at.should == valid.occur_at
+end
+</code></pre>
+</div>
 
-<h1><a name="spork">Faster tests with spork</a></h1>
+<p class="correct">Correct</p>
 
-<p>
-<span class="label notice warning">todo</span>
-</p>
+<div>
+<pre><code class="ruby">it 'does not change timings' do
+  consumption.occur_at.should == valid.occur_at
+end
+</code></pre>
+</div>
 
 </article>
 
@@ -566,14 +596,84 @@ different from each other they (usually) do not share much logic.
 <h1><a name="guard">Automatic tests with guard</a></h1>
 
 <p>
-<span class="label notice warning">todo</span>
+Running all the test suite every time you change your app can be cumbersome. It takes a lot of
+time and it can break your flow. With Guard you can automate your test suite running only the
+tests related to the updated spec, model, controller or file you are working at.
 </p>
+
+<p class="wrong">Wrong</p>
+
+<div>
+<pre><code>rake tests</code></pre>
+</div>
+
+<p class="correct">Correct</p>
+
+<div>
+<pre><code class="ruby">bundle exec guard
+</code></pre>
+</div>
+
+Here you can see a sample Guardfile with some basic reloading rules.
+
+<p class="correct">Correct</p>
+
+<div>
+<pre><code class="ruby">guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
+  # run every updated spec file
+  watch(%r{^spec/.+_spec\.rb$})
+  # run the lib specs when a file in lib/ changes
+  watch(%r{^lib/(.+)\.rb$}) { |m| "spec/lib/#{m[1]}_spec.rb" }
+  # run the model specs related to the changed model
+  watch(%r{^app/(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
+  # run the view specs related to the changed view
+  watch(%r{^app/(.*)(\.erb|\.haml)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
+  # run the integration specs related to the changed controller
+  watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }  
+  # run all integration tests when application controller change
+  watch('app/controllers/application_controller.rb') { "spec/requests" }
+end
+</code></pre>
+</div>
 
 </article>
 
 <article>
 
-<h1><a name="time-specs">Build specs based on time</a></h1>
+<h1><a name="spork">Faster tests with spork</a></h1>
+
+<p>
+When running a test on Rails the whole Rails app is loaded. This can take several seconds and
+can break your development flow. To solve this problem use Spork. It will preload all libraries
+you (usually) do not change and reload controllers, models, view, factories and all files you 
+usually are going to change.
+</p>
+
+<p class="wrong">Wrong</p>
+
+<div>
+<pre><code>rake tests</code></pre>
+</div>
+
+<p class="correct">Correct</p>
+
+<div>
+<pre><code class="ruby">bundle exec guard
+</code></pre>
+</div>
+
+<p>
+Here you can find a "spec helper" and a "Guardfile" confuguration. With this configuration
+you will reload the whole app if a preloaded file (like initializers) change and you will run
+the single tests really fast.
+</p>
+
+
+</article>
+
+<article>
+
+<h1><a name="time">Build specs based on time</a></h1>
 
 <p>
 <span class="label notice warning">todo</span>
@@ -583,7 +683,7 @@ different from each other they (usually) do not share much logic.
 
 <article>
 
-<h1><a name="http-mocking">Mocking HTTP requests</a></h1>
+<h1><a name="http">Mocking HTTP requests</a></h1>
 
 <p>
 <span class="label notice warning">todo</span>
