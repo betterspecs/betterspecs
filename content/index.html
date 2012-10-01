@@ -671,29 +671,60 @@ the single tests really fast.
 
 </article>
 
-<article>
-
-<h1><a name="time">Build specs based on time</a></h1>
-
-<p>
-<span class="label notice warning">todo</span>
-</p>
-
-</article>
-
-<article>
-
 <h1><a name="http">Mocking HTTP requests</a></h1>
 
 <p>
-<span class="label notice warning">todo</span>
+Sometimes you need to access external services. In this cases you can't
+rely on the real service but you should mock it with solutions like webmock.
 </p>
+
+<p class="correct">Correct</p>
+<div>
+<pre><code class="ruby">context "with unauthorized access" do
+  let(:uri) { 'http://api.lelylan.com/types' }
+  before    { stub_request(:get, uri).to_return(status: 401, body: fixture('401.json')) }
+  it "gets a not authorized notification" do
+    page.driver.get uri
+    page.should have_content 'Access denied'
+  end
+end
+</code></pre>
+</div>
 
 </article>
 
 <article>
 
 <h1><a name="formatter">Useful formatter</a></h1>
+
+<p>
+Use a formatter that can give you useful information about the test suite.
+I personally find fuubar really nice. To make it work add the gem and set
+fuubar as default formatter in your Guardfile.
+</p>
+
+<p class="correct">Correct</p>
+<div>
+<pre><code class="ruby"> # Gemfile
+group :development, :test do
+  gem 'fuubar'
+</code></pre>
+</div>
+
+<p class="correct">Correct</p>
+<div>
+<pre><code class="ruby"># Guardfile
+guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
+  # ...
+end
+</code></pre>
+</div>
+
+</article>
+
+<article>
+
+<h1><a name="time">Build specs based on time</a></h1>
 
 <p>
 <span class="label notice warning">todo</span>
