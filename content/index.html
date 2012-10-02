@@ -668,8 +668,9 @@ you will reload the whole app if a preloaded file (like initializers) change and
 the single tests really fast.
 </p>
 
-
 </article>
+
+<article>
 
 <h1><a name="http">Mocking HTTP requests</a></h1>
 
@@ -704,14 +705,16 @@ fuubar as default formatter in your Guardfile.
 </p>
 
 <p class="correct">Correct</p>
+
 <div>
-<pre><code class="ruby"> # Gemfile
+<pre><code class="ruby"># Gemfile
 group :development, :test do
   gem 'fuubar'
 </code></pre>
 </div>
 
 <p class="correct">Correct</p>
+
 <div>
 <pre><code class="ruby"># Guardfile
 guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
@@ -724,21 +727,29 @@ end
 
 <article>
 
-<h1><a name="time">Build specs based on time</a></h1>
-
-<p>
-<span class="label notice warning">todo</span>
-</p>
+<h1><a name="books">Books</a></h1>
+  <ul class="media-grid">
+    <li>
+    <a href="http://www.amazon.com/gp/product/1934356646/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356646&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/rails-test-prescription-thumb.jpg" alt="ioBridge"></a>
+    </li>
+    <li>
+    <a href="http://www.amazon.com/gp/product/1934356379/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356379&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/the-rspec-book-thumb.jpg" alt="ioBridge"></a>
+    </li>
+    <li>
+    <a href="http://www.amazon.com/gp/product/1934356808/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356808&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/continuous-testing-thumb.jpg" alt="ioBridge"></a>
+    </li>
+    <!--<li>-->
+    <!--<a href="http://www.amazon.com/gp/product/1934356700/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356700&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/the-cucumber-book-thumb.jpg" alt="ioBridge"></a>-->
+    <!--</li>-->
+  </ul>
 
 </article>
 
 <article>
 
-<h1><a name="books">Books</a></h1>
+<h1><a name="presentations">Presentations</a></h1>
 
-<p>
-<span class="label notice warning">todo</span>
-</p>
+<iframe src="http://www.slideshare.net/slideshow/embed_code/7050468" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="http://www.slideshare.net/andrea.reginato/rspec-2-best-practices" title="RSpec 2 Best practices" target="_blank">RSpec 2 Best practices</a> </strong> from <strong><a href="http://www.slideshare.net/andrea.reginato" target="_blank">Andrea Reginato</a></strong> </div>
 
 </article>
 
@@ -746,19 +757,31 @@ end
 
 <h1><a name="resources">Resources on the web</a></h1>
 
-<p>
-<span class="label notice warning">todo</span>
-</p>
+<ol>
+<li><a class="see" href="https://leanpub.com/everydayrailsrspec">Everyday Rails Spec</a></li>
+<li><a class="see" href="http://eggsonbread.com/2010/03/28/my-rspec-best-practices-and-tips/">Eggs on Bread Best Practices</a></li>
+<li><a class="see" href="http://blog.carbonfive.com/2010/10/21/rspec-best-practices/">The Carbon Emitter Best Practices</a></li>
+<li><a class="see" href="http://blog.andyvanasse.com/post/503615383/rspec-best-practices">Andy Vanasse Best Practices</a></li>
+<li><a class="see" href="http://bitfluxx.com/2011/05/23/some-rspec-tips-and-best-practices.html">Bitfluxx Best Practices</a></li>
+<li><a class="see" href="http://kpumuk.info/ruby-on-rails/my-top-7-rspec-best-practices/">Dmytro Shteflyuk Best Practices</a></li>
+<li><a class="see" href="http://railscasts.com/episodes/285-spork">Spork Railscast</a></li>
+</ol>
 
 </article>
 
 <article>
 
-<h1><a name="libraries">Libraries</a></h1>
+<h1><a name="libraries">Libraries (documentation)</a></h1>
 
-<p>
-<span class="label notice warning">todo</span>
-</p>
+<ol>
+<li><a class="see" href="https://www.relishapp.com/rspec">Rspec Documentation</a></li>
+<li><a class="see" href="https://github.com/jnicklas/capybara">Capybara Documentation</a></li>
+<li><a class="see" href="https://github.com/thoughtbot/factory_girl">Factory Girl Documentation</a></li>
+<li><a class="see" href="https://github.com/bblimke/webmock">Webmock Documentation</a></li>
+<li><a class="see" href="https://github.com/travisjeffery/timecop">Timecop Documentation</a></li>
+<li><a class="see" href="http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/frames">Shoulda Matchers</a></li>
+<li><a class="see" href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafailing-rspec-progress-bar-formatter/">Fuubar Release</a></li>
+</ol>
 
 </article>
 
@@ -767,7 +790,47 @@ end
 <h1><a name="styleguide">Styleguide</a></h1>
 
 <p>
-<span class="label notice warning">todo</span>
+We are seeking for the best guidelines to write "nice to read" specs. Right now a good
+starting point is for sure the 
+<a class="see" href="https://github.com/mongoid/mongoid/tree/master/spec/mongoid">Mongoid test suite</a>. 
+It uses a clean style and easy to read specs, following most of the best practices
+described here.
 </p>
+
+</article>
+
+<article>
+
+<h1><a name="improve">Improve Better Specs</a></h1>
+
+<p>
+We are seeking for the best guidelines to write "nice to read" specs. Right now a good
+starting point is for sure the 
+<a class="see" href="https://github.com/mongoid/mongoid/tree/master/spec/mongoid">Mongoid test suite</a>. 
+It uses a clean style and easy to read specs, following most of the best practices
+described here.
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="help">Help us</a></h1>
+
+<p>
+If you have found those tips useful to improve your daily job think about making a
+$9 donation. Those donations will be used to make this site a reference for better
+testing in Ruby.
+</p>
+
+<div style="margin-left: 200px;">
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+    ">
+    <input type="image" src="https://dl.dropbox.com/u/7048149/donate-9" border="0" name="submit" alt="PayPal - Il metodo rapido, affidabile e innovativo per pagare e farsi pagare.">
+    <img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
+  </form>
+</div>
 
 </article>

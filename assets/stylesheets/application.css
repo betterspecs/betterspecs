@@ -2,7 +2,7 @@ body,html{height:100%;width:100%;margin:0;padding:0;overflow:auto}
 body{color:#52585d;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;font:15px "helvetica neue",helvetica,arial,sans-serif;background:#f4f4f4}
 p{margin:0 0 10px 0;line-height:1.5em}
 a{color:#52585D;text-shadow:0 1px 0 #fff;text-decoration:none}
-a.see{color:red;text-shadow:0 1px 0 #fff;text-decoration:none}
+a.see{color:#be0000;text-shadow:0 1px 0 #fff;text-decoration:none, font-weight:normal;}
 ::selection,::-moz-selection,::-webkit-selection{background:#e0edf8;text-shadow:none}
 @font-face {
   font-family: "agb";
@@ -82,3 +82,5 @@ article.comments {margin-top: 60px; padding-top: 10px; border-top: solid 1px; bo
 #section aside.menu ul.media-grid {list-style-type: none;}
 aside.menu {position:fixed !important; margin-left:270px;}
 
+article ol, article ul{list-style:none;text-align:left;margin:5px 0px 5px -20px;font-size:15px;text-shadow:0 1px 0 #fff;color:#62696f}
+article li{margin:10px 0}
