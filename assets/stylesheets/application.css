@@ -82,5 +82,5 @@ article.comments {margin-top: 60px; padding-top: 10px; border-top: solid 1px; bo
 #section aside.menu ul.media-grid {list-style-type: none;}
 aside.menu {position:fixed !important; margin-left:270px;}
 
-article ol, article ul{list-style:none;text-align:left;margin:5px 0px 5px -20px;font-size:15px;text-shadow:0 1px 0 #fff;color:#62696f}
+article ol{list-style:none;text-align:left;margin:5px 0px 5px -20px;font-size:15px;text-shadow:0 1px 0 #fff;color:#62696f}
 article li{margin:10px 0}

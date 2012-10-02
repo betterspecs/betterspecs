@@ -1,6 +1,6 @@
 # betterspecs.org
 
-* [Betterspecs website](http://betterspecs.org)
+Source code for [betterspecs.org](http://betterspecs.org)
 
 ## Requirements
 
@@ -9,14 +9,14 @@ RSpec Best Practices website is tested against MRI 1.9.3.
 
 ## Installation
 
-  git clone git@github.com:andreareginato/betterspecs.git
-  cd betterspecs
-  bundle install
-  nanoc3 aco
+    git clone git@github.com:andreareginato/betterspecs.git
+    cd betterspecs
+    bundle install
+    nanoc3 aco
 
 ## Resources
 
-* [Betterspecs website](http://betterspecs.org)
+[betterspecs.org](http://betterspecs.org)
 
 ## Contributing
 
