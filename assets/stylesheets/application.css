@@ -2,7 +2,8 @@ body,html{height:100%;width:100%;margin:0;padding:0;overflow:auto}
 body{color:#52585d;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;font:15px "helvetica neue",helvetica,arial,sans-serif;background:#f4f4f4}
 p{margin:0 0 10px 0;line-height:1.5em}
 a{color:#52585D;text-shadow:0 1px 0 #fff;text-decoration:none}
-a.see{color:#be0000;text-shadow:0 1px 0 #fff;text-decoration:none, font-weight:normal;}
+div.content a{color:#be0000;text-shadow:0 1px 0 #fff;text-decoration:none, font-weight:normal;}
+div.content h1 a{color:#52585D;}
 ::selection,::-moz-selection,::-webkit-selection{background:#e0edf8;text-shadow:none}
 @font-face {
   font-family: "agb";
@@ -56,9 +57,9 @@ h2{font:20px arial,lucida,helvetica,arial,sans-serif;font-weight:normal}
 #section h1{margin:10px 0 20px 0; font-weight:normal}
 #section h2{font-size:28px;margin:25px 0 10px 0;line-height:1.4em;}
 #section p.wrong, #section p.correct, #section p.base{text-transform:uppercase;margin-top:10px; margin-bottom:0; padding: 5px 10px 5px 10px;}
-#section p.wrong {background:red;color:#fff;}
+#section p.wrong {background:#c20101;color:#fff;}
 #section p.base {background-color:#ddd; color:#777;}
-#section p.correct {background:green;color:#fff;}
+#section p.correct {background:#00a20f;color:#fff;}
 #section pre {margin:0; padding:0; margin-bottom:10px;}
 #section code {border:0px !important;}
 
