@@ -167,8 +167,9 @@ you should split it using a context.
 <p class="correct">good</p>
 
 <div>
-<pre><code class="ruby">context 'when not valid'
+<pre><code class="ruby">context 'when not valid' do
   it { should respond_with 422 }
+end
 </code></pre>
 </div>
 
