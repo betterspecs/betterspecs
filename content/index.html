@@ -378,7 +378,7 @@ only when it is firstly used in the test and get cached until that specific test
   before { @type     = Type.find resource.type_id }
 
   it 'sets the type_id field' do
-    @resource.type_id.should == type.id
+    @resource.type_id.should == @type.id
   end
 end
 </code></pre>
@@ -706,7 +706,7 @@ only the specs you need to test blazing fast without stopping your flow.
 Do not use should when describing your tests. Use the third person in the present tense.
 </p>
 
-<p class="bad">bad</p>
+<p class="wrong">bad</p>
 
 <div>
 <pre><code class="ruby">it 'should not change timings' do
