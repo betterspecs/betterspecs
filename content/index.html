@@ -378,7 +378,7 @@ only when it is firstly used in the test and get cached until that specific test
   before { @type     = Type.find resource.type_id }
 
   it 'sets the type_id field' do
-    @resource.type_id.should == type.id
+    @resource.type_id.should == @type.id
   end
 end
 </code></pre>
