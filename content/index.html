@@ -46,21 +46,19 @@ title: 'Better Specs'
 <article>
 
 <p>
-<a href="https://www.relishapp.com/rspec/">RSpec</a> is a great tool in the behavior
-driven design process of writing human readable specifications that direct and validate
+<a href="https://www.relishapp.com/rspec/">RSpec</a> is a great tool in the behavior-driven design process of writing human readable specifications that direct and validate
 the development of your application. 
 </p>
 
 <p>
 On the web you can find several resources explaining how to
-use RSpec and they all give you a complete overview of what you can do. What you'll
-rarely find is a book or an article explaining how to use RSpec to create a
+use RSpec and a complete overview of what you can do. What you won't find often is a book or an article explaining how to use RSpec to create a
 great test suite.
 <p>
 
 <p>
-Better Specs tries to fill this miss collecting most of the guidelines developers
-has been learning the hard way through years of experience.
+Better Specs tries to fulfil this missing collection of most of the guidelines - indeed, developers
+learned the hard way through years of experience.
 </p>
 
 </article>
@@ -70,7 +68,7 @@ has been learning the hard way through years of experience.
 <h1><a name="describe">How to describe your methods</a></h1>
 
 <p>
-Keep clear the methods you are describing. As convention use <code>.</code> as prefix for
+Keep the methods you are describing clear. As convention use <code>.</code> as prefix for
 class methods and <code>#</code> as prefix for instance methods.
 </p>
 
@@ -134,7 +132,7 @@ end
 </div>
 
 <p>
-  When describing contexts, make them start always using the keys
+  When describing contexts, make them always start using the keys
   <code>when</code> and <code>with</code>.
 </p>
 
@@ -262,8 +260,8 @@ end</code></pre>
 
 <p>
 The error I usually see lies in testing only whether the resource has been removed.
-But there are at least two edge case: when the resource is not found and when it's not
-owned. As a rule of thumb think of all the possible inputs and states you can.
+But there are at least two edge cases: when the resource is not found and when it's not
+owned. As a rule of thumb think of all the possible inputs and test them.
 </p>
 
 <p class="wrong">bad</p>
@@ -367,7 +365,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 <p>
 When you have to assign a variable instead of using a <code>before</code> block to create
 an instance variable, use <code>let</code>. Using <code>let</code> the variable lazy loads
-only when it is firstly used in the test and get cached until that specific test is finished.
+only when it is used the first time in the test and get cached until that specific test is finished.
 </p>
 
 <p class="wrong">bad</p>
@@ -440,9 +438,9 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 <h1><a name="mock">Mock or not to mock</a></h1>
 
 <p>
-This is really opinionated. Do not (over)use mocks and test real behavior when possible. 
+There's a debate going on. Do not (over)use mocks and test real behavior when possible. 
 As far as I can tell you from my experience you need to test real cases. Anyway, sometimes
-they can be pretty useful to updated your application flow.
+they can be pretty useful to update your application flow.
 </p>
 
 <p class="correct">good</p>
@@ -457,7 +455,7 @@ end
 </div>
 
 <p>
-Some people will tell you that mocking is one of the best way to make your specs fast. It's
+Some people will tell you that mocking is one of the best ways to make your specs faster. It's
 true, but it also complicates your test suite. You can have fast tests in other ways (see
 <a href="#spork">faster tests with spork</a> and
 <a href="#guard">automatic tests with guard</a>).
@@ -478,9 +476,9 @@ true, but it also complicates your test suite. You can have fast tests in other 
 <h1><a name="data">Create only the data you need</a></h1>
 
 <p>
-If you have ever worked in a medium size project (but also in a small ones), test suites
-can be heavy to run. To solve this problem, is important to not load more data than needed.
-Also if you think you need dozens of records, usually you are wrong.
+If you have ever worked in a medium size project (but also in small ones), test suites
+can be heavy to run. To solve this problem, it's important not to load more data than needed.
+Also, if you think you need dozens of records, you are probably wrong.
 </p>
 
 <p class="correct">good</p>
@@ -510,8 +508,8 @@ end
 <h1><a name="factories">Use factories and not fixtures</a></h1>
 
 <p>
-This is an old topic, but it's still good to remember. Do not use fixtures which are
-difficult to control, instead use factories. Use them to reduce the verbosity
+This is an old topic, but it's still good to remember it. Do not use fixtures because they are
+difficult to control, use factories instead. Use them to reduce the verbosity
 on creating new data.
 </p>
 
@@ -588,8 +586,7 @@ collection.should have(2).items
 <h1><a name="sharedexamples">Shared Examples</a></h1>
 
 <p>
-Making tests is great and you get more confident day after day. But there will be a
-point where you will start to see code duplication coming up everywhere. 
+Making tests is great and you get more confident day after day. But in the end you will start to see code duplication coming up everywhere. 
 Use shared examples to DRY your test suite up.
 </p>
 
@@ -640,8 +637,8 @@ end
 </div>
 
 <p>
-From our experience shared examples are used mainly for controllers. Being models pretty
-different from each other they (usually) do not share much logic.
+In our experience, shared examples are used mainly for controllers. Being models pretty
+different from each other, they (usually) do not share much logic.
 </p>
 
 <p>
@@ -671,20 +668,20 @@ Do not add useless complexity testing controllers.</strong>
 When I first started testing my apps I was testing controllers, now I don't.
 Now I only create integration tests using RSpec and Capybara. Why? Because I truly 
 believe that you should test what you see and because testing controllers is an 
-extra step you don't need. You'll find out that most of your tests goes into the
+extra step you don't need. You'll find out that most of your tests go into the
 models and that integration tests can be easily grouped into shared examples,
 building a clear and readable test suite.
 </p>
 
 <p>
 This is an open debate in the Ruby community and both sides have good arguments
-support their idea. People supporting the need of testing controllers will tell
+supporting their idea. People supporting the need of testing controllers will tell
 you that your integration tests don't cover all use cases and that they are slow.
 </p>
 
 <p>
 Both are wrong. You can easily cover all use cases (why shouldn't you?) and you
-can run single file specs using automated tools like Guard. In this way will run
+can run single file specs using automated tools like Guard. In this way you will run
 only the specs you need to test blazing fast without stopping your flow.
 </p>
 
@@ -798,10 +795,9 @@ Learn more about <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
 <h1><a name="spork">Faster tests with spork</a></h1>
 
 <p>
-When running a test on Rails the whole Rails app is loaded. This can take several seconds and
-can break your development flow. To solve this problem use Spork. It will preload all libraries
-you (usually) do not change and reload controllers, models, view, factories and all files you 
-usually are going to change.
+When running a test on Rails the whole Rails app is loaded. This can take time and
+it can break your development flow. To solve this problem use Spork. It will preload all libraries
+you (usually) do not change and reload controllers, models, view, factories and all the files you change often.
 </p>
 
 <p class="wrong">bad</p>
@@ -819,7 +815,7 @@ usually are going to change.
 
 <p>
 Here you can find a <a href="https://gist.github.com/3821012">spec helper</a> and a 
-<a href="https://gist.github.com/3821031">Guardfile</a> confuguration. With this configuration
+<a href="https://gist.github.com/3821031">Guardfile</a> configuration. With this configuration
 you will reload the whole app if a preloaded file (like initializers) change and you will run
 the single tests really, really fast.
 </p>
@@ -989,7 +985,7 @@ Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafaili
 We are seeking for the best guidelines to write "nice to read" specs. Right now a good
 starting point is for sure the 
 <a class="see" href="https://github.com/mongoid/mongoid/tree/master/spec/mongoid">Mongoid test suite</a>. 
-It uses a clean style and easy to read specs, following most of the guidelines
+It uses a clean style and easy-to-read specs, following most of the guidelines
 described here.
 </p>
 
@@ -1000,9 +996,9 @@ described here.
 <h1><a name="improving">Improving Better Specs</a></h1>
 
 <p>
-This is an open source project. If you something is missing or incorrect just file an
+This is an open source project. If something is missing or incorrect just file an
 <a class="see" href="https://github.com/andreareginato/betterspecs/issues">issue</a>
-and start discussing about the topic. Check also following issues:
+and start discussing about the topic. Check also the following issues:
 
 <ul>
   <li><a href="https://github.com/andreareginato/betterspecs/issues/20">Multilanguage</a> (file an issue if you want to translate this guide)</li>
@@ -1017,7 +1013,7 @@ and start discussing about the topic. Check also following issues:
 <h1><a name="credits">Credits</a></h1>
 
 <p>
-The document has been started from <a href="http://twitter.com/andreareginato">Andrea Reginato</a>. 
+The document was started by <a href="http://twitter.com/andreareginato">Andrea Reginato</a>. 
 A special thanks to the <a href="http://lelylan.com">Lelylan Team</a>. This document is licensed
 under Creative Commons Attribution 3.0 Unported License.
 </p>
