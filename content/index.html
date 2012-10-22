@@ -373,7 +373,7 @@ only when it is used the first time in the test and get cached until that specif
 <div>
 <pre><code class="ruby">describe '#type_id' do
   before { @resource = FactoryGirl.create :device }
-  before { @type     = Type.find resource.type_id }
+  before { @type     = Type.find @resource.type_id }
 
   it 'sets the type_id field' do
     @resource.type_id.should == @type.id
