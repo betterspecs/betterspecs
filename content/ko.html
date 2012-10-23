@@ -1,6 +1,35 @@
 ---
-title: 'Better Specs'
+title: 'Better Specs(한국어)'
 ---
+<% content_for :menu do %>
+      <li><a href="/ko/index.html">rspec 가이드라인의 소개</a></li>
+      <li class="little">&raquo; <a href="#describe">함수를 설명하는 방법</a></li>
+      <li class="little">&raquo; <a href="#contexts">Contexts 사용하기</a></li>
+      <li class="little">&raquo; <a href="#short">설명을 짧게 유지하기</a></li>
+      <li class="little">&raquo; <a href="#single">단일 조건 테스트</a></li>
+      <li class="little">&raquo; <a href="#all">모든 가능한 케이스를 테스트하기</a></li>
+      <li class="little">&raquo; <a href="#subject">Subject 사용하기</a></li>
+      <li class="little">&raquo; <a href="#let">let 과 let! 사용하기</a></li>
+      <li class="little">&raquo; <a href="#mock">Mock을 하느냐 마느냐</a></li>
+      <li class="little">&raquo; <a href="#data">필요한 데이터만 만들기</a></li>
+      <li class="little">&raquo; <a href="#factories">픽스쳐대신 팩토리 사용하기</a></li>
+      <li class="little">&raquo; <a href="#matchers">읽기 쉬운 matcher 사용하기</a></li>
+      <li class="little">&raquo; <a href="#sharedexamples">Shared examples</a></li>
+      <li class="little">&raquo; <a href="#integration">보이는것을 테스트 하기</a></li>
+      <li class="little">&raquo; <a href="#should">should를 쓰지 않기</a></li>
+      <li class="little">&raquo; <a href="#guard">guard로하는 테스트 자동화</a></li>
+      <li class="little">&raquo; <a href="#spork">spork로 빠른 테스트하기</a></li>
+      <li class="little">&raquo; <a href="#http">HTTP 리퀘스트를 mock하기</a></li>
+      <li class="little">&raquo; <a href="#formatter">유용한 formatter</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#presentations">Presentations</a></li>
+      <li><a href="#resources">Resources on the web</a></li>
+      <li><a href="#libraries">Libraries</a></li>
+      <li><a href="#styleguide">Styleguide</a></li>
+      <li><a href="#improving">Improving Better Specs</a></li>
+      <li><a href="#credits">Credits</a></li>
+      <li><a href="#help">Help us</a></li>
+<% end %>
 
 <div class="content">
 <article>
@@ -47,11 +76,11 @@ title: 'Better Specs'
 
 <!-- <p>
 <a href="https://www.relishapp.com/rspec/">RSpec</a> is a great tool in the behavior-driven design process of writing human readable specifications that direct and validate
-the development of your application. 
+the development of your application.
 </p> -->
 
 <p>
-<a href="https://www.relishapp.com/rspec/">RSpec</a>은 직접 어플리케이션의 개발과정을 확인하는 사람이 읽을 수 있는 명세서를 적는 BDD프로세스에서 훌륭한 도구입니다. 
+<a href="https://www.relishapp.com/rspec/">RSpec</a>은 직접 어플리케이션의 개발과정을 확인하는 사람이 읽을 수 있는 명세서를 적는 BDD프로세스에서 훌륭한 도구입니다.
 </p>
 
 <!-- <p>
@@ -509,7 +538,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 <h1><a name="mock">Mock을 하느냐 마느냐</a></h1>
 
 <!-- <p>
-There's a debate going on. Do not (over)use mocks and test real behavior when possible. 
+There's a debate going on. Do not (over)use mocks and test real behavior when possible.
 As far as I can tell you from my experience you need to test real cases. Anyway, sometimes
 they can be pretty useful to update your application flow.
 </p> -->
@@ -536,7 +565,7 @@ true, but it also complicates your test suite. You can have fast tests in other 
 <a href="#guard">automatic tests with guard</a>).
 </p> -->
 <p>
-어떤 이들은 mock은 명세의 실행속도를 빠르게 하는 가장 좋은 방법 중에 하나라고 합니다. 사실이지만 태스트를 복잡하게 만들기도 하죠. 테스트를 빠르게하는건 다른 방법으로 할 수도 있습니다 (<a href="#spork">spork로 빠른 테스트하기</a>와 <a href="#guard">guard로하는 테스트 자동화</a>를 보세요.) 
+어떤 이들은 mock은 명세의 실행속도를 빠르게 하는 가장 좋은 방법 중에 하나라고 합니다. 사실이지만 태스트를 복잡하게 만들기도 하죠. 테스트를 빠르게하는건 다른 방법으로 할 수도 있습니다 (<a href="#spork">spork로 빠른 테스트하기</a>와 <a href="#guard">guard로하는 테스트 자동화</a>를 보세요.)
 </p>
 
 <p>
@@ -679,7 +708,7 @@ collection.should have(2).items
 <h1><a name="sharedexamples">Shared Examples</a></h1>
 
 <!-- <p>
-Making tests is great and you get more confident day after day. But in the end you will start to see code duplication coming up everywhere. 
+Making tests is great and you get more confident day after day. But in the end you will start to see code duplication coming up everywhere.
 Use shared examples to DRY your test suite up.
 </p> -->
 <p>
@@ -773,8 +802,8 @@ Do not add useless complexity testing controllers.</strong>
 
 <!-- <p>
 When I first started testing my apps I was testing controllers, now I don't.
-Now I only create integration tests using RSpec and Capybara. Why? Because I truly 
-believe that you should test what you see and because testing controllers is an 
+Now I only create integration tests using RSpec and Capybara. Why? Because I truly
+believe that you should test what you see and because testing controllers is an
 extra step you don't need. You'll find out that most of your tests go into the
 models and that integration tests can be easily grouped into shared examples,
 building a clear and readable test suite.
@@ -799,7 +828,7 @@ can run single file specs using automated tools like Guard. In this way you will
 only the specs you need to test blazing fast without stopping your flow.
 </p> -->
 <p>
-둘 다 아닙니다.당신은 쉽게 모든 테스트 케이스를 커버할 수 있으시고 (안 그러신가요?) Guard같은 자동화 툴을 이용해 한파일만 테스트 할 수 있습니다. 이렇게하면 흐름을 멈추지않고 필요한 사양만 테스트할 수 있게 됩니다. 
+둘 다 아닙니다.당신은 쉽게 모든 테스트 케이스를 커버할 수 있으시고 (안 그러신가요?) Guard같은 자동화 툴을 이용해 한파일만 테스트 할 수 있습니다. 이렇게하면 흐름을 멈추지않고 필요한 사양만 테스트할 수 있게 됩니다.
 </p>
 
 <p>
@@ -895,7 +924,7 @@ tests related to the updated spec, model, controller or file you are working at.
   # run the view specs related to the changed view
   watch(%r{^app/(.*)(\.erb|\.haml)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
   # run the integration specs related to the changed controller
-  watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }  
+  watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
   # run all integration tests when application controller change
   watch('app/controllers/application_controller.rb') { "spec/requests" }
 end
@@ -912,7 +941,7 @@ end
   # 뷰가 변경 되었을떄 관련된 뷰사양을 실행
   watch(%r{^app/(.*)(\.erb|\.haml)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
   # 컨트롤러가 변경되었을때 관련된 통합 사양을 실행
-  watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }  
+  watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
   # 어플리케이션 컨트롤러가 변경 되었을때 모든 통합테스트를 실행
   watch('app/controllers/application_controller.rb') { "spec/requests" }
 end
@@ -965,7 +994,7 @@ you (usually) do not change and reload controllers, models, view, factories and 
 </div>
 
 <!-- <p>
-Here you can find a <a href="https://gist.github.com/3821012">spec helper</a> and a 
+Here you can find a <a href="https://gist.github.com/3821012">spec helper</a> and a
 <a href="https://gist.github.com/3821031">Guardfile</a> configuration. With this configuration
 you will reload the whole app if a preloaded file (like initializers) change and you will run
 the single tests really, really fast.
@@ -1023,13 +1052,13 @@ end
 
 <!-- <p>
 Learn more about <a href="https://github.com/bblimke/webmock">webmock</a> and
-<a href="https://github.com/myronmarston/vcr">VCR</a>. Here a 
+<a href="https://github.com/myronmarston/vcr">VCR</a>. Here a
 <a href="http://marnen.github.com/webmock-presentation/webmock.html">nice presentation</a>
 explaining how to mix them together.
 </p> -->
 <p>
 <a href="https://github.com/bblimke/webmock">webmock</a> 과
-<a href="https://github.com/myronmarston/vcr">VCR</a>에 대해 더 알아보기. 둘을 어떻게 같이 쓰는 지 설명한 
+<a href="https://github.com/myronmarston/vcr">VCR</a>에 대해 더 알아보기. 둘을 어떻게 같이 쓰는 지 설명한
 <a href="http://marnen.github.com/webmock-presentation/webmock.html">좋은 프리젠테이션</a>
 도 있습니다.
 </p>
@@ -1160,8 +1189,8 @@ Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafaili
 
 <p>
 We are seeking for the best guidelines to write "nice to read" specs. Right now a good
-starting point is for sure the 
-<a class="see" href="https://github.com/mongoid/mongoid/tree/master/spec/mongoid">Mongoid test suite</a>. 
+starting point is for sure the
+<a class="see" href="https://github.com/mongoid/mongoid/tree/master/spec/mongoid">Mongoid test suite</a>.
 It uses a clean style and easy-to-read specs, following most of the guidelines
 described here.
 </p>
@@ -1190,7 +1219,7 @@ and start discussing about the topic. Check also the following issues:
 <h1><a name="credits">Credits</a></h1>
 
 <p>
-The document was started by <a href="http://twitter.com/andreareginato">Andrea Reginato</a>. 
+The document was started by <a href="http://twitter.com/andreareginato">Andrea Reginato</a>.
 A special thanks to the <a href="http://lelylan.com">Lelylan Team</a>. This document is licensed
 under Creative Commons Attribution 3.0 Unported License.
 </p>

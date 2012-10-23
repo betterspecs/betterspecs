@@ -54,34 +54,7 @@
     <nav id="nav">
 
     <ul>
-
-      <li><a href="/">Introduction to rspec guidelines</a></li>
-      <li class="little">&raquo; <a href="#describe">How to describe your methods</a></li>
-      <li class="little">&raquo; <a href="#contexts">Use contexts</a></li>
-      <li class="little">&raquo; <a href="#short">Keep your description short</a></li>
-      <li class="little">&raquo; <a href="#single">Single expectation</a></li>
-      <li class="little">&raquo; <a href="#all">Test all possible cases</a></li>
-      <li class="little">&raquo; <a href="#subject">Use subject</a></li>
-      <li class="little">&raquo; <a href="#let">Use let and let!</a></li>
-      <li class="little">&raquo; <a href="#mock">Mock or not to mock</a></li>
-      <li class="little">&raquo; <a href="#data">Create only tha data you need</a></li>
-      <li class="little">&raquo; <a href="#factories">Use factories and not fixtures</a></li>
-      <li class="little">&raquo; <a href="#matchers">Easy to use matchers</a></li>
-      <li class="little">&raquo; <a href="#sharedexamples">Shared examples</a></li>
-      <li class="little">&raquo; <a href="#integration">Test what you see</a></li>
-      <li class="little">&raquo; <a href="#should">Do not use should</a></li>
-      <li class="little">&raquo; <a href="#guard">Automatic tests with guard</a></li>
-      <li class="little">&raquo; <a href="#spork">Faster tests with spork</a></li>
-      <li class="little">&raquo; <a href="#http">Mocking HTTP requests</a></li>
-      <li class="little">&raquo; <a href="#formatter">Useful formatter</a></li>
-      <li><a href="#books">Books</a></li>
-      <li><a href="#presentations">Presentations</a></li>
-      <li><a href="#resources">Resources on the web</a></li>
-      <li><a href="#libraries">Libraries</a></li>
-      <li><a href="#styleguide">Styleguide</a></li>
-      <li><a href="#improving">Improving Better Specs</a></li>
-      <li><a href="#credits">Credits</a></li>
-      <li><a href="#help">Help us</a></li>
+      <%= content_for(@item, :menu) %>
     </ul>
 
     <!--<div id="search">-->
@@ -93,8 +66,8 @@
       <!--</div>-->
     </nav>
 
-    <section id="section"> 
-    <%= yield %> 
+    <section id="section">
+    <%= yield %>
 
     <article class="comments">
     <%= render 'partials/services/disqus' %>
