@@ -39,7 +39,10 @@ us with any idea that can improve the project.
 
 ## Contributors
 
-Special thanks to the following people for submitting patches.
+Special thanks to the following people for submitting patches:
+
+* Carina C. Zona [cczona](https://github.com/cczona)
+* Simone Carletti [weppos](https://github.com/weppos)
 
 ## Changelog
 
@@ -48,4 +51,5 @@ See CHANGELOG
 ## Copyright
 
 Copyright (c) 2013 [Andrea Reginato](http://lelylan.com). 
+
 See [LICENSE](people/blob/master/LICENSE.md) for details.
