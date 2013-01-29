@@ -25,10 +25,10 @@ Fork the repo on github and send a pull requests with topic branches.
 ## Feedback
 
 Use the [issue tracker](https://github.com/andreareginato/betterspecs/issues) for bugs.
-[Mail](mailto:andrea.reginato@gmail.com) or [Tweet](http://twitter.com/andreareginato) 
+[Mail](mailto:andrea.reginato@gmail.com) or [Tweet](http://twitter.com/andreareginato)
 us for any idea that can improve the project.
 
-## Links 
+## Links
 
 * [GIT Repository](https://github.com/andreareginato/betterspecs)
 * [Betterspecs website](http://betterspecs.org)
@@ -47,5 +47,4 @@ See CHANGELOG
 
 ## Copyright
 
-Copyright (c) 2013 [Andrea Reginato](http://lelylan.com). 
-See [LICENSE](people/blob/master/LICENSE.md) for details.
+Ruby on Rails is released under the (MIT License)[http://www.opensource.org/licenses/MIT].

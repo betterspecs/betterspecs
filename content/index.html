@@ -561,7 +561,6 @@ Use readable matchers and double check available <a href="/">rspec matcher</a>.
 
 <div>
 <pre><code class="ruby">lambda { model.save! }.should raise_error Mongoid::Errors::DocumentNotFound
-collection.size.should == 2
 </code></pre>
 </div>
 
@@ -569,7 +568,6 @@ collection.size.should == 2
 
 <div>
 <pre><code class="ruby">expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
-collection.should have(2).items
 </code></pre>
 </div>
 
