@@ -45,6 +45,6 @@ Special thanks to the following people for submitting patches.
 
 See CHANGELOG
 
-## Copyright
+## License
 
-Ruby on Rails is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+Betterspecs is released under the [MIT License](http://www.opensource.org/licenses/MIT).
