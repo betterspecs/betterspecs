@@ -47,7 +47,7 @@ title: 'Better Specs'
 
 <p>
 <a href="https://www.relishapp.com/rspec/">RSpec</a> is a great tool in the behavior-driven design process of writing human readable specifications that direct and validate
-the development of your application. 
+the development of your application.
 </p>
 
 <p>
@@ -438,7 +438,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 <h1><a name="mock">Mock or not to mock</a></h1>
 
 <p>
-There's a debate going on. Do not (over)use mocks and test real behavior when possible. 
+There's a debate going on. Do not (over)use mocks and test real behavior when possible.
 As far as I can tell you from my experience you need to test real cases. Anyway, sometimes
 they can be pretty useful to update your application flow.
 </p>
@@ -584,7 +584,7 @@ Use readable matchers and double check available <a href="/">rspec matcher</a>.
 <h1><a name="sharedexamples">Shared Examples</a></h1>
 
 <p>
-Making tests is great and you get more confident day after day. But in the end you will start to see code duplication coming up everywhere. 
+Making tests is great and you get more confident day after day. But in the end you will start to see code duplication coming up everywhere.
 Use shared examples to DRY your test suite up.
 </p>
 
@@ -664,8 +664,8 @@ Do not add useless complexity testing controllers.</strong>
 
 <p>
 When I first started testing my apps I was testing controllers, now I don't.
-Now I only create integration tests using RSpec and Capybara. Why? Because I truly 
-believe that you should test what you see and because testing controllers is an 
+Now I only create integration tests using RSpec and Capybara. Why? Because I truly
+believe that you should test what you see and because testing controllers is an
 extra step you don't need. You'll find out that most of your tests go into the
 models and that integration tests can be easily grouped into shared examples,
 building a clear and readable test suite.
@@ -767,7 +767,7 @@ Here you can see a sample Guardfile with some basic reloading rules.
   # run the view specs related to the changed view
   watch(%r{^app/(.*)(\.erb|\.haml)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
   # run the integration specs related to the changed controller
-  watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }  
+  watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
   # run all integration tests when application controller change
   watch('app/controllers/application_controller.rb') { "spec/requests" }
 end
@@ -812,7 +812,7 @@ you (usually) do not change and reload controllers, models, view, factories and 
 </div>
 
 <p>
-Here you can find a <a href="https://gist.github.com/3821012">spec helper</a> and a 
+Here you can find a <a href="https://gist.github.com/3821012">spec helper</a> and a
 <a href="https://gist.github.com/3821031">Guardfile</a> configuration. With this configuration
 you will reload the whole app if a preloaded file (like initializers) change and you will run
 the single tests really, really fast.
@@ -857,7 +857,7 @@ end
 
 <p>
 Learn more about <a href="https://github.com/bblimke/webmock">webmock</a> and
-<a href="https://github.com/myronmarston/vcr">VCR</a>. Here a 
+<a href="https://github.com/myronmarston/vcr">VCR</a>. Here a
 <a href="http://marnen.github.com/webmock-presentation/webmock.html">nice presentation</a>
 explaining how to mix them together.
 </p>
@@ -981,8 +981,8 @@ Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafaili
 
 <p>
 We are seeking for the best guidelines to write "nice to read" specs. Right now a good
-starting point is for sure the 
-<a class="see" href="https://github.com/mongoid/mongoid/tree/master/spec/mongoid">Mongoid test suite</a>. 
+starting point is for sure the
+<a class="see" href="https://github.com/mongoid/mongoid/tree/master/spec/mongoid">Mongoid test suite</a>.
 It uses a clean style and easy-to-read specs, following most of the guidelines
 described here.
 </p>
@@ -1011,9 +1011,9 @@ and start discussing about the topic. Check also the following issues:
 <h1><a name="credits">Credits</a></h1>
 
 <p>
-The document was started by <a href="http://twitter.com/andreareginato">Andrea Reginato</a>. 
+The document was started by <a href="http://twitter.com/andreareginato">Andrea Reginato</a>.
 A special thanks to the <a href="http://lelylan.com">Lelylan Team</a>. This document is licensed
-under Creative Commons Attribution 3.0 Unported License.
+under MIT License.
 </p>
 
 </article>
