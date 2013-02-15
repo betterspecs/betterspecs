@@ -439,8 +439,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 
 <p>
 There's a debate going on. Do not (over)use mocks and test real behavior when possible. 
-As far as I can tell you from my experience you need to test real cases. Anyway, sometimes
-they can be pretty useful to update your application flow.
+Testing real cases are useful when updating your application flow.
 </p>
 
 <p class="correct">good</p>
@@ -455,10 +454,8 @@ end
 </div>
 
 <p>
-Some people will tell you that mocking is one of the best ways to make your specs faster. It's
-true, but it also complicates your test suite. You can have fast tests in other ways (see
-<a href="#spork">faster tests with spork</a> and
-<a href="#guard">automatic tests with guard</a>).
+Mocking makes your specs faster, but complicates your test suite. 
+Rather than using mocks to decrease testing time, use <a href="#spork">spork</a> and <a href="#guard">guard</a>).
 </p>
 
 <p>
