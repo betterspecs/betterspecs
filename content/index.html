@@ -483,7 +483,7 @@ Also, if you think you need dozens of records, you are probably wrong.
 <div>
 <pre><code class="ruby">describe "User"
   describe ".top" do
-    before { 3.times { Factory(:user) } }
+    before { FactoryGirl.create_list(:user, 3) }
     it { User.top(2).should have(2).item }
   end
 end
