@@ -26,7 +26,7 @@ Fork the repo on github and send a pull requests with topic branches.
 
 Use the [issue tracker](https://github.com/andreareginato/betterspecs/issues) for bugs.
 [Mail](mailto:andrea.reginato@gmail.com) or [Tweet](http://twitter.com/andreareginato)
-us for any idea that can improve the project.
+us with any idea that can improve the project.
 
 ## Links
 
