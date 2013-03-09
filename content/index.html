@@ -897,6 +897,53 @@ Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafaili
 
 </article>
 
+
+<article>
+
+<h1><a name="pattern">Model Attributes Pattern</a></h1>
+
+<p>
+Declare and use the model_attributes object to set attributes on an object. The benefits of this pattern is that you can set specific attributes on an object based on a context without having to re-write the call to the factory.
+</p>
+
+<p class="wrong">bad</p>
+<div>
+<pre><code class="ruby"> let(:vehicle) { FactoryGirl.create(:vehicle, :vehicle_name => vehicle_name,
+                  :type_of_sale => type_of_sale) }
+context 'with name' do
+  let(:vehicle_name)  { "Carzilla" }
+  let(:type_of_sale)  { "New" }
+end
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">let(:vehicle) { FactoryGirl.create(:vehicle, vehicle_attributes) }
+let(:vehicle_attributes)  { {} }
+subject { vehicle.name }
+context 'with name' do
+  let(:vehicle_attributes) { {name: "Carzilla"} }
+  it { should == "Carzilla" }
+end
+</code></pre>
+</div>
+
+<p>
+Learn more about the <a href="http://blog.thefrontiergroup.com.au/2012/06/my-new-favourite-rspec-pattern/">Pattern</a>.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/38">Discuss about this guideline &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | Model Attributes Pattern" data-url="http://betterspecs.org/#pattern" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#pattern" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
 <article>
 
 <h1><a name="books">Books</a></h1>
