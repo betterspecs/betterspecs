@@ -126,10 +126,10 @@ In the long term this practice will keep tests easy to read.
 <p class="wrong">bad</p>
 
 <div>
-<pre><code class="ruby">it 'should have 200 status code if logged in' do
+<pre><code class="ruby">it 'has 200 status code if logged in' do
   response.should respond_with 200
 end
-it 'should have 401 status code if not logged in' do
+it 'has 401 status code if not logged in' do
   response.should respond_with 401
 end
 </code></pre>
@@ -173,7 +173,7 @@ you should split it using a context.
 <p class="wrong">bad</p>
 
 <div>
-<pre><code class="ruby">it 'should have 422 status code if an unexpected params will be added' do
+<pre><code class="ruby">it 'has 422 status code if an unexpected params will be added' do
 </code></pre>
 </div>
 
@@ -220,17 +220,19 @@ This helps you on finding possible errors, going directly to the failing test, a
 code readable.
 </p>
 
-<p class="wrong">bad</p>
+<p>
+In isolated unit specs, you want each example to specify one (and only one) behavior. Multiple
+expectations in the same example are a signal that you may be specifying multiple behaviors.
+</p>
 
-<div>
-<pre><code class="ruby">it 'should create a resource' do
-  response.should respond_with_content_type(:json)
-  response.should assign_to(:resource)
-end
-</code></pre>
-</div>
+<p>
+Anyway, in tests that are not isolated (e.g. ones that integrate with a DB, an external webservice,
+or end-to-end-tests), you take a massive performance hit to do the same setup over and over
+again, just to set a different expectation in each test. In these sorts of slower tests, I
+think it's fine to specify more than one isolated behavior.
+</p>
 
-<p class="correct">good</p>
+<p class="correct">good (isolated)</p>
 
 <div>
 <pre><code class="ruby">it { should respond_with_content_type(:json) }
@@ -239,10 +241,17 @@ it { should assign_to(:resource) }
 </div>
 
 <p>
-Note that single expectation test does not mean single line test.
-</p>
 
-<p>
+<p class="correct">Good (not isolated)</p>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  response.should respond_with_content_type(:json)
+  response.should assign_to(:resource)
+end
+</code></pre>
+</div>
+
 <a href="https://github.com/andreareginato/betterspecs/issues/5">Discuss this guideline &rarr;</a>
 </p>
 
