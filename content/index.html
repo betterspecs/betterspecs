@@ -469,8 +469,8 @@ end
 </div>
 
 <p>
-Mocking makes your specs faster, but complicates your test suite.
-Rather than using mocks to decrease testing time, use <a href="#spork">spork</a> and <a href="#guard">guard</a>).
+Mocking makes your specs faster but they are difficult to use. You need to understand them
+well to use them well. Read more <a="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">about</a>.
 </p>
 
 <p>
@@ -520,8 +520,8 @@ end
 <h1><a name="factories">Use factories and not fixtures</a></h1>
 
 <p>
-This is an old topic, but it's still good to remember it. Do not use fixtures because they are
-difficult to control, use factories instead. Use them to reduce the verbosity
+This is an old topic, but it's still good to remember it. Do not use fixtures because
+they are difficult to control, use factories instead. Use them to reduce the verbosity
 on creating new data.
 </p>
 
@@ -544,6 +544,13 @@ on creating new data.
 <pre><code class="ruby">user = FactoryGirl.create :user
 </code></pre>
 </div>
+
+<p>
+One important note. When talking about unit tests the best practice would be to use neither
+fixtures or factories. Put as much of your domain logic in libraries that can be tested without
+needing complex, time consuming setup with either factories or fixtures. Read more in
+<a href="http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl">this article</a>
+</p>
 
 <p>
 Learn more about <a href="https://github.com/thoughtbot/factory_girl">Factory Girl</a>.
@@ -711,6 +718,9 @@ only the specs you need to test blazing fast without stopping your flow.
 
 <p>
 Do not use should when describing your tests. Use the third person in the present tense.
+Even better start using the new
+<a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">expectation</a>
+syntax.
 </p>
 
 <p class="wrong">bad</p>
@@ -751,12 +761,6 @@ time and it can break your flow. With Guard you can automate your test suite run
 tests related to the updated spec, model, controller or file you are working at.
 </p>
 
-<p class="wrong">bad</p>
-
-<div>
-<pre><code>rake tests</code></pre>
-</div>
-
 <p class="correct">good</p>
 
 <div>
@@ -787,6 +791,14 @@ end
 </div>
 
 <p>
+Guard is a fine tool but as usual it doesn't fit all of your needs. Sometimes your TDD workflow
+works best with a keybinding that makes it easy to run just the examples you want when you
+want to. Then, you can use a rake task to run the entire suite before pushing code.
+<a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#L61-103">Here</a>
+the vim keybinding.
+</p>
+
+<p>
 Learn more about <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
 </p>
 
@@ -802,38 +814,37 @@ Learn more about <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
 
 <article>
 
-<h1><a name="spork">Faster tests with spork</a></h1>
+<h1><a name="spork">Faster tests (preloading Rails)</a></h1>
 
 <p>
 When running a test on Rails the whole Rails app is loaded. This can take time and
-it can break your development flow. To solve this problem use Spork. It will preload all libraries
-you (usually) do not change and reload controllers, models, view, factories and all the files you change often.
+it can break your development flow. To solve this problem use solutions like
+<a href="https://github.com/burke/zeus">Zeus</a>,
+<a href="https://github.com/jstorimer/spin">Spin</a> or
+<a href="https://github.com/sporkrb/spork">Spork</a>.
+Those solutions will preload all libraries you (usually) do not change and reload
+controllers, models, view, factories and all the files you change most often.
 </p>
-
-<p class="wrong">bad</p>
-
-<div>
-<pre><code>rake tests</code></pre>
-</div>
-
-<p class="correct">good</p>
-
-<div>
-<pre><code class="ruby">bundle exec guard
-</code></pre>
-</div>
 
 <p>
 Here you can find a <a href="https://gist.github.com/3821012">spec helper</a> and a
-<a href="https://gist.github.com/3821031">Guardfile</a> configuration. With this configuration
-you will reload the whole app if a preloaded file (like initializers) change and you will run
-the single tests really, really fast.
+<a href="https://gist.github.com/3821031">Guardfile</a> configuration based on Spork.
+With this configuration you will reload the whole app if a preloaded file (like initializers)
+change and you will run the single tests really, really fast.
 </p>
 
 <p>
-Learn more about <a href="https://github.com/sporkrb/spork">spork</a>
-(see also <a href="http://railscasts.com/episodes/285-spork">spork railscast</a>).
+The withdraw of using Spork is that it monkey aggressively monkey-patch your code and you
+could loose some hours trying to understand why a file is not reloaded. If you have some
+code examples using Zeus, Spin or any other solution
+<a href="https://github.com/andreareginato/betterspecs/issues/17">let us know</a>.
 </p>
+
+<p>
+Many criticisms are moved to those solutions. Those libraries are a band aid on a problem
+that is better solved through better design, and being intentional about only loading the
+dependencies that you need. Learn more reading the
+<a href="https://github.com/andreareginato/betterspecs/issues/17">related discussion</a>.
 
 <p>
 <a href="https://github.com/andreareginato/betterspecs/issues/17">Discuss this guideline &rarr;</a>
@@ -907,9 +918,19 @@ group :development, :test do
 
 <div>
 <pre><code class="ruby"># Guardfile
-guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
+guard 'rspec' do
   # ...
 end
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># .rspec
+--drb
+--format Fuubar
+--color
 </code></pre>
 </div>
 
