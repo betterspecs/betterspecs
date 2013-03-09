@@ -32,19 +32,18 @@ title: 'Better Specs'
 <article>
 
 <p>
-<a href="https://www.relishapp.com/rspec/">RSpec</a> is a great tool in the behavior-driven design process of writing human readable specifications that direct and validate
+<a href="https://www.relishapp.com/rspec/">RSpec</a> is a great tool in the behavior-driven development (BDD) process of writing human readable specifications that direct and validate
 the development of your application. 
 </p>
 
 <p>
-On the web you can find several resources explaining how to
-use RSpec and a complete overview of what you can do. What you won't find often is a book or an article explaining how to use RSpec to create a
-great test suite.
+On the web there are many resources that give complete overview of _what_ you can do with RSpec.
+But there are fewer resources devoted to how to create a great RSpec test suite.
 <p>
 
 <p>
-Better Specs tries to fulfil this missing collection of most of the guidelines - indeed, developers
-learned the hard way through years of experience.
+Better Specs tries to fill this gap by collecting most of the "best practices" that other 
+developers learn through years of experience.
 </p>
 
 </article>
@@ -54,8 +53,9 @@ learned the hard way through years of experience.
 <h1><a name="describe">How to describe your methods</a></h1>
 
 <p>
-Keep the methods you are describing clear. As convention use <code>.</code> as prefix for
-class methods and <code>#</code> as prefix for instance methods.
+Be clear about what method you are describing. For instance, use the Ruby documentation convention of
+<code>.</code> (or <code>::</code>) when referring to a class method's name and <code>#</code> when 
+referring to an instance method's name.
 </p>
 
 <p class="wrong">bad</p>
@@ -75,7 +75,7 @@ describe '#admin?' do
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/2">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/2">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | how to describe your methods" data-url="http://betterspecs.org/#describe" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -118,12 +118,11 @@ end
 </div>
 
 <p>
-  When describing contexts, make them always start using the keys
-  <code>when</code> and <code>with</code>.
-</p>
+  When describing a context, start its description with "when" or "with".
+<p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/3">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/3">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | use contexts" data-url="http://betterspecs.org/#contexts" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -172,7 +171,7 @@ If you run this test typing <code>rspec filename</code> you will obtain a readab
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/4">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/4">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | keep your description short" href="https://twitter.com/share" data-url="http://betterspecs.org/#short" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -214,7 +213,7 @@ Note that single expectation test does not mean single line test.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/5">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/5">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | single expectation test" href="https://twitter.com/share" data-url="http://betterspecs.org/#single" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -280,7 +279,7 @@ end
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/6">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/6">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | test all possible cases" href="https://twitter.com/share" data-url="http://betterspecs.org/#all" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -335,7 +334,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/7">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/7">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | use subject" href="https://twitter.com/share" data-url="http://betterspecs.org/#subject" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -410,7 +409,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/8">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/8">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | use let and let!" href="https://twitter.com/share" data-url="http://betterspecs.org/#let" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -445,7 +444,7 @@ Rather than using mocks to decrease testing time, use <a href="#spork">spork</a>
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/9">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/9">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | mock or not to mock" href="https://twitter.com/share" data-url="http://betterspecs.org/#mock" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -477,7 +476,7 @@ end
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/10">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/10">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | create only tha data you need" href="https://twitter.com/share" data-url="http://betterspecs.org/#data" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -521,7 +520,7 @@ Learn more about <a href="https://github.com/thoughtbot/factory_girl">Factory Gi
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/11">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/11">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | use factories and not fixtures" href="https://twitter.com/share" data-url="http://betterspecs.org/#factories" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -553,7 +552,7 @@ Use readable matchers and double check available <a href="/">rspec matcher</a>.
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/12">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/12">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | easy to read matcher #betterspecs" href="https://twitter.com/share" data-url="http://betterspecs.org/#matchers" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -627,7 +626,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/13">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/13">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | shared examples" href="https://twitter.com/share" data-url="http://betterspecs.org/#sharedexamples" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -667,7 +666,7 @@ only the specs you need to test blazing fast without stopping your flow.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/14">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/14">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | test what you see" href="https://twitter.com/share" data-url="http://betterspecs.org/#integration" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -703,7 +702,7 @@ end
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/15">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/15">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | don't use should" href="https://twitter.com/share" data-url="http://betterspecs.org/#should" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -762,7 +761,7 @@ Learn more about <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/16">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/16">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | automatic tests with guard" href="https://twitter.com/share" data-url="http://betterspecs.org/#guard" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -807,7 +806,7 @@ Learn more about <a href="https://github.com/sporkrb/spork">spork</a>
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/17">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/17">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | faster tests with spork" href="https://twitter.com/share" data-url="http://betterspecs.org/#spork" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -846,7 +845,7 @@ explaining how to mix them together.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/18">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/18">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | mocking http requests" href="https://twitter.com/share" data-url="http://betterspecs.org/#http" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -889,7 +888,7 @@ Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafaili
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/19">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/19">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | useful formatter" href="https://twitter.com/share" data-url="http://betterspecs.org/#formatter" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
