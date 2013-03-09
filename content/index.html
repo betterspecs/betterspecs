@@ -340,21 +340,19 @@ it { assigns('message').creator.should match /Topolino/ }
 <div>
 <pre><code class="ruby">subject { assigns('message') }
 it { should match /it was born in Billville/ }
-its(:creator) { should match /Topolino/ }
 </code></pre>
 </div>
 
 <p>
-Remember that using an explicit subject within a specification makes the specs
-difficult to read.
+RSpec has also the ability to use a named subject.
 </p>
 
-<p class="wrong">bad</p>
+<p class="correct">Good</p>
 
 <div>
-<pre><code class="ruby">subject { Hero.first }
+<pre><code class="ruby">subject(:hero) { Hero.first }
 it "should be equipped with a sword" do
-  subject.equipment.should include "sword"
+  hero.equipment.should include "sword"
 end
 </code></pre>
 </div>
