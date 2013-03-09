@@ -39,7 +39,7 @@ us with any idea that can improve the project.
 
 ## Contributors
 
-Special thanks to the following people for submitting patches.
+Special thanks to the [following people](https://github.com/andreareginato/betterspecs/contributors) for submitting patches.
 
 ## Changelog
 
