@@ -380,7 +380,9 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 <p>
 When you have to assign a variable instead of using a <code>before</code> block to create
 an instance variable, use <code>let</code>. Using <code>let</code> the variable lazy loads
-only when it is used the first time in the test and get cached until that specific test is finished.
+only when it is used the first time in the test and get cached until that specific test is
+finished. A really good and deep description of what <code>let</code> can be found in this
+<a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">stackoverflow answer</a>.
 </p>
 
 <p class="wrong">bad</p>
@@ -419,8 +421,12 @@ Use <code>let</code> to initialize actions that are lazy loaded to test your spe
 
 <div>
 <pre><code class="ruby">context 'when updates a not existing property value' do
+context 'when updates a not existing property value' do
   let(:properties) { { id: Settings.resource_id, value: 'on'} }
-  let(:update)     { resource.properties = properties }
+
+  def update
+    resource.properties = properties
+  end
 
   it 'raises a not found error' do
     expect { update }.to raise_error Mongoid::Errors::DocumentNotFound
@@ -433,6 +439,23 @@ end
 Use <code>let!</code> if you want to define the variable when the block is defined.
 This can be useful to populate your database to test queries or scopes.
 </p>
+
+<p>
+Here an example of what let actually is.
+</p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># this:
+let(:foo) { Foo.new }
+
+# is very nearly equivalent to this:
+def foo
+  @foo ||= Foo.new
+end
+</code></pre>
+</div>
 
 <p>
 Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/helper-methods/let-and-let">rspec let</a>.
