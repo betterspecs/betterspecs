@@ -2,33 +2,34 @@
 title: 'Better Specs'
 ---
 <% content_for :menu do %>
-      <li><a href="/">Introduction to rspec guidelines</a></li>
-      <li class="little">&raquo; <a href="#describe">How to describe your methods</a></li>
-      <li class="little">&raquo; <a href="#contexts">Use contexts</a></li>
-      <li class="little">&raquo; <a href="#short">Keep your description short</a></li>
-      <li class="little">&raquo; <a href="#single">Single expectation</a></li>
-      <li class="little">&raquo; <a href="#all">Test all possible cases</a></li>
-      <li class="little">&raquo; <a href="#subject">Use subject</a></li>
-      <li class="little">&raquo; <a href="#let">Use let and let!</a></li>
-      <li class="little">&raquo; <a href="#mock">Mock or not to mock</a></li>
-      <li class="little">&raquo; <a href="#data">Create only tha data you need</a></li>
-      <li class="little">&raquo; <a href="#factories">Use factories and not fixtures</a></li>
-      <li class="little">&raquo; <a href="#matchers">Easy to use matchers</a></li>
-      <li class="little">&raquo; <a href="#sharedexamples">Shared examples</a></li>
-      <li class="little">&raquo; <a href="#integration">Test what you see</a></li>
-      <li class="little">&raquo; <a href="#should">Do not use should</a></li>
-      <li class="little">&raquo; <a href="#guard">Automatic tests with guard</a></li>
-      <li class="little">&raquo; <a href="#spork">Faster tests with spork</a></li>
-      <li class="little">&raquo; <a href="#http">Mocking HTTP requests</a></li>
-      <li class="little">&raquo; <a href="#formatter">Useful formatter</a></li>
-      <li><a href="#books">Books</a></li>
-      <li><a href="#presentations">Presentations</a></li>
-      <li><a href="#resources">Resources on the web</a></li>
-      <li><a href="#libraries">Libraries</a></li>
-      <li><a href="#styleguide">Styleguide</a></li>
-      <li><a href="#improving">Improving Better Specs</a></li>
-      <li><a href="#credits">Credits</a></li>
-      <li><a href="#help">Help us</a></li>
+<li><a href="/">Introduction to rspec guidelines</a></li>
+<li class="little">&raquo; <a href="#describe">How to describe your methods</a></li>
+<li class="little">&raquo; <a href="#contexts">Use contexts</a></li>
+<li class="little">&raquo; <a href="#short">Keep your description short</a></li>
+<li class="little">&raquo; <a href="#single">Single expectation</a></li>
+<li class="little">&raquo; <a href="#all">Test all possible cases</a></li>
+<li class="little">&raquo; <a href="#subject">Use subject</a></li>
+<li class="little">&raquo; <a href="#let">Use let and let!</a></li>
+<li class="little">&raquo; <a href="#mock">Mock or not to mock</a></li>
+<li class="little">&raquo; <a href="#data">Create only tha data you need</a></li>
+<li class="little">&raquo; <a href="#factories">Use factories and not fixtures</a></li>
+<li class="little">&raquo; <a href="#matchers">Easy to use matchers</a></li>
+<li class="little">&raquo; <a href="#sharedexamples">Shared examples</a></li>
+<li class="little">&raquo; <a href="#integration">Test what you see</a></li>
+<li class="little">&raquo; <a href="#should">Do not use should</a></li>
+<li class="little">&raquo; <a href="#guard">Automatic tests with guard</a></li>
+<li class="little">&raquo; <a href="#spork">Faster tests with spork</a></li>
+<li class="little">&raquo; <a href="#http">Stubbing HTTP requests</a></li>
+<li class="little">&raquo; <a href="#formatter">Useful formatter</a></li>
+<li><a href="#books">Books</a></li>
+<li><a href="#presentations">Presentations</a></li>
+<li><a href="#resources">Resources on the web</a></li>
+<li><a href="#screencasts">Screencasts</a></li>
+<li><a href="#libraries">Libraries</a></li>
+<li><a href="#styleguide">Styleguide</a></li>
+<li><a href="#improving">Improving Better Specs</a></li>
+<li><a href="#credits">Credits</a></li>
+<li><a href="#help">Help us</a></li>
 <% end %>
 
 <div class="content">
@@ -37,21 +38,7 @@ title: 'Better Specs'
 <aside class="menu">
 
 <h1>Affiliate books</h1>
-
-  <ul class="media-grid">
-    <li>
-    <a href="http://www.amazon.com/gp/product/1934356646/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356646&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/rails-test-prescription-thumb.jpg" alt="ioBridge"></a>
-    </li>
-    <li>
-    <a href="http://www.amazon.com/gp/product/1934356379/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356379&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/the-rspec-book-thumb.jpg" alt="ioBridge"></a>
-    </li>
-    <li>
-    <a href="http://www.amazon.com/gp/product/1934356808/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356808&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/continuous-testing-thumb.jpg" alt="ioBridge"></a>
-    </li>
-    <!--<li>-->
-    <!--<a href="http://www.amazon.com/gp/product/1934356700/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356700&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/the-cucumber-book-thumb.jpg" alt="ioBridge"></a>-->
-    <!--</li>-->
-  </ul>
+<%= render "partials/books" %>
 
 </aside>
 
@@ -75,19 +62,18 @@ title: 'Better Specs'
 <article>
 
 <p>
-<a href="https://www.relishapp.com/rspec/">RSpec</a> is a great tool in the behavior-driven design process of writing human readable specifications that direct and validate
+<a href="https://www.relishapp.com/rspec/">RSpec</a> is a great tool in the behavior-driven development (BDD) process of writing human readable specifications that direct and validate
 the development of your application.
 </p>
 
 <p>
-On the web you can find several resources explaining how to
-use RSpec and a complete overview of what you can do. What you won't find often is a book or an article explaining how to use RSpec to create a
-great test suite.
+On the web there are many resources that give complete overview of _what_ you can do with RSpec.
+But there are fewer resources devoted to how to create a great RSpec test suite.
 <p>
 
 <p>
-Better Specs tries to fulfil this missing collection of most of the guidelines - indeed, developers
-learned the hard way through years of experience.
+Better Specs tries to fill this gap by collecting most of the "best practices" that other
+developers learn through years of experience.
 </p>
 
 </article>
@@ -97,8 +83,9 @@ learned the hard way through years of experience.
 <h1><a name="describe">How to describe your methods</a></h1>
 
 <p>
-Keep the methods you are describing clear. As convention use <code>.</code> as prefix for
-class methods and <code>#</code> as prefix for instance methods.
+Be clear about what method you are describing. For instance, use the Ruby documentation convention of
+<code>.</code> (or <code>::</code>) when referring to a class method's name and <code>#</code> when
+referring to an instance method's name.
 </p>
 
 <p class="wrong">bad</p>
@@ -118,7 +105,7 @@ describe '#admin?' do
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/2">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/2">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | how to describe your methods" data-url="http://betterspecs.org/#describe" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -139,10 +126,10 @@ In the long term this practice will keep tests easy to read.
 <p class="wrong">bad</p>
 
 <div>
-<pre><code class="ruby">it 'should have 200 status code if logged in' do
+<pre><code class="ruby">it 'has 200 status code if logged in' do
   response.should respond_with 200
 end
-it 'should have 401 status code if not logged in' do
+it 'has 401 status code if not logged in' do
   response.should respond_with 401
 end
 </code></pre>
@@ -161,12 +148,11 @@ end
 </div>
 
 <p>
-  When describing contexts, make them always start using the keys
-  <code>when</code> and <code>with</code>.
-</p>
+  When describing a context, start its description with "when" or "with".
+<p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/3">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/3">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | use contexts" data-url="http://betterspecs.org/#contexts" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -187,7 +173,7 @@ you should split it using a context.
 <p class="wrong">bad</p>
 
 <div>
-<pre><code class="ruby">it 'should have 422 status code if an unexpected params will be added' do
+<pre><code class="ruby">it 'has 422 status code if an unexpected params will be added' do
 </code></pre>
 </div>
 
@@ -215,7 +201,7 @@ If you run this test typing <code>rspec filename</code> you will obtain a readab
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/4">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/4">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | keep your description short" href="https://twitter.com/share" data-url="http://betterspecs.org/#short" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -234,17 +220,19 @@ This helps you on finding possible errors, going directly to the failing test, a
 code readable.
 </p>
 
-<p class="wrong">bad</p>
+<p>
+In isolated unit specs, you want each example to specify one (and only one) behavior. Multiple
+expectations in the same example are a signal that you may be specifying multiple behaviors.
+</p>
 
-<div>
-<pre><code class="ruby">it 'should create a resource' do
-  response.should respond_with_content_type(:json)
-  response.should assign_to(:resource)
-end
-</code></pre>
-</div>
+<p>
+Anyway, in tests that are not isolated (e.g. ones that integrate with a DB, an external webservice,
+or end-to-end-tests), you take a massive performance hit to do the same setup over and over
+again, just to set a different expectation in each test. In these sorts of slower tests, I
+think it's fine to specify more than one isolated behavior.
+</p>
 
-<p class="correct">good</p>
+<p class="correct">good (isolated)</p>
 
 <div>
 <pre><code class="ruby">it { should respond_with_content_type(:json) }
@@ -253,11 +241,18 @@ it { should assign_to(:resource) }
 </div>
 
 <p>
-Note that single expectation test does not mean single line test.
-</p>
 
-<p>
-<a href="https://github.com/andreareginato/betterspecs/issues/5">Discuss about this guideline &rarr;</a>
+<p class="correct">Good (not isolated)</p>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  response.should respond_with_content_type(:json)
+  response.should assign_to(:resource)
+end
+</code></pre>
+</div>
+
+<a href="https://github.com/andreareginato/betterspecs/issues/5">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | single expectation test" href="https://twitter.com/share" data-url="http://betterspecs.org/#single" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -323,7 +318,7 @@ end
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/6">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/6">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | test all possible cases" href="https://twitter.com/share" data-url="http://betterspecs.org/#all" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -354,21 +349,19 @@ it { assigns('message').creator.should match /Topolino/ }
 <div>
 <pre><code class="ruby">subject { assigns('message') }
 it { should match /it was born in Billville/ }
-its(:creator) { should match /Topolino/ }
 </code></pre>
 </div>
 
 <p>
-Remember that using an explicit subject within a specification makes the specs
-difficult to read.
+RSpec has also the ability to use a named subject.
 </p>
 
-<p class="wrong">bad</p>
+<p class="correct">Good</p>
 
 <div>
-<pre><code class="ruby">subject { Hero.first }
+<pre><code class="ruby">subject(:hero) { Hero.first }
 it "should be equipped with a sword" do
-  subject.equipment.should include "sword"
+  hero.equipment.should include "sword"
 end
 </code></pre>
 </div>
@@ -378,7 +371,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/7">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/7">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | use subject" href="https://twitter.com/share" data-url="http://betterspecs.org/#subject" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -394,7 +387,9 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 <p>
 When you have to assign a variable instead of using a <code>before</code> block to create
 an instance variable, use <code>let</code>. Using <code>let</code> the variable lazy loads
-only when it is used the first time in the test and get cached until that specific test is finished.
+only when it is used the first time in the test and get cached until that specific test is
+finished. A really good and deep description of what <code>let</code> can be found in this
+<a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">stackoverflow answer</a>.
 </p>
 
 <p class="wrong">bad</p>
@@ -402,7 +397,7 @@ only when it is used the first time in the test and get cached until that specif
 <div>
 <pre><code class="ruby">describe '#type_id' do
   before { @resource = FactoryGirl.create :device }
-  before { @type     = Type.find resource.type_id }
+  before { @type     = Type.find @resource.type_id }
 
   it 'sets the type_id field' do
     @resource.type_id.should == @type.id
@@ -433,8 +428,12 @@ Use <code>let</code> to initialize actions that are lazy loaded to test your spe
 
 <div>
 <pre><code class="ruby">context 'when updates a not existing property value' do
+context 'when updates a not existing property value' do
   let(:properties) { { id: Settings.resource_id, value: 'on'} }
-  let(:update)     { resource.properties = properties }
+
+  def update
+    resource.properties = properties
+  end
 
   it 'raises a not found error' do
     expect { update }.to raise_error Mongoid::Errors::DocumentNotFound
@@ -449,11 +448,28 @@ This can be useful to populate your database to test queries or scopes.
 </p>
 
 <p>
+Here an example of what let actually is.
+</p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># this:
+let(:foo) { Foo.new }
+
+# is very nearly equivalent to this:
+def foo
+  @foo ||= Foo.new
+end
+</code></pre>
+</div>
+
+<p>
 Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/helper-methods/let-and-let">rspec let</a>.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/8">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/8">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | use let and let!" href="https://twitter.com/share" data-url="http://betterspecs.org/#let" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -468,8 +484,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 
 <p>
 There's a debate going on. Do not (over)use mocks and test real behavior when possible.
-As far as I can tell you from my experience you need to test real cases. Anyway, sometimes
-they can be pretty useful to update your application flow.
+Testing real cases are useful when updating your application flow.
 </p>
 
 <p class="correct">good</p>
@@ -484,14 +499,12 @@ end
 </div>
 
 <p>
-Some people will tell you that mocking is one of the best ways to make your specs faster. It's
-true, but it also complicates your test suite. You can have fast tests in other ways (see
-<a href="#spork">faster tests with spork</a> and
-<a href="#guard">automatic tests with guard</a>).
+Mocking makes your specs faster but they are difficult to use. You need to understand them
+well to use them well. Read more <a="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">about</a>.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/9">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/9">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | mock or not to mock" href="https://twitter.com/share" data-url="http://betterspecs.org/#mock" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -515,7 +528,7 @@ Also, if you think you need dozens of records, you are probably wrong.
 <div>
 <pre><code class="ruby">describe "User"
   describe ".top" do
-    before { 3.times { Factory(:user) } }
+    before { FactoryGirl.create_list(:user, 3) }
     it { User.top(2).should have(2).item }
   end
 end
@@ -523,7 +536,7 @@ end
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/10">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/10">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | create only tha data you need" href="https://twitter.com/share" data-url="http://betterspecs.org/#data" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -537,8 +550,8 @@ end
 <h1><a name="factories">Use factories and not fixtures</a></h1>
 
 <p>
-This is an old topic, but it's still good to remember it. Do not use fixtures because they are
-difficult to control, use factories instead. Use them to reduce the verbosity
+This is an old topic, but it's still good to remember it. Do not use fixtures because
+they are difficult to control, use factories instead. Use them to reduce the verbosity
 on creating new data.
 </p>
 
@@ -563,11 +576,18 @@ on creating new data.
 </div>
 
 <p>
+One important note. When talking about unit tests the best practice would be to use neither
+fixtures or factories. Put as much of your domain logic in libraries that can be tested without
+needing complex, time consuming setup with either factories or fixtures. Read more in
+<a href="http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl">this article</a>
+</p>
+
+<p>
 Learn more about <a href="https://github.com/thoughtbot/factory_girl">Factory Girl</a>.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/11">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/11">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | use factories and not fixtures" href="https://twitter.com/share" data-url="http://betterspecs.org/#factories" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -581,14 +601,13 @@ Learn more about <a href="https://github.com/thoughtbot/factory_girl">Factory Gi
 <h1><a name="matchers">Easy to read matcher</a></h1>
 
 <p>
-Use readable matchers and double check available <a href="/">rspec matcher</a>.
+Use readable matchers and double check the available <a href="https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers">rspec matchers</a>.
 </p>
 
 <p class="wrong">bad</p>
 
 <div>
 <pre><code class="ruby">lambda { model.save! }.should raise_error Mongoid::Errors::DocumentNotFound
-collection.size.should == 2
 </code></pre>
 </div>
 
@@ -596,12 +615,11 @@ collection.size.should == 2
 
 <div>
 <pre><code class="ruby">expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
-collection.should have(2).items
 </code></pre>
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/12">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/12">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | easy to read matcher #betterspecs" href="https://twitter.com/share" data-url="http://betterspecs.org/#matchers" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -675,7 +693,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/13">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/13">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | shared examples" href="https://twitter.com/share" data-url="http://betterspecs.org/#sharedexamples" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -715,7 +733,7 @@ only the specs you need to test blazing fast without stopping your flow.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/14">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/14">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | test what you see" href="https://twitter.com/share" data-url="http://betterspecs.org/#integration" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -730,6 +748,9 @@ only the specs you need to test blazing fast without stopping your flow.
 
 <p>
 Do not use should when describing your tests. Use the third person in the present tense.
+Even better start using the new
+<a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">expectation</a>
+syntax.
 </p>
 
 <p class="wrong">bad</p>
@@ -751,7 +772,7 @@ end
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/15">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/15">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | don't use should" href="https://twitter.com/share" data-url="http://betterspecs.org/#should" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -769,12 +790,6 @@ Running all the test suite every time you change your app can be cumbersome. It 
 time and it can break your flow. With Guard you can automate your test suite running only the
 tests related to the updated spec, model, controller or file you are working at.
 </p>
-
-<p class="wrong">bad</p>
-
-<div>
-<pre><code>rake tests</code></pre>
-</div>
 
 <p class="correct">good</p>
 
@@ -806,11 +821,19 @@ end
 </div>
 
 <p>
+Guard is a fine tool but as usual it doesn't fit all of your needs. Sometimes your TDD workflow
+works best with a keybinding that makes it easy to run just the examples you want when you
+want to. Then, you can use a rake task to run the entire suite before pushing code.
+<a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#L61-103">Here</a>
+the vim keybinding.
+</p>
+
+<p>
 Learn more about <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/16">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/16">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | automatic tests with guard" href="https://twitter.com/share" data-url="http://betterspecs.org/#guard" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -821,41 +844,40 @@ Learn more about <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
 
 <article>
 
-<h1><a name="spork">Faster tests with spork</a></h1>
+<h1><a name="spork">Faster tests (preloading Rails)</a></h1>
 
 <p>
 When running a test on Rails the whole Rails app is loaded. This can take time and
-it can break your development flow. To solve this problem use Spork. It will preload all libraries
-you (usually) do not change and reload controllers, models, view, factories and all the files you change often.
+it can break your development flow. To solve this problem use solutions like
+<a href="https://github.com/burke/zeus">Zeus</a>,
+<a href="https://github.com/jstorimer/spin">Spin</a> or
+<a href="https://github.com/sporkrb/spork">Spork</a>.
+Those solutions will preload all libraries you (usually) do not change and reload
+controllers, models, view, factories and all the files you change most often.
 </p>
-
-<p class="wrong">bad</p>
-
-<div>
-<pre><code>rake tests</code></pre>
-</div>
-
-<p class="correct">good</p>
-
-<div>
-<pre><code class="ruby">bundle exec guard
-</code></pre>
-</div>
 
 <p>
 Here you can find a <a href="https://gist.github.com/3821012">spec helper</a> and a
-<a href="https://gist.github.com/3821031">Guardfile</a> configuration. With this configuration
-you will reload the whole app if a preloaded file (like initializers) change and you will run
-the single tests really, really fast.
+<a href="https://gist.github.com/3821031">Guardfile</a> configuration based on Spork.
+With this configuration you will reload the whole app if a preloaded file (like initializers)
+change and you will run the single tests really, really fast.
 </p>
 
 <p>
-Learn more about <a href="https://github.com/sporkrb/spork">spork</a>
-(see also <a href="http://railscasts.com/episodes/285-spork">spork railscast</a>).
+The withdraw of using Spork is that it monkey aggressively monkey-patch your code and you
+could loose some hours trying to understand why a file is not reloaded. If you have some
+code examples using Zeus, Spin or any other solution
+<a href="https://github.com/andreareginato/betterspecs/issues/17">let us know</a>.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/17">Discuss about this guideline &rarr;</a>
+Many criticisms are moved to those solutions. Those libraries are a band aid on a problem
+that is better solved through better design, and being intentional about only loading the
+dependencies that you need. Learn more reading the
+<a href="https://github.com/andreareginato/betterspecs/issues/17">related discussion</a>.
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/17">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | faster tests with spork" href="https://twitter.com/share" data-url="http://betterspecs.org/#spork" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -869,7 +891,7 @@ Learn more about <a href="https://github.com/sporkrb/spork">spork</a>
 <h1><a name="http">Stubbing HTTP requests</a></h1>
 
 <p>
-Sometimes you need to access external services. In this cases you can't
+Sometimes you need to access external services. In these cases you can't
 rely on the real service but you should mock it with solutions like webmock.
 </p>
 
@@ -894,7 +916,7 @@ explaining how to mix them together.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/18">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/18">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | mocking http requests" href="https://twitter.com/share" data-url="http://betterspecs.org/#http" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -926,9 +948,19 @@ group :development, :test do
 
 <div>
 <pre><code class="ruby"># Guardfile
-guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
+guard 'rspec' do
   # ...
 end
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># .rspec
+--drb
+--format Fuubar
+--color
 </code></pre>
 </div>
 
@@ -937,7 +969,7 @@ Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafaili
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/19">Discuss about this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/19">Discuss this guideline &rarr;</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | useful formatter" href="https://twitter.com/share" data-url="http://betterspecs.org/#formatter" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -949,20 +981,7 @@ Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafaili
 <article>
 
 <h1><a name="books">Books</a></h1>
-  <ul class="media-grid">
-    <li>
-    <a href="http://www.amazon.com/gp/product/1934356646/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356646&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/rails-test-prescription-thumb.jpg" alt="ioBridge"></a>
-    </li>
-    <li>
-    <a href="http://www.amazon.com/gp/product/1934356379/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356379&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/the-rspec-book-thumb.jpg" alt="ioBridge"></a>
-    </li>
-    <li>
-    <a href="http://www.amazon.com/gp/product/1934356808/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356808&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/continuous-testing-thumb.jpg" alt="ioBridge"></a>
-    </li>
-    <!--<li>-->
-    <!--<a href="http://www.amazon.com/gp/product/1934356700/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356700&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/the-cucumber-book-thumb.jpg" alt="ioBridge"></a>-->
-    <!--</li>-->
-  </ul>
+  <%= render "partials/books" %>
 
 </article>
 
@@ -985,7 +1004,23 @@ Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafaili
 <li><a href="http://blog.andyvanasse.com/post/503615383/rspec-best-practices">Andy Vanasse Best Practices</a></li>
 <li><a href="http://bitfluxx.com/2011/05/23/some-rspec-tips-and-best-practices.html">Bitfluxx Best Practices</a></li>
 <li><a href="http://kpumuk.info/ruby-on-rails/my-top-7-rspec-best-practices/">Dmytro Shteflyuk Best Practices</a></li>
+<li><a href="https://learn.thoughtbot.com/rspec">thoughtbot's RSpec Related Reading</a></li>
+
+</ol>
+
+</article>
+
+<article>
+
+<h1><a name="screencasts">Screencasts</a></h1>
+
+<ol>
+<li><a href="https://peepcode.com/screencasts/rspec">RSpec on PeepCode</a></li>
+<li><a href="http://www.codeschool.com/courses/testing-with-rspec">Testing With RSpec Code School course</a></li>
 <li><a href="http://railscasts.com/episodes/285-spork">Spork Railscast</a></li>
+<li><a href="http://vimeo.com/46795747">Using Zeus to speed up your tests</a></li>
+<li><a href="http://www.codeschool.com/code_tv/guard-and-spork">Code TV Screencast on Guard and Spork</a></li>
+<li><a href="https://www.destroyallsoftware.com/screencasts/">Many of Destroy All Software screencasts</a></li>
 </ol>
 
 </article>
@@ -1027,7 +1062,7 @@ described here.
 <p>
 This is an open source project. If something is missing or incorrect just file an
 <a class="see" href="https://github.com/andreareginato/betterspecs/issues">issue</a>
-and start discussing about the topic. Check also the following issues:
+to discuss the topic. Also check the following issues:
 
 <ul>
   <li><a href="https://github.com/andreareginato/betterspecs/issues/20">Multilanguage</a> (file an issue if you want to translate this guide)</li>
@@ -1044,7 +1079,7 @@ and start discussing about the topic. Check also the following issues:
 <p>
 The document was started by <a href="http://twitter.com/andreareginato">Andrea Reginato</a>.
 A special thanks to the <a href="http://lelylan.com">Lelylan Team</a>. This document is licensed
-under Creative Commons Attribution 3.0 Unported License.
+under MIT License.
 </p>
 
 </article>
@@ -1054,8 +1089,8 @@ under Creative Commons Attribution 3.0 Unported License.
 <h1><a name="help">Help us</a></h1>
 
 <p>
-If you have found those tips useful to improve your daily job think about making a
-$9 donation. Those donations will be used to make this site a reference for better
+If you have found these tips useful and they improve your work, think about making a
+$9 donation. Any donations will be used to make this site a more compleate reference for better
 testing in Ruby.
 </p>
 
