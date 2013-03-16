@@ -18,7 +18,7 @@ title: 'Better Specs(한국어)'
 <li class="little">&raquo; <a href="#integration">보이는것을 테스트 하기</a></li>
 <li class="little">&raquo; <a href="#should">should를 쓰지 않기</a></li>
 <li class="little">&raquo; <a href="#guard">guard로하는 테스트 자동화</a></li>
-<li class="little">&raquo; <a href="#spork">spork로 빠른 테스트하기</a></li>
+<li class="little">&raquo; <a href="#spork">레일즈를 미리 로드해두어 빠른 테스트하기</a></li>
 <li class="little">&raquo; <a href="#http">HTTP 리퀘스트를 mock하기</a></li>
 <li class="little">&raquo; <a href="#formatter">유용한 formatter</a></li>
 <li><a href="#books">Books</a></li>
@@ -61,29 +61,25 @@ title: 'Better Specs(한국어)'
 <article>
 
 <!-- <p>
-<a href="https://www.relishapp.com/rspec/">RSpec</a> is a great tool in the behavior-driven design process of writing human readable specifications that direct and validate
-the development of your application.
-</p> -->
+<a href="https://www.relishapp.com/rspec/">RSpec</a> is a great tool in the behavior-driven development (BDD) process of writing human readable specifications that direct and validate
+ the development of your application.</p> -->
 
 <p>
-<a href="https://www.relishapp.com/rspec/">RSpec</a>은 직접 어플리케이션의 개발과정을 확인하는 사람이 읽을 수 있는 명세서를 적는 BDD프로세스에서 훌륭한 도구입니다.
+<a href="https://www.relishapp.com/rspec/">RSpec</a>은 BDD프로세스에서 쓰는 훌륭한 툴입니다. (BDD 어플리케이션의 개발과정을 확인하는 사람이 읽을 수 있는 명세서를 적는 일을 말합니다.)
 </p>
 
 <!-- <p>
-On the web you can find several resources explaining how to
-use RSpec and a complete overview of what you can do. What you won't find often is a book or an article explaining how to use RSpec to create a
-great test suite.
-<p> -->
+On the web there are many resources that give complete overview of _what_ you can do with RSpec.
+But there are fewer resources devoted to how to create a great RSpec test suite.<p> -->
 <p>
-웹에서는 RSpec를 어떻게 사용하는지를 설명하고 무엇을 할 수 있는 지 설명한 전체 오버뷰를 찾을 수 있습니다. 찾을 수 없는 건 대게 책이나 어떻게 RSpec으로 좋은 테스트 스위트를 만드는 지를 설명한 글이구요.
+웹에서는 RSpec를 어떻게 사용하는지를 설명하고 _무엇을_ 할 수 있는 지 설명한 전체 오버뷰를 찾을 수 있습니다. 하지만 RSpec으로 좋은 테스트 스위트를 만드는 지를 설명한 글을 찾기란 쉽지 않습니다.
 <p>
 
 <!-- <p>
-Better Specs tries to fulfil this missing collection of most of the guidelines - indeed, developers
-learned the hard way through years of experience.
-</p> -->
+Better Specs tries to fill this gap by collecting most of the "best practices" that other
+developers learn through years of experience.</p> -->
 <p>
-Better Specs 은 대부분의 가이드라인의 누락 된 부분을 모으고자 노력했습니다. - 사실, 개발자들의 수년간의 경험에서 들게 배운 방법이죠.
+Better Specs 은 대부분의 가이드라인의 누락 된 부분을 모으고자 노력했습니다. - 이건 개발자들의 수년간의 경험에서 배운 방법이죠.
 </p>
 
 </article>
@@ -96,9 +92,13 @@ Better Specs 은 대부분의 가이드라인의 누락 된 부분을 모으고�
 <!-- <p>
 Keep the methods you are describing clear. As convention use <code>.</code> as prefix for
 class methods and <code>#</code> as prefix for instance methods.
+
+Be clear about what method you are describing. For instance, use the Ruby documentation convention of
+<code>.</code> (or <code>::</code>) when referring to a class method's name and <code>#</code> when
+referring to an instance method's name.
 </p> -->
 <p>
-설명하려는 함수를 명확하게 하세요. <code>.</code>를 클래스 함수의 접두어로 <code>#</code>를 인스턴스 함수의 접두어로 사용하는 규칙을 사용하세요.
+어떤 함수를 설명하려는지 명확하게 하세요. 예를들어, 클래스 함수를 참조할 때는 <code>.</code>(아니면 <code>::</code>) 를 접두어로, 인스턴스 함수를 참조할 때는 <code>#</code>를 접두어로 사용하는 루비 문서 규칙을 사용하세요.
 </p>
 
 <p class="wrong">bad</p>
@@ -144,10 +144,10 @@ Contexts는 테스트를 명확하고 잘 조직되게하는 강력한 방법입
 <p class="wrong">bad</p>
 
 <div>
-<pre><code class="ruby">it 'should have 200 status code if logged in' do
+<pre><code class="ruby">it 'has 200 status code if logged in' do
   response.should respond_with 200
 end
-it 'should have 401 status code if not logged in' do
+it 'has 401 status code if not logged in' do
   response.should respond_with 401
 end
 </code></pre>
@@ -166,11 +166,10 @@ end
 </div>
 
 <!-- <p>
-  When describing contexts, make them always start using the keys
-  <code>when</code> and <code>with</code>.
+  When describing a context, start its description with "when" or "with".
 </p> -->
 <p>
-  Contexts를 설명할 때, 항상 <code>when</code>과 <code>with</code>를 키워드로 사용하세요.
+  Contexts는 "when"이나 "with"로 설명을 시작하세요.
 </p>
 
 <p>
@@ -193,13 +192,13 @@ A spec description should never be longer than 40 characters. If this happens
 you should split it using a context.
 </p> -->
 <p>
-명세의 설명은 40문자를 넘으면 안됩니다. 40문자를 넘을떄는 context를 사용해 쪼개야 합니다.
+명세의 설명은 40문자를 넘으면 안됩니다. 40문자를 넘을때는 context를 사용해 쪼개야 합니다.
 </p>
 
 <p class="wrong">bad</p>
 
 <div>
-<pre><code class="ruby">it 'should have 422 status code if an unexpected params will be added' do
+<pre><code class="ruby">it 'has 422 status code if an unexpected params will be added' do
 </code></pre>
 </div>
 
@@ -252,20 +251,30 @@ code readable.
 </p> -->
 <p>
 '단일 조건'에 관한 팁은 '각 테스트는 한가지만 확인해야 한다.'로 더 널리 알려저 있습니다.
-이것은 에러를 찾을 떄 도움이 되고, 실패하는 테스트를 바로 찾을수 있게 하고, 코드를 읽기 편하게 합니다.
+이것은 에러를 찾을 때 도움이 되고, 실패하는 테스트를 바로 찾을수 있게 하고, 코드를 읽기 편하게 합니다.
 </p>
 
-<p class="wrong">bad</p>
+<!-- <p>
+In isolated unit specs, you want each example to specify one (and only one) behavior. Multiple
+expectations in the same example are a signal that you may be specifying multiple behaviors.
+</p> -->
 
-<div>
-<pre><code class="ruby">it 'should create a resource' do
-  response.should respond_with_content_type(:json)
-  response.should assign_to(:resource)
-end
-</code></pre>
-</div>
+<p>
+독립된 유닛 스팩에서, 일반적으로 각 예제는 단(!) 하나의 행동만 태스트 하길 바랄 것 입니다. 같은 예제 안에서 여러 예상치가 나온다면 여러 행동으로 나누어야 할것 같다는 신호입니다.
+</p>
 
-<p class="correct">good</p>
+<!-- <p>
+Anyway, in tests that are not isolated (e.g. ones that integrate with a DB, an external webservice,
+or end-to-end-tests), you take a massive performance hit to do the same setup over and over
+again, just to set a different expectation in each test. In these sorts of slower tests, I
+think it's fine to specify more than one isolated behavior.
+</p> -->
+
+<p>
+어쨋든 분리되지 않은 테스트에서(예를 들어 디비나 외부 서비스와 연동경우나 긑에서 끝까지 테스트 하는 경우), 단시 분리하기만하면 같은 셋업을 여러번 하게 되어 테스트가 무거워지는 현상이 나타납니다. 이런 종류의 무거운 테스트에선 굳이 행동을 두개 이상 적어도 괜찮을 것 같아요.
+</p>
+
+<p class="correct">good (isolated)</p>
 
 <div>
 <pre><code class="ruby">it { should respond_with_content_type(:json) }
@@ -273,12 +282,15 @@ it { should assign_to(:resource) }
 </code></pre>
 </div>
 
-<!-- <p>
-Note that single expectation test does not mean single line test.
-</p> -->
-<p>
-단일 조건 테스트는 테스트를 한줄에 적으라는 의미는 아닙니다.
-</p>
+<p class="correct">Good (not isolated)</p>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  response.should respond_with_content_type(:json)
+  response.should assign_to(:resource)
+end
+</code></pre>
+</div>
 
 <p>
 <a href="https://github.com/andreareginato/betterspecs/issues/5">이 가이드라인에 대해 토론하기 &rarr;</a>
@@ -395,19 +407,18 @@ its(:creator) { should match /Topolino/ }
 </div>
 
 <!-- <p>
-Remember that using an explicit subject within a specification makes the specs
-difficult to read.
+RSpec has also the ability to use a named subject.
 </p> -->
 <p>
-기억해두세요. 샤양에서 명시적인 subject는 사양을 읽기 힘들게 만듭니다.
+RSpec은 명시적인 subject도 지원합니다.
 </p>
 
-<p class="wrong">bad</p>
+<p class="correct">Good</p>
 
 <div>
-<pre><code class="ruby">subject { Hero.first }
+<pre><code class="ruby">subject(:hero) { Hero.first }
 it "should be equipped with a sword" do
-  subject.equipment.should include "sword"
+  hero.equipment.should include "sword"
 end
 </code></pre>
 </div>
@@ -437,10 +448,12 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 <!-- <p>
 When you have to assign a variable instead of using a <code>before</code> block to create
 an instance variable, use <code>let</code>. Using <code>let</code> the variable lazy loads
-only when it is used the first time in the test and get cached until that specific test is finished.
-</p> -->
+only when it is used the first time in the test and get cached until that specific test is
+finished. A really good and deep description of what <code>let</code> can be found in this
+<a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">stackoverflow answer</a>.</p> -->
 <p>
 만약 <code>before</code> 인스턴스 변수를 만들지 않고 변수를 할당해야 한다면, <code>let</code>을 사용합시다. <code>let</code> 사용하면 변수를 테스트에서 처음 사용 될때만 lazy load하고 테스트 명세가 끝날때까지 캐슁할 수 있습니다.
+이 <a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">스택오버 플로우 글</a>에서 <code>let</code>에 대해  설명해 놓았네요.
 </p>
 
 <p class="wrong">bad</p>
@@ -448,7 +461,7 @@ only when it is used the first time in the test and get cached until that specif
 <div>
 <pre><code class="ruby">describe '#type_id' do
   before { @resource = FactoryGirl.create :device }
-  before { @type     = Type.find resource.type_id }
+  before { @type     = Type.find @resource.type_id }
 
   it 'sets the type_id field' do
     @resource.type_id.should == @type.id
@@ -483,7 +496,10 @@ Use <code>let</code> to initialize actions that are lazy loaded to test your spe
 <div>
 <pre><code class="ruby">context 'when updates a not existing property value' do
   let(:properties) { { id: Settings.resource_id, value: 'on'} }
-  let(:update)     { resource.properties = properties }
+
+  def update
+    resource.properties = properties
+  end
 
   it 'raises a not found error' do
     expect { update }.to raise_error Mongoid::Errors::DocumentNotFound
@@ -501,6 +517,28 @@ This can be useful to populate your database to test queries or scopes.
 이것은 쿼리나 스코프같은 데이터베이스 테스트를 할때 유용합니다.
 </p>
 
+<!-- <p>
+Here an example of what let actually is.
+</p> -->
+
+<p>
+let이 무엇인지에 대한 예제입니다.
+</p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># this:
+let(:foo) { Foo.new }
+
+# is very nearly equivalent to this:
+def foo
+  @foo ||= Foo.new
+end
+</code></pre>
+</div>
+
+<p>
 <!-- <p>
 Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/helper-methods/let-and-let">rspec let</a>.
 </p> -->
@@ -525,12 +563,11 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 
 <!-- <p>
 There's a debate going on. Do not (over)use mocks and test real behavior when possible.
-As far as I can tell you from my experience you need to test real cases. Anyway, sometimes
-they can be pretty useful to update your application flow.
+Testing real cases are useful when updating your application flow.
 </p> -->
 <p>
 논쟁은 진행중입니다. 가능한한 (과도하게) mock을 사용하지 말고 실제 행동을 테스트해야 합니다.
-저 경험 안에서 내가 해줄수 있는 이야기는 실제 케이스를 테스트해야 한다는 것입니다. 어쩃든 어떨때 mock은 어플리케이션의 흐름을 갱신할때 꽤나 유용할 수 있습니다.
+실제 케이스를 테스트 하는것은 흐름을 변경 할때 유용합니다.
 </p>
 
 <p class="correct">good</p>
@@ -545,13 +582,11 @@ end
 </div>
 
 <!-- <p>
-Some people will tell you that mocking is one of the best ways to make your specs faster. It's
-true, but it also complicates your test suite. You can have fast tests in other ways (see
-<a href="#spork">faster tests with spork</a> and
-<a href="#guard">automatic tests with guard</a>).
+Mocking makes your specs faster but they are difficult to use. You need to understand them
+well to use them well. Read more <a="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">about</a>.
 </p> -->
 <p>
-어떤 이들은 mock은 명세의 실행속도를 빠르게 하는 가장 좋은 방법 중에 하나라고 합니다. 사실이지만 태스트를 복잡하게 만들기도 하죠. 테스트를 빠르게하는건 다른 방법으로 할 수도 있습니다 (<a href="#spork">spork로 빠른 테스트하기</a>와 <a href="#guard">guard로하는 테스트 자동화</a>를 보세요.)
+mock은 스팩을 빠르게 하지만 사용하기 힘듭니다. 그래서 잘 사용하려면 mock을 잘 이해해야 합니다. <a="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">이 글</a>을 읽어 보세요.
 </p>
 
 <p>
@@ -583,7 +618,7 @@ Also, if you think you need dozens of records, you are probably wrong.
 <div>
 <pre><code class="ruby">describe "User"
   describe ".top" do
-    before { 3.times { Factory(:user) } }
+    before { FactoryGirl.create_list(:user, 3) }
     it { User.top(2).should have(2).item }
   end
 end
@@ -611,7 +646,7 @@ difficult to control, use factories instead. Use them to reduce the verbosity
 on creating new data.
 </p> -->
 <p>
-이것은 오래된 이야기입니다만, 여전히 기억해 둘 가치가 있습니다. 픽스쳐를 사용하지마세요. 왜냐하면 픽스쳐는 사용하기 어렵기 떄문입니다. 대신 팩토리를 사용하세요. 팩토리를 사용하면 새로운 데이터를 생성할 때의 적는 량을 줄일 수 있습니다.
+이것은 오래된 이야기입니다만, 여전히 기억해 둘 가치가 있습니다. 픽스쳐를 사용하지마세요. 왜냐하면 픽스쳐는 사용하기 어렵기 때문입니다. 대신 팩토리를 사용하세요. 팩토리를 사용하면 새로운 데이터를 생성할 때의 적는 량을 줄일 수 있습니다.
 </p>
 
 <p class="wrong">bad</p>
@@ -633,6 +668,20 @@ on creating new data.
 <pre><code class="ruby">user = FactoryGirl.create :user
 </code></pre>
 </div>
+
+<!--<p>
+One important note. When talking about unit tests the best practice would be to use neither
+fixtures or factories. Put as much of your domain logic in libraries that can be tested without
+needing complex, time consuming setup with either factories or fixtures. Read more in
+<a href="http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl">this article</a>
+</p>-->
+
+<p>
+주의 하세요. 베스트 프락티스에서 유닛테스트에 대해 이야기할때는 픽스쳐도 팩토리도 사용하지 않았습니다.
+복잡하게 팩토리나 픽스쳐 셋업을 하는데 시간낭비하지 않으면, 라이브러리에 로직을 추가하는 시간을 벌 수 있습니다.
+<a href="http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl">이 글</a>을 읽어보세요.
+</p>
+
 
 <!-- <p>
 Learn more about <a href="https://github.com/thoughtbot/factory_girl">Factory Girl</a>.
@@ -660,14 +709,13 @@ Learn more about <a href="https://github.com/thoughtbot/factory_girl">Factory Gi
 Use readable matchers and double check available <a href="/">rspec matcher</a>.
 </p> -->
 <p>
-읽기 쉬운 matcher를 사용하세요. <a href="/">rspec matcher</a>를 두번 확인하세요.
+읽기 쉬운 matcher를 사용하세요. <a href="https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers">rspec matcher</a>를 보세요. 두번 보세요.
 </p>
 
 <p class="wrong">bad</p>
 
 <div>
 <pre><code class="ruby">lambda { model.save! }.should raise_error Mongoid::Errors::DocumentNotFound
-collection.size.should == 2
 </code></pre>
 </div>
 
@@ -675,7 +723,6 @@ collection.size.should == 2
 
 <div>
 <pre><code class="ruby">expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
-collection.should have(2).items
 </code></pre>
 </div>
 
@@ -834,9 +881,13 @@ only the specs you need to test blazing fast without stopping your flow.
 
 <!-- <p>
 Do not use should when describing your tests. Use the third person in the present tense.
+Even better start using the new
+<a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">expectation</a>
+syntax.
 </p> -->
 <p>
-테스트를 설명할떄 should를 사용하지 마세요. 현제 시제의 3인칭 시점으로 작성합시다.
+테스트를 설명할때 should를 사용하지 마세요. 현제 시제의 3인칭 시점으로 작성합시다.
+새로나온 <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">expectation</a> 를 사용하시면 더욱 좋습니다.
 </p>
 
 <p class="wrong">bad</p>
@@ -878,14 +929,8 @@ time and it can break your flow. With Guard you can automate your test suite run
 tests related to the updated spec, model, controller or file you are working at.
 </p> -->
 <p>
-앱을 변경할떄마다 태스트 스위트를 돌리는 일은 성가실수 있습니다. 그건 매우 시간이 오래걸리고 흐름을 끊을 수 있습니다. Guard를 사용하면 갱신된 사양, 모델, 컨트롤러, 파일에 대해서만 테스트를 수행하도록 테스트 스위트를 자동화 할 수 있습니다.
+앱을 변경할때마다 태스트 스위트를 돌리는 일은 성가실수 있습니다. 그건 매우 시간이 오래걸리고 흐름을 끊을 수 있습니다. Guard를 사용하면 갱신된 사양, 모델, 컨트롤러, 파일에 대해서만 테스트를 수행하도록 테스트 스위트를 자동화 할 수 있습니다.
 </p>
-
-<p class="wrong">bad</p>
-
-<div>
-<pre><code>rake tests</code></pre>
-</div>
 
 <p class="correct">good</p>
 
@@ -924,7 +969,7 @@ end
   watch(%r{^lib/(.+)\.rb$}) { |m| "spec/lib/#{m[1]}_spec.rb" }
   # 모델이 변경 되었을때 관련된 모델사양을 실행
   watch(%r{^app/(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
-  # 뷰가 변경 되었을떄 관련된 뷰사양을 실행
+  # 뷰가 변경 되었을때 관련된 뷰사양을 실행
   watch(%r{^app/(.*)(\.erb|\.haml)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
   # 컨트롤러가 변경되었을때 관련된 통합 사양을 실행
   watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
@@ -933,6 +978,18 @@ end
 end
 </code></pre>
 </div>
+
+<!-- <p>
+Guard is a fine tool but as usual it doesn't fit all of your needs. Sometimes your TDD workflow
+works best with a keybinding that makes it easy to run just the examples you want when you
+want to. Then, you can use a rake task to run the entire suite before pushing code.
+<a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#L61-103">Here</a>
+the vim keybinding.
+</p> -->
+
+<p>
+Guard는 좋은 툴이지만 보통 모든 요구사항을 충족하지 못합니다. TDD로 일하면서 단축키설정해서 원할때 실행하는게 가장 좋을때도 있습니다. 그리고 푸쉬하기 전에 rake로 전체 코드를 테스트 하는 거죠.<a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#L61-103">여기</a>에 vim의 단축키 설정이 있습니다.
+</p>
 
 <!-- <p>
 Learn more about <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
@@ -954,50 +1011,53 @@ Learn more about <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
 <article>
 
 <!-- <h1><a name="spork">Faster tests with spork</a></h1> -->
-<h1><a name="spork">spork로 빠른 테스트하기</a></h1>
+<h1><a name="spork">레일즈를 미리 로드해두어 빠른 테스트하기</a></h1>
 
 <!-- <p>
 When running a test on Rails the whole Rails app is loaded. This can take time and
-it can break your development flow. To solve this problem use Spork. It will preload all libraries
-you (usually) do not change and reload controllers, models, view, factories and all the files you change often.
-</p> -->
+it can break your development flow. To solve this problem use solutions like
+<a href="https://github.com/burke/zeus">Zeus</a>,
+<a href="https://github.com/jstorimer/spin">Spin</a> or
+<a href="https://github.com/sporkrb/spork">Spork</a>.
+Those solutions will preload all libraries you (usually) do not change and reload
+controllers, models, view, factories and all the files you change most often.</p> -->
 <p>
-레일즈에서 테스트를 실행할떄는 전채 레일즈 앱을 로딩합니다. 이것은 시간이 걸리고 당신의 흐름을 끊을 수 있습니다. 이 문제를 해결하기 위해선 Spork를 사용합니다. Spork는 (보통) 변경되지 않은 컨트롤러, 모델, 뷰, 팩토리와 자주 변경하는 파일 같은 모든 라이브러리를 미리 로드합니다.
+레일즈에서 테스트를 실행할때는 전채 레일즈 앱을 로딩합니다. 이것은 시간이 걸리고 당신의 흐름을 끊을 수 있습니다. 이 문제를 해결하기 위해선 <a href="https://github.com/burke/zeus">Zeus</a>나
+<a href="https://github.com/jstorimer/spin">Spin</a>나
+<a href="https://github.com/sporkrb/spork">Spork</a>같은 것을 사용할 수 있습니다. Spork는 (보통) 변경되지 않은 컨트롤러, 모델, 뷰, 팩토리와 자주 변경하는 파일 같은 모든 라이브러리를 미리 로드합니다.
 </p>
-
-
-<p class="wrong">bad</p>
-
-<div>
-<pre><code>rake tests</code></pre>
-</div>
-
-<p class="correct">good</p>
-
-<div>
-<pre><code class="ruby">bundle exec guard
-</code></pre>
-</div>
 
 <!-- <p>
 Here you can find a <a href="https://gist.github.com/3821012">spec helper</a> and a
-<a href="https://gist.github.com/3821031">Guardfile</a> configuration. With this configuration
-you will reload the whole app if a preloaded file (like initializers) change and you will run
-the single tests really, really fast.
-</p> -->
+<a href="https://gist.github.com/3821031">Guardfile</a> configuration based on Spork.
+With this configuration you will reload the whole app if a preloaded file (like initializers)
+change and you will run the single tests really, really fast.</p> -->
 <p>
-여기에 <a href="https://gist.github.com/3821012">spec helper</a> 와
+여기에 Spork용 <a href="https://gist.github.com/3821012">spec helper</a> 와
 <a href="https://gist.github.com/3821031">Guardfile</a> 설정이 있습니다. 이 설정을 사용하면 미리 로드된 (initializers같은) 파일이 변경되면 전체 어플을 리로드 시키고, 단일 테스트를 매우 매우 빠르게 실행 할 수 있습니다.
 </p>
 
 
 <!-- <p>
-Learn more about <a href="https://github.com/sporkrb/spork">spork</a>
-(see also <a href="http://railscasts.com/episodes/285-spork">spork railscast</a>).
-</p> -->
+The withdraw of using Spork is that it monkey aggressively monkey-patch your code and you
+could loose some hours trying to understand why a file is not reloaded. If you have some
+code examples using Zeus, Spin or any other solution
+<a href="https://github.com/andreareginato/betterspecs/issues/17">let us know</a>.</p> -->
 <p>
-<a href="https://github.com/sporkrb/spork">spork</a>에 대해 더 알아보기
-(see also <a href="http://railscasts.com/episodes/285-spork">spork railscast</a>).
+Spork는 굉장히 많은 부분을 몽키 패치하기때문에 쓰다보면 파일이 리로드 되지 않는 이유를 파악하기위해 몇시간을 허비하는 일이 있습니다.
+만약에 Zeus나 Spin 이나 다른 솔루션의 예제가 있으시다면 <a href="https://github.com/andreareginato/betterspecs/issues/17">알려주세요</a>.
+</p>
+
+<!-- <p>
+Many criticisms are moved to those solutions. Those libraries are a band aid on a problem
+that is better solved through better design, and being intentional about only loading the
+dependencies that you need. Learn more reading the
+<a href="https://github.com/andreareginato/betterspecs/issues/17">related discussion</a>.
+</p> -->
+
+<p>
+많은 사람들이 Spork에서 다른 솔루션으로 옮겼습니다. 이 솔루션들은 좋은 설계로 앞선 문제의 나은 해결책이 되고, 의도적으로 필요한 부분만 로딩하고있습니다.
+더 알고싶으시면 <a href="https://github.com/andreareginato/betterspecs/issues/17">관련 토론</a>을 읽어보세요.
 </p>
 
 <p>
@@ -1086,9 +1146,19 @@ group :development, :test do
 
 <div>
 <pre><code class="ruby"># Guardfile
-guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
+guard 'rspec' do
   # ...
 end
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># .rspec
+--drb
+--format Fuubar
+--color
 </code></pre>
 </div>
 
@@ -1112,21 +1182,7 @@ Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafaili
 <article>
 
 <h1><a name="books">Books</a></h1>
-  <ul class="media-grid">
-    <li>
-    <a href="http://www.amazon.com/gp/product/1934356646/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356646&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/rails-test-prescription-thumb.jpg" alt="ioBridge"></a>
-    </li>
-    <li>
-    <a href="http://www.amazon.com/gp/product/1934356379/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356379&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/the-rspec-book-thumb.jpg" alt="ioBridge"></a>
-    </li>
-    <li>
-    <a href="http://www.amazon.com/gp/product/1934356808/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356808&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/continuous-testing-thumb.jpg" alt="ioBridge"></a>
-    </li>
-    <!--<li>-->
-    <!--<a href="http://www.amazon.com/gp/product/1934356700/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1934356700&linkCode=as2&tag=httpbettersco-20"><img class="thumbnail" src="/images/the-cucumber-book-thumb.jpg" alt="ioBridge"></a>-->
-    <!--</li>-->
-  </ul>
-
+<%= render "partials/books" %>
 </article>
 
 <article>
@@ -1148,7 +1204,23 @@ Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafaili
 <li><a href="http://blog.andyvanasse.com/post/503615383/rspec-best-practices">Andy Vanasse Best Practices</a></li>
 <li><a href="http://bitfluxx.com/2011/05/23/some-rspec-tips-and-best-practices.html">Bitfluxx Best Practices</a></li>
 <li><a href="http://kpumuk.info/ruby-on-rails/my-top-7-rspec-best-practices/">Dmytro Shteflyuk Best Practices</a></li>
+<li><a href="https://learn.thoughtbot.com/rspec">thoughtbot's RSpec Related Reading</a></li>
+
+</ol>
+
+</article>
+
+<article>
+
+<h1><a name="screencasts">Screencasts</a></h1>
+
+<ol>
+<li><a href="https://peepcode.com/screencasts/rspec">RSpec on PeepCode</a></li>
+<li><a href="http://www.codeschool.com/courses/testing-with-rspec">Testing With RSpec Code School course</a></li>
 <li><a href="http://railscasts.com/episodes/285-spork">Spork Railscast</a></li>
+<li><a href="http://vimeo.com/46795747">Using Zeus to speed up your tests</a></li>
+<li><a href="http://www.codeschool.com/code_tv/guard-and-spork">Code TV Screencast on Guard and Spork</a></li>
+<li><a href="https://www.destroyallsoftware.com/screencasts/">Many of Destroy All Software screencasts</a></li>
 </ol>
 
 </article>
@@ -1190,7 +1262,7 @@ described here.
 <p>
 This is an open source project. If something is missing or incorrect just file an
 <a class="see" href="https://github.com/andreareginato/betterspecs/issues">issue</a>
-and start discussing about the topic. Check also the following issues:
+to discuss the topic. Also check the following issues:
 
 <ul>
   <li><a href="https://github.com/andreareginato/betterspecs/issues/20">Multilanguage</a> (file an issue if you want to translate this guide)</li>
@@ -1207,7 +1279,7 @@ and start discussing about the topic. Check also the following issues:
 <p>
 The document was started by <a href="http://twitter.com/andreareginato">Andrea Reginato</a>.
 A special thanks to the <a href="http://lelylan.com">Lelylan Team</a>. This document is licensed
-under Creative Commons Attribution 3.0 Unported License.
+under MIT License.
 </p>
 
 </article>
@@ -1218,7 +1290,7 @@ under Creative Commons Attribution 3.0 Unported License.
 
 <p>
 If you have found those tips useful to improve your daily job think about making a
-$9 donation. Those donations will be used to make this site a reference for better
+$9 donation. Any donations will be used to make this site a more compleate reference for better
 testing in Ruby.
 </p>
 
