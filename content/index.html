@@ -765,10 +765,18 @@ end
 
 <div>
 <pre><code class="ruby">it 'does not change timings' do
+  expect(consumption.occur_at).to eql valid.occur_at
+end
+</code></pre>
+</div>
+<!--
+<div>
+<pre><code class="ruby">it 'does not change timings' do
   consumption.occur_at.should == valid.occur_at
 end
 </code></pre>
 </div>
+-->
 
 <p>
 See <a href="https://github.com/should-not/should_not">the should_not gem</a> for a way to enforce this in RSpec
