@@ -417,7 +417,7 @@ RSpec은 명시적인 subject도 지원합니다.
 
 <div>
 <pre><code class="ruby">subject(:hero) { Hero.first }
-it "should be equipped with a sword" do
+it "carries a sword" do
   hero.equipment.should include "sword"
 end
 </code></pre>
@@ -795,7 +795,7 @@ end
 </div>
 
 <!-- <p>
-In our experience, shared examples are used mainly for controllers. Being models pretty
+In our experience, shared examples are used mainly for controllers. Since models are pretty
 different from each other, they (usually) do not share much logic.
 </p> -->
 <p>
@@ -907,6 +907,17 @@ end
 end
 </code></pre>
 </div>
+
+<!-- <p>
+See <a href="https://github.com/should-not/should_not">the should_not gem</a> for a way to enforce this in RSpec
+and <a href="https://github.com/siyelo/should_clean">the should_clean</a> gem for a way to clean up existing RSpec examples that begin with "should."
+</p> -->
+
+<p>
+should를 사용하지 않도록 강제할때 사용할 수 있는 <a href="https://github.com/should-not/should_not">should_not</a>잼을 확인해보세요.
+그리고 이미 작성된 rspec에서 "should."로 시작되는 예문을 지워주는 <a href="https://github.com/siyelo/should_clean">the should_clean</a>잼도 확인 해보세요.
+</p>
+
 
 <p>
 <a href="https://github.com/andreareginato/betterspecs/issues/15">이 가이드라인에 대해 토론하기 &rarr;</a>
@@ -1039,8 +1050,8 @@ change and you will run the single tests really, really fast.</p> -->
 
 
 <!-- <p>
-The withdraw of using Spork is that it monkey aggressively monkey-patch your code and you
-could loose some hours trying to understand why a file is not reloaded. If you have some
+The drawback of using Spork is that it aggressively monkey-patches your code and you
+could lose some hours trying to understand why a file is not reloaded. If you have some
 code examples using Zeus, Spin or any other solution
 <a href="https://github.com/andreareginato/betterspecs/issues/17">let us know</a>.</p> -->
 <p>
@@ -1077,10 +1088,10 @@ dependencies that you need. Learn more reading the
 
 <!-- <p>
 Sometimes you need to access external services. In this cases you can't
-rely on the real service but you should mock it with solutions like webmock.
+rely on the real service but you should stub it with solutions like webmock.
 </p> -->
 <p>
-가끔 외부서비스를 억세스할 필요할 때가 있습니다. 이런 경우 실제 서비스에 의존시키지 말고, webmock같은 솔루션을 이용해 mock해야 합니다.
+가끔 외부서비스를 억세스할 필요할 때가 있습니다. 이런 경우 실제 서비스에 의존시키지 말고, webmock같은 솔루션을 이용해 stub해야 합니다.
 </p>
 
 <p class="correct">good</p>
