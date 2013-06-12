@@ -21,6 +21,7 @@ title: 'Better Specs'
 <li class="little">&raquo; <a href="#spork">Faster tests with spork</a></li>
 <li class="little">&raquo; <a href="#http">Stubbing HTTP requests</a></li>
 <li class="little">&raquo; <a href="#formatter">Useful formatter</a></li>
+<li class="little">&raquo; <a href="#randomspecs">Random specs</a></li>
 <li><a href="#books">Books</a></li>
 <li><a href="#presentations">Presentations</a></li>
 <li><a href="#resources">Resources on the web</a></li>
@@ -979,6 +980,41 @@ Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafaili
 <a href="https://twitter.com/share" data-text="betterspecs.org | useful formatter" href="https://twitter.com/share" data-url="http://betterspecs.org/#formatter" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 <div class="fb-like" data-href="http://betterspecs.org/#formatter" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="randomspecs">Random specs</a></h1>
+
+<p>
+Random specs try capture related specs (specs that depends from others to pass).
+It is recommended for capture hidden dependencies in your specs.
+</p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># spec_helper.rb
+Rspec.configure do |config|
+  # ...
+  config.seed = 1324
+  config.order = :random
+end
+</code></pre>
+</div>
+
+<p>
+Learn more about <a href="http://mettadore.com/analysis/using-rspec-with-mixed-random-and-ordered-tests/">random specs</a>.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/68">Discuss this guideline &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | random specs" href="https://twitter.com/share" data-url="http://betterspecs.org/#randomspecs" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#randomspecs" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
 
 </article>
 
