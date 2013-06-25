@@ -3,14 +3,14 @@ title: 'Better Specs(日本語)'
 ---
 <% content_for :menu do %>
 <li><a href="/jp/">rspec ガイドラインの紹介</a></li>
-<li class="little">&raquo; <a href="#describe">関数の説明する</a></li>
+<li class="little">&raquo; <a href="#describe">メソッドの説明する</a></li>
 <li class="little">&raquo; <a href="#contexts">Contextsを使う</a></li>
 <li class="little">&raquo; <a href="#short">説明を短く</a></li>
-<li class="little">&raquo; <a href="#single">段一条件テスト</a></li>
+<li class="little">&raquo; <a href="#single">単一条件テスト</a></li>
 <li class="little">&raquo; <a href="#all">可能な限り全部テスト</a></li>
 <li class="little">&raquo; <a href="#subject">Subjectを使う</a></li>
 <li class="little">&raquo; <a href="#let">letとlet!を使う</a></li>
-<li class="little">&raquo; <a href="#mock">Mockを遣るか遣らないか</a></li>
+<li class="little">&raquo; <a href="#mock">Mockを使うか使わないか</a></li>
 <li class="little">&raquo; <a href="#data">必要なテータだけ作る</a></li>
 <li class="little">&raquo; <a href="#factories">fixtureの代わりにfactoryを使う</a></li>
 <li class="little">&raquo; <a href="#matchers">読みやすいmatcherを使う</a></li>
@@ -65,7 +65,7 @@ title: 'Better Specs(日本語)'
  the development of your application.</p> -->
 
 <p>
-<a href="https://www.relishapp.com/rspec/">RSpec</a>とはBDDで使う素晴らしいツールです。(BDDとはbehavior-driven developmentの略でアプリーの開発過程を確認できる、人が読める明細書を書く上に開発することです。)
+<a href="https://www.relishapp.com/rspec/">RSpec</a>とはBDDで使う素晴らしいツールです。(BDDとはbehavior-driven developmentの略で方向性を人の読める仕様に沿って開発を行う開発方法論です。)
 </p>
 
 <!-- <p>
@@ -79,7 +79,7 @@ But there are fewer resources devoted to how to create a great RSpec test suite.
 Better Specs tries to fill this gap by collecting most of the "best practices" that other
 developers learn through years of experience.</p> -->
 <p>
-Better Specsは大抵のガイドラインの書いてない部分を集めよとしました。ーこれは開発者供の多年間の経験から学んだ方法です。
+Better Specsは大抵のガイドラインの書いてない部分を集めようとしました。- これは開発者達の経験を通して学んだ方法です。
 </p>
 
 </article>
@@ -87,7 +87,7 @@ Better Specsは大抵のガイドラインの書いてない部分を集めよ�
 <article>
 
 <!-- <h1><a name="describe">How to describe your methods</a></h1> -->
-<h1><a name="describe">関数の説明する</a></h1>
+<h1><a name="describe">メソッドの説明する</a></h1>
 
 <!-- <p>
 Keep the methods you are describing clear. As convention use <code>.</code> as prefix for
@@ -98,9 +98,9 @@ Be clear about what method you are describing. For instance, use the Ruby docume
 referring to an instance method's name.
 </p> -->
 <p>
-説明対象となる関数を明確にしてください。規約としてクラス関数を書く時は<code>.</code>を接頭辞にインスタンス関数を書く時は<code>#</code>を接頭辞にしてください。
+説明対象となるメソッドを明確にしてください。規約としてクラスメソッドを書く時は<code>.</code>を接頭辞にインスタンスメソッドを書く時は<code>#</code>を接頭辞にしてください。
 
-作成中の関数を明らかにしましょう。例えば、Ruby文書の規約ではクラス関数の名前には<code>.</code>(もしくは<code>::</code>)をインスタンス関数の名前には<code>#</code>を使っています。
+作成中のメソッドを明らかにしましょう。例えば、Ruby文書の規約ではクラスメソッドの名前には<code>.</code>(もしくは<code>::</code>)をインスタンスメソッドの名前には<code>#</code>を使っています。
 </p>
 
 <p class="wrong">bad</p>
@@ -139,7 +139,7 @@ Contexts are a powerful method to make your tests clear and well organized.
 In the long term this practice will keep tests easy to read.
 </p> -->
 <p>
-Contextsはテストを明らかにし、よく組織する素晴らしい方法です。
+Contextsはテストを明らかにし、まとめる素晴らしい方法です。
 長い目で見ると、この方法はテストを読みやすくします。
 </p>
 
@@ -244,7 +244,7 @@ If you run this test typing <code>rspec filename</code> you will obtain a readab
 <article>
 
 <!-- <h1><a name="single">Single expectation test</a></h1> -->
-<h1><a name="single">段一条件テスト</a></h1>
+<h1><a name="single">単一条件テスト</a></h1>
 
 <!-- <p>
 The 'one expectation' tip is more broadly expressed as 'each test should make only one assertion'.
@@ -252,8 +252,8 @@ This helps you on finding possible errors, going directly to the failing test, a
 code readable.
 </p> -->
 <p>
-'段一条件'より'格テストは一つだけ確認すべき'でもっと知られています。
-ごれはエーラを探し安くし、失敗うるテストをすぐ見つけるようにし、コードを読みやすくします。
+'単一条件'より'各テストは一つだけ確認すべき'でもっと知られています。
+ごれはエラーを探し安くし、失敗するテストをすぐ見つけるようにし、コードを読みやすくします。
 </p>
 
 <!-- <p>
@@ -262,7 +262,7 @@ expectations in the same example are a signal that you may be specifying multipl
 </p> -->
 
 <p>
-独立したユニットでは、一般的に格例はただ一つの行動だけテストするのが望ましいです。例の中で多数のテストが有るのは幾つかの行動に分離する必要がある信号です。
+独立したユニットでは、一般的に各例はただ一つの行動だけテストするのが望ましいです。例の中で多数のテストが有るのは幾つかの行動に分離する必要がある信号です。
 </p>
 
 <!-- <p>
@@ -314,7 +314,7 @@ Testing is a good practice, but if you do not test the edge cases, it will not
 be useful. Test valid, edge and invalid case. For example, consider the following action.
 </p> -->
 <p>
-テストは遣った方がいいですが、全ケースをテストしないと、有用とはいえません。有効な場合と無効な場合を全部テストしましょう。例えばこんなアクションが有るとしましょう。
+テストはやった方がいいですが、全ケースをテストしないと、有用とはいえません。有効な場合と無効な場合を全部テストしましょう。例えばこんなアクションが有るとしましょう。
 </p>
 
 <p class="base">Destroy action</p>
@@ -335,7 +335,7 @@ But there are at least two edge cases: when the resource is not found and when i
 owned. As a rule of thumb think of all the possible inputs and test them.
 </p> -->
 <p>
-普段よく見るエーラで、モデルがうまく削除できたかだけテストしています。
+普段よく見るエラーで、モデルがうまく削除できたかだけテストしています。
 が、最小限二つのエッジケースか存在します：モデルを探せなかった時と権限がない時。
 すべての一般的に可能な入力を考えてテストしましょう。
 </p>
@@ -516,7 +516,7 @@ This can be useful to populate your database to test queries or scopes.
 </p> -->
 <p>
 ブロックが定義した時に変数が定義て欲しい時は<code>let!</code>を使いましょう。
-ごれはクエリーやスコープ見たいなDBのテストて有用です。
+ごれはクエリやスコープみたいなDBのテストて有用です。
 </p>
 
 <!-- <p>
@@ -561,7 +561,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 <article>
 
 <!-- <h1><a name="mock">Mock or not to mock</a></h1> -->
-<h1><a name="mock">Mockを遣るか遣らないか</a></h1>
+<h1><a name="mock">Mockを使うか使わないか</a></h1>
 
 <!-- <p>
 There's a debate going on. Do not (over)use mocks and test real behavior when possible.
@@ -613,7 +613,7 @@ can be heavy to run. To solve this problem, it's important not to load more data
 Also, if you think you need dozens of records, you are probably wrong.
 </p> -->
 <p>
-もし、中小型プロジェクトの経験しかない人のテストは重くなり勝ちです。必要以上のデーターをロードしないのはこの問題を解くためには大事なことです。多数のデーターが必要だと思われたら考えが間違っている可能性があります。
+もし、中小型プロジェクトの経験しかない人のテストは重くなり勝ちです。必要以上のデータをロードしないのはこの問題を解くためには大事なことです。多数のデータが必要だと思われたら考えが間違っている可能性があります。
 </p>
 
 <p class="correct">good</p>
@@ -649,7 +649,7 @@ difficult to control, use factories instead. Use them to reduce the verbosity
 on creating new data.
 </p> -->
 <p>
-これは古い話ですが、話しておく価値があります。fixtureは使わないでください。なぜならfixtureは操作が難しいからです。代わりにfactoryを使いましょう。factoryを使うと新しいデーターを生成する際のコードの量を減らせます。
+これは古い話ですが、話しておく価値があります。fixtureは使わないでください。なぜならfixtureは操作が難しいからです。代わりにfactoryを使いましょう。factoryを使うと新しいデータを生成する際のコードの量を減らせます。
 </p>
 
 <p class="wrong">bad</p>
@@ -681,7 +681,7 @@ needing complex, time consuming setup with either factories or fixtures. Read mo
 
 <p>
 注意！この文書でのユニットテストはfixtureもfactoryも使っておりません。
-複雑なfixtureやfactoryを作る時間を節約すると、ライブラリーにロジックを追加する時間を稼げます。
+複雑なfixtureやfactoryを作る時間を節約すると、ライブラリにロジックを追加する時間を稼げます。
 <a href="http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl">この書き込み</a>を読んでみましょう。
 </p>
 
@@ -802,7 +802,7 @@ In our experience, shared examples are used mainly for controllers. Since models
 different from each other, they (usually) do not share much logic.
 </p> -->
 <p>
-経験によると、shared exampleは対体コントローラーで使われます。モデルはお互いかなり違くて、（普通は）多い部分を共有しません。
+経験によると、shared exampleは対体コントローラで使われます。モデルはお互いかなり違くて、（普通は）多い部分を共有しません。
 </p>
 
 <!-- <p>
@@ -833,7 +833,7 @@ Do not add useless complexity testing controllers.</strong>
 </p> -->
 <p>
 <strong>モデルとアプリーを深く統合テストしましょう。
-コントローラーをテストする為にいらない複雑さを入れないようにしましょう。</strong>
+コントローラをテストする為にいらない複雑さを入れないようにしましょう。</strong>
 </p>
 
 <!-- <p>
@@ -845,8 +845,8 @@ models and that integration tests can be easily grouped into shared examples,
 building a clear and readable test suite.
 </p> -->
 <p>
-個人的な話で、最小はコントローラーをしていましたが、今は遣らないです。
-今はRSpecとCapybaraの統合テストしか作りません。なぜかと言うとほんとに目に見えるものをテストするベキだと信じているし、コントローラーをテストするのは不要な段階だと思っているからです。そのうちテスト達はモデルと統合テストにされ、shared examplesに纏まって、きれいで読みやすいテストを作るようになります。
+個人的な話で、最小はコントローラをしていましたが、今はやらないです。
+今はRSpecとCapybaraの統合テストしか作りません。なぜかと言うとほんとに目に見えるものをテストするべきだと信じているし、コントローラをテストするのは不要な段階だと思っているからです。そのうちテスト達はモデルと統合テストにされ、shared examplesに纏まって、きれいで読みやすいテストを作るようになります。
 </p>
 
 <!-- <p>
@@ -855,7 +855,7 @@ supporting their idea. People supporting the need of testing controllers will te
 you that your integration tests don't cover all use cases and that they are slow.
 </p> -->
 <p>
-これは未だルビーコミュニティーで議論中の話しで、両方の側その考えを支える良い根拠が有ります。コントローラーのテストを支持する側は統合テストは遅くてすべての機能をカバー出来ないと主張します。
+これは未だルビーコミュニティーで議論中の話しで、両方の側その考えを支える良い根拠が有ります。コントローラのテストを支持する側は統合テストは遅くてすべての機能をカバー出来ないと主張します。
 </p>
 
 <!-- <p>
@@ -864,7 +864,7 @@ can run single file specs using automated tools like Guard. In this way you will
 only the specs you need to test blazing fast without stopping your flow.
 </p> -->
 <p>
-両方とも違います。大体簡単にすべての機能をカバー出るし（でしょ？）Guard見たいな自動化ツールを利用して一ファイルだけテストするのも可能です。こうすれば大きな流れを逆らわない範囲内で必要なspecだけテストできます。
+両方とも違います。大体簡単にすべての機能をカバー出るし（でしょ？）Guardみたいな自動化ツールを利用して一ファイルだけテストするのも可能です。こうすれば大きな流れを逆らわない範囲内で必要なspecだけテストできます。
 </p>
 
 <p>
@@ -917,7 +917,7 @@ and <a href="https://github.com/siyelo/should_clean">the should_clean</a> gem fo
 </p> -->
 
 <p>
-shouldを使わないように御製できる<a href="https://github.com/should-not/should_not">should_not</a>をご覧ください。
+shouldを使わないように制限できる<a href="https://github.com/should-not/should_not">should_not</a>をご覧ください。
 そして既に作成されたrspecから"should."で始まる例文を消してくれる<a href="https://github.com/siyelo/should_clean">the should_clean</a>もご覧ください
 </p>
 
@@ -943,7 +943,7 @@ time and it can break your flow. With Guard you can automate your test suite run
 tests related to the updated spec, model, controller or file you are working at.
 </p> -->
 <p>
-変更がある度に全テストをまわすのは厄介です。それは時間もかかりますし、流れをわず割らせます。Guardを使うと更新された使用、モデル、コントローラー、ファイルだけに対してテストをまわせるように自動化できます。
+変更がある度に全テストをまわすのは厄介です。それは時間もかかりますし、流れをわずわらせます。Guardを使うと更新された使用、モデル、コントローラ、ファイルだけに対してテストをまわせるように自動化できます。
 </p>
 
 <p class="correct">good</p>
@@ -954,7 +954,7 @@ tests related to the updated spec, model, controller or file you are working at.
 </div>
 
 <!-- Here you can see a sample Guardfile with some basic reloading rules. -->
-この例は基本的なリロードルルがあるGuardfileです。
+この例は基本的なリロードルールがあるGuardfileです。
 
 <p class="correct">good</p>
 
@@ -983,9 +983,9 @@ end
   watch(%r{^lib/(.+)\.rb$}) { |m| "spec/lib/#{m[1]}_spec.rb" }
   # モデルが変更された時関連モデルのspecを実行
   watch(%r{^app/(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
-  # ヴューが変更された時関連ヴューのspecを実行
+  # ビューが変更された時関連ビューのspecを実行
   watch(%r{^app/(.*)(\.erb|\.haml)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
-  # コントローラーが変更された時コントローラーと関連ある統合テストのspecを実行
+  # コントローラが変更された時コントローラと関連ある統合テストのspecを実行
   watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
   # application_controllerが変更された時すべての統合テストのspecを実行
   watch('app/controllers/application_controller.rb') { "spec/requests" }
@@ -1036,10 +1036,10 @@ it can break your development flow. To solve this problem use solutions like
 Those solutions will preload all libraries you (usually) do not change and reload
 controllers, models, view, factories and all the files you change most often.</p> -->
 <p>
-Railsでテストを実行するには全体Railsのロードが必要です。これは時間がかかって仕事のざまになり得ます。
+Railsでテストを実行するには全体Railsのロードが必要です。これは時間がかかって仕事のじゃまになり得ます。
 <a href="https://github.com/burke/zeus">Zeus</a>、
 <a href="https://github.com/jstorimer/spin">Spin</a>、
-<a href="https://github.com/sporkrb/spork">Spork</a>などを利用すればこの問題は解決できます。Sporkは（普通）変更されないコントローラー、モデル、ヴュー、 factoryと変更が頻繁なほぼすべてののコードをプリーロードします。
+<a href="https://github.com/sporkrb/spork">Spork</a>などを利用すればこの問題は解決できます。Sporkは（普通）変更されないコントローラ、モデル、ビュー、 factoryと変更が頻繁なほぼすべてののコードをプリロードします。
 </p>
 
 <!-- <p>
@@ -1049,7 +1049,7 @@ With this configuration you will reload the whole app if a preloaded file (like 
 change and you will run the single tests really, really fast.</p> -->
 <p>
 ここにSpork用の<a href="https://gist.github.com/3821012">spec helper</a>と
-<a href="https://gist.github.com/3821031">Guardfile</a>設定があります。この設定を使用すればプリーロードされたファイル（initializerとか）の更新のみ全体アプリーをリロードして、段一テストをすごくすごく早く実行できます。
+<a href="https://gist.github.com/3821031">Guardfile</a>設定があります。この設定を使用すればプリロードされたファイル（initializerとか）の更新のみ全体アプリーをリロードして、単一テストをすごくすごく早く実行できます。
 </p>
 
 
