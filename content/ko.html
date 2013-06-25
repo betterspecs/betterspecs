@@ -271,7 +271,7 @@ think it's fine to specify more than one isolated behavior.
 </p> -->
 
 <p>
-어쨋든 분리되지 않은 테스트에서(예를 들어 디비나 외부 서비스와 연동경우나 긑에서 끝까지 테스트 하는 경우), 단시 분리하기만하면 같은 셋업을 여러번 하게 되어 테스트가 무거워지는 현상이 나타납니다. 이런 종류의 무거운 테스트에선 굳이 행동을 두개 이상 적어도 괜찮을 것 같아요.
+어쨋든 분리되지 않은 테스트에서(예를 들어 디비나 외부 서비스와 연동하거나 끝에서 끝까지 테스트 하는 경우), 분리하기만하면 같은 셋업을 여러번 하게 되어 테스트가 무거워지는 현상이 나타납니다. 이런 종류의 무거운 테스트에선 굳이 나누지 않아도 괜찮을 것 같아요.
 </p>
 
 <p class="correct">good (isolated)</p>
@@ -346,7 +346,6 @@ owned. As a rule of thumb think of all the possible inputs and test them.
 
 <p class="correct">good</p>
 
-<div>
 <div class="correct">
 <pre><code class="ruby">describe '#destroy' do
 
@@ -586,7 +585,7 @@ Mocking makes your specs faster but they are difficult to use. You need to under
 well to use them well. Read more <a="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">about</a>.
 </p> -->
 <p>
-mock은 스팩을 빠르게 하지만 사용하기 힘듭니다. 그래서 잘 사용하려면 mock을 잘 이해해야 합니다. <a="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">이 글</a>을 읽어 보세요.
+mock은 스팩을 빠르게 하지만 사용하기 힘듭니다. 그래서 잘 사용하려면 mock을 잘 이해해야 합니다. <a href="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">이 글</a>을 읽어 보세요.
 </p>
 
 <p>
@@ -646,7 +645,7 @@ difficult to control, use factories instead. Use them to reduce the verbosity
 on creating new data.
 </p> -->
 <p>
-이것은 오래된 이야기입니다만, 여전히 기억해 둘 가치가 있습니다. 픽스쳐를 사용하지마세요. 왜냐하면 픽스쳐는 사용하기 어렵기 때문입니다. 대신 팩토리를 사용하세요. 팩토리를 사용하면 새로운 데이터를 생성할 때의 적는 량을 줄일 수 있습니다.
+이것은 오래된 이야기입니다만, 여전히 언급할 가치가 있습니다. 픽스쳐를 사용하지마세요. 왜냐하면 픽스쳐는 사용하기 어렵기 때문입니다. 대신 팩토리를 사용하세요. 팩토리를 사용하면 새로운 데이터를 생성할 때 코드를 줄일 수 있습니다.
 </p>
 
 <p class="wrong">bad</p>
@@ -677,7 +676,7 @@ needing complex, time consuming setup with either factories or fixtures. Read mo
 </p>-->
 
 <p>
-주의 하세요. 베스트 프락티스에서 유닛테스트에 대해 이야기할때는 픽스쳐도 팩토리도 사용하지 않았습니다.
+주의! 베스트 프락티스에서 유닛테스트에 대해 이야기할때는 픽스쳐도 팩토리도 사용하지 않았습니다.
 복잡하게 팩토리나 픽스쳐 셋업을 하는데 시간낭비하지 않으면, 라이브러리에 로직을 추가하는 시간을 벌 수 있습니다.
 <a href="http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl">이 글</a>을 읽어보세요.
 </p>
@@ -745,7 +744,7 @@ Making tests is great and you get more confident day after day. But in the end y
 Use shared examples to DRY your test suite up.
 </p> -->
 <p>
-태스트를 만드는것은 좋은 일이며 매일 조금 씩 더 자신감을 갖게합니다. 그러나 결국 중복코드가 여기저기 발생하는 것을 보게 되는데요. shared example을 이용해서 테스트 스위트의 중복을 제거하세요.
+태스트를 만드는것은 좋은 일이며 매일 조금씩 더 자신감을 갖게합니다. 그러나 결국 중복코드가 여기저기 발생하는 것을 보게 되는데요. shared example을 이용해서 테스트 스위트의 중복을 제거하세요.
 </p>
 
 <p class="wrong">bad</p>
@@ -842,7 +841,7 @@ models and that integration tests can be easily grouped into shared examples,
 building a clear and readable test suite.
 </p> -->
 <p>
-내가 처음 어플을 테스트했을때는 컨트롤러를 테스트했지만, 지금은 하고 있지 않습니다.
+내가 처음 어플을 테스트했을때는 컨트롤러를 테스트했지만, 지금은 하지 않습니다.
 지금 나는 RSpec과 Capybara를 사용한 통합 테스트만 만듭니다. 왜나구요? 왜냐면 진짜로 보이는 것을 테스트해야한다고 믿고 있고 컨트롤러를 테스트 하는것은 불필요한 단계라 생각하기 때문입니다. 하다보면 테스트들은 모델과 통합테스트로 들어가고, 그것들은 쉽게 shared examples로 묶어지고, 깨끗하고 읽기 편한 테스트 스위트를 만들게 될 것 입니다.
 </p>
 
@@ -861,7 +860,7 @@ can run single file specs using automated tools like Guard. In this way you will
 only the specs you need to test blazing fast without stopping your flow.
 </p> -->
 <p>
-둘 다 아닙니다.당신은 쉽게 모든 테스트 케이스를 커버할 수 있으시고 (안 그러신가요?) Guard같은 자동화 툴을 이용해 한파일만 테스트 할 수 있습니다. 이렇게하면 흐름을 멈추지않고 필요한 사양만 테스트할 수 있게 됩니다.
+둘 다 아닙니다.당신은 쉽게 모든 기능을 커버할 수 있으시고 (안 그러신가요?) Guard같은 자동화 툴을 이용해 한파일만 테스트 할 수 있습니다. 이렇게하면 흐름을 끊기지 않는 범위내에서 필요한 사양만 테스트할 수 있게 됩니다.
 </p>
 
 <p>
@@ -1033,7 +1032,7 @@ it can break your development flow. To solve this problem use solutions like
 Those solutions will preload all libraries you (usually) do not change and reload
 controllers, models, view, factories and all the files you change most often.</p> -->
 <p>
-레일즈에서 테스트를 실행할때는 전채 레일즈 앱을 로딩합니다. 이것은 시간이 걸리고 당신의 흐름을 끊을 수 있습니다. 이 문제를 해결하기 위해선 <a href="https://github.com/burke/zeus">Zeus</a>나
+레일즈에서 테스트를 실행할때는 전채 레일즈 앱을 로딩합니다. 이것은 시간이 걸리고 일의 흐름을 끊을 수 있습니다. 이 문제를 해결하기 위해선 <a href="https://github.com/burke/zeus">Zeus</a>나
 <a href="https://github.com/jstorimer/spin">Spin</a>나
 <a href="https://github.com/sporkrb/spork">Spork</a>같은 것을 사용할 수 있습니다. Spork는 (보통) 변경되지 않은 컨트롤러, 모델, 뷰, 팩토리와 자주 변경하는 파일 같은 모든 라이브러리를 미리 로드합니다.
 </p>
@@ -1055,7 +1054,7 @@ could lose some hours trying to understand why a file is not reloaded. If you ha
 code examples using Zeus, Spin or any other solution
 <a href="https://github.com/andreareginato/betterspecs/issues/17">let us know</a>.</p> -->
 <p>
-Spork는 굉장히 많은 부분을 몽키 패치하기때문에 쓰다보면 파일이 리로드 되지 않는 이유를 파악하기위해 몇시간을 허비하는 일이 있습니다.
+Spork는 굉장히 많은 부분을 몽키 패치하기 때문에 쓰다보면 파일이 리로드 되지 않는 이유를 파악하기 위해 몇시간을 허비하는 일이 있습니다.
 만약에 Zeus나 Spin 이나 다른 솔루션의 예제가 있으시다면 <a href="https://github.com/andreareginato/betterspecs/issues/17">알려주세요</a>.
 </p>
 
