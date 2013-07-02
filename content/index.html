@@ -870,8 +870,21 @@ change and you will run the single tests really, really fast.
 <p>
 The drawback of using Spork is that it aggressively monkey-patches your code and you
 could lose some hours trying to understand why a file is not reloaded. If you have some
-code examples using Zeus, Spin or any other solution
+code examples using Spin or any other solution
 <a href="https://github.com/andreareginato/betterspecs/issues/17">let us know</a>.
+</p>
+
+<p>
+Here you can find a <a href="https://gist.github.com/HuffMoody/5912373">Guardfile</a>
+configuration for using Zeus.  The spec_helper does not need to be modified, however,
+you will have to run `zeus start` in a console to start the zeus server before running
+your tests.
+</p>
+
+<p>
+Although Zeus takes a less aggressive approach than Spork, one major drawback is the faily
+strict usage requirements; Ruby 1.9.3+ (recommended using backported GC from Ruby 2.0)
+aswell as an operating system that supports FSEvents or inotify is required.
 </p>
 
 <p>
