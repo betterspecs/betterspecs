@@ -2,24 +2,24 @@
 title: 'Better Specs'
 ---
 <% content_for :menu do %>
-<li><a href="/">Introducción a las reglas generales de rspec</a></li>
+<li><a href="/">Introducción a las directrices de rspec</a></li>
 <li class="little">&raquo; <a href="#describe">Cómo describir tus métodos</a></li>
-<li class="little">&raquo; <a href="#contexts">Uso de contextos</a></li>
-<li class="little">&raquo; <a href="#short">Manteniendo descripción corta</a></li>
-<li class="little">&raquo; <a href="#single">Expectativa única</a></li>
-<li class="little">&raquo; <a href="#all">Probar todos los casos posibles</a></li>
-<li class="little">&raquo; <a href="#subject">Usar subject</a></li>
-<li class="little">&raquo; <a href="#let">Usar let y let!</a></li>
+<li class="little">&raquo; <a href="#contexts">Usa contextos</a></li>
+<li class="little">&raquo; <a href="#short">Mantén la descripción corta</a></li>
+<li class="little">&raquo; <a href="#single">Prueba de expectativa única</a></li>
+<li class="little">&raquo; <a href="#all">Prueba todos los casos posibles</a></li>
+<li class="little">&raquo; <a href="#subject">Usa subject</a></li>
+<li class="little">&raquo; <a href="#let">Usa let y let!</a></li>
 <li class="little">&raquo; <a href="#mock">Mock o no mock</a></li>
-<li class="little">&raquo; <a href="#data">Crear sólo los datos que necesites</a></li>
-<li class="little">&raquo; <a href="#factories">Usar factories y no fixtures</a></li>
+<li class="little">&raquo; <a href="#data">Crea sólo los datos que necesites</a></li>
+<li class="little">&raquo; <a href="#factories">Usa factories y no fixtures</a></li>
 <li class="little">&raquo; <a href="#matchers">Matchers fáciles de leer</a></li>
 <li class="little">&raquo; <a href="#sharedexamples">Ejemplos compartidos</a></li>
-<li class="little">&raquo; <a href="#integration">Prueba lo que veas</a></li>
-<li class="little">&raquo; <a href="#should">No uses should</a></li>
+<li class="little">&raquo; <a href="#integration">Prueba lo que ves</a></li>
+<li class="little">&raquo; <a href="#should">No uses should (debe)</a></li>
 <li class="little">&raquo; <a href="#guard">Pruebas automáticas con guard</a></li>
-<li class="little">&raquo; <a href="#spork">Pruebas rápidas con Spork</a></li>
-<li class="little">&raquo; <a href="#http">Stubbing peticiones HTTP</a></li>
+<li class="little">&raquo; <a href="#spork">Pruebas más rápidas con Spork</a></li>
+<li class="little">&raquo; <a href="#http">Stubbing de peticiones HTTP</a></li>
 <li class="little">&raquo; <a href="#formatter">Formateador útil</a></li>
 <li><a href="#books">Libros</a></li>
 <li><a href="#presentations">Presentaciones</a></li>
@@ -37,7 +37,7 @@ title: 'Better Specs'
 
 <aside class="menu">
 
-<h1>Libros afiliados</h1>
+<h1>Libros de afiliados</h1>
 <%= render "partials/books" %>
 
 </aside>
@@ -62,13 +62,13 @@ title: 'Better Specs'
 <article>
 
 <p>
-<a href="https://www.relishapp.com/rspec/">RSpec</a> es una gran herramienta en el desarrollo guiado por comportamiento (BDD) para el proceso de escribir especificaciones legibles para humanos que dirijan y validen
-el desarrollo de tu aplicación.
+<a href="https://www.relishapp.com/rspec/">RSpec</a> es una gran herramienta en el desarrollo guiado por comportamiento (BDD) para el proceso de escribir especificaciones legibles
+para humanos que dirijan y validen el desarrollo de la aplicación.
 </p>
 
 <p>
-En la red hay muchos recursos que dan un panorama completo de _que_ puedes hacer con RSpec.
-Pero hay muy pocos recursos dedicados a como crear un correcto conjunto de pruebas con RSpec.
+En la web hay muchos recursos que dan un panorama completo de qué se puede hacer con RSpec.
+Pero hay muy pocos recursos dedicados a cómo crear un correcto conjunto de pruebas con RSpec.
 <p>
 
 <p>
@@ -83,7 +83,7 @@ desarrolladores aprenden con años de experiencia.
 <h1><a name="describe">Cómo describir tus métodos</a></h1>
 
 <p>
-Ser conciso con la descripción del método. Por ejemplo, usando la convención de la documentación de Ruby de
+Ser claro sobre qué método se está describiendo. Por ejemplo, usando la convención de la documentación de Ruby de
 <code>.</code> (o <code>::</code>) cuando se refiere a nombres de métodos de clase y <code>#</code> cuando se
 refiere a un nombre de método de instancia.
 </p>
@@ -116,11 +116,11 @@ describe '#admin?' do
 
 <article>
 
-<h1><a name="contexts">Uso de contextos</a></h1>
+<h1><a name="contexts">Usa contextos</a></h1>
 
 <p>
-Los contextos son un gran forma de hacer que tus pruebas sean claras y bien organizados.
-A largo plazo esta práctica mantendrá tus pruebas fáciles de leer.
+Los contextos son una gran forma de hacer que las pruebas sean claras y estén bien organizadas.
+A largo plazo, esta práctica mantendrá las pruebas fáciles de leer.
 </p>
 
 <p class="wrong">Incorrecto</p>
@@ -148,7 +148,7 @@ end
 </div>
 
 <p>
-  Cuando describimos un contexto, iniciar su descripción con "cuando"(when) o "con"("with").
+  Al describir un contexto, iniciar su descripción con "cuando"(when) o "con"(with).
 <p>
 
 <p>
@@ -163,11 +163,11 @@ end
 
 <article>
 
-<h1><a name="short">Manteniendo la descripción corta</a></h1>
+<h1><a name="short">Mantén la descripción corta</a></h1>
 
 <p>
-Una descripción no debe ser mayor de 40 caracteres. Si esto pasa
-se debe partirla usando un contexto.
+Una descripción no debe ser mayor a 40 caracteres. Si esto pasa
+se debe partir usando un contexto.
 </p>
 
 <p class="wrong">Incorrecto</p>
@@ -187,9 +187,9 @@ end
 </div>
 
 <p>
-En el ejemplo anterior, eliminamos la descripción relacionada a el código de estatus,
+En el ejemplo anterior, se eliminó la descripción relacionada al código de estatus,
 el cual ha sido reemplazado por la expectativa. <code>it { should respond_with 422 }</code>.
-Si ejecuta esta prueba tecleando <code>rspec filename</code> obtendrás una salida legible.
+Si se ejecuta esta prueba tecleando <code>rspec filename</code> se obtendrá una salida legible.
 </p>
 
 <p class="base">Salida formateada</p>
@@ -212,27 +212,27 @@ Si ejecuta esta prueba tecleando <code>rspec filename</code> obtendrás una sali
 
 <article>
 
-<h1><a name="single">Expectativa única</a></h1>
+<h1><a name="single">Prueba de expectativa única</a></h1>
 
 <p>
-El tip de 'expectativa única' es expresada más generalmente como 'cada prueba debe hacer sólo una aserción'.
-Esto te ayuda en encontrar posibles errores, directamente en la prueba fallida, y para hacer tu
+El tip de 'expectativa única' es expresado más generalmente como 'cada prueba debe hacer sólo una aserción'.
+Esto ayuda a encontrar posibles errores, a ir directamente a la prueba fallida, y para hacer el código
 legible.
 </p>
 
 <p>
-En las especificaciones de unidades aisladas, tu esperas cada ejemplo para especificar un (y sólo un) comportamiento. Múltiples
-expectativas en el mismo ejemplo son una señal que podrías especificar múltiples comportamientos.
+En espectativas (specs) unitarias aisladas, se desea que cada ejemplo especifique un (y sólo un) comportamiento. Múltiples
+expectativas en el mismo ejemplo son una señal de que se están especificando múltiples comportamientos.
 </p>
 
 <p>
-De cualquier manera, en pruebas que no están aisladas (p.e. algunas que se integran con una BD, un webservice externo,
-o pruebas de principio a fin), afectará gravemente el rendimiento por hacer la misma configuración una y otra vez,
+De cualquier manera, en pruebas que no están aisladas (p.e. las que se integran con una BD, un webservice externo,
+o pruebas de extremo a extremo), el rendimiento se afectará gravemente por hacer la misma configuración una y otra vez,
 sólo por fijar una expectativa diferente en cada prueba. En este tipo de pruebas más lentas,
 creo que está bien especificar más de un comportamiento aislado.
 </p>
 
-<p class="correct">Correcto (isolated)</p>
+<p class="correct">Correcto (aislado)</p>
 
 <div>
 <pre><code class="ruby">it { should respond_with_content_type(:json) }
@@ -242,7 +242,7 @@ it { should assign_to(:resource) }
 
 <p>
 
-<p class="correct">Correcto (not isolated)</p>
+<p class="correct">Correcto (no aislado)</p>
 
 <div>
 <pre><code class="ruby">it 'creates a resource' do
@@ -263,11 +263,11 @@ end
 
 <article>
 
-<h1><a name="all">Probar todos los casos posibles</a></h1>
+<h1><a name="all">Prueba todos los casos posibles</a></h1>
 
 <p>
 Probar es una buena práctica, pero si no se prueban los casos extremos, no será
-muy útil. Prueba casos válidos, extremos e inválidos. Por ejemplo, considera la siguiente accción.
+útil. Prueba casos válidos, extremos e inválidos. Por ejemplo, considera la siguiente accción.
 </p>
 
 <p class="base">Acción de destruir</p>
@@ -283,9 +283,9 @@ end</code></pre>
 </div>
 
 <p>
-El error que normalmente veo radica en que sólo se prueba cuando el recurso ha sido borrado.
-Pero hay al menos dos casos extremos: Cuando el recurso no se encuentra y cuando no es
-obtenido. Como regla de oro, piensa en todas las posibles entradas y pruébalas.
+El error que normalmente veo radica en probar solamente que el recurso ha sido borrado.
+Pero hay al menos dos casos extremos: Cuando el recurso no se encuentra y cuando no nos
+pertenece. Como regla de oro, hay que pensar en todas las posibles entradas y probarlas.
 </p>
 
 <p class="wrong">Incorrecto</p>
@@ -329,10 +329,10 @@ end
 
 <article>
 
-<h1><a name="subject">Uso de subject</a></h1>
+<h1><a name="subject">Usa subject</a></h1>
 
 <p>
-Si tienes muchas pruebas relacionadas a el mismo tema, usa
+Si se tienen muchas pruebas relacionadas al mismo objeto, usa
 <code>subject{}</code> para no repetir código.
 </p>
 
@@ -353,10 +353,10 @@ it { should match /it was born in Billville/ }
 </div>
 
 <p>
-RSpec tiene la capacidad para usar un _subject_ con nombre.
+RSpec tiene la capacidad para usar un sujeto (subject) con nombre.
 </p>
 
-<p class="correct">Good</p>
+<p class="correct">Correcto</p>
 
 <div>
 <pre><code class="ruby">subject(:hero) { Hero.first }
@@ -367,7 +367,7 @@ end
 </div>
 
 <p>
-Aprende más <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/subject">rspec subject</a>.
+Aprender más sobre <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/subject">rspec subject</a>.
 </p>
 
 <p>
@@ -382,13 +382,13 @@ Aprende más <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/sub
 
 <article>
 
-<h1><a name="let">Usar let y let!</a></h1>
+<h1><a name="let">Usa let y let!</a></h1>
 
 <p>
-Cuando tienes que asignar una variable en lugar de usar un bloque <code>before</code> para crear
-una variable de instancia, usa <code>let</code>. Usando <code>let</code> la variable se carga
-sólo cuando es usada la primera vez en la prueba y se mantiene en caché hasta que la prueba específica es
-finalizada. Una buena y profunda descripción de <code>let</code> puedes encontrarla en este enlace
+Cuando se tiene que asignar una variable, en lugar de usar un bloque <code>before</code> para crear
+una variable de instancia, se puede usar <code>let</code>. Con <code>let</code> la variable se carga
+sólo cuando es usada la primera vez en la prueba y se mantiene en caché hasta que la prueba específica termina.
+Una descripción muy buena y detallada de <code>let</code> se puede encontrar en este enlace
 <a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">stackoverflow answer</a>.
 </p>
 
@@ -421,7 +421,7 @@ end
 </div>
 
 <p>
-Usa <code>let</code> para inicializar acciones que son _lazy loaded_ para probar tus características.
+Usa <code>let</code> para inicializar acciones que son "lazy loaded" para probar tus espectativas (specs).
 </p>
 
 <p class="correct">Correcto</p>
@@ -443,11 +443,11 @@ end
 
 <p>
 Usa <code>let!</code> si deseas definir la variable cuando el bloque es definido.
-Esto puede ser útil para _poblar_ tu base de datos para probar consultas o _scopes_.
+Esto puede ser útil para poblar tu base de datos para probar consultas o "scopes".
 </p>
 
 <p>
-Un ejemplo de qué es realmente _let_.
+Un ejemplo de qué es realmente let.
 </p>
 
 <p class="correct">Correcto</p>
@@ -464,7 +464,7 @@ end
 </div>
 
 <p>
-Aprende más <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/helper-methods/let-and-let">rspec let</a>.
+Aprender más sobre <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/helper-methods/let-and-let">rspec let</a>.
 </p>
 
 <p>
@@ -482,8 +482,8 @@ Aprende más <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/hel
 <h1><a name="mock">Mock o no mock</a></h1>
 
 <p>
-Hay un debate actualmente: No (ab)usar mocks o probar comportamiento real cuando sea posible.
-Probar casos reales es útil cuando actualizas el flujo de tu aplicación.
+Hay un debate actualmente: No (ab)usar mocks y probar comportamiento real cuando sea posible.
+Probar casos reales es útil cuando se actualiza el flujo de la aplicación.
 </p>
 
 <p class="correct">Correcto</p>
@@ -498,7 +498,7 @@ end
 </div>
 
 <p>
-'Mocking' hace tus especificaciones más rápidas pero son difíciles de usar. Necesitas entenderlo
+'Mocking' hace las especificaciones más rápidas pero son difíciles de usar. Pero es necesario entenderlo
 bien para usarlo bien. Leer más <a href="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">acerca de esto</a>.
 </p>
 
@@ -514,12 +514,12 @@ bien para usarlo bien. Leer más <a href="http://myronmars.to/n/dev-blog/2012/06
 
 <article>
 
-<h1><a name="data">Crear sólo los datos que necesites</a></h1>
+<h1><a name="data">Crea sólo los datos que necesites</a></h1>
 
 <p>
 Si has trabajado en un proyecto de mediano tamaño (aunque también en algunos pequeños), las suites de pruebas
-pueden ser pesadas para ejecutarse. Para resolver este problema, es importante no cargmás más datos de los necesarios.
-También, si tú piensas que necesitas docenas de registros, probablemente estás equivocado.
+pueden ser pesadas para ejecutarse. Para resolver este problema, es importante no cargar más datos de los necesarios.
+Incluso si piensas que necesitas docenas de registros, probablemente estés equivocado.
 </p>
 
 <p class="correct">Correcto</p>
@@ -546,11 +546,11 @@ end
 
 <article>
 
-<h1><a name="factories">Usar factories y no fixtures</a></h1>
+<h1><a name="factories">Usa factories y no fixtures</a></h1>
 
 <p>
-Es un viejo tema, pero es bueno recordarlo. No uses fixtures porque
-son difíciles de controlar, usa factories en su lugar. Usar factories reduce la verbosidad
+Es un tema antiguo, pero es bueno recordarlo. No uses fixtures porque
+son difíciles de controlar, en su lugar usa factories. Usar factories reduce la verbosidad
 durante la creación de nuevos datos.
 </p>
 
@@ -575,14 +575,14 @@ durante la creación de nuevos datos.
 </div>
 
 <p>
-Nota importante: Cuando hablamos de pruebas unitarias la mejor práctica sería no usar
-fixtures o factories. Poniendo la mayoría de tu lógica de negocio en bibliotecas que puedan ser probadas sin
-necesidades complejas, consumiendo tiempo organizando with factories o fixtures. Leer más en
+Nota importante: Cuando hablamos de pruebas unitarias, la mejor práctica sería no usar
+fixtures o factories. Es mejor poner la mayoría de la lógica de negocio en bibliotecas que puedan ser probadas sin
+necesidad de configuraciones lentas y complejas ya sea con factories o fixtures. Leer más en
 <a href="http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl">este artículo</a>
 </p>
 
 <p>
-Aprende más <a href="https://github.com/thoughtbot/factory_girl">Factory Girl</a>.
+Aprender más sobre <a href="https://github.com/thoughtbot/factory_girl">Factory Girl</a>.
 </p>
 
 <p>
@@ -600,7 +600,7 @@ Aprende más <a href="https://github.com/thoughtbot/factory_girl">Factory Girl</
 <h1><a name="matchers">Matchers fáciles de leer</a></h1>
 
 <p>
-Usa matchers legibles y comprueba los <a href="https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers">matchers de rspec</a> disponibles.
+Usa matchers legibles y revisa los <a href="https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers">matchers de rspec</a> disponibles.
 </p>
 
 <p class="wrong">Incorrecto</p>
@@ -632,8 +632,8 @@ Usa matchers legibles y comprueba los <a href="https://www.relishapp.com/rspec/r
 <h1><a name="sharedexamples">Ejemplos compartidos</a></h1>
 
 <p>
-Crear pruebas es grandioso y estarás más confiado día a día. Pero al final empezarás a ver duplicación de código emergiendo en todas partes.
-Usa ejemplos compartidos para no repetir en tu suite de pruebas.
+Crear pruebas es grandioso y brinda más seguridad en el día a día. Pero al final se verá código duplicado emergiendo de todas partes.
+Usa ejemplos compartidos para limpiar la suite de pruebas.
 </p>
 
 <p class="wrong">Incorrecto</p>
@@ -684,11 +684,11 @@ end
 
 <p>
 En nuestra experiencia, los ejemplos compartidos son usados principalmente para controladores. Como los modelos son bastante
-diferentes entre si, (generalmente) no comparten mucha lógica
+diferentes entre sí, (generalmente) no comparten mucha lógica
 </p>
 
 <p>
-Aprende más <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/example-groups/shared-examples">ejemplos compartidos de rspec</a>.
+Aprender más sobre <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/example-groups/shared-examples">ejemplos compartidos de rspec</a>.
 </p>
 
 <p>
@@ -703,7 +703,7 @@ Aprende más <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/exa
 
 <article>
 
-<h1><a name="integration">Prueba lo que veas</a></h1>
+<h1><a name="integration">Prueba lo que ves</a></h1>
 
 <p>
 <strong>Prueba a profundidad tus modelos y el comportamiento de tu aplicación (integration tests).
@@ -711,24 +711,24 @@ No agregues complejidad inútil probando controladores.</strong>
 </p>
 
 <p>
-Cuando inicié probando mis aplicaciones, probé controladores. Ahora ya no lo hago.
+Cuando inicié probando mis aplicaciones, probaba controladores. Ahora ya no.
 Ahora, sólo creo pruebas de integración usando RSpec y Capybara. ¿Por qué? Porque tengo la certeza
-que debes probar lo que vez y porque probar controladores es un paso
-extra que no necesitas. Encontrarás que la mayoría de tus pruebas van dentro
-de los modelos y las pruebas de integración pueden ser fácilmente agrupadas en ejemplos compartidos,
+que se debe probar lo que se ve y porque probar controladores es un paso
+extra que no se necesita. La mayoría de las pruebas van dentro
+de los modelos y las pruebas de integración pueden agruparse fácilmente en ejemplos compartidos,
 formando un conjunto de pruebas limpio y legible.
 </p>
 
 <p>
-Este es un debate abierto en la comunidad Ruby y ambos puntos de vista tienen buenos argumentos
+Éste es un debate abierto en la comunidad Ruby y ambos puntos de vista tienen buenos argumentos
 para apoyar su idea. Las personas que apoyan la necesidad de probar controladores te dirán
-que tus pruebas de integración no cubren todos los casos de uso, y que son lentas.
+que tus pruebas de integración no cubren todos los casos de uso y que son lentas.
 </p>
 
 <p>
-Ambos están incorrectos. Puedes fácilmente cubrir todos los casos de uso (por qué no?) y
-ejecutar un único archivo de especificaciones usando herramientas automatizadas como Guard. De esta forma ejecutarás
-sólo las especificaciones que necesitas probar rápidamente sin parar tu flujo.
+Ambos argumentos son incorrectos. Puedes fácilmente cubrir todos los casos de uso (¿por qué no?) y
+ejecutar un único archivo de especificaciones usando herramientas automatizadas como Guard. De esta forma se ejecutarán
+sólo las especificaciones que necesites probar rápidamente sin parar tu flujo.
 </p>
 
 <p>
@@ -746,9 +746,10 @@ sólo las especificaciones que necesitas probar rápidamente sin parar tu flujo.
 <h1><a name="should">No uses should (debe)</a></h1>
 
 <p>
-No uses should (debe) cuando describes tus pruebas. Usa la tercera persona en tiempo presente.
+No uses la palabra should (debe) cuando describas tus pruebas. Usa la tercera persona en tiempo presente.
 Mejor aún, comienza a usar la nueva sintaxis con
-<a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">expect</a>.
+<a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">expect</a>
+.
 </p>
 
 <p class="wrong">Incorrecto</p>
@@ -771,7 +772,8 @@ end
 
 <p>
 Ver <a href="https://github.com/should-not/should_not">la gema should_not</a> para una forma de forzar esto en RSpec
-y <a href="https://github.com/siyelo/should_clean">la gema should_clean</a> para una forma de limpiar ejemplos RSpec que inicien con 'should'.</p>
+y <a href="https://github.com/siyelo/should_clean">la gema should_clean</a> para una forma de limpiar ejemplos RSpec que inicien con 'should'.
+</p>
 
 <p>
 <a href="https://github.com/andreareginato/betterspecs/issues/15">Discute este punto &rarr;</a>
@@ -788,9 +790,9 @@ y <a href="https://github.com/siyelo/should_clean">la gema should_clean</a> para
 <h1><a name="guard">Pruebas automáticas con guard</a></h1>
 
 <p>
-Ejecutar toda la suite de pruebas cada vez que cambies tu aplicación puede ser pesado. Toma mucho
-tiempo y puede romper tu flujo. Con Guard puedes automatizar tus suite de pruebas ejecutando sólo las
-pruebas relacionadas con la especificación modificada, modelo, controlador o archivo sobre el que estás trabajando.
+Ejecutar toda la suite de pruebas cada vez que cambia la aplicación puede ser pesado. Toma mucho
+tiempo y puede romper el flujo. Con Guard se puede automatizar la suite de pruebas ejecutando sólo las
+pruebas relacionadas con la especificación (spec) modificada, modelo, controlador o archivo sobre el que estás trabajando.
 </p>
 
 <p class="correct">Correcto</p>
@@ -800,7 +802,7 @@ pruebas relacionadas con la especificación modificada, modelo, controlador o ar
 </code></pre>
 </div>
 
-Aquí puedes ver un ejemplo del archivo Guardfile con algunas reglas básicas de recarga.
+Aquí se puede ver un ejemplo del archivo Guardfile con algunas reglas básicas de recarga.
 
 <p class="correct">Correcto</p>
 
@@ -823,15 +825,15 @@ end
 </div>
 
 <p>
-Guard es una buena herramienta pero como es normal no siempre cubre todas tus necesidades. Algunas veces tu flujo de trabajo de TDD
-funciona mejor con un atajo de teclado que facilite la ejecución sólo los ejemplos que desees cuando
-lo necesites. Para esto, puedes usar una tarea de rake para ejecutar la suite de preubas entera antes de subir tu código.
+Guard es una buena herramienta pero, como es normal, no siempre cubre todas las necesidades. Algunas veces el flujo de trabajo de TDD
+funciona mejor con un atajo de teclado que facilite la ejecución sólo de los ejemplos que se deseen y cuando
+se desee. Después, se puede usar una tarea de rake para ejecutar la suite de pruebas entera antes de subir el código.
 <a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#L61-103">Aquí</a>
 el atajo de teclado de vim.
 </p>
 
 <p>
-Aprende más <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
+Aprender más sobre <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
 </p>
 
 <p>
@@ -846,37 +848,51 @@ Aprende más <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
 
 <article>
 
-<h1><a name="spork">Pruebas Más Rápidas (precargando Rails)</a></h1>
+<h1><a name="spork">Pruebas más rápidas con Spork</a></h1>
 
 <p>
-Cuando se ejecuta una prueba en Rails la aplicación Rails completa es cargada. Esto puede tomar un tiempo y
-romper tu flujo de desarrollo. Para resolver este problema usa soluciones como
+Cuando se ejecuta una prueba en Rails se carga la aplicación Rails completa. Esto puede tomar un tiempo y
+romper el flujo de desarrollo. Para resolver este problema se pueden usar soluciones como
 <a href="https://github.com/burke/zeus">Zeus</a>,
 <a href="https://github.com/jstorimer/spin">Spin</a> o
 <a href="https://github.com/sporkrb/spork">Spork</a>.
-Estas soluciones precargarán todas las bibliotecas que tú (usualmente) no cambias y recarga
-controladores, modelos, vistas, factories y todos los archivos que cambias más a menudo.
+Estas soluciones precargarán todas las bibliotecas que (usualmente) no se cambian y recargarán
+controladores, modelos, vistas, factories y todos los archivos que cambian más a menudo.
 </p>
 
 <p>
-Aquí puedes encontrar un <a href="https://gist.github.com/3821012">spec helper</a> y una configuración
-<a href="https://gist.github.com/3821031">Guardfile</a> configuration basada en Spork.
-Con esta configuración recargarás toda la aplicación si un archivo precargado (como inicializadores)
-cambian y tú ejecutarás las pruebas individuales realmente rápido.
+Aquí se puede encontrar un <a href="https://gist.github.com/3821012">spec helper</a> y una configuración
+<a href="https://gist.github.com/3821031">Guardfile</a> basada en Spork.
+Con esta configuración se recarga toda la aplicación si un archivo precargado (como inicializadores)
+cambia y se ejecutarán las pruebas individuales realmente rápido.
 </p>
 
 <p>
-La desventaja de usar Spork es que pone  "monkey-patches" agresivamente en tu código y
+La desventaja de usar Spork es que agrega agresivamente "monkey-patches" a tu código y
 puedes perder varias horas tratando de entender por qué un archivo no es recargado. Si tienes algunos
-ejemplos de código usando Zeus, Spin o alguna otra solución
+ejemplos de código usando Spin o alguna otra solución
 <a href="https://github.com/andreareginato/betterspecs/issues/17">déjanos saberlo</a>.
 </p>
 
 <p>
+Aquí se puede encontrar un archivo de configuración <a href="https://gist.github.com/HuffMoody/5912373">Guardfile</a>
+para usar con Zeus.  El archivo spec_helper no requiere modificarse, sin embargo,
+es necesario ejectutar `zeus start` en una terminal para iniciar el servidor zeus antes de ejecutar
+las pruebas.
+</p>
+
+<p>
+Aunque Zeus toma medidas menos agresivas que Spork, una gran desventaja
+son los estrictos requerimientos para usarlo; Ruby 1.9.3+ (recomendado usar la versión modificada GC de Ruby 2.0)
+además es requerido un sistema operativo que soporte FSEvents o inotify.
+</p>
+
+<p>
 Muchos críticos están moviéndose a estas soluciones. Estas bibliotecas son un parche a un problema
-que es mejor resolver con un mejor diseño,  e intentando cargar sólo
+que es mejor resolver con un mejor diseño, e intentando cargar sólo
 las dependencias que necesites. Aprende más leyendo la
 <a href="https://github.com/andreareginato/betterspecs/issues/17">discusión sobre el tema</a>.
+</p>
 
 <p>
 <a href="https://github.com/andreareginato/betterspecs/issues/17">Discute este punto &rarr;</a>
@@ -890,11 +906,11 @@ las dependencias que necesites. Aprende más leyendo la
 
 <article>
 
-<h1><a name="http">Stubbing peticiones HTTP</a></h1>
+<h1><a name="http">Stubbing de peticiones HTTP</a></h1>
 
 <p>
 Algunas veces necesitas acceder a servicios externos. En estos casos no puedes
-confiar en los servicios reales, pero puedes "stubearlo" con soluciones como webmock.
+confiar en los servicios reales, pero puedes "stubearlos" con soluciones como webmock.
 </p>
 
 <p class="correct">Correcto</p>
@@ -911,7 +927,7 @@ end
 </div>
 
 <p>
-Aprende más <a href="https://github.com/bblimke/webmock">webmock</a> y
+Aprender más sobre <a href="https://github.com/bblimke/webmock">webmock</a> y
 <a href="https://github.com/myronmarston/vcr">VCR</a>. Aquí una
 <a href="http://marnen.github.com/webmock-presentation/webmock.html">buena presentación</a>
 explicando como combinarlos.
@@ -932,7 +948,7 @@ explicando como combinarlos.
 <h1><a name="formatter">Formateador útil</a></h1>
 
 <p>
-Usa un formateador que te brinde información útil sobre tu suite de pruebas.
+Usa un formateador que brinde información útil sobre la suite de pruebas.
 Personalmente encontré que fuubar es muy bueno. Para hacer que funcione agrega la gema y activa
 fuubar como el formateador por default en tu archivo Guardfile.
 </p>
@@ -967,7 +983,7 @@ end
 </div>
 
 <p>
-Aprende más <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafailing-rspec-progress-bar-formatter/">fuubar</a>.
+Aprender más sobre <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafailing-rspec-progress-bar-formatter/">fuubar</a>.
 </p>
 
 <p>
@@ -1050,8 +1066,8 @@ Aprende más <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafailing-r
 <p>
 Hemos buscado las mejores directivas para escribir especificacion "buenas para leer". Un buen
 punto de inicio es por supuesto la
-<a class="see" href="https://github.com/mongoid/mongoid/tree/master/spec/mongoid">Suite de Pruebas de Mongoid</a>.
-Usa una especificaciones con un estilo limpio y fácil de leer, siguiendo la mayoría de las directivas
+<a class="see" href="https://github.com/mongoid/mongoid/tree/master/spec/mongoid">suite de pruebas de Mongoid</a>.
+Usa especificaciones con un estilo limpio y fácil de leer, siguiendo la mayoría de las directivas
 descritas aquí.
 </p>
 
@@ -1067,7 +1083,7 @@ Este es un proyecto de código abierto. Si algo falta o es incorrecto sólo agre
 para discutir el tema. También puedes checar los siguientes issues:
 
 <ul>
-  <li><a href="https://github.com/andreareginato/betterspecs/issues/20">Multilenguaje</a> (agrega un _issue_ si deseas traducir esta guída)</li>
+  <li><a href="https://github.com/andreareginato/betterspecs/issues/20">Multilenguaje</a> (agrega un 'issue' si deseas traducir esta guía)</li>
 </ul>
 
 </p>
@@ -1088,11 +1104,11 @@ bajo licencia MIT.
 
 <article>
 
-<h1><a name="help">Help us</a></h1>
+<h1><a name="help">Ayúdanos</a></h1>
 
 <p>
 Si has encontrado útiles estos tips y han mejorado tu trabajo, considera hacer una
-donación de $9. Cualquier donación será usada para hacer este sitio una referencia más completa
+donación de USD $9. Cualquier donación será usada para hacer de este sitio una referencia más completa
 de pruebas en Ruby.
 </p>
 
