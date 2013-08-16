@@ -8,6 +8,7 @@ title: 'Better Specs'
 <li class="little">&raquo; <a href="#short">Keep your description short</a></li>
 <li class="little">&raquo; <a href="#single">Single expectation</a></li>
 <li class="little">&raquo; <a href="#all">Test all possible cases</a></li>
+<li class="little">&raquo; <a href="#expect">Expect vs Should syntax</a></li>
 <li class="little">&raquo; <a href="#subject">Use subject</a></li>
 <li class="little">&raquo; <a href="#let">Use let and let!</a></li>
 <li class="little">&raquo; <a href="#mock">Mock or not to mock</a></li>
@@ -125,10 +126,10 @@ In the long term this practice will keep tests easy to read.
 
 <div>
 <pre><code class="ruby">it 'has 200 status code if logged in' do
-  response.should respond_with 200
+  expect(response).to respond_with 200
 end
 it 'has 401 status code if not logged in' do
-  response.should respond_with 401
+  expect(response).to respond_with 401
 end
 </code></pre>
 </div>
@@ -240,8 +241,8 @@ it { should assign_to(:resource) }
 
 <div>
 <pre><code class="ruby">it 'creates a resource' do
-  response.should respond_with_content_type(:json)
-  response.should assign_to(:resource)
+  expect(response).to respond_with_content_type(:json)
+  expect(response).to assign_to(:resource)
 end
 </code></pre>
 </div>
@@ -319,6 +320,54 @@ end
 
 <article>
 
+<h1><a name="expect">Expect vs Should syntax</a></h1>
+
+<p>
+On new projects always use the <code>expect</code> syntax.
+</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  response.should respond_with_content_type(:json)
+end</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  expect(response).to respond_with_content_type(:json)
+end</code></pre>
+</div>
+
+<p>Configure the Rspec to only accept the new syntax on new projects, to avoid have the 2 syntax all over the place.</p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># spec_helper.rb
+RSpec.configure do |config|
+  # ...
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+end</code></pre>
+</div>
+
+<p>More about the new Rspec expectation syntax can be found <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">here</a> and <a href="http://myronmars.to/n/dev-blog/2013/07/the-plan-for-rspec-3#what_about_the_old_expectationmock_syntax">here</a>.</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/83">Discuss this guideline &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | Expect vs Should syntax", url: "http://betterspecs.org/#expect" %>
+
+</article>
+
+<article>
+
 <h1><a name="subject">Use subject</a></h1>
 
 <p>
@@ -329,8 +378,8 @@ If you have several tests related to the same subject use
 <p class="wrong">bad</p>
 
 <div>
-<pre><code class="ruby">it { assigns('message').should match /it was born in Belville/ }
-it { assigns('message').creator.should match /Topolino/ }
+<pre><code class="ruby">it { expect(assigns('message')).to match /it was born in Belville/ }
+it { expect(assigns('message').creator).to match /Topolino/ }
 </code></pre>
 </div>
 
@@ -351,7 +400,7 @@ RSpec has also the ability to use a named subject.
 <div>
 <pre><code class="ruby">subject(:hero) { Hero.first }
 it "carries a sword" do
-  hero.equipment.should include "sword"
+  expect(hero.equipment).to include "sword"
 end
 </code></pre>
 </div>
@@ -388,7 +437,7 @@ finished. A really good and deep description of what <code>let</code> can be fou
   before { @type     = Type.find @resource.type_id }
 
   it 'sets the type_id field' do
-    @resource.type_id.should == @type.id
+    expect(@resource.type_id).to == @type.id
   end
 end
 </code></pre>
@@ -402,7 +451,7 @@ end
   let(:type)     { Type.find resource.type_id }
 
   it 'sets the type_id field' do
-    resource.type_id.should == type.id
+    expect(resource.type_id).to == type.id
   end
 end
 </code></pre>
@@ -512,7 +561,7 @@ Also, if you think you need dozens of records, you are probably wrong.
 <pre><code class="ruby">describe "User"
   describe ".top" do
     before { FactoryGirl.create_list(:user, 3) }
-    it { User.top(2).should have(2).item }
+    it { expect(User.top(2)).to have(2).item }
   end
 end
 </code></pre>
@@ -586,7 +635,7 @@ Use readable matchers and double check the available <a href="https://www.relish
 <p class="wrong">bad</p>
 
 <div>
-<pre><code class="ruby">lambda { model.save! }.should raise_error Mongoid::Errors::DocumentNotFound
+<pre><code class="ruby">lambda { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
 </code></pre>
 </div>
 
@@ -626,7 +675,7 @@ Use shared examples to DRY your test suite up.
 
     it 'shows all owned resources' do
       page.driver.get uri
-      page.status_code.should == 200
+      expect(page.status_code).to == 200
       contains_owned_resource resource
       does_not_contain_resource not_owned
     end
@@ -635,9 +684,9 @@ Use shared examples to DRY your test suite up.
   describe '?start=:uri' do
     it 'shows the next page' do
       page.driver.get uri, start: resource.uri
-      page.status_code.should == 200
+      expect(page.status_code).to == 200
       contains_resource resources.first
-      page.should_not have_content resource.id.to_s
+      expect(page).to_not have_content resource.id.to_s
     end
   end
 end
@@ -730,7 +779,7 @@ syntax.
 
 <div>
 <pre><code class="ruby">it 'should not change timings' do
-  consumption.occur_at.should == valid.occur_at
+  expect(consumption.occur_at).to == valid.occur_at
 end
 </code></pre>
 </div>
@@ -739,7 +788,7 @@ end
 
 <div>
 <pre><code class="ruby">it 'does not change timings' do
-  consumption.occur_at.should == valid.occur_at
+  expect(consumption.occur_at).to == valid.occur_at
 end
 </code></pre>
 </div>
@@ -888,7 +937,7 @@ rely on the real service but you should stub it with solutions like webmock.
   before    { stub_request(:get, uri).to_return(status: 401, body: fixture('401.json')) }
   it "gets a not authorized notification" do
     page.driver.get uri
-    page.should have_content 'Access denied'
+    expect(page).to have_content 'Access denied'
   end
 end
 </code></pre>
