@@ -8,6 +8,7 @@ title: 'Better Specs(한국어)'
 <li class="little">&raquo; <a href="#short">설명을 짧게 유지하기</a></li>
 <li class="little">&raquo; <a href="#single">단일 조건 테스트</a></li>
 <li class="little">&raquo; <a href="#all">모든 가능한 케이스를 테스트하기</a></li>
+<li class="little">&raquo; <a href="#expect">Expect vs Should 문법</a></li>
 <li class="little">&raquo; <a href="#subject">Subject 사용하기</a></li>
 <li class="little">&raquo; <a href="#let">let 과 let! 사용하기</a></li>
 <li class="little">&raquo; <a href="#mock">Mock을 하느냐 마느냐</a></li>
@@ -73,7 +74,7 @@ On the web there are many resources that give complete overview of _what_ you ca
 But there are fewer resources devoted to how to create a great RSpec test suite.<p> -->
 <p>
 웹에서는 RSpec를 어떻게 사용하는지를 설명하고 _무엇을_ 할 수 있는 지 설명한 전체 오버뷰를 찾을 수 있습니다. 하지만 RSpec으로 좋은 테스트 스위트를 만드는 지를 설명한 글을 찾기란 쉽지 않습니다.
-<p>
+</p>
 
 <!-- <p>
 Better Specs tries to fill this gap by collecting most of the "best practices" that other
@@ -118,9 +119,7 @@ describe '#admin?' do
 <a href="https://github.com/andreareginato/betterspecs/issues/2">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | how to describe your methods" data-url="http://betterspecs.org/#describe" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#describe" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | 함수를 설명하는 방법", url: "http://betterspecs.org/#describe" %>
 
 </article>
 
@@ -142,10 +141,10 @@ Contexts는 테스트를 명확하고 잘 조직되게하는 강력한 방법입
 
 <div>
 <pre><code class="ruby">it 'has 200 status code if logged in' do
-  response.should respond_with 200
+  expect(response).to respond_with 200
 end
 it 'has 401 status code if not logged in' do
-  response.should respond_with 401
+  expect(response).to respond_with 401
 end
 </code></pre>
 </div>
@@ -173,9 +172,7 @@ end
 <a href="https://github.com/andreareginato/betterspecs/issues/3">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | use contexts" data-url="http://betterspecs.org/#contexts" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#contexts" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | Contexts 사용하기", url: "http://betterspecs.org/#contexts" %>
 
 </article>
 
@@ -230,9 +227,7 @@ If you run this test typing <code>rspec filename</code> you will obtain a readab
 <a href="https://github.com/andreareginato/betterspecs/issues/4">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | keep your description short" href="https://twitter.com/share" data-url="http://betterspecs.org/#short" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#contexts" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | 설명을 짧게 유지하기", url: "http://betterspecs.org/#short" %>
 
 </article>
 
@@ -283,8 +278,8 @@ it { should assign_to(:resource) }
 
 <div>
 <pre><code class="ruby">it 'creates a resource' do
-  response.should respond_with_content_type(:json)
-  response.should assign_to(:resource)
+  expect(response).to respond_with_content_type(:json)
+  expect(response).to assign_to(:resource)
 end
 </code></pre>
 </div>
@@ -293,9 +288,7 @@ end
 <a href="https://github.com/andreareginato/betterspecs/issues/5">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | single expectation test" href="https://twitter.com/share" data-url="http://betterspecs.org/#single" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#single" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | 단일 조건 테스트", url: "http://betterspecs.org/#single" %>
 
 </article>
 
@@ -366,9 +359,59 @@ end
 <a href="https://github.com/andreareginato/betterspecs/issues/6">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | test all possible cases" href="https://twitter.com/share" data-url="http://betterspecs.org/#all" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#all" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | 모든 가능한 케이스를 테스트하기", url: "http://betterspecs.org/#all" %>
+
+</article>
+
+<article>
+
+<!-- <h1><a name="expect">Expect vs Should syntax</a></h1> -->
+<h1><a name="expect">Expect vs Should 문법</a></h1>
+
+<p>
+<!-- On new projects always use the <code>expect</code> syntax. -->
+새 프로젝트에서는 항상 <code>expect</code> 문법만 사용합니다.
+</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  response.should respond_with_content_type(:json)
+end</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  expect(response).to respond_with_content_type(:json)
+end</code></pre>
+</div>
+
+<!-- <p>Configure the Rspec to only accept the new syntax on new projects, to avoid have the 2 syntax all over the place.</p> -->
+<p>Rspec을 새로운 문법만 허용하도록 설정할수있습니다. 모든 코드에서 2의 문법을 사용 못하도록 말이죠.</p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># spec_helper.rb
+RSpec.configure do |config|
+  # ...
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+end</code></pre>
+</div>
+
+<!-- <p>More about the new Rspec expectation syntax can be found <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">here</a> and <a href="http://myronmars.to/n/dev-blog/2013/07/the-plan-for-rspec-3#what_about_the_old_expectationmock_syntax">here</a>.</p> -->
+<p>새Rspec expectation 문법에 대한 정보가 더필요하시면 <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">여기</a> 와 <a href="http://myronmars.to/n/dev-blog/2013/07/the-plan-for-rspec-3#what_about_the_old_expectationmock_syntax">여기</a>를 보세요.</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/83">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | Expect vs Should 문법", url: "http://betterspecs.org/#expect" %>
 
 </article>
 
@@ -388,8 +431,8 @@ If you have several tests related to the same subject use
 <p class="wrong">bad</p>
 
 <div>
-<pre><code class="ruby">it { assigns('message').should match /it was born in Belville/ }
-it { assigns('message').creator.should match /Topolino/ }
+<pre><code class="ruby">it { expect(assigns('message')).to match /it was born in Belville/ }
+it { expect(assigns('message').creator).to match /Topolino/ }
 </code></pre>
 </div>
 
@@ -414,7 +457,7 @@ RSpec은 명시적인 subject도 지원합니다.
 <div>
 <pre><code class="ruby">subject(:hero) { Hero.first }
 it "carries a sword" do
-  hero.equipment.should include "sword"
+  expect(hero.equipment).to include "sword"
 end
 </code></pre>
 </div>
@@ -430,9 +473,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 <a href="https://github.com/andreareginato/betterspecs/issues/7">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | use subject" href="https://twitter.com/share" data-url="http://betterspecs.org/#subject" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#subject" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | Subject 사용하기", url: "http://betterspecs.org/#subject" %>
 
 </article>
 
@@ -460,7 +501,7 @@ finished. A really good and deep description of what <code>let</code> can be fou
   before { @type     = Type.find @resource.type_id }
 
   it 'sets the type_id field' do
-    @resource.type_id.should == @type.id
+    expect(@resource.type_id).to == @type.id
   end
 end
 </code></pre>
@@ -474,7 +515,7 @@ end
   let(:type)     { Type.find resource.type_id }
 
   it 'sets the type_id field' do
-    resource.type_id.should == type.id
+    expect(resource.type_id).to == type.id
   end
 end
 </code></pre>
@@ -546,9 +587,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 <a href="https://github.com/andreareginato/betterspecs/issues/8">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | use let and let!" href="https://twitter.com/share" data-url="http://betterspecs.org/#let" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#let" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | let 과 let! 사용하기", url: "http://betterspecs.org/#let" %>
 
 </article>
 
@@ -589,9 +628,7 @@ mock은 스팩을 빠르게 하지만 사용하기 힘듭니다. 그래서 잘 �
 <a href="https://github.com/andreareginato/betterspecs/issues/9">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | mock or not to mock" href="https://twitter.com/share" data-url="http://betterspecs.org/#mock" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#mock" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | Mock을 하느냐 마느냐", url: "http://betterspecs.org/#mock" %>
 
 </article>
 
@@ -615,7 +652,7 @@ Also, if you think you need dozens of records, you are probably wrong.
 <pre><code class="ruby">describe "User"
   describe ".top" do
     before { FactoryGirl.create_list(:user, 3) }
-    it { User.top(2).should have(2).item }
+    it { expect(User.top(2)).to have(2).item }
   end
 end
 </code></pre>
@@ -625,9 +662,7 @@ end
 <a href="https://github.com/andreareginato/betterspecs/issues/10">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | create only tha data you need" href="https://twitter.com/share" data-url="http://betterspecs.org/#data" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#data" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | 필요한 데이터만 만들기", url: "http://betterspecs.org/#data" %>
 
 </article>
 
@@ -690,9 +725,7 @@ Learn more about <a href="https://github.com/thoughtbot/factory_girl">Factory Gi
 <a href="https://github.com/andreareginato/betterspecs/issues/11">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | use factories and not fixtures" href="https://twitter.com/share" data-url="http://betterspecs.org/#factories" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#factories" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | 픽스쳐대신 팩토리 사용하기", url: "http://betterspecs.org/#factories" %>
 
 </article>
 
@@ -711,7 +744,7 @@ Use readable matchers and double check available <a href="/">rspec matcher</a>.
 <p class="wrong">bad</p>
 
 <div>
-<pre><code class="ruby">lambda { model.save! }.should raise_error Mongoid::Errors::DocumentNotFound
+<pre><code class="ruby">lambda { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
 </code></pre>
 </div>
 
@@ -726,9 +759,7 @@ Use readable matchers and double check available <a href="/">rspec matcher</a>.
 <a href="https://github.com/andreareginato/betterspecs/issues/12">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | easy to read matcher #betterspecs" href="https://twitter.com/share" data-url="http://betterspecs.org/#matchers" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#matchers" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | 읽기 쉬운 matcher 사용하기", url: "http://betterspecs.org/#matchers" %>
 
 </article>
 
@@ -756,7 +787,7 @@ Use shared examples to DRY your test suite up.
 
     it 'shows all owned resources' do
       page.driver.get uri
-      page.status_code.should == 200
+      expect(page.status_code).to == 200
       contains_owned_resource resource
       does_not_contain_resource not_owned
     end
@@ -765,9 +796,9 @@ Use shared examples to DRY your test suite up.
   describe '?start=:uri' do
     it 'shows the next page' do
       page.driver.get uri, start: resource.uri
-      page.status_code.should == 200
+      expect(page.status_code).to == 200
       contains_resource resources.first
-      page.should_not have_content resource.id.to_s
+      expect(page).to_not have_content resource.id.to_s
     end
   end
 end
@@ -809,9 +840,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 <a href="https://github.com/andreareginato/betterspecs/issues/13">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | shared examples" href="https://twitter.com/share" data-url="http://betterspecs.org/#sharedexamples" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#sharedexamples" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | shared examples", url: "http://betterspecs.org/#sharedexamples" %>
 
 </article>
 
@@ -864,9 +893,7 @@ only the specs you need to test blazing fast without stopping your flow.
 <a href="https://github.com/andreareginato/betterspecs/issues/14">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | test what you see" href="https://twitter.com/share" data-url="http://betterspecs.org/#integration" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#integration" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | 보이는것을 테스트 하기", url: "http://betterspecs.org/#integration" %>
 
 </article>
 
@@ -890,7 +917,7 @@ syntax.
 
 <div>
 <pre><code class="ruby">it 'should not change timings' do
-  consumption.occur_at.should == valid.occur_at
+  expect(consumption.occur_at).to == valid.occur_at
 end
 </code></pre>
 </div>
@@ -899,7 +926,7 @@ end
 
 <div>
 <pre><code class="ruby">it 'does not change timings' do
-  consumption.occur_at.should == valid.occur_at
+  expect(consumption.occur_at).to == valid.occur_at
 end
 </code></pre>
 </div>
@@ -919,9 +946,7 @@ should를 사용하지 않도록 강제할때 사용할 수 있는 <a href="http
 <a href="https://github.com/andreareginato/betterspecs/issues/15">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | don't use should" href="https://twitter.com/share" data-url="http://betterspecs.org/#should" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#should" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | should를 쓰지 않기", url: "http://betterspecs.org/#should" %>
 
 </article>
 
@@ -1009,9 +1034,7 @@ Learn more about <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
 <a href="https://github.com/andreareginato/betterspecs/issues/16">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | automatic tests with guard" href="https://twitter.com/share" data-url="http://betterspecs.org/#guard" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#guard" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | guard로하는 테스트 자동화", url: "http://betterspecs.org/#guard" %>
 
 </article>
 
@@ -1048,11 +1071,34 @@ change and you will run the single tests really, really fast.</p> -->
 <!-- <p>
 The drawback of using Spork is that it aggressively monkey-patches your code and you
 could lose some hours trying to understand why a file is not reloaded. If you have some
-code examples using Zeus, Spin or any other solution
+code examples using Spin or any other solution
 <a href="https://github.com/andreareginato/betterspecs/issues/17">let us know</a>.</p> -->
 <p>
 Spork는 굉장히 많은 부분을 몽키 패치하기 때문에 쓰다보면 파일이 리로드 되지 않는 이유를 파악하기 위해 몇시간을 허비하는 일이 있습니다.
-만약에 Zeus나 Spin 이나 다른 솔루션의 예제가 있으시다면 <a href="https://github.com/andreareginato/betterspecs/issues/17">알려주세요</a>.
+만약에 Spin 이나 다른 솔루션의 예제가 있으시다면 <a href="https://github.com/andreareginato/betterspecs/issues/17">알려주세요</a>.
+</p>
+
+<!-- <p>
+Here you can find a <a href="https://gist.github.com/HuffMoody/5912373">Guardfile</a>
+configuration for using Zeus.  The spec_helper does not need to be modified, however,
+you will have to run `zeus start` in a console to start the zeus server before running
+your tests.
+</p> -->
+
+<p>
+Zeus를 사용하기 위한 <a href="https://gist.github.com/HuffMoody/5912373">Guardfile</a> 설정은 여기 있습니다.
+spec_helper는 수정하실 필요가 없지만, 테스트를 하시기 전에 콘솔에서 `zeus start`를 실행하셔야합니다.
+</p>
+
+<!-- <p>
+Although Zeus takes a less aggressive approach than Spork, one major drawback is the fairly
+strict usage requirements; Ruby 1.9.3+ (recommended using backported GC from Ruby 2.0)
+as well as an operating system that supports FSEvents or inotify is required.
+</p> -->
+
+<p>
+모든면에서 Zeus는Spork보다 덜 공격적인 방법을 사용합니다. 단점이라면 요구사항이 꽤 엄격한 편입니다.
+Ruby 1.9.3이상(backported GC를 쓸수 있는 루비 2.0 이상을 권장합니다) FSEvents 나 inotify를 사용할 수 있는 OS를 필요로 합니다.
 </p>
 
 <!-- <p>
@@ -1071,9 +1117,7 @@ dependencies that you need. Learn more reading the
 <a href="https://github.com/andreareginato/betterspecs/issues/17">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | faster tests with spork" href="https://twitter.com/share" data-url="http://betterspecs.org/#spork" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#spork" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | 레일즈를 미리 로드해두어 빠른 테스트하기", url: "http://betterspecs.org/#spork" %>
 
 </article>
 
@@ -1097,7 +1141,7 @@ rely on the real service but you should stub it with solutions like webmock.
   before    { stub_request(:get, uri).to_return(status: 401, body: fixture('401.json')) }
   it "gets a not authorized notification" do
     page.driver.get uri
-    page.should have_content 'Access denied'
+    expect(page).to have_content 'Access denied'
   end
 end
 </code></pre>
@@ -1120,9 +1164,7 @@ explaining how to mix them together.
 <a href="https://github.com/andreareginato/betterspecs/issues/18">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | mocking http requests" href="https://twitter.com/share" data-url="http://betterspecs.org/#http" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#http" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | HTTP 리퀘스트를 mock하기", url: "http://betterspecs.org/#http" %>
 
 </article>
 
@@ -1180,9 +1222,7 @@ Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafaili
 <a href="https://github.com/andreareginato/betterspecs/issues/19">이 가이드라인에 대해 토론하기 &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | useful formatter" href="https://twitter.com/share" data-url="http://betterspecs.org/#formatter" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#formatter" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | 유용한 formatter", url: "http://betterspecs.org/#formatter" %>
 
 </article>
 
@@ -1297,7 +1337,7 @@ under MIT License.
 
 <p>
 If you have found those tips useful to improve your daily job think about making a
-$9 donation. Any donations will be used to make this site a more compleate reference for better
+$9 donation. Any donations will be used to make this site a more complete reference for better
 testing in Ruby.
 </p>
 
