@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     adsf (1.1.1)
       rack (>= 1.0.0)
