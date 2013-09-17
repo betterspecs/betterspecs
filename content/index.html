@@ -779,7 +779,7 @@ syntax.
 
 <div>
 <pre><code class="ruby">it 'should not change timings' do
-  expect(consumption.occur_at).to == valid.occur_at
+  consumption.occur_at.should == valid.occur_at
 end
 </code></pre>
 </div>
