@@ -443,11 +443,11 @@ end
 
 <div>
 <pre><code class="ruby"># 这一段:
-let(:foo) { foo.new }
+let(:foo) { Foo.new }
 
 # 基本上和这一段完全等同
 def foo
-  @foo ||= foo.new
+  @foo ||= Foo.new
 end
 </code></pre>
 </div>
