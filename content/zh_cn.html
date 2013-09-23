@@ -425,7 +425,7 @@ end
   end
 
   it 'raises a not found error' do
-    expect { update }.to raise_error mongoid::errors::documentnotfound
+    expect { update }.to raise_error Mongoid::Errors::DocumentNotFound
   end
 end
 </code></pre>
@@ -595,14 +595,14 @@ end
 <p class="wrong">bad</p>
 
 <div>
-<pre><code class="ruby">lambda { model.save! }.should raise_error mongoid::errors::documentnotfound
+<pre><code class="ruby">lambda { model.save! }.should raise_error Mongoid::Errors::DocumentNotFound
 </code></pre>
 </div>
 
 <p class="correct">good</p>
 
 <div>
-<pre><code class="ruby">expect { model.save! }.to raise_error mongoid::errors::documentnotfound
+<pre><code class="ruby">expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
 </code></pre>
 </div>
 
