@@ -2,15 +2,15 @@
 title: 'better specs'
 ---
 <% content_for :menu do %>
-<li><a href="/">rspec入门指南</a></li>
+<li><a href="/">RSpec 入门指南</a></li>
 <li class="little">&raquo; <a href="#describe">如何来描述 (describe) 你的 method</a></li>
 <li class="little">&raquo; <a href="#contexts">使用 contexts</a></li>
-<li class="little">&raquo; <a href="#short">保持简洁的description</a></li>
+<li class="little">&raquo; <a href="#short">保持简洁的 description</a></li>
 <li class="little">&raquo; <a href="#single">唯一的测试条件</a></li>
 <li class="little">&raquo; <a href="#all">测试所有的可能</a></li>
 <li class="little">&raquo; <a href="#subject">善用 subject</a></li>
 <li class="little">&raquo; <a href="#let">使用 let 和 let!</a></li>
-<li class="little">&raquo; <a href="#mock">要不要mock</a></li>
+<li class="little">&raquo; <a href="#mock">要不要 mock</a></li>
 <li class="little">&raquo; <a href="#data">只创建你需要的数据</a></li>
 <li class="little">&raquo; <a href="#factories">取 factories，舍 fixtures</a></li>
 <li class="little">&raquo; <a href="#matchers">一目了然的 matcher</a></li>
@@ -62,15 +62,15 @@ title: 'better specs'
 <article>
 
 <p>
-<a href="https://www.relishapp.com/rspec/">rspec</a>是一个非常棒的工具。它在bdd流程的开发中被用来写高可读性的测试，引导并验证你开发的应用程序。
+<a href="https://www.relishapp.com/rspec/">RSpec</a>是一个非常棒的工具。它在 BDD 流程的开发中被用来写高可读性的测试，引导并验证你开发的应用程序。
 </p>
 
 <p>
-网上有很多资源告诉你rspec能“做什么”，但却很少有人讨论如何用它编写出高质量的测试用例。
+网上有很多资源告诉你 RSpec 能“做什么”，但却很少有人讨论如何用它编写出高质量的测试用例。
 </p>
 
 <p>
-better specs通过收集其他开发者经年累月积攒的绝大部分“最佳实践”来尝试着来填补这之间的鸿沟。
+Better Specs 通过收集其他开发者经年累月积攒的绝大部分“最佳实践”来尝试着来填补这之间的鸿沟。
 </p>
 
 </article>
@@ -80,7 +80,7 @@ better specs通过收集其他开发者经年累月积攒的绝大部分“最�
 <h1><a name="describe">如何来描述 (describe) 你的 method</a></h1>
 
 <p>
-首先要清楚你要描述的是什么类型的方法。用ruby文档的一个惯例举例，提到类方法时使用<code>.</code>(或者<code>::</code>)，提到实例方法的时候用<code>#</code>来描述。
+首先要清楚你要描述的是什么类型的方法。用 Ruby 文档的一个惯例举例，提到类方法时使用<code>.</code>(或者<code>::</code>)，提到实例方法的时候用<code>#</code>来描述。
 </p>
 
 <p class="wrong">bad</p>
@@ -100,7 +100,7 @@ describe '#admin?' do
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/2">探讨这条最佳实践&rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/2">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | how to describe your methods" data-url="http://betterspecs.org/#describe" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">tweet</a>
@@ -114,7 +114,7 @@ describe '#admin?' do
 <h1><a name="contexts">使用上下文环境 contexts</a></h1>
 
 <p>
-contex非常强大，它能让测试更清晰，有条理。在漫长的开发过程中，让你的测试一直保持高度的可读性。
+contexts 非常强大，它能让测试更清晰，有条理。在漫长的开发过程中，让你的测试一直保持高度的可读性。
 </p>
 
 <p class="wrong">bad</p>
@@ -142,11 +142,11 @@ end
 </div>
 
 <p>
-  在描述一个context时用“when”或者“with”作为开头
+  在描述一个 context 时用 “when” 或者 “with” 作为开头
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/3">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/3">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | use contexts" data-url="http://betterspecs.org/#contexts" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">tweet</a>
@@ -157,10 +157,10 @@ end
 
 <article>
 
-<h1><a name="short">保持简洁的description</a></h1>
+<h1><a name="short">保持简洁的 description</a></h1>
 
 <p>
-一个测试的描述永远也不应该超过40个字符。如果超过了，那就应该用context来分割。
+一个测试的描述永远也不应该超过 40 个字符。如果超过了，那就应该用 context 来分割。
 </p>
 
 <p class="wrong">bad</p>
@@ -180,8 +180,8 @@ end
 </div>
 
 <p>
-在这个例子中，我们用测试的期望 <code>it { should respond_with 422 }</code> 替换了描述中相关的status code。
-如果你用 <code>rspec filename</code> 执行这个测试，你依然能得到非常可读的测试报告。
+在这个例子中，我们用测试的期望 <code>it { should respond_with 422 }</code> 替换了描述中相关的 status code。
+如果你用 <code>RSpec filename</code> 执行这个测试，你依然能得到非常可读的测试报告。
 </p>
 
 <p class="base">formatted output</p>
@@ -193,7 +193,7 @@ end
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/4">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/4">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | keep your description short" href="https://twitter.com/share" data-url="http://betterspecs.org/#short" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">tweet</a>
@@ -217,7 +217,7 @@ end
 </p>
 
 <p>
-不过，在像那些涉及了数据库，外部webservice，或者从一个系统到另一个系统的测试中，你可能会
+不过，在像那些涉及了数据库，外部 Web Service，或者从一个系统到另一个系统的测试中，你可能会
 消耗大量的资源来不断的重复一些准备工作，就因为要进行不同的单一条件测试。在这些非常消耗时间的测试中，
 定义多个行为是可以接受的。
 </p>
@@ -242,7 +242,7 @@ end
 </code></pre>
 </div>
 
-<a href="https://github.com/andreareginato/betterspecs/issues/5">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/5">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | single expectation test" href="https://twitter.com/share" data-url="http://betterspecs.org/#single" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">tweet</a>
@@ -272,7 +272,7 @@ end</code></pre>
 </div>
 
 <p>
-对于这个例子来说，非常常见的错误就是只测试这个资源有没有被摧毁。但这个action至少还包括了两个边界情形：当这个资源
+对于这个例子来说，非常常见的错误就是只测试这个资源有没有被摧毁。但这个 action 至少还包括了两个边界情形：当这个资源
 找不到的时候或者这个资源没有权限被摧毁。记得这个通用的原则：考虑所有可能的输入并对他们都进行测试。
 </p>
 
@@ -306,7 +306,7 @@ end
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/6">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/6">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | test all possible cases" href="https://twitter.com/share" data-url="http://betterspecs.org/#all" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">tweet</a>
@@ -320,7 +320,7 @@ end
 <h1><a name="subject">善用 subject</a></h1>
 
 <p>
-如果你有好几个测试都是用了同一个subject，使用
+如果你有好几个测试都是用了同一个 subject，使用
 <code>subject{}</code> 来避免重复。
 </p>
 
@@ -341,7 +341,7 @@ it { should match /it was born in billville/ }
 </div>
 
 <p>
-rspec 也可以给 subject 命名。
+RSpec 也可以给 subject 命名。
 </p>
 
 <p class="correct">good</p>
@@ -355,11 +355,11 @@ end
 </div>
 
 <p>
-了解更多关于 <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/subject">rspec subject</a>.
+了解更多关于 <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/subject">RSpec Subject</a>.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/7">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/7">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | use subject" href="https://twitter.com/share" data-url="http://betterspecs.org/#subject" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">tweet</a>
@@ -377,7 +377,7 @@ end
 lazy load 的机制，只有在第一次用到的时候才会加载，然后就被缓存，直到测试结束。
 这里有一个讲的非常好非且有深度的描述什么
 是 <code>let</code>  的帖子
-<a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">stackoverflow answer</a>。
+<a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">Stackoverflow Answer</a>。
 
 
 </p>
@@ -411,7 +411,7 @@ end
 </div>
 
 <p>
-测试时用 <code>let</code> 初始化的行为会以lazy load的方式被加载。
+测试时用 <code>let</code> 初始化的行为会以 lazy load 的方式被加载。
 </p>
 
 <p class="correct">good</p>
@@ -432,7 +432,7 @@ end
 </div>
 
 <p>
-如果你想让这个变量在定义的时候就被初始化，使用 <code>let!</code> 。这是一个在测试数据库查询或者scope语句是非常有用的技巧。
+如果你想让这个变量在定义的时候就被初始化，使用 <code>let!</code> 。这是一个在测试数据库查询或者 scope 语句是非常有用的技巧。
 </p>
 
 <p>
@@ -453,11 +453,11 @@ end
 </div>
 
 <p>
-了解更多关于 <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/helper-methods/let-and-let">rspec let</a>.
+了解更多关于 <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/helper-methods/let-and-let">RSpec Let</a>.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/8">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/8">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | use let and let!" href="https://twitter.com/share" data-url="http://betterspecs.org/#let" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">tweet</a>
@@ -492,7 +492,7 @@ mock 能加快你们测试的速度，但它真的很难上手。你必须要对
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/9">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/9">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | mock or not to mock" href="https://twitter.com/share" data-url="http://betterspecs.org/#mock" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">tweet</a>
@@ -523,7 +523,7 @@ end
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/10">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/10">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | create only tha data you need" href="https://twitter.com/share" data-url="http://betterspecs.org/#data" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">tweet</a>
@@ -573,7 +573,7 @@ end
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/11">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/11">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | use factories and not fixtures" href="https://twitter.com/share" data-url="http://betterspecs.org/#factories" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">tweet</a>
@@ -588,7 +588,7 @@ end
 
 <p>
 使用易读的或是
-<a href="https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers">rspec 自带</a>
+<a href="https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers">RSpec 自带</a>
 的 matchers。
 </p>
 
@@ -607,7 +607,7 @@ end
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/12">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/12">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | easy to read matcher #betterspecs" href="https://twitter.com/share" data-url="http://betterspecs.org/#matchers" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">tweet</a>
@@ -676,11 +676,11 @@ end
 
 <p>
 了解更多关于
-<a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/example-groups/shared-examples">rspec 共用测试的例子</a>.
+<a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/example-groups/shared-examples">RSpec 共用测试的例子</a>.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/13">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/13">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | shared examples" href="https://twitter.com/share" data-url="http://betterspecs.org/#sharedexamples" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">tweet</a>
@@ -695,29 +695,29 @@ end
 
 <p>
 <strong>
-尽可能详尽的测试你的 model 和程序的行为（集成测试）。不要为 controller 去写那些复杂而又没用的测试。
+尽可能详尽的测试你的 Model 和程序的行为（集成测试）。不要为 Controller 去写那些复杂而又没用的测试。
 </strong>
 </p>
 
 <p>
-我一开始测试我的项目的时候，我测得就是 controller，现在我却步这么做了。
-现在我只用 rspec 和 capybara 来写一些集成测试。为什么？因为我真的觉得你应该
-测试那些你能看到的，而controller测试对于我来说是多余的。你最终会发现，你大部分的测试
-都是涉及到 model。集成测试能被轻松的整理到共用的测试来构建清晰而又可读的测试。
+我一开始测试我的项目的时候，我测得就是 Controller，现在我却步这么做了。
+现在我只用 RSpec 和 Capybara 来写一些集成测试。为什么？因为我真的觉得你应该
+测试那些你能看到的，而 Controller 测试对于我来说是多余的。你最终会发现，你大部分的测试
+都是涉及到 Model。集成测试能被轻松的整理到共用的测试来构建清晰而又可读的测试。
 </p>
 
 <p>
-这是一个在 ruby 社区中非常开放的争论，而且两边都是有理有据。支持测试 controller 的那一方
+这是一个在 Ruby 社区中非常开放的争论，而且两边都是有理有据。支持测试 Controller 的那一方
 会告诉你集成测试并不能覆盖所有的情况，而且很慢。
 </p>
 
 <p>
-但他们都错了。你可以很轻易的覆盖所有的情形，并且使用一些像 guard 这样的自动化测试工具来跑一个个单独的测试。
+但他们都错了。你可以很轻易的覆盖所有的情形，并且使用一些像 Guard 这样的自动化测试工具来跑一个个单独的测试。
 这样你就可以在不停止你的工作流程的情况下闪电般的只运行那些你正需要的测试。
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/14">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/14">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | test what you see" href="https://twitter.com/share" data-url="http://betterspecs.org/#integration" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">tweet</a>
@@ -758,11 +758,11 @@ end
 
 <p>
 用 <a href="https://github.com/should-not/should_not">the should_not</a> 和
-<a href="https://github.com/siyelo/should_clean">the should_clean</a> 这两个 gem 在 rspec 中贯彻这条实践并清除那些以 should 开头的测试。
+<a href="https://github.com/siyelo/should_clean">the should_clean</a> 这两个 Gem 在 RSpec 中贯彻这条实践并清除那些以 should 开头的测试。
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/15">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/15">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | don't use should" href="https://twitter.com/share" data-url="http://betterspecs.org/#should" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">tweet</a>
@@ -773,11 +773,11 @@ end
 
 <article>
 
-<h1><a name="guard">用 guard 进行自动化测试</a></h1>
+<h1><a name="guard">用 Guard 进行自动化测试</a></h1>
 
 <p>
 每次你修改了你的项目就要重新跑所有的测试用力真的是一种负担。这会消耗很多时间并且打断了你的工作。
-使用 guard 你可以自动化的运行那些和你正在修改的测试，model，controller 或者文件有关的测试。
+使用 Guard 你可以自动化的运行那些和你正在修改的测试，Model，Controller 或者文件有关的测试。
 </p>
 
 <p class="correct">good</p>
@@ -787,7 +787,7 @@ end
 </code></pre>
 </div>
 
-这是一个有些基本加载规则的 guardfile 的例子。
+这是一个有些基本加载规则的 Guardfile 的例子。
 
 <p class="correct">good</p>
 
@@ -797,28 +797,28 @@ end
   watch(%r{^spec/.+_spec\.rb$})
   # 执行与 lib 文件夹下有关联的文件被修改的测试
   watch(%r{^lib/(.+)\.rb$}) { |m| "spec/lib/#{m[1]}_spec.rb" }
-  # 执行与被修改 model 相关的测试
+  # 执行与被修改 Model 相关的测试
   watch(%r{^app/(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
-  # 执行与被修改的 view 相关的测试
+  # 执行与被修改的 View 相关的测试
   watch(%r{^app/(.*)(\.erb|\.haml)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
-  # 执行与被修改的 controller 相关的集成测试
+  # 执行与被修改的 Controller 相关的集成测试
   watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
-  # 当 application controller 被修改时执行所有的集成测试
+  # 当 application_controller 被修改时执行所有的集成测试
   watch('app/controllers/application_controller.rb') { "spec/requests" }
 end
 </code></pre>
 </div>
 
 <p>
-guard 虽然好用但是它还是无法满足你搜有的需求。有时候你的 tdd 工作流程需要一些能够测试你想要测试文件的快捷键来让它变得完美。
+Guard 虽然好用但是它还是无法满足你搜有的需求。有时候你的 TDD 工作流程需要一些能够测试你想要测试文件的快捷键来让它变得完美。
 而在你需要 push 代码的时候用 rake task 来跑完整的测试。这里有些
-<a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#l61-103">给vim用的快捷键配置</a>。
+<a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#l61-103">给 Vim 用的快捷键配置</a>。
 </p>
 
-<p>了解更多关于 <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.</p>
+<p>了解更多关于 <a href="https://github.com/guard/guard-rspec">Guard RSpec</a>.</p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/16">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/16">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | automatic tests with guard" href="https://twitter.com/share" data-url="http://betterspecs.org/#guard" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -837,7 +837,7 @@ guard 虽然好用但是它还是无法满足你搜有的需求。有时候你�
 <a href="https://github.com/burke/zeus">Zeus</a>，
 <a href="https://github.com/jstorimer/spin">Spin</a> 或者
 <a href="https://github.com/sporkrb/spork">Spork</a>这样的工具。
-这些工具会预载你所有的不常会更改的库，但是每次都会重载 controllers，models，views 和
+这些工具会预载你所有的不常会更改的库，但是每次都会重载 Controllers，Models，Views 和
 factories 这些你经常更改的文件。
 </p>
 
@@ -864,7 +864,7 @@ spec_helper 不用被修改。但你在跑任何测试之前，必须先在命�
 
 <p>
 虽然 Zeus 被没有采用像 Sport 那样激进的途径，但它主要的一个缺点是比较严格的使用要求：Ruby 1.9.3+
-（建议使用Ruby 2.0 中的 backported 垃圾回收机制）以及一个支持 FSEvents 或者 inotify 的操作系统。
+（建议使用 Ruby 2.0 中的 backported 垃圾回收机制）以及一个支持 FSEvents 或者 inotify 的操作系统。
 </p>
 
 <p>
@@ -874,7 +874,7 @@ spec_helper 不用被修改。但你在跑任何测试之前，必须先在命�
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/17">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/17">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | faster tests with spork" href="https://twitter.com/share" data-url="http://betterspecs.org/#spork" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -912,7 +912,7 @@ end
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/18">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/18">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | mocking http requests" href="https://twitter.com/share" data-url="http://betterspecs.org/#http" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -965,7 +965,7 @@ end
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/19">探讨这条最佳实践 &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/19">探讨这条最佳实践...</a>
 </p>
 
 <a href="https://twitter.com/share" data-text="betterspecs.org | useful formatter" href="https://twitter.com/share" data-url="http://betterspecs.org/#formatter" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
@@ -1054,12 +1054,12 @@ end
 <h1><a name="improving">帮助完善 Better Specs</a></h1>
 
 <p>
-这是一个开源的项目。如果有什么遗漏或者错误的地方，请在github创建一个
-<a class="see" href="https://github.com/andreareginato/betterspecs/issues">issue</a>
-来讨论这个话题。同时也请查看这些已有的 issues
+这是一个开源的项目。如果有什么遗漏或者错误的地方，请在 GitHub 创建一个
+<a class="see" href="https://github.com/andreareginato/betterspecs/issues">Issue</a>
+来讨论这个话题。同时也请查看这些已有的 Issues
 
 <ul>
-  <li><a href="https://github.com/andreareginato/betterspecs/issues/20">多语言</a> （请创建一个新的 issue 如果你想翻译这个指南）</li>
+  <li><a href="https://github.com/andreareginato/betterspecs/issues/20">多语言</a> （请创建一个新的 Issue 如果你想翻译这个指南）</li>
 </ul>
 
 </p>
@@ -1083,7 +1083,7 @@ end
 <h1><a name="help">帮助我们</a></h1>
 
 <p>
-如果你觉得这些小提示有用并且对你的工作有所帮助，请考虑进行一个9美元的捐助。
+如果你觉得这些小提示有用并且对你的工作有所帮助，请考虑进行一个 9 美元的捐助。
 所有的捐款都会被用来建设这个站点，让它在写更好的 Ruby 测试的过程中，成为更权威完整的参考。
 </p>
 
