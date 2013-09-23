@@ -516,7 +516,7 @@ mock 能加快你们测试的速度，但它真的很难上手。你必须要对
 <pre><code class="ruby">describe "user"
   describe ".top" do
     before { FactoryGirl.create_list(:user, 3) }
-    it { user.top(2).should have(2).item }
+    it { User.top(2).should have(2).item }
   end
 end
 </code></pre>
