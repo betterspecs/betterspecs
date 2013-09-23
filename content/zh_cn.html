@@ -62,7 +62,7 @@ title: 'better specs'
 <article>
 
 <p>
-<a href="https://www.relishapp.com/rspec/">RSpec</a>是一个非常棒的工具。它在 BDD 流程的开发中被用来写高可读性的测试，引导并验证你开发的应用程序。
+<a href="https://www.relishapp.com/rspec/">RSpec</a> 是一个非常棒的工具。它在 BDD 流程的开发中被用来写高可读性的测试，引导并验证你开发的应用程序。
 </p>
 
 <p>
@@ -386,7 +386,7 @@ lazy load 的机制，只有在第一次用到的时候才会加载，然后就�
 
 <div>
 <pre><code class="ruby">describe '#type_id' do
-  before { @resource = factorygirl.create :device }
+  before { @resource = FactoryGirl.create :device }
   before { @type     = type.find @resource.type_id }
 
   it 'sets the type_id field' do
@@ -400,7 +400,7 @@ end
 
 <div>
 <pre><code class="ruby">describe '#type_id' do
-  let(:resource) { factorygirl.create :device }
+  let(:resource) { FactoryGirl.create :device }
   let(:type)     { type.find resource.type_id }
 
   it 'sets the type_id field' do
@@ -515,7 +515,7 @@ mock 能加快你们测试的速度，但它真的很难上手。你必须要对
 <div>
 <pre><code class="ruby">describe "user"
   describe ".top" do
-    before { factorygirl.create_list(:user, 3) }
+    before { FactoryGirl.create_list(:user, 3) }
     it { user.top(2).should have(2).item }
   end
 end
@@ -557,7 +557,7 @@ end
 <p class="correct">good</p>
 
 <div>
-<pre><code class="ruby">user = factorygirl.create :user
+<pre><code class="ruby">user = FactoryGirl.create :user
 </code></pre>
 </div>
 
@@ -569,7 +569,7 @@ end
 </p>
 
 <p>
-更多关于<a href="https://github.com/thoughtbot/factory_girl">factory girl</a>.
+更多关于<a href="https://github.com/thoughtbot/factory_girl">FactoryGirl</a>.
 </p>
 
 <p>
@@ -628,11 +628,11 @@ end
 
 <div>
 <pre><code class="ruby">describe 'get /devices' do
-  let!(:resource) { factorygirl.create :device, created_from: user.id }
+  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
   let(:uri) { '/devices' }
 
   context 'when shows all resources' do
-    let!(:not_owned) { factorygirl.create factory }
+    let!(:not_owned) { FactoryGirl.create factory }
 
     it 'shows all owned resources' do
       page.driver.get uri
@@ -659,7 +659,7 @@ end
 <div>
 <pre><code class="ruby">describe 'get /devices' do
 
-  let!(:resource) { factorygirl.create :device, created_from: user.id }
+  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
   let(:uri)       { '/devices' }
 
   it_behaves_like 'a listable resource'
