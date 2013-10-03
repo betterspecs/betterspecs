@@ -8,6 +8,7 @@ title: 'Better Specs'
 <li class="little">&raquo; <a href="#short">Mantén la descripción corta</a></li>
 <li class="little">&raquo; <a href="#single">Prueba de expectativa única</a></li>
 <li class="little">&raquo; <a href="#all">Prueba todos los casos posibles</a></li>
+<li class="little">&raquo; <a href="#expect">Sintaxis Expect vs Should</a></li>
 <li class="little">&raquo; <a href="#subject">Usa subject</a></li>
 <li class="little">&raquo; <a href="#let">Usa let y let!</a></li>
 <li class="little">&raquo; <a href="#mock">Mock o no mock</a></li>
@@ -108,9 +109,7 @@ describe '#admin?' do
 <a href="https://github.com/andreareginato/betterspecs/issues/2">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | how to describe your methods" data-url="http://betterspecs.org/#describe" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#describe" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | how to describe your methods", url: "http://betterspecs.org/#describe" %>
 
 </article>
 
@@ -155,9 +154,7 @@ end
 <a href="https://github.com/andreareginato/betterspecs/issues/3">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | use contexts" data-url="http://betterspecs.org/#contexts" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#contexts" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | use contexts", url: "http://betterspecs.org/#contexts" %>
 
 </article>
 
@@ -204,9 +201,7 @@ Si se ejecuta esta prueba tecleando <code>rspec filename</code> se obtendrá una
 <a href="https://github.com/andreareginato/betterspecs/issues/4">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | keep your description short" href="https://twitter.com/share" data-url="http://betterspecs.org/#short" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#contexts" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | keep your description short", url: "http://betterspecs.org/#short" %>
 
 </article>
 
@@ -255,9 +250,7 @@ end
 <a href="https://github.com/andreareginato/betterspecs/issues/5">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | single expectation test" href="https://twitter.com/share" data-url="http://betterspecs.org/#single" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#single" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | single expectation test", url: "http://betterspecs.org/#single" %>
 
 </article>
 
@@ -321,9 +314,55 @@ end
 <a href="https://github.com/andreareginato/betterspecs/issues/6">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | test all possible cases" href="https://twitter.com/share" data-url="http://betterspecs.org/#all" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#all" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | test all possible cases", url: "http://betterspecs.org/#all" %>
+
+</article>
+
+<article>
+
+<h1><a name="expect">Sintaxis Expect vs Should</a></h1>
+
+<p>
+En nuevos proyectos usar la sintaxis <code>expect</code>.
+</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  response.should respond_with_content_type(:json)
+end</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  expect(response).to respond_with_content_type(:json)
+end</code></pre>
+</div>
+
+<p>Configura Rspec para que sólo acepte la nueva sintaxis en los proyectos nuevos, para evitar tener las 2 sintaxis mezcladas.</p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># spec_helper.rb
+RSpec.configure do |config|
+  # ...
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+end</code></pre>
+</div>
+
+<p>Más información sobre la nueva sintaxis de RSpec se puede encontrar <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">aquí</a> y <a href="http://myronmars.to/n/dev-blog/2013/07/the-plan-for-rspec-3#what_about_the_old_expectationmock_syntax">aquí</a>.</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/83">Discute este punto &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | Expect vs Should syntax", url: "http://betterspecs.org/#expect" %>
 
 </article>
 
@@ -374,9 +413,7 @@ Aprender más sobre <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/d
 <a href="https://github.com/andreareginato/betterspecs/issues/7">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | use subject" href="https://twitter.com/share" data-url="http://betterspecs.org/#subject" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#subject" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | use subject", url: "http://betterspecs.org/#subject" %>
 
 </article>
 
@@ -471,9 +508,7 @@ Aprender más sobre <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/d
 <a href="https://github.com/andreareginato/betterspecs/issues/8">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | use let and let!" href="https://twitter.com/share" data-url="http://betterspecs.org/#let" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#let" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | use let and let!", url: "http://betterspecs.org/#let" %>
 
 </article>
 
@@ -506,9 +541,7 @@ bien para usarlo bien. Leer más <a href="http://myronmars.to/n/dev-blog/2012/06
 <a href="https://github.com/andreareginato/betterspecs/issues/9">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | mock or not to mock" href="https://twitter.com/share" data-url="http://betterspecs.org/#mock" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#mock" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | mock or not to mock", url: "http://betterspecs.org/#mock" %>
 
 </article>
 
@@ -538,9 +571,7 @@ end
 <a href="https://github.com/andreareginato/betterspecs/issues/10">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | create only tha data you need" href="https://twitter.com/share" data-url="http://betterspecs.org/#data" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#data" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | create only tha data you need", url: "http://betterspecs.org/#data" %>
 
 </article>
 
@@ -589,9 +620,7 @@ Aprender más sobre <a href="https://github.com/thoughtbot/factory_girl">Factory
 <a href="https://github.com/andreareginato/betterspecs/issues/11">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | use factories and not fixtures" href="https://twitter.com/share" data-url="http://betterspecs.org/#factories" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#factories" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | use factories and not fixtures", url: "http://betterspecs.org/#factories" %>
 
 </article>
 
@@ -621,9 +650,7 @@ Usa matchers legibles y revisa los <a href="https://www.relishapp.com/rspec/rspe
 <a href="https://github.com/andreareginato/betterspecs/issues/12">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | easy to read matcher #betterspecs" href="https://twitter.com/share" data-url="http://betterspecs.org/#matchers" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#matchers" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | easy to read matcher", url: "http://betterspecs.org/#matchers" %>
 
 </article>
 
@@ -695,9 +722,7 @@ Aprender más sobre <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/d
 <a href="https://github.com/andreareginato/betterspecs/issues/13">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | shared examples" href="https://twitter.com/share" data-url="http://betterspecs.org/#sharedexamples" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#sharedexamples" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | shared examples", url: "http://betterspecs.org/#sharedexamples" %>
 
 </article>
 
@@ -735,9 +760,7 @@ sólo las especificaciones que necesites probar rápidamente sin parar tu flujo.
 <a href="https://github.com/andreareginato/betterspecs/issues/14">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | test what you see" href="https://twitter.com/share" data-url="http://betterspecs.org/#integration" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#integration" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | test what you see", url: "http://betterspecs.org/#integration" %>
 
 </article>
 
@@ -779,9 +802,7 @@ y <a href="https://github.com/siyelo/should_clean">la gema should_clean</a> para
 <a href="https://github.com/andreareginato/betterspecs/issues/15">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | don't use should" href="https://twitter.com/share" data-url="http://betterspecs.org/#should" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#should" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | don't use should", url: "http://betterspecs.org/#should" %>
 
 </article>
 
@@ -840,9 +861,7 @@ Aprender más sobre <a href="https://github.com/guard/guard-rspec">guard-rspec</
 <a href="https://github.com/andreareginato/betterspecs/issues/16">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | automatic tests with guard" href="https://twitter.com/share" data-url="http://betterspecs.org/#guard" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#guard" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | automatic tests with guard", url: "http://betterspecs.org/#guard" %>
 
 </article>
 
@@ -898,9 +917,7 @@ las dependencias que necesites. Aprende más leyendo la
 <a href="https://github.com/andreareginato/betterspecs/issues/17">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | faster tests with spork" href="https://twitter.com/share" data-url="http://betterspecs.org/#spork" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#spork" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | faster tests with spork", url: "http://betterspecs.org/#spork" %>
 
 </article>
 
@@ -937,9 +954,7 @@ explicando como combinarlos.
 <a href="https://github.com/andreareginato/betterspecs/issues/18">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | mocking http requests" href="https://twitter.com/share" data-url="http://betterspecs.org/#http" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#http" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | mocking http requests", url: "http://betterspecs.org/#http" %>
 
 </article>
 
@@ -990,9 +1005,7 @@ Aprender más sobre <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafa
 <a href="https://github.com/andreareginato/betterspecs/issues/19">Discute este punto &rarr;</a>
 </p>
 
-<a href="https://twitter.com/share" data-text="betterspecs.org | useful formatter" href="https://twitter.com/share" data-url="http://betterspecs.org/#formatter" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://betterspecs.org/#formatter" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+<%= render "partials/share", text: "betterspecs.org | useful formatter", url: "http://betterspecs.org/#formatter" %>
 
 </article>
 
