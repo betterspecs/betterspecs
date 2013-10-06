@@ -342,7 +342,7 @@ end</code></pre>
 end</code></pre>
 </div>
 
-<p>Configure the Rspec to only accept the new syntax on new projects, to avoid have the 2 syntax all over the place.</p>
+<p>Configure the Rspec to only accept the new syntax on new projects, to avoid having the 2 syntax all over the place.</p>
 
 <p class="correct">good</p>
 
@@ -355,7 +355,8 @@ RSpec.configure do |config|
   end
 end</code></pre>
 </div>
-
+<p>On old projects you can use the <a href="https://github.com/yujinakayama/transpec">transpec</a> to convert to the new syntax.</p>
+<p>On one line expectations or with implicit subject we still use the should syntax, since is no change here on new syntax, <a href="http://stackoverflow.com/a/12266147/2254521">more info here</a></p>
 <p>More about the new Rspec expectation syntax can be found <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">here</a> and <a href="http://myronmars.to/n/dev-blog/2013/07/the-plan-for-rspec-3#what_about_the_old_expectationmock_syntax">here</a>.</p>
 
 <p>
