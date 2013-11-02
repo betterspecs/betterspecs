@@ -856,7 +856,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 Do not add useless complexity testing controllers.</strong>
 </p> -->
 <p>
-<strong>モデルとアプリーを深く統合テストしましょう。
+<strong>モデルとアプリの振る舞いを深く統合テストしましょう。
 コントローラをテストする為にいらない複雑さを入れないようにしましょう。</strong>
 </p>
 
@@ -869,7 +869,7 @@ models and that integration tests can be easily grouped into shared examples,
 building a clear and readable test suite.
 </p> -->
 <p>
-個人的な話で、最小はコントローラをしていましたが、今はやらないです。
+最初、私はアプリをテストするときにコントローラをテストしていましたが、今はやりません。
 今はRSpecとCapybaraの統合テストしか作りません。なぜかと言うとほんとに目に見えるものをテストするべきだと信じているし、コントローラをテストするのは不要な段階だと思っているからです。そのうちテスト達はモデルと統合テストにされ、shared examplesに纏まって、きれいで読みやすいテストを作るようになります。
 </p>
 
@@ -879,7 +879,7 @@ supporting their idea. People supporting the need of testing controllers will te
 you that your integration tests don't cover all use cases and that they are slow.
 </p> -->
 <p>
-これは未だルビーコミュニティーで議論中の話しで、両方の側その考えを支える良い根拠が有ります。コントローラのテストを支持する側は統合テストは遅くてすべての機能をカバー出来ないと主張します。
+これは未だ Ruby コミュニティーで議論中の話で、両方の側その考えを支える良い根拠が有ります。コントローラのテストを支持する側は統合テストは遅くてすべての機能をカバー出来ないと主張します。
 </p>
 
 <!-- <p>
@@ -1067,7 +1067,7 @@ With this configuration you will reload the whole app if a preloaded file (like 
 change and you will run the single tests really, really fast.</p> -->
 <p>
 ここにSpork用の<a href="https://gist.github.com/3821012">spec helper</a>と
-<a href="https://gist.github.com/3821031">Guardfile</a>設定があります。この設定を使用すればプリロードされたファイル（initializerとか）の更新のみ全体アプリーをリロードして、単一テストをすごくすごく早く実行できます。
+<a href="https://gist.github.com/3821031">Guardfile</a>設定があります。この設定を使用すればプリロードされるファイル（initializerとか）が更新されたときのみアプリ全体をリロードして、単一テストをすごくすごく早く実行できます。
 </p>
 
 
@@ -1077,7 +1077,7 @@ could lose some hours trying to understand why a file is not reloaded. If you ha
 code examples using Spin or any other solution
 <a href="https://github.com/andreareginato/betterspecs/issues/17">let us know</a>.</p> -->
 <p>
-Sporkはモンキーパッチが多くて使ううちにリロードされない理由を把握する時間を無駄使いする場合がありえます。
+Sporkを使う際の欠点は、コードに積極的にモンキーパッチをあてているため、ファイルがリロードされない原因を理解するのに時間を無駄使いする場合があることです。
 もしSpinもしくは他の解決策があったら<a href="https://github.com/andreareginato/betterspecs/issues/17">教えてください。</a>.
 </p>
 
