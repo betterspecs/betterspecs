@@ -390,7 +390,7 @@ lazy load 的机制，只有在第一次用到的时候才会加载，然后就�
   before { @type     = type.find @resource.type_id }
 
   it 'sets the type_id field' do
-    @resource.type_id.should == @type.id
+    @resource.type_id.should equal(@type.id)
   end
 end
 </code></pre>
@@ -404,7 +404,7 @@ end
   let(:type)     { type.find resource.type_id }
 
   it 'sets the type_id field' do
-    resource.type_id.should == type.id
+    resource.type_id.should equal(type.id)
   end
 end
 </code></pre>
@@ -635,7 +635,7 @@ end
 
     it 'shows all owned resources' do
       page.driver.get uri
-      page.status_code.should == 200
+      page.status_code.should be(200)
       contains_owned_resource resource
       does_not_contain_resource not_owned
     end
@@ -644,7 +644,7 @@ end
   describe '?start=:uri' do
     it 'shows the next page' do
       page.driver.get uri, start: resource.uri
-      page.status_code.should == 200
+      page.status_code.should be(200)
       contains_resource resources.first
       page.should_not have_content resource.id.to_s
     end
@@ -750,7 +750,7 @@ end
 
 <div>
 <pre><code class="ruby">it 'does not change timings' do
-  expect(consumption.occur_at).to == valid.occur_at
+  expect(consumption.occur_at).to equal(valid.occur_at)
 end
 </code></pre>
 </div>
