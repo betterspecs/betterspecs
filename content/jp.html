@@ -502,7 +502,7 @@ finished. A really good and deep description of what <code>let</code> can be fou
   before { @type     = Type.find @resource.type_id }
 
   it 'sets the type_id field' do
-    expect(@resource.type_id).to == @type.id
+    expect(@resource.type_id).to equal(@type.id)
   end
 end
 </code></pre>
@@ -516,7 +516,7 @@ end
   let(:type)     { Type.find resource.type_id }
 
   it 'sets the type_id field' do
-    expect(resource.type_id).to == @type.id
+    expect(resource.type_id).to equal(type.id)
   end
 end
 </code></pre>
@@ -789,7 +789,7 @@ Use shared examples to DRY your test suite up.
 
     it 'shows all owned resources' do
       page.driver.get uri
-      expect(page.status_code).to == 200
+      expect(page.status_code).to be(200)
       contains_owned_resource resource
       does_not_contain_resource not_owned
     end
@@ -798,7 +798,7 @@ Use shared examples to DRY your test suite up.
   describe '?start=:uri' do
     it 'shows the next page' do
       page.driver.get uri, start: resource.uri
-      expect(page.status_code).to == 200
+      expect(page.status_code).to be(200)
       contains_resource resources.first
       expect(page).to_not have_content resource.id.to_s
     end
@@ -920,7 +920,7 @@ syntax.
 
 <div>
 <pre><code class="ruby">it 'should not change timings' do
-  expect(consumption.occur_at).to == valid.occur_at
+  consumption.occur_at.should == valid.occur_at
 end
 </code></pre>
 </div>
@@ -929,7 +929,7 @@ end
 
 <div>
 <pre><code class="ruby">it 'does not change timings' do
-  expect(consumption.occur_at).to == valid.occur_at
+  expect(consumption.occur_at).to equal(valid.occur_at)
 end
 </code></pre>
 </div>
