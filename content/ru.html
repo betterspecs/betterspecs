@@ -758,7 +758,7 @@ end
 
 <div>
 <pre><code class="ruby">it 'does not change timings' do
-  consumption.occur_at.should equal(valid.occur_at)
+  expect(consumption.occur_at).to equal(valid.occur_at)
 end
 </code></pre>
 </div>
