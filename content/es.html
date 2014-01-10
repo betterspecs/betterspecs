@@ -63,12 +63,12 @@ title: 'Better Specs'
 <article>
 
 <p>
-<a href="https://www.relishapp.com/rspec/">RSpec</a> es una gran herramienta en el desarrollo guiado por comportamiento (BDD) para el proceso de escribir especificaciones legibles
+<a href="https://www.relishapp.com/rspec/">RSpec</a> es una gran herramienta en el desarrollo guiado por comportamiento (BDD) en el proceso de escribir especificaciones legibles
 para humanos que dirijan y validen el desarrollo de la aplicación.
 </p>
 
 <p>
-En la web hay muchos recursos que dan un panorama completo de qué se puede hacer con RSpec.
+En la web hay muchos recursos que dan un panorama completo de lo qué se puede hacer con RSpec.
 Pero hay muy pocos recursos dedicados a cómo crear un correcto conjunto de pruebas con RSpec.
 <p>
 
@@ -84,7 +84,7 @@ desarrolladores aprenden con años de experiencia.
 <h1><a name="describe">Cómo describir tus métodos</a></h1>
 
 <p>
-Ser claro sobre qué método se está describiendo. Por ejemplo, usando la convención de la documentación de Ruby de
+Ser claro sobre qué método se está describiendo. Por ejemplo, utiliza la convención de la documentación de Ruby de
 <code>.</code> (o <code>::</code>) cuando se refiere a nombres de métodos de clase y <code>#</code> cuando se
 refiere a un nombre de método de instancia.
 </p>
@@ -115,7 +115,7 @@ describe '#admin?' do
 
 <article>
 
-<h1><a name="contexts">Usa contextos</a></h1>
+<h1><a name="contexts">Utiliza contextos</a></h1>
 
 <p>
 Los contextos son una gran forma de hacer que las pruebas sean claras y estén bien organizadas.
@@ -147,7 +147,7 @@ end
 </div>
 
 <p>
-  Al describir un contexto, iniciar su descripción con "cuando"(when) o "con"(with).
+  Al describir un contexto, comienza su descripción con "cuando"(when) o "con"(with).
 <p>
 
 <p>
@@ -164,7 +164,7 @@ end
 
 <p>
 Una descripción no debe ser mayor a 40 caracteres. Si esto pasa
-se debe partir usando un contexto.
+se deben partir usando un contexto.
 </p>
 
 <p class="wrong">Incorrecto</p>
@@ -216,8 +216,8 @@ legible.
 </p>
 
 <p>
-En espectativas (specs) unitarias aisladas, se desea que cada ejemplo especifique un (y sólo un) comportamiento. Múltiples
-expectativas en el mismo ejemplo son una señal de que se están especificando múltiples comportamientos.
+En expectativas (specs) unitarias aisladas, se desea que cada ejemplo especifique un (y sólo un) comportamiento. Múltiples
+expectativas en el mismo ejemplo son una señal de que se podrian estar especificando múltiples comportamientos.
 </p>
 
 <p>
@@ -323,10 +323,10 @@ end
 <h1><a name="expect">Sintaxis Expect vs Should</a></h1>
 
 <p>
-En nuevos proyectos usar la sintaxis <code>expect</code>.
+En proyectos nuevos usar la sintaxis <code>expect</code>.
 </p>
 
-<p class="wrong">bad</p>
+<p class="wrong">incorrecto</p>
 
 <div>
 <pre><code class="ruby">it 'creates a resource' do
@@ -334,7 +334,7 @@ En nuevos proyectos usar la sintaxis <code>expect</code>.
 end</code></pre>
 </div>
 
-<p class="correct">good</p>
+<p class="correct">correcto</p>
 
 <div>
 <pre><code class="ruby">it 'creates a resource' do
@@ -342,9 +342,9 @@ end</code></pre>
 end</code></pre>
 </div>
 
-<p>Configura Rspec para que sólo acepte la nueva sintaxis en los proyectos nuevos, para evitar tener las 2 sintaxis mezcladas.</p>
+<p>Configura Rspec para que sólo acepte la nueva sintaxis en los proyectos nuevos, para evitar tener las 2 sintaxis por todas partes.</p>
 
-<p class="correct">good</p>
+<p class="correct">correcto</p>
 
 <div>
 <pre><code class="ruby"># spec_helper.rb
@@ -419,13 +419,13 @@ Aprender más sobre <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/d
 
 <article>
 
-<h1><a name="let">Usa let y let!</a></h1>
+<h1><a name="let">Utiliza let y let!</a></h1>
 
 <p>
 Cuando se tiene que asignar una variable, en lugar de usar un bloque <code>before</code> para crear
 una variable de instancia, se puede usar <code>let</code>. Con <code>let</code> la variable se carga
 sólo cuando es usada la primera vez en la prueba y se mantiene en caché hasta que la prueba específica termina.
-Una descripción muy buena y detallada de <code>let</code> se puede encontrar en este enlace
+Una descripción muy buena y detallada de  <code>let</code> puede ser, se puede encontrar en este enlace
 <a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">stackoverflow answer</a>.
 </p>
 
@@ -458,7 +458,7 @@ end
 </div>
 
 <p>
-Usa <code>let</code> para inicializar acciones que son "lazy loaded" para probar tus espectativas (specs).
+Usa <code>let</code> para inicializar acciones que son "lazy loaded" para probar tus expectativas (specs).
 </p>
 
 <p class="correct">Correcto</p>
@@ -479,7 +479,7 @@ end
 </div>
 
 <p>
-Usa <code>let!</code> si deseas definir la variable cuando el bloque es definido.
+Utiliza <code>let!</code> si deseas definir la variable cuando el bloque es definido.
 Esto puede ser útil para poblar tu base de datos para probar consultas o "scopes".
 </p>
 
@@ -533,7 +533,7 @@ end
 </div>
 
 <p>
-'Mocking' hace las especificaciones más rápidas pero son difíciles de usar. Pero es necesario entenderlo
+'Mocking' hace las especificaciones más rápidas pero son difíciles de utilizar. Pero es necesario entenderlo
 bien para usarlo bien. Leer más <a href="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">acerca de esto</a>.
 </p>
 
@@ -551,7 +551,7 @@ bien para usarlo bien. Leer más <a href="http://myronmars.to/n/dev-blog/2012/06
 
 <p>
 Si has trabajado en un proyecto de mediano tamaño (aunque también en algunos pequeños), las suites de pruebas
-pueden ser pesadas para ejecutarse. Para resolver este problema, es importante no cargar más datos de los necesarios.
+pueden ser pesadas de ejecutarse. Para resolver este problema, es importante no cargar más datos de los necesarios.
 Incluso si piensas que necesitas docenas de registros, probablemente estés equivocado.
 </p>
 
@@ -577,11 +577,11 @@ end
 
 <article>
 
-<h1><a name="factories">Usa factories y no fixtures</a></h1>
+<h1><a name="factories">Utiliza factories y no fixtures</a></h1>
 
 <p>
-Es un tema antiguo, pero es bueno recordarlo. No uses fixtures porque
-son difíciles de controlar, en su lugar usa factories. Usar factories reduce la verbosidad
+Este es un tema antiguo, pero es bueno recordarlo. No uses fixtures porque
+son difíciles de controlar, en su lugar utiliza factories. Utilizar factories reduce la verbosidad
 durante la creación de nuevos datos.
 </p>
 
@@ -606,7 +606,7 @@ durante la creación de nuevos datos.
 </div>
 
 <p>
-Nota importante: Cuando hablamos de pruebas unitarias, la mejor práctica sería no usar
+Una nota importante. Cuando hablamos de pruebas unitarias, la mejor práctica sería no utilizar ni
 fixtures o factories. Es mejor poner la mayoría de la lógica de negocio en bibliotecas que puedan ser probadas sin
 necesidad de configuraciones lentas y complejas ya sea con factories o fixtures. Leer más en
 <a href="http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl">este artículo</a>
@@ -660,7 +660,7 @@ Usa matchers legibles y revisa los <a href="https://www.relishapp.com/rspec/rspe
 
 <p>
 Crear pruebas es grandioso y brinda más seguridad en el día a día. Pero al final se verá código duplicado emergiendo de todas partes.
-Usa ejemplos compartidos para limpiar la suite de pruebas.
+Utiliza ejemplos compartidos para limpiar la suite de pruebas.
 </p>
 
 <p class="wrong">Incorrecto</p>
@@ -867,7 +867,7 @@ Aprender más sobre <a href="https://github.com/guard/guard-rspec">guard-rspec</
 
 <article>
 
-<h1><a name="spork">Pruebas más rápidas con Spork</a></h1>
+<h1><a name="spork">Pruebas más rápidas (precarga Rails)</a></h1>
 
 <p>
 Cuando se ejecuta una prueba en Rails se carga la aplicación Rails completa. Esto puede tomar un tiempo y
@@ -908,7 +908,7 @@ además es requerido un sistema operativo que soporte FSEvents o inotify.
 
 <p>
 Muchos críticos están moviéndose a estas soluciones. Estas bibliotecas son un parche a un problema
-que es mejor resolver con un mejor diseño, e intentando cargar sólo
+que es mejor resolver con un diseño mejor, e intentando cargar sólo
 las dependencias que necesites. Aprende más leyendo la
 <a href="https://github.com/andreareginato/betterspecs/issues/17">discusión sobre el tema</a>.
 </p>
@@ -964,7 +964,7 @@ explicando como combinarlos.
 
 <p>
 Usa un formateador que brinde información útil sobre la suite de pruebas.
-Personalmente encontré que fuubar es muy bueno. Para hacer que funcione agrega la gema y activa
+Personalmente encuentro a fuubar muy bueno. Para hacer que funcione agrega la gema y activa
 fuubar como el formateador por default en tu archivo Guardfile.
 </p>
 
@@ -1067,21 +1067,17 @@ Aprender más sobre <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafa
 <li><a href="https://github.com/bblimke/webmock">Documentación de Webmock</a></li>
 <li><a href="https://github.com/travisjeffery/timecop">Documentación de Timecop</a></li>
 <li><a href="http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/frames">Shoulda Matchers</a></li>
-<li><a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafailing-rspec-progress-bar-formatter/">Fuubar Release</a></li>
-</ol>
-
-</article>
-
+<li><a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafailing-rspec-progress-bar-formatter/">Fuubar Relea
 <article>
 
 <h1><a name="styleguide">Guía de Estilo</a></h1>
 
 <p>
-Hemos buscado las mejores directivas para escribir especificacion "buenas para leer". Un buen
+Hemos buscado las mejores pautas para escribir especificaciones "agradables de leer". Un buen
 punto de inicio es por supuesto la
 <a class="see" href="https://github.com/mongoid/mongoid/tree/master/spec/mongoid">suite de pruebas de Mongoid</a>.
-Usa especificaciones con un estilo limpio y fácil de leer, siguiendo la mayoría de las directivas
-descritas aquí.
+Usa especificaciones con un estilo limpio y fácil de leer, siguiendo la mayoría de las pautas
+aquí descritas aquí.
 </p>
 
 </article>
@@ -1110,7 +1106,7 @@ para discutir el tema. También puedes checar los siguientes issues:
 <p>
 El documento fue iniciado por <a href="http://twitter.com/andreareginato">Andrea Reginato</a>.
 Agradecimientos especiales a <a href="http://lelylan.com">Lelylan Team</a>. Este documento está licenciado
-bajo licencia MIT.
+bajo la licencia MIT.
 </p>
 
 </article>
