@@ -3,23 +3,23 @@ title: 'Better Specs(日本語)'
 ---
 <% content_for :menu do %>
 <li><a href="/jp/">rspec ガイドラインの紹介</a></li>
-<li class="little">&raquo; <a href="#describe">メソッドの説明する</a></li>
+<li class="little">&raquo; <a href="#describe">メソッドの説明をする</a></li>
 <li class="little">&raquo; <a href="#contexts">Contextsを使う</a></li>
 <li class="little">&raquo; <a href="#short">説明を短く</a></li>
 <li class="little">&raquo; <a href="#single">単一条件テスト</a></li>
-<li class="little">&raquo; <a href="#all">可能な限り全部テスト</a></li>
+<li class="little">&raquo; <a href="#all">可能な限り全部をテスト</a></li>
 <li class="little">&raquo; <a href="#expect">Expect対Should</a></li>
 <li class="little">&raquo; <a href="#subject">Subjectを使う</a></li>
 <li class="little">&raquo; <a href="#let">letとlet!を使う</a></li>
 <li class="little">&raquo; <a href="#mock">Mockを使うか使わないか</a></li>
-<li class="little">&raquo; <a href="#data">必要なテータだけ作る</a></li>
+<li class="little">&raquo; <a href="#data">必要なデータだけ作る</a></li>
 <li class="little">&raquo; <a href="#factories">fixtureの代わりにfactoryを使う</a></li>
 <li class="little">&raquo; <a href="#matchers">読みやすいmatcherを使う</a></li>
 <li class="little">&raquo; <a href="#sharedexamples">Shared examples</a></li>
 <li class="little">&raquo; <a href="#integration">見えるものをテスト</a></li>
 <li class="little">&raquo; <a href="#should">shouldを使わない</a></li>
 <li class="little">&raquo; <a href="#guard">guardを使ったテスト自動化</a></li>
-<li class="little">&raquo; <a href="#spork">Railsをロードしといてテストを早くする</a></li>
+<li class="little">&raquo; <a href="#spork">sporkを使ったテスト高速化</a></li>
 <li class="little">&raquo; <a href="#http">HTTP requestをmockする</a></li>
 <li class="little">&raquo; <a href="#formatter">有用なformatter</a></li>
 <li><a href="#books">Books</a></li>
@@ -88,7 +88,7 @@ Better Specsは大抵のガイドラインの書いてない部分を集めよ�
 <article>
 
 <!-- <h1><a name="describe">How to describe your methods</a></h1> -->
-<h1><a name="describe">メソッドの説明する</a></h1>
+<h1><a name="describe">メソッドの説明をする</a></h1>
 
 <!-- <p>
 Be clear about what method you are describing. For instance, use the Ruby documentation convention of
@@ -242,8 +242,8 @@ This helps you on finding possible errors, going directly to the failing test, a
 code readable.
 </p> -->
 <p>
-'単一条件'より'各テストは一つだけ確認すべき'でもっと知られています。
-ごれはエラーを探し安くし、失敗するテストをすぐ見つけるようにし、コードを読みやすくします。
+'単一条件'は'各テストは一つだけ確認すべき'という表現でより広く知られています。
+ごれはエラーを探しやすくし、失敗するテストをすぐ見つけるようにし、コードを読みやすくします。
 </p>
 
 <!-- <p>
@@ -252,7 +252,7 @@ expectations in the same example are a signal that you may be specifying multipl
 </p> -->
 
 <p>
-独立したユニットでは、一般的に各例はただ一つの行動だけテストするのが望ましいです。例の中で多数のテストが有るのは幾つかの行動に分離する必要がある信号です。
+独立したユニットでは、各例はただ一つの振る舞いだけテストするのが望ましいです。例の中で多数のテストが有るのは幾つかの振る舞いに分離する必要があることを示しています。
 </p>
 
 <!-- <p>
@@ -263,7 +263,7 @@ think it's fine to specify more than one isolated behavior.
 </p> -->
 
 <p>
-  とにかく、分離できないないテストで（例えば、DBとか外部システムとの連動とか、前後があるテストの場合）分離するだけでは同じセットアップを何回もやったテストが重くなる現象が現れます。こんな重いテストは分けなくても良いでしょう。
+  しかし、分離できないないテストで（例えばDBや外部システムとの連動、前後があるテストの場合）分離するだけでは同じセットアップを何回も行い、テストが重くなる現象が現れます。こういった重いテストは分けなくても良いでしょう。
 </p>
 
 <p class="correct">good (isolated)</p>
@@ -295,7 +295,7 @@ end
 <article>
 
 <!-- <h1><a name="all">Test all possible cases</a></h1> -->
-<h1><a name="all">可能な限り全部テスト</a></h1>
+<h1><a name="all">可能な限り全部をテスト</a></h1>
 
 <!-- <p>
 Testing is a good practice, but if you do not test the edge cases, it will not
@@ -324,7 +324,7 @@ owned. As a rule of thumb think of all the possible inputs and test them.
 </p> -->
 <p>
 普段よく見るエラーで、モデルがうまく削除できたかだけテストしています。
-が、最小限二つのエッジケースか存在します：モデルを探せなかった時と権限がない時。
+が、少なくとも二つのエッジケースが存在します：モデルを探せなかった時と権限がない時です。
 すべての一般的に可能な入力を考えてテストしましょう。
 </p>
 
@@ -551,8 +551,8 @@ Use <code>let!</code> if you want to define the variable when the block is defin
 This can be useful to populate your database to test queries or scopes.
 </p> -->
 <p>
-ブロックが定義した時に変数が定義て欲しい時は<code>let!</code>を使いましょう。
-ごれはクエリやスコープみたいなDBのテストて有用です。
+ブロックが定義した時に変数を定義したい時は<code>let!</code>を使いましょう。
+これはDBのクエリーやスコープのテストで有用です。
 </p>
 
 <!-- <p>
@@ -602,8 +602,8 @@ There's a debate going on. Do not (over)use mocks and test real behavior when po
 Testing real cases are useful when updating your application flow.
 </p> -->
 <p>
-まだ議論中のものです。出来るだけ（過度に）mockを使わずに実際行動をテストしましょう。
-実際ケースをテストするのはロジックを変更する時有用です。
+まだ議論中のものです。出来るだけ（過度に）mockを使わずに実際の振る舞いをテストしましょう。
+実際のケースをテストするのはロジックを変更する際に有用です。
 </p>
 
 <p class="correct">good</p>
@@ -637,7 +637,7 @@ mockはspecを早くしますが正しく使うのが難しいです。mockを�
 <article>
 
 <!-- <h1><a name="data">Create only the data you need</a></h1> -->
-<h1><a name="data">必要なテータだけ作る</a></h1>
+<h1><a name="data">必要なデータだけ作る</a></h1>
 
 <!-- <p>
 If you have ever worked in a medium size project (but also in small ones), test suites
@@ -645,7 +645,7 @@ can be heavy to run. To solve this problem, it's important not to load more data
 Also, if you think you need dozens of records, you are probably wrong.
 </p> -->
 <p>
-もし、中小型プロジェクトの経験しかない人のテストは重くなり勝ちです。必要以上のデータをロードしないのはこの問題を解くためには大事なことです。多数のデータが必要だと思われたら考えが間違っている可能性があります。
+中小規模のプロジェクトの経験しかないと、テストスイートは重くなりがちです。必要以上のデータをロードしないようにしましょう。多数のデータが必要だと考えるならば、何かが間違っている可能性があります。
 </p>
 
 <p class="correct">good</p>
@@ -774,7 +774,7 @@ Making tests is great and you get more confident day after day. But in the end y
 Use shared examples to DRY your test suite up.
 </p> -->
 <p>
-テストを作るのは素晴らしいです。毎日少しつづ自身感を持たせます。が、結局色んな所にコードの重複が発生します。shared exampleを使ってテストをDRYしましょう。
+テストを作るのは素晴らしいです。毎日少しづつ自信がつきます。が、結局色んな所にコードの重複が発生します。shared exampleを使ってテストをDRYしましょう。
 </p>
 
 <p class="wrong">bad</p>
@@ -828,7 +828,7 @@ In our experience, shared examples are used mainly for controllers. Since models
 different from each other, they (usually) do not share much logic.
 </p> -->
 <p>
-経験によると、shared exampleは対体コントローラで使われます。モデルはお互いかなり違くて、（普通は）多い部分を共有しません。
+経験によると、shared exampleは対体コントローラで使われます。モデルはお互いかなり異なるため、（普通は）多くのロジックを共有しません。
 </p>
 
 <!-- <p>
@@ -856,7 +856,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 Do not add useless complexity testing controllers.</strong>
 </p> -->
 <p>
-<strong>モデルとアプリの振る舞いを深く統合テストしましょう。
+<strong>モデルとアプリの振る舞いを深くテストしましょう（結合テスト）。
 コントローラをテストする為にいらない複雑さを入れないようにしましょう。</strong>
 </p>
 
@@ -869,7 +869,7 @@ models and that integration tests can be easily grouped into shared examples,
 building a clear and readable test suite.
 </p> -->
 <p>
-私は自分のアプリケーションをテストする時、最初はコントローラをテストしていましたが、今はやらないです。
+私は自分のアプリケーションをテストする時、最初はコントローラをテストしていましたが、今は行いません。
 今はRSpecとCapybaraの統合テストしか作りません。なぜかと言うとほんとに目に見えるものをテストするべきだと信じているし、コントローラをテストするのは不要な段階だと思っているからです。そのうちテスト達はモデルと統合テストにされ、shared examplesに纏まって、きれいで読みやすいテストを作るようになります。
 </p>
 
@@ -940,7 +940,7 @@ and <a href="https://github.com/siyelo/should_clean">the should_clean</a> gem fo
 
 <p>
 shouldを使わないように制限できる<a href="https://github.com/should-not/should_not">should_not</a>をご覧ください。
-そして既に作成されたrspecから"should."で始まる例文を消してくれる<a href="https://github.com/siyelo/should_clean">the should_clean</a>もご覧ください
+そして既に作成されたrspecから"should."で始まる例文を消してくれる<a href="https://github.com/siyelo/should_clean">the should_clean</a>もご覧ください。
 </p>
 
 
@@ -1022,7 +1022,7 @@ the vim keybinding.
 </p> -->
 
 <p>
-Guardは良いツールですが、求めるすべてを満足させません。環境によってはTDDで働きながらキー設定て自分が望むタイミングで実行するのが良い時もあります。そしてpushの前だけ全体テストをまわしましょう。<a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#L61-103">ここ</a>に参考になるvimの設定があります。
+Guardは良いツールですが、求めるすべてを満足させません。環境によってはTDDで働きながらキー設定で自分が望むタイミングで実行するのが良い時もあります。そしてpushの前だけ全体テストをまわしましょう。<a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#L61-103">ここ</a>に参考になるvimの設定があります。
 </p>
 
 <!-- <p>
@@ -1043,7 +1043,7 @@ Learn more about <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
 <article>
 
 <!-- <h1><a name="spork">Faster tests with spork</a></h1> -->
-<h1><a name="spork">Railsをロードしといてテストを早くする</a></h1>
+<h1><a name="spork">sporkを使ったテスト高速化</a></h1>
 
 <!-- <p>
 When running a test on Rails the whole Rails app is loaded. This can take time and
@@ -1054,10 +1054,10 @@ it can break your development flow. To solve this problem use solutions like
 Those solutions will preload all libraries you (usually) do not change and reload
 controllers, models, view, factories and all the files you change most often.</p> -->
 <p>
-Railsでテストを実行するには全体Railsのロードが必要です。これは時間がかかって仕事のじゃまになり得ます。
+Railsでテストを実行するには全体Railsのロードが必要です。これは時間がかかり仕事のじゃまになり得ます。
 <a href="https://github.com/burke/zeus">Zeus</a>、
 <a href="https://github.com/jstorimer/spin">Spin</a>、
-<a href="https://github.com/sporkrb/spork">Spork</a>などを利用すればこの問題は解決できます。Sporkは（普通）変更されないコントローラ、モデル、ビュー、 factoryと変更が頻繁なほぼすべてののコードをプリロードします。
+<a href="https://github.com/sporkrb/spork">Spork</a>などを利用すればこの問題は解決できます。Sporkは（普通）変更されないコントローラ、モデル、ビュー、 factoryと変更が頻繁なほぼすべてのコードをプリロードします。
 </p>
 
 <!-- <p>
@@ -1067,7 +1067,7 @@ With this configuration you will reload the whole app if a preloaded file (like 
 change and you will run the single tests really, really fast.</p> -->
 <p>
 ここにSpork用の<a href="https://gist.github.com/3821012">spec helper</a>と
-<a href="https://gist.github.com/3821031">Guardfile</a>設定があります。この設定を使用すればプリロードされるファイル（initializerとか）が更新されたときのみアプリ全体をリロードして、単一テストをすごくすごく早く実行できます。
+<a href="https://gist.github.com/3821031">Guardfile</a>設定があります。この設定を使用すればプリロードされるファイル（initializerとか）が更新されたときのみアプリ全体をリロードして、単一テストをとても早く実行できます。
 </p>
 
 
@@ -1077,7 +1077,7 @@ could lose some hours trying to understand why a file is not reloaded. If you ha
 code examples using Spin or any other solution
 <a href="https://github.com/andreareginato/betterspecs/issues/17">let us know</a>.</p> -->
 <p>
-Sporkを使う際の欠点は、コードに積極的にモンキーパッチをあてているため、ファイルがリロードされない原因を理解するのに時間を無駄使いする場合があることです。
+Sporkを使う際の欠点は、コードに積極的にモンキーパッチをあてているため、ファイルがリロードされない原因を理解するのに時間を無駄使いする可能性があることです。
 もしSpinもしくは他の解決策があったら<a href="https://github.com/andreareginato/betterspecs/issues/17">教えてください。</a>.
 </p>
 
@@ -1185,7 +1185,7 @@ I personally find fuubar really nice. To make it work add the gem and set
 fuubar as default formatter in your Guardfile.
 </p> -->
 <p>
-formatterを使うとテストに関する有用な情報を得られます。個人的にはfuubarがすごく良かったです。実行するにはgemを設置しGuardfileにfuubarを基本formatterとして設定する必要があります。
+formatterを使うとテストに関する有用な情報を得られます。個人的にはfuubarが大変良かったです。実行するにはgemを設置しGuardfileにfuubarを基本formatterとして設定する必要があります。
 </p>
 
 <p class="correct">good</p>
