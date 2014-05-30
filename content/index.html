@@ -569,7 +569,7 @@ Also, if you think you need dozens of records, you are probably wrong.
 <p class="correct">good</p>
 
 <div>
-<pre><code class="ruby">describe "User"
+<pre><code class="ruby">describe "User" do
   describe ".top" do
     before { FactoryGirl.create_list(:user, 3) }
     it { expect(User.top(2)).to have(2).item }
