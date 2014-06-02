@@ -357,6 +357,16 @@ end</code></pre>
 </div>
 <p>On old projects you can use the <a href="https://github.com/yujinakayama/transpec">transpec</a> to convert to the new syntax.</p>
 <p>On one line expectations or with implicit subject we still use the should syntax, since is no change here on new syntax, <a href="http://stackoverflow.com/a/12266147/2254521">more info here</a></p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">context 'when not valid' do
+  it { should respond_with 422 } #this is still good!
+end
+</code></pre>
+</div>
+
 <p>More about the new Rspec expectation syntax can be found <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">here</a> and <a href="http://myronmars.to/n/dev-blog/2013/07/the-plan-for-rspec-3#what_about_the_old_expectationmock_syntax">here</a>.</p>
 
 <p>
@@ -426,7 +436,7 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 When you have to assign a variable instead of using a <code>before</code> block to create
 an instance variable, use <code>let</code>. Using <code>let</code> the variable lazy loads
 only when it is used the first time in the test and get cached until that specific test is
-finished. A really good and deep description of what <code>let</code> can be found in this
+finished. A really good and deep description of what <code>let</code> does can be found in this
 <a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">stackoverflow answer</a>.
 </p>
 
