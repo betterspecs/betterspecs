@@ -161,10 +161,10 @@ end
 
 <div>
 <pre><code class="ruby">context 'when logged in' do
-  it { should respond_with 200 }
+  it { is_expected.to respond_with 200 }
 end
 context 'when logged out' do
-  it { should respond_with 401 }
+  it { is_expected.to respond_with 401 }
 end
 </code></pre>
 </div>
