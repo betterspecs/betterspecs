@@ -185,7 +185,7 @@ end
 
 <p>
 In the example we removed the description related to the status code,
-which has been replaced by the expectation <code>it { should respond_with 422 }</code>.
+which has been replaced by the expectation <code>it { is_expected_to respond_with 422 }</code>.
 If you run this test typing <code>rspec filename</code> you will obtain a readable output.
 </p>
 
@@ -230,8 +230,8 @@ think it's fine to specify more than one isolated behavior.
 <p class="correct">good (isolated)</p>
 
 <div>
-<pre><code class="ruby">it { should respond_with_content_type(:json) }
-it { should assign_to(:resource) }
+<pre><code class="ruby">it { is_expected_to respond_with_content_type(:json) }
+it { is_expected_to assign_to(:resource) }
 </code></pre>
 </div>
 
@@ -409,7 +409,7 @@ it { expect(assigns('message').creator).to match /Topolino/ }
 
 <div>
 <pre><code class="ruby">subject { assigns('message') }
-it { should match /it was born in Billville/ }
+it { is_expected_to match /it was born in Billville/ }
 </code></pre>
 </div>
 
@@ -549,7 +549,7 @@ Testing real cases are useful when updating your application flow.
 <pre><code class="ruby"># simulate a not found resource
 context "when not found" do
   before { Resource.stub(:where).with(created_from: params[:id]).and_return(false) }
-  it { should respond_with 404 }
+  it { is_expected_to respond_with 404 }
 end
 </code></pre>
 </div>
