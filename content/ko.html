@@ -432,7 +432,6 @@ If you have several tests related to the same subject use
 
 <div>
 <pre><code class="ruby">it { expect(assigns('message')).to match /it was born in Belville/ }
-it { expect(assigns('message').creator).to match /Topolino/ }
 </code></pre>
 </div>
 
@@ -441,7 +440,6 @@ it { expect(assigns('message').creator).to match /Topolino/ }
 <div>
 <pre><code class="ruby">subject { assigns('message') }
 it { should match /it was born in Billville/ }
-its(:creator) { should match /Topolino/ }
 </code></pre>
 </div>
 
