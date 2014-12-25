@@ -61,24 +61,14 @@ title: 'Better Specs(한국어)'
 
 <article>
 
-<!-- <p>
-<a href="https://www.relishapp.com/rspec/">RSpec</a> is a great tool in the behavior-driven development (BDD) process of writing human readable specifications that direct and validate
- the development of your application.</p> -->
-
 <p>
 <a href="https://www.relishapp.com/rspec/">RSpec</a>은 BDD프로세스에서 쓰는 훌륭한 툴입니다. (BDD 어플리케이션의 개발과정을 확인하는 사람이 읽을 수 있는 명세서를 적는 일을 말합니다.)
 </p>
 
-<!-- <p>
-On the web there are many resources that give complete overview of _what_ you can do with RSpec.
-But there are fewer resources devoted to how to create a great RSpec test suite.<p> -->
 <p>
 웹에서는 RSpec를 어떻게 사용하는지를 설명하고 _무엇을_ 할 수 있는 지 설명한 전체 오버뷰를 찾을 수 있습니다. 하지만 RSpec으로 좋은 테스트 스위트를 만드는 지를 설명한 글을 찾기란 쉽지 않습니다.
 </p>
 
-<!-- <p>
-Better Specs tries to fill this gap by collecting most of the "best practices" that other
-developers learn through years of experience.</p> -->
 <p>
 Better Specs 은 대부분의 가이드라인의 누락 된 부분을 모으고자 노력했습니다. - 이건 개발자들의 수년간의 경험에서 배운 방법이죠.
 </p>
@@ -87,14 +77,8 @@ Better Specs 은 대부분의 가이드라인의 누락 된 부분을 모으고�
 
 <article>
 
-<!-- <h1><a name="describe">How to describe your methods</a></h1> -->
 <h1><a name="describe">함수를 설명하는 방법</a></h1>
 
-<!-- <p>
-Be clear about what method you are describing. For instance, use the Ruby documentation convention of
-<code>.</code> (or <code>::</code>) when referring to a class method's name and <code>#</code> when
-referring to an instance method's name.
-</p> -->
 <p>
 어떤 함수를 설명하려는지 명확하게 하세요. 예를들어, 클래스 함수를 참조할 때는 <code>.</code>(아니면 <code>::</code>) 를 접두어로, 인스턴스 함수를 참조할 때는 <code>#</code>를 접두어로 사용하는 루비 문서 규칙을 사용하세요.
 </p>
@@ -125,13 +109,8 @@ describe '#admin?' do
 
 <article>
 
-<!-- <h1><a name="contexts">Use contexts</a></h1> -->
 <h1><a name="contexts">Contexts 사용하기</a></h1>
 
-<!-- <p>
-Contexts are a powerful method to make your tests clear and well organized.
-In the long term this practice will keep tests easy to read.
-</p> -->
 <p>
 Contexts는 테스트를 명확하고 잘 조직되게하는 강력한 방법입니다.
 장기적으로 이 방법은 테스트를 읽기 편하게 만듭니다.
@@ -161,9 +140,6 @@ end
 </code></pre>
 </div>
 
-<!-- <p>
-  When describing a context, start its description with "when" or "with".
-</p> -->
 <p>
   Contexts는 "when"이나 "with"로 설명을 시작하세요.
 </p>
@@ -178,13 +154,8 @@ end
 
 <article>
 
-<!-- <h1><a name="short">Keep your description short</a></h1> -->
 <h1><a name="short">설명을 짧게 유지하기</a></h1>
 
-<!-- <p>
-A spec description should never be longer than 40 characters. If this happens
-you should split it using a context.
-</p> -->
 <p>
 명세의 설명은 40문자를 넘으면 안됩니다. 40문자를 넘을때는 context를 사용해 쪼개야 합니다.
 </p>
@@ -200,18 +171,13 @@ you should split it using a context.
 
 <div>
 <pre><code class="ruby">context 'when not valid' do
-  it { should respond_with 422 }
+  it { is_expected.to respond_with 422 }
 end
 </code></pre>
 </div>
 
-<!-- <p>
-In the example we removed the description related to the status code,
-which has been replaced by the expectation <code>it { should respond_with 422 }</code>.
-If you run this test typing <code>rspec filename</code> you will obtain a readable output.
-</p> -->
 <p>
-예제에서 <code>it { should respond_with 422 }</code> 조건문으로 바꿈으로써 스테이더스 코드에 관한 설명을 제거했습니다.
+예제에서 <code>it { is_expected.to respond_with 422 }</code> 조건문으로 바꿈으로써 스테이더스 코드에 관한 설명을 제거했습니다.
 <code>rspec filename</code>를 쳐서 이 테스트를 실행해보면 읽을 수 있는 출력을 얻을 것입니다.
 </p>
 
@@ -233,34 +199,16 @@ If you run this test typing <code>rspec filename</code> you will obtain a readab
 
 <article>
 
-<!-- <h1><a name="single">Single expectation test</a></h1> -->
 <h1><a name="single">단일 조건 테스트</a></h1>
 
-<!-- <p>
-The 'one expectation' tip is more broadly expressed as 'each test should make only one assertion'.
-This helps you on finding possible errors, going directly to the failing test, and to make your
-code readable.
-</p> -->
 <p>
 '단일 조건'에 관한 팁은 '각 테스트는 한가지만 확인해야 한다.'로 더 널리 알려저 있습니다.
 이것은 에러를 찾을 때 도움이 되고, 실패하는 테스트를 바로 찾을수 있게 하고, 코드를 읽기 편하게 합니다.
 </p>
 
-<!-- <p>
-In isolated unit specs, you want each example to specify one (and only one) behavior. Multiple
-expectations in the same example are a signal that you may be specifying multiple behaviors.
-</p> -->
-
 <p>
 독립된 유닛 스팩에서, 일반적으로 각 예제는 단(!) 하나의 행동만 테스트 하길 바랄 것 입니다. 같은 예제 안에서 여러 예상치가 나온다면 여러 행동으로 나누어야 할것 같다는 신호입니다.
 </p>
-
-<!-- <p>
-Anyway, in tests that are not isolated (e.g. ones that integrate with a DB, an external webservice,
-or end-to-end-tests), you take a massive performance hit to do the same setup over and over
-again, just to set a different expectation in each test. In these sorts of slower tests, I
-think it's fine to specify more than one isolated behavior.
-</p> -->
 
 <p>
 어쨋든 분리되지 않은 테스트에서(예를 들어 디비나 외부 서비스와 연동하거나 끝에서 끝까지 테스트 하는 경우), 분리하기만하면 같은 셋업을 여러번 하게 되어 테스트가 무거워지는 현상이 나타납니다. 이런 종류의 무거운 테스트에선 굳이 나누지 않아도 괜찮을 것 같아요.
@@ -269,8 +217,8 @@ think it's fine to specify more than one isolated behavior.
 <p class="correct">good (isolated)</p>
 
 <div>
-<pre><code class="ruby">it { should respond_with_content_type(:json) }
-it { should assign_to(:resource) }
+<pre><code class="ruby">it { is_expected.to respond_with_content_type(:json) }
+it { is_expected.to assign_to(:resource) }
 </code></pre>
 </div>
 
@@ -294,13 +242,8 @@ end
 
 <article>
 
-<!-- <h1><a name="all">Test all possible cases</a></h1> -->
 <h1><a name="all">모든 가능한 케이스를 테스트하기</a></h1>
 
-<!-- <p>
-Testing is a good practice, but if you do not test the edge cases, it will not
-be useful. Test valid, edge and invalid case. For example, consider the following action.
-</p> -->
 <p>
 테스트는 하는게 좋습니다만, 모든 케이스를 테스트 하지 않으면, 유용하지 않게 됩니다. 유효한 경우와 유효하지 않은 경우를 모두 테스트 하세요. 예를들어 이런 액션이 있다고 해봅시다.
 </p>
@@ -317,11 +260,6 @@ def destroy
 end</code></pre>
 </div>
 
-<!-- <p>
-The error I usually see lies in testing only whether the resource has been removed.
-But there are at least two edge cases: when the resource is not found and when it's not
-owned. As a rule of thumb think of all the possible inputs and test them.
-</p> -->
 <p>
 흔히 보는 에러로 리소스가 잘 제거되었는지만 테스트하고 있습니다.
 하지만 최소한 두개의 경계 케이스가 존재합니다: 리소스를 찾지 못했을 때와 소유하지 않았을 때. 모든 일반적으로 가능한 입력을 생각해보고 테스트 해야합니다.
@@ -365,11 +303,9 @@ end
 
 <article>
 
-<!-- <h1><a name="expect">Expect vs Should syntax</a></h1> -->
 <h1><a name="expect">Expect vs Should 문법</a></h1>
 
 <p>
-<!-- On new projects always use the <code>expect</code> syntax. -->
 새 프로젝트에서는 항상 <code>expect</code> 문법만 사용합니다.
 </p>
 
@@ -389,7 +325,6 @@ end</code></pre>
 end</code></pre>
 </div>
 
-<!-- <p>Configure the Rspec to only accept the new syntax on new projects, to avoid have the 2 syntax all over the place.</p> -->
 <p>Rspec을 새로운 문법만 허용하도록 설정할수있습니다. 모든 코드에서 2의 문법을 사용 못하도록 말이죠.</p>
 
 <p class="correct">good</p>
@@ -404,7 +339,28 @@ RSpec.configure do |config|
 end</code></pre>
 </div>
 
-<!-- <p>More about the new Rspec expectation syntax can be found <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">here</a> and <a href="http://myronmars.to/n/dev-blog/2013/07/the-plan-for-rspec-3#what_about_the_old_expectationmock_syntax">here</a>.</p> -->
+<p>한 줄의 expectation이나 묵시적 subject를 사용할 경우 <code>is_expected.to</code>를 사용해야합니다.</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">context 'when not valid' do
+  it { should respond_with 422 }
+end
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">context 'when not valid' do
+  it { is_expected.to respond_with 422 }
+end
+</code></pre>
+</div>
+
+<p>오래된 프로젝트에선 <a href="https://github.com/yujinakayama/transpec">transpec</a> 을 사용해 새로운 문법으로 변환할 수 있습니다.</p>
+
 <p>새Rspec expectation 문법에 대한 정보가 더필요하시면 <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">여기</a> 와 <a href="http://myronmars.to/n/dev-blog/2013/07/the-plan-for-rspec-3#what_about_the_old_expectationmock_syntax">여기</a>를 보세요.</p>
 
 <p>
@@ -417,13 +373,8 @@ end</code></pre>
 
 <article>
 
-<!-- <h1><a name="subject">Use subject</a></h1> -->
 <h1><a name="subject">Subject 사용하기</a></h1>
 
-<!-- <p>
-If you have several tests related to the same subject use
-<code>subject{}</code> to DRY them up.
-</p> -->
 <p>
 만약 같은 subject에 대해 여러 테스트를 하고있다면, <code>subject{}</code> 를 이용해 반복을 제거(DRY) 합니다.
 </p>
@@ -440,14 +391,10 @@ it { expect(assigns('message').creator).to match /Topolino/ }
 
 <div>
 <pre><code class="ruby">subject { assigns('message') }
-it { should match /it was born in Billville/ }
-its(:creator) { should match /Topolino/ }
+it { is_expected.to match /it was born in Billville/ }
 </code></pre>
 </div>
 
-<!-- <p>
-RSpec has also the ability to use a named subject.
-</p> -->
 <p>
 RSpec은 명시적인 subject도 지원합니다.
 </p>
@@ -462,9 +409,6 @@ end
 </code></pre>
 </div>
 
-<!-- <p>
-Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/subject">rspec subject</a>.
-</p> -->
 <p>
 <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/subject">rspec subject</a>에 대해 좀 더 알아보기.
 </p>
@@ -479,15 +423,8 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 
 <article>
 
-<!-- <h1><a name="let">Use let and let!</a></h1> -->
 <h1><a name="let">let 과 let! 사용하기</a></h1>
 
-<!-- <p>
-When you have to assign a variable instead of using a <code>before</code> block to create
-an instance variable, use <code>let</code>. Using <code>let</code> the variable lazy loads
-only when it is used the first time in the test and get cached until that specific test is
-finished. A really good and deep description of what <code>let</code> can be found in this
-<a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">stackoverflow answer</a>.</p> -->
 <p>
 만약 <code>before</code> 인스턴스 변수를 만들지 않고 변수를 할당해야 한다면, <code>let</code>을 사용합시다. <code>let</code> 사용하면 변수를 테스트에서 처음 사용 될때만 lazy load하고 테스트 명세가 끝날때까지 캐슁할 수 있습니다.
 이 <a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">스택오버 플로우 글</a>에서 <code>let</code>에 대해  설명해 놓았네요.
@@ -521,9 +458,6 @@ end
 </code></pre>
 </div>
 
-<!-- <p>
-Use <code>let</code> to initialize actions that are lazy loaded to test your specs.
-</p> -->
 <p>
 액션을 초기화하기 위해 <code>let</code>을 사용하면 명세을 테스트할때 lazy load됩니다.
 </p>
@@ -545,18 +479,10 @@ end
 </code></pre>
 </div>
 
-<!-- <p>
-Use <code>let!</code> if you want to define the variable when the block is defined.
-This can be useful to populate your database to test queries or scopes.
-</p> -->
 <p>
 블록이 정의 될때 변수가 정의되길 원한다면<code>let!</code>을 사용하세요.
 이것은 쿼리나 스코프같은 데이터베이스 테스트를 할때 유용합니다.
 </p>
-
-<!-- <p>
-Here an example of what let actually is.
-</p> -->
 
 <p>
 let이 무엇인지에 대한 예제입니다.
@@ -576,10 +502,6 @@ end
 </div>
 
 <p>
-<!-- <p>
-Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/helper-methods/let-and-let">rspec let</a>.
-</p> -->
-<p>
 <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/helper-methods/let-and-let">rspec let</a>에 대해 더 알아보기.
 </p>
 
@@ -593,13 +515,8 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 
 <article>
 
-<!-- <h1><a name="mock">Mock or not to mock</a></h1> -->
 <h1><a name="mock">Mock을 하느냐 마느냐</a></h1>
 
-<!-- <p>
-There's a debate going on. Do not (over)use mocks and test real behavior when possible.
-Testing real cases are useful when updating your application flow.
-</p> -->
 <p>
 논쟁은 진행중입니다. 가능한한 (과도하게) mock을 사용하지 말고 실제 행동을 테스트해야 합니다.
 실제 케이스를 테스트 하는것은 흐름을 변경 할때 유용합니다.
@@ -611,15 +528,11 @@ Testing real cases are useful when updating your application flow.
 <pre><code class="ruby"># simulate a not found resource
 context "when not found" do
   before { allow(Resource).to receive(:where).with(created_from: params[:id]).and_return(false) }
-  it { should respond_with 404 }
+  it { is_expected.to respond_with 404 }
 end
 </code></pre>
 </div>
 
-<!-- <p>
-Mocking makes your specs faster but they are difficult to use. You need to understand them
-well to use them well. Read more <a="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">about</a>.
-</p> -->
 <p>
 mock은 스팩을 빠르게 하지만 사용하기 힘듭니다. 그래서 잘 사용하려면 mock을 잘 이해해야 합니다. <a href="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">이 글</a>을 읽어 보세요.
 </p>
@@ -634,14 +547,8 @@ mock은 스팩을 빠르게 하지만 사용하기 힘듭니다. 그래서 잘 �
 
 <article>
 
-<!-- <h1><a name="data">Create only the data you need</a></h1> -->
 <h1><a name="data">필요한 데이터만 만들기</a></h1>
 
-<!-- <p>
-If you have ever worked in a medium size project (but also in small ones), test suites
-can be heavy to run. To solve this problem, it's important not to load more data than needed.
-Also, if you think you need dozens of records, you are probably wrong.
-</p> -->
 <p>
 만약 중형(혹은 소형) 프로젝트에서 일한 경험밖에 없다면, 테스트 스위트는 무거워 질 수 있습니다. 이 문제를 해결하기 위해, 필요이상의 데이터를 로드하지 않는 것은 중요합니다. 또한 여러 데이터가 필요하다고 하면 아마도 생각이 틀렸을 가능성이 있습니다.
 </p>
@@ -649,7 +556,7 @@ Also, if you think you need dozens of records, you are probably wrong.
 <p class="correct">good</p>
 
 <div>
-<pre><code class="ruby">describe "User"
+<pre><code class="ruby">describe "User" do
   describe ".top" do
     before { FactoryGirl.create_list(:user, 3) }
     it { expect(User.top(2)).to have(2).item }
@@ -668,14 +575,8 @@ end
 
 <article>
 
-<!-- <h1><a name="factories">Use factories and not fixtures</a></h1> -->
 <h1><a name="factories">픽스쳐대신 팩토리 사용하기</a></h1>
 
-<!-- <p>
-This is an old topic, but it's still good to remember it. Do not use fixtures because they are
-difficult to control, use factories instead. Use them to reduce the verbosity
-on creating new data.
-</p> -->
 <p>
 이것은 오래된 이야기입니다만, 여전히 언급할 가치가 있습니다. 픽스쳐를 사용하지마세요. 왜냐하면 픽스쳐는 사용하기 어렵기 때문입니다. 대신 팩토리를 사용하세요. 팩토리를 사용하면 새로운 데이터를 생성할 때 코드를 줄일 수 있습니다.
 </p>
@@ -700,23 +601,12 @@ on creating new data.
 </code></pre>
 </div>
 
-<!--<p>
-One important note. When talking about unit tests the best practice would be to use neither
-fixtures or factories. Put as much of your domain logic in libraries that can be tested without
-needing complex, time consuming setup with either factories or fixtures. Read more in
-<a href="http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl">this article</a>
-</p>-->
-
 <p>
 주의! 베스트 프락티스에서 유닛테스트에 대해 이야기할때는 픽스쳐도 팩토리도 사용하지 않았습니다.
 복잡하게 팩토리나 픽스쳐 셋업을 하는데 시간낭비하지 않으면, 라이브러리에 로직을 추가하는 시간을 벌 수 있습니다.
 <a href="http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl">이 글</a>을 읽어보세요.
 </p>
 
-
-<!-- <p>
-Learn more about <a href="https://github.com/thoughtbot/factory_girl">Factory Girl</a>.
-</p> -->
 <p>
 <a href="https://github.com/thoughtbot/factory_girl">Factory Girl</a>에 대해 더 알아보기.
 </p>
@@ -731,12 +621,8 @@ Learn more about <a href="https://github.com/thoughtbot/factory_girl">Factory Gi
 
 <article>
 
-<!-- <h1><a name="matchers">Easy to read matcher</a></h1> -->
 <h1><a name="matchers">읽기 쉬운 matcher 사용하기</a></h1>
 
-<!-- <p>
-Use readable matchers and double check available <a href="/">rspec matcher</a>.
-</p> -->
 <p>
 읽기 쉬운 matcher를 사용하세요. <a href="https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers">rspec matcher</a>를 보세요. 두번 보세요.
 </p>
@@ -767,10 +653,6 @@ Use readable matchers and double check available <a href="/">rspec matcher</a>.
 
 <h1><a name="sharedexamples">Shared Examples</a></h1>
 
-<!-- <p>
-Making tests is great and you get more confident day after day. But in the end you will start to see code duplication coming up everywhere.
-Use shared examples to DRY your test suite up.
-</p> -->
 <p>
 테스트를 만드는것은 좋은 일이며 매일 조금씩 더 자신감을 갖게합니다. 그러나 결국 중복코드가 여기저기 발생하는 것을 보게 되는데요. shared example을 이용해서 테스트 스위트의 중복을 제거하세요.
 </p>
@@ -821,17 +703,10 @@ end
 </code></pre>
 </div>
 
-<!-- <p>
-In our experience, shared examples are used mainly for controllers. Since models are pretty
-different from each other, they (usually) do not share much logic.
-</p> -->
 <p>
 경험에 의하면, shared example은 주로 컨트롤러에 사용됩니다. 모델은 서로 꽤나 다르게 생겨서, (보통은) 많은 부분을 공유하지 않습니다.
 </p>
 
-<!-- <p>
-Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/example-groups/shared-examples">rspec shared examples</a>.
-</p> -->
 <p>
 <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/example-groups/shared-examples">rspec shared examples</a>에 대해 더 알아보기.
 </p>
@@ -846,45 +721,22 @@ Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 
 <article>
 
-<!-- <h1><a name="integration">Test what you see</a></h1> -->
 <h1><a name="integration">보이는것을 테스트 하기</a></h1>
 
-<!-- <p>
-<strong>Deeply test your models and your application behaviour (integration tests).
-Do not add useless complexity testing controllers.</strong>
-</p> -->
 <p>
 <strong>모델과 어플리케이션의 행동를 깊게 (통합) 테스트합니다.
 컨트롤러를 테스트 하느라 쓸데없는 복정성을 넣지 마세요.</strong>
 </p>
 
-<!-- <p>
-When I first started testing my apps I was testing controllers, now I don't.
-Now I only create integration tests using RSpec and Capybara. Why? Because I truly
-believe that you should test what you see and because testing controllers is an
-extra step you don't need. You'll find out that most of your tests go into the
-models and that integration tests can be easily grouped into shared examples,
-building a clear and readable test suite.
-</p> -->
 <p>
 내가 처음 어플을 테스트했을때는 컨트롤러를 테스트했지만, 지금은 하지 않습니다.
 지금 나는 RSpec과 Capybara를 사용한 통합 테스트만 만듭니다. 왜나구요? 왜냐면 진짜로 보이는 것을 테스트해야한다고 믿고 있고 컨트롤러를 테스트 하는것은 불필요한 단계라 생각하기 때문입니다. 하다보면 테스트들은 모델과 통합테스트로 들어가고, 그것들은 쉽게 shared examples로 묶어지고, 깨끗하고 읽기 편한 테스트 스위트를 만들게 될 것 입니다.
 </p>
 
-<!-- <p>
-This is an open debate in the Ruby community and both sides have good arguments
-supporting their idea. People supporting the need of testing controllers will tell
-you that your integration tests don't cover all use cases and that they are slow.
-</p> -->
 <p>
 이 사안은 루비 커뮤니티에서 아직 토론중이며 양측 다 주장을 보충해줄 좋은 근거들을 가지고 있습니다. 컨트롤러를 테스트 할 필요가 있다고 주장하는 측은 인테그레이션 테스트로 모든 기능을 커버할수없고 느리다고 주장합니다.
 </p>
 
-<!-- <p>
-Both are wrong. You can easily cover all use cases (why shouldn't you?) and you
-can run single file specs using automated tools like Guard. In this way you will run
-only the specs you need to test blazing fast without stopping your flow.
-</p> -->
 <p>
 둘 다 아닙니다.당신은 쉽게 모든 기능을 커버할 수 있으시고 (안 그러신가요?) Guard같은 자동화 툴을 이용해 한파일만 테스트 할 수 있습니다. 이렇게하면 흐름을 끊기지 않는 범위내에서 필요한 사양만 테스트할 수 있게 됩니다.
 </p>
@@ -899,15 +751,8 @@ only the specs you need to test blazing fast without stopping your flow.
 
 <article>
 
-<!-- <h1><a name="should">Don't use should</a></h1> -->
 <h1><a name="should">should를 쓰지 않기</a></h1>
 
-<!-- <p>
-Do not use should when describing your tests. Use the third person in the present tense.
-Even better start using the new
-<a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">expectation</a>
-syntax.
-</p> -->
 <p>
 테스트를 설명할때 should를 사용하지 마세요. 현제 시제의 3인칭 시점으로 작성합시다.
 새로나온 <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">expectation</a> 를 사용하시면 더욱 좋습니다.
@@ -931,11 +776,6 @@ end
 </code></pre>
 </div>
 
-<!-- <p>
-See <a href="https://github.com/should-not/should_not">the should_not gem</a> for a way to enforce this in RSpec
-and <a href="https://github.com/siyelo/should_clean">the should_clean</a> gem for a way to clean up existing RSpec examples that begin with "should."
-</p> -->
-
 <p>
 should를 사용하지 않도록 강제할때 사용할 수 있는 <a href="https://github.com/should-not/should_not">should_not</a>잼을 확인해보세요.
 그리고 이미 작성된 rspec에서 "should."로 시작되는 예문을 지워주는 <a href="https://github.com/siyelo/should_clean">the should_clean</a>잼도 확인 해보세요.
@@ -952,14 +792,8 @@ should를 사용하지 않도록 강제할때 사용할 수 있는 <a href="http
 
 <article>
 
-<!-- <h1><a name="guard">Automatic tests with guard</a></h1> -->
 <h1><a name="guard">guard로하는 테스트 자동화</a></h1>
 
-<!-- <p>
-Running all the test suite every time you change your app can be cumbersome. It takes a lot of
-time and it can break your flow. With Guard you can automate your test suite running only the
-tests related to the updated spec, model, controller or file you are working at.
-</p> -->
 <p>
 앱을 변경할때마다 테스트 스위트를 돌리는 일은 성가실수 있습니다. 그건 매우 시간이 오래걸리고 흐름을 끊을 수 있습니다. Guard를 사용하면 갱신된 사양, 모델, 컨트롤러, 파일에 대해서만 테스트를 수행하도록 테스트 스위트를 자동화 할 수 있습니다.
 </p>
@@ -971,28 +805,10 @@ tests related to the updated spec, model, controller or file you are working at.
 </code></pre>
 </div>
 
-<!-- Here you can see a sample Guardfile with some basic reloading rules. -->
 기본적인 리로딩 룰이 적혀있는 샘플 Guardfile 입니다.
 
 <p class="correct">good</p>
 
-<!-- <div>
-<pre><code class="ruby">guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
-  # run every updated spec file
-  watch(%r{^spec/.+_spec\.rb$})
-  # run the lib specs when a file in lib/ changes
-  watch(%r{^lib/(.+)\.rb$}) { |m| "spec/lib/#{m[1]}_spec.rb" }
-  # run the model specs related to the changed model
-  watch(%r{^app/(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
-  # run the view specs related to the changed view
-  watch(%r{^app/(.*)(\.erb|\.haml)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
-  # run the integration specs related to the changed controller
-  watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
-  # run all integration tests when application controller change
-  watch('app/controllers/application_controller.rb') { "spec/requests" }
-end
-</code></pre>
-</div> -->
 <div>
 <pre><code class="ruby">guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
   # 모든 갱신된 사양 파일에 대해서 실행
@@ -1011,21 +827,10 @@ end
 </code></pre>
 </div>
 
-<!-- <p>
-Guard is a fine tool but as usual it doesn't fit all of your needs. Sometimes your TDD workflow
-works best with a keybinding that makes it easy to run just the examples you want when you
-want to. Then, you can use a rake task to run the entire suite before pushing code.
-<a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#L61-103">Here</a>
-the vim keybinding.
-</p> -->
-
 <p>
 Guard는 좋은 툴이지만 보통 모든 요구사항을 충족하지 못합니다. TDD로 일하면서 단축키설정해서 원할때 실행하는게 가장 좋을때도 있습니다. 그리고 푸쉬하기 전에 rake로 전체 코드를 테스트 하는 거죠.<a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#L61-103">여기</a>에 vim의 단축키 설정이 있습니다.
 </p>
 
-<!-- <p>
-Learn more about <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
-</p> -->
 <p>
 <a href="https://github.com/guard/guard-rspec">guard-rspec</a>에 대해 더 알아보기.
 </p>
@@ -1040,73 +845,34 @@ Learn more about <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
 
 <article>
 
-<!-- <h1><a name="spork">Faster tests with spork</a></h1> -->
 <h1><a name="spork">레일즈를 미리 로드해두어 빠른 테스트하기</a></h1>
 
-<!-- <p>
-When running a test on Rails the whole Rails app is loaded. This can take time and
-it can break your development flow. To solve this problem use solutions like
-<a href="https://github.com/burke/zeus">Zeus</a>,
-<a href="https://github.com/jstorimer/spin">Spin</a> or
-<a href="https://github.com/sporkrb/spork">Spork</a>.
-Those solutions will preload all libraries you (usually) do not change and reload
-controllers, models, view, factories and all the files you change most often.</p> -->
 <p>
 레일즈에서 테스트를 실행할때는 전채 레일즈 앱을 로딩합니다. 이것은 시간이 걸리고 일의 흐름을 끊을 수 있습니다. 이 문제를 해결하기 위해선 <a href="https://github.com/burke/zeus">Zeus</a>나
 <a href="https://github.com/jstorimer/spin">Spin</a>나
 <a href="https://github.com/sporkrb/spork">Spork</a>같은 것을 사용할 수 있습니다. Spork는 (보통) 변경되지 않은 컨트롤러, 모델, 뷰, 팩토리와 자주 변경하는 파일 같은 모든 라이브러리를 미리 로드합니다.
 </p>
 
-<!-- <p>
-Here you can find a <a href="https://gist.github.com/3821012">spec helper</a> and a
-<a href="https://gist.github.com/3821031">Guardfile</a> configuration based on Spork.
-With this configuration you will reload the whole app if a preloaded file (like initializers)
-change and you will run the single tests really, really fast.</p> -->
 <p>
 여기에 Spork용 <a href="https://gist.github.com/3821012">spec helper</a> 와
 <a href="https://gist.github.com/3821031">Guardfile</a> 설정이 있습니다. 이 설정을 사용하면 미리 로드된 (initializers같은) 파일이 변경되면 전체 어플을 리로드 시키고, 단일 테스트를 매우 매우 빠르게 실행 할 수 있습니다.
 </p>
 
 
-<!-- <p>
-The drawback of using Spork is that it aggressively monkey-patches your code and you
-could lose some hours trying to understand why a file is not reloaded. If you have some
-code examples using Spin or any other solution
-<a href="https://github.com/andreareginato/betterspecs/issues/17">let us know</a>.</p> -->
 <p>
 Spork는 굉장히 많은 부분을 몽키 패치하기 때문에 쓰다보면 파일이 리로드 되지 않는 이유를 파악하기 위해 몇시간을 허비하는 일이 있습니다.
 만약에 Spin 이나 다른 솔루션의 예제가 있으시다면 <a href="https://github.com/andreareginato/betterspecs/issues/17">알려주세요</a>.
 </p>
-
-<!-- <p>
-Here you can find a <a href="https://gist.github.com/HuffMoody/5912373">Guardfile</a>
-configuration for using Zeus.  The spec_helper does not need to be modified, however,
-you will have to run `zeus start` in a console to start the zeus server before running
-your tests.
-</p> -->
 
 <p>
 Zeus를 사용하기 위한 <a href="https://gist.github.com/HuffMoody/5912373">Guardfile</a> 설정은 여기 있습니다.
 spec_helper는 수정하실 필요가 없지만, 테스트를 하시기 전에 콘솔에서 `zeus start`를 실행하셔야합니다.
 </p>
 
-<!-- <p>
-Although Zeus takes a less aggressive approach than Spork, one major drawback is the fairly
-strict usage requirements; Ruby 1.9.3+ (recommended using backported GC from Ruby 2.0)
-as well as an operating system that supports FSEvents or inotify is required.
-</p> -->
-
 <p>
 모든면에서 Zeus는Spork보다 덜 공격적인 방법을 사용합니다. 단점이라면 요구사항이 꽤 엄격한 편입니다.
 Ruby 1.9.3이상(backported GC를 쓸수 있는 루비 2.0 이상을 권장합니다) FSEvents 나 inotify를 사용할 수 있는 OS를 필요로 합니다.
 </p>
-
-<!-- <p>
-Many criticisms are moved to those solutions. Those libraries are a band aid on a problem
-that is better solved through better design, and being intentional about only loading the
-dependencies that you need. Learn more reading the
-<a href="https://github.com/andreareginato/betterspecs/issues/17">related discussion</a>.
-</p> -->
 
 <p>
 많은 사람들이 Spork에서 다른 솔루션으로 옮겼습니다. 이 솔루션들은 좋은 설계로 앞선 문제의 나은 해결책이 되고, 의도적으로 필요한 부분만 로딩하고있습니다.
@@ -1123,13 +889,8 @@ dependencies that you need. Learn more reading the
 
 <article>
 
-<!-- <h1><a name="http">Stubbing HTTP requests</a></h1> -->
 <h1><a name="http">HTTP 리퀘스트를 mock하기</a></h1>
 
-<!-- <p>
-Sometimes you need to access external services. In this cases you can't
-rely on the real service but you should stub it with solutions like webmock.
-</p> -->
 <p>
 가끔 외부서비스를 억세스할 필요할 때가 있습니다. 이런 경우 실제 서비스에 의존시키지 말고, webmock같은 솔루션을 이용해 stub해야 합니다.
 </p>
@@ -1147,12 +908,6 @@ end
 </code></pre>
 </div>
 
-<!-- <p>
-Learn more about <a href="https://github.com/bblimke/webmock">webmock</a> and
-<a href="https://github.com/vcr/vcr">VCR</a>. Here a
-<a href="http://marnen.github.com/webmock-presentation/webmock.html">nice presentation</a>
-explaining how to mix them together.
-</p> -->
 <p>
 <a href="https://github.com/bblimke/webmock">webmock</a> 과
 <a href="https://github.com/vcr/vcr">VCR</a>에 대해 더 알아보기. 둘을 어떻게 같이 쓰는 지 설명한
@@ -1170,14 +925,8 @@ explaining how to mix them together.
 
 <article>
 
-<!-- <h1><a name="formatter">Useful formatter</a></h1> -->
 <h1><a name="formatter">유용한 formatter</a></h1>
 
-<!-- <p>
-Use a formatter that can give you useful information about the test suite.
-I personally find fuubar really nice. To make it work add the gem and set
-fuubar as default formatter in your Guardfile.
-</p> -->
 <p>
 formatter를 사용하면 테스트 스위트에관한 유용한 정보를 얻을수있습니다. 개인적으로는 fuubar가 굉장히 좋았습니다. 실행하시 위해선 gem을 설치하고 Guardfile에 fuubar를 기본 formatter로 설정하면 됩니다.
 </p>
@@ -1194,16 +943,6 @@ group :development, :test do
 <p class="correct">good</p>
 
 <div>
-<pre><code class="ruby"># Guardfile
-guard 'rspec' do
-  # ...
-end
-</code></pre>
-</div>
-
-<p class="correct">good</p>
-
-<div>
 <pre><code class="ruby"># .rspec
 --drb
 --format Fuubar
@@ -1211,9 +950,6 @@ end
 </code></pre>
 </div>
 
-<!-- <p>
-Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafailing-rspec-progress-bar-formatter/">fuubar</a>.
-</p> -->
 <p>
 <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafailing-rspec-progress-bar-formatter/">fuubar</a>에 대해 더 알아보기.
 </p>
@@ -1324,32 +1060,17 @@ to discuss the topic. Also check the following issues:
 <h1><a name="credits">Credits</a></h1>
 
 <p>
-The document was started by <a href="http://twitter.com/andreareginato">Andrea Reginato</a>.
-A special thanks to the <a href="http://lelylan.com">Lelylan Team</a>. This document is licensed
-under MIT License.
+This project was created by <a href="http://twitter.com/andreareginato"></a> and released as
+open-source thanks to <a href="http://lelylan.com">Lelylan</a>, a new platform to monitor and
+control your devices through a simple, open and robust REST API.
 </p>
-
-</article>
-
-<article>
-
-<h1><a name="help">Help us</a></h1>
 
 <p>
-If you have found those tips useful to improve your daily job think about making a
-$9 donation. Any donations will be used to make this site a more complete reference for better
-testing in Ruby.
+If you like what <a href="http://twitter.com/andreareginato">I'm</a> doing offer me a coffe
+<script data-gittip-username="andreareginato"
+        data-gittip-widget="button"
+        src="//gttp.co/v1.js"></script>
 </p>
-
-<div style="margin-left: 200px;">
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-    <input type="hidden" name="cmd" value="_s-xclick">
-    <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
-    ">
-    <input type="image" src="https://dl.dropbox.com/u/7048149/donate-9" border="0" name="submit" alt="PayPal - Il metodo rapido, affidabile e innovativo per pagare e farsi pagare.">
-    <img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
-  </form>
-</div>
 
 </article>
 
