@@ -546,7 +546,10 @@ Testing real cases are useful when updating your application flow.
 <div>
 <pre><code class="ruby"># simulate a not found resource
 context "when not found" do
-  before { allow(Resource).to receive(:where).with(created_from: params[:id]).and_return(false) }
+  before do
+    allow(Resource).to receive(:where).with(created_from: params[:id])
+      .and_return(false)
+  end
   it { is_expected.to respond_with 404 }
 end
 </code></pre>

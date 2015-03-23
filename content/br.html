@@ -493,7 +493,10 @@ Saiba mais sobre <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs
 <div>
 <pre><code class="ruby"># simulate a not found resource
 context "when not found" do
-  before { allow(Resource).to receive(:where).with(created_from: params[:id]).and_return(false) }
+  before do
+    allow(Resource).to receive(:where).with(created_from: params[:id])
+      .and_return(false)
+  end
   it { should respond_with 404 }
 end
 </code></pre>
