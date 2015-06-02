@@ -1,5 +1,7 @@
 # betterspecs.org
 
+[![Join the chat at https://gitter.im/andreareginato/betterspecs](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/andreareginato/betterspecs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Source code for [betterspecs.org](http://betterspecs.org)
 
 ## Requirements
