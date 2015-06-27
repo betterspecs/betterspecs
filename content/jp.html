@@ -211,7 +211,7 @@ which has been replaced by the expectation <code>it { should respond_with 422 }<
 If you run this test typing <code>rspec filename</code> you will obtain a readable output.
 </p> -->
 <p>
-この例では<code>it { should respond_with 422 }</code>と書いてステイタスの説明を削除しました。
+この例では<code>it { should respond_with 422 }</code>と書いてステータスの説明を削除しました。
 <code>rspec filename</code>でテストを実行すると相変わらず読める出力を取得できます。
 </p>
 
@@ -252,7 +252,7 @@ expectations in the same example are a signal that you may be specifying multipl
 </p> -->
 
 <p>
-独立したユニットでは、各例はただ一つの振る舞いだけテストするのが望ましいです。例の中で多数のテストが有るのは幾つかの振る舞いに分離する必要があることを示しています。
+独立したユニットでは、各例はただ一つの振る舞いだけテストするのが望ましいです。例の中で多数のテストがあるのは幾つかの振る舞いに分離する必要があることを示しています。
 </p>
 
 <!-- <p>
@@ -302,7 +302,7 @@ Testing is a good practice, but if you do not test the edge cases, it will not
 be useful. Test valid, edge and invalid case. For example, consider the following action.
 </p> -->
 <p>
-テストはやった方がいいですが、全ケースをテストしないと、有用とはいえません。有効な場合と無効な場合を全部テストしましょう。例えばこんなアクションが有るとしましょう。
+テストはやった方がいいですが、全ケースをテストしないと、有用とはいえません。有効な場合と無効な場合を全部テストしましょう。例えばこんなアクションがあるとしましょう。
 </p>
 
 <p class="base">Destroy action</p>
@@ -324,7 +324,7 @@ owned. As a rule of thumb think of all the possible inputs and test them.
 </p> -->
 <p>
 普段よく見るエラーで、モデルがうまく削除できたかだけテストしています。
-が、少なくとも二つのエッジケースが存在します：モデルを探せなかった時と権限がない時です。
+が、少なくとも二つのエッジケースが存在します。モデルを探せなかった時と権限がない時です。
 すべての一般的に可能な入力を考えてテストしましょう。
 </p>
 
@@ -489,7 +489,7 @@ finished. A really good and deep description of what <code>let</code> can be fou
 <a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">stackoverflow answer</a>.</p> -->
 <p>
 変数に値を入れる必要がある時は<code>before</code>ブロックの代わりに<code>let</code>を使いましょう。 <code>let</code>を使えば変数が初めて使用された時だけlazy loadしてspecテストが終わるまでキャッシュとして使えます。
-この<a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">stackoverflowの答</a>に<code>let</code>に関しての詳しい説明が有ります。
+この<a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">stackoverflowの答</a>に<code>let</code>に関しての詳しい説明があります。
 </p>
 
 <p class="wrong">bad</p>
@@ -880,7 +880,7 @@ supporting their idea. People supporting the need of testing controllers will te
 you that your integration tests don't cover all use cases and that they are slow.
 </p> -->
 <p>
-これは未だ Ruby コミュニティーで議論中の話で、両方の側その考えを支える良い根拠が有ります。コントローラのテストを支持する側は統合テストは遅くてすべての機能をカバー出来ないと主張します。
+これは未だ Ruby コミュニティーで議論中の話で、両方の側その考えを支える良い根拠があります。コントローラのテストを支持する側は統合テストは遅くてすべての機能をカバー出来ないと主張します。
 </p>
 
 <!-- <p>
@@ -1055,7 +1055,7 @@ it can break your development flow. To solve this problem use solutions like
 Those solutions will preload all libraries you (usually) do not change and reload
 controllers, models, view, factories and all the files you change most often.</p> -->
 <p>
-Railsでテストを実行するには全体Railsのロードが必要です。これは時間がかかり仕事のじゃまになり得ます。
+Railsでテストを実行するにはRails全体のロードが必要です。これでは時間がかかり仕事の邪魔になります。
 <a href="https://github.com/burke/zeus">Zeus</a>、
 <a href="https://github.com/jstorimer/spin">Spin</a>、
 <a href="https://github.com/sporkrb/spork">Spork</a>などを利用すればこの問題は解決できます。Sporkは（普通）変更されないコントローラ、モデル、ビュー、 factoryと変更が頻繁なほぼすべてのコードをプリロードします。
@@ -1091,7 +1091,7 @@ your tests.
 </p> -->
 
 <p>
-Zeusを使うための<a href="https://gist.github.com/HuffMoody/5912373">Guardfile</a>設定ファイルはここに有ります。
+Zeusを使うための<a href="https://gist.github.com/HuffMoody/5912373">Guardfile</a>設定ファイルはここにあります。
 spec_helperを修正する必要はありませんが、テストを実行する前にコンソールで`zeus start`をする必要があります。
 </p>
 
@@ -1102,7 +1102,7 @@ as well as an operating system that supports FSEvents or inotify is required.
 </p> -->
 
 <p>
-全てに置いてZeusはSporkより比較的に安全な方法を使います。短所は使用要件がかなり厳しいことです。
+全てにおいてZeusはSporkより比較的に安全な方法を使います。短所は使用要件がかなり厳しいことです。
 Ruby 1.9.3以上(backported GCが使えるRuby 2.0以上を推奨) FSEventsもしくはinotifyが使えるOSを必要とします。
 </p>
 
@@ -1114,7 +1114,7 @@ dependencies that you need. Learn more reading the
 </p> -->
 
 <p>
-多くの人達がSporkから他の解決策に移しました。この解決策達はもっと良い設計でもっと良い答えが出せますし、意識的に必要なものだけロードするようにしています。
+多くの人達がSporkから他の解決策に移行しました。この解決策はもっと良い設計でもっと良い答えが出せますし、意識的に必要なものだけロードするようにしています。
 詳しいことは<a href="https://github.com/andreareginato/betterspecs/issues/17">関連議論</a>をご覧ください。
 </p>
 
@@ -1186,7 +1186,7 @@ I personally find fuubar really nice. To make it work add the gem and set
 fuubar as default formatter in your Guardfile.
 </p> -->
 <p>
-formatterを使うとテストに関する有用な情報を得られます。個人的にはfuubarが大変良かったです。実行するにはgemを設置しGuardfileにfuubarを基本formatterとして設定する必要があります。
+formatterを使うとテストに関する有用な情報を得られます。個人的にはfuubarが大変良かったです。実行するにはgemを設置しGuardfileにfuubarをデフォルトのformatterとして設定する必要があります。
 </p>
 
 <p class="correct">good</p>
