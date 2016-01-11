@@ -8,6 +8,7 @@ title: 'Better Specs (中文台灣)'
 <li class="little">&raquo; <a href="#short">保持簡潔的 description</a></li>
 <li class="little">&raquo; <a href="#single">測試單一條件</a></li>
 <li class="little">&raquo; <a href="#all">驗證所有可能的情況</a></li>
+<li class="little">&raquo; <a href="#expect">語法 expect 與 should</a></li>
 <li class="little">&raquo; <a href="#subject">善用 subject</a></li>
 <li class="little">&raquo; <a href="#let">善用 let 和 let!</a></li>
 <li class="little">&raquo; <a href="#mock">Mock 的時機</a></li>
@@ -258,7 +259,7 @@ code readable.
 </p> -->
 
 <p>
-「單一條件」意指一個測項應該只帶有一個檢查 (expection, assertion)。這樣做能幫助你直接前往失敗的測項尋找可能的問題，也讓程式碼比較好看。
+「單一條件（one expectation）」泛指一個測項應該只有一個檢查（assertion）。這樣做能幫助你直接前往失敗的測項尋找可能的問題，也讓程式碼比較好看。
 </p>
 
 <!-- <p>
@@ -381,6 +382,98 @@ end
 <a href="https://twitter.com/share" data-text="betterspecs.org | test all possible cases" href="https://twitter.com/share" data-url="http://betterspecs.org/#all" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 <div class="fb-like" data-href="http://betterspecs.org/#all" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="expect">語法 expect 與 should</a></h1>
+
+<!-- <p>
+On new projects always use the <code>expect</code> syntax.
+</p> -->
+
+<p>
+在新版專案中使用 <code>expect</code> 語法。
+</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  response.should respond_with_content_type(:json)
+end</code></pre>
+</div>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  response.should respond_with_content_type(:json)
+end</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  expect(response).to respond_with_content_type(:json)
+end</code></pre>
+</div>
+
+<!-- <p>Configure the Rspec to only accept the new syntax on new projects, to avoid having the 2 syntax all over the place.</p> -->
+
+<p>調整 Rspec 設定，只接受新版的語法，避免新舊語法同時出現。</p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># spec_helper.rb
+RSpec.configure do |config|
+  # ...
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+end</code></pre>
+</div>
+
+<!-- <p>On one line expectations or with implicit subject we should use <code>is_expected.to</code>.</p> -->
+
+<p>單行 expectation 或 implicit subject 可以使用 <code>is_expected.to</code>。</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">context 'when not valid' do
+  it { should respond_with 422  }
+end
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">context 'when not valid' do
+  it { is_expected.to respond_with 422  }
+end
+</code></pre>
+</div>
+
+<!-- <p>On old projects you can use the <a href="https://github.com/yujinakayama/transpec">transpec</a> to convert them to the new syntax.</p> -->
+
+<p>可以使用 <a href="https://github.com/yujinakayama/transpec">transpec</a> 將舊版語法轉換成新版語法。</p>
+
+<!--
+<p>More about the new Rspec expectation syntax can be found <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">here</a> and <a href="http://myronmars.to/n/dev-blog/2013/07/the-plan-for-rspec-3#what_about_the_old_expectationmock_syntax">here</a>.</p>
+-->
+
+<p>更多新版 Rspec expectation 語法請看<a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">這裡</a>和<a href="http://myronmars.to/n/dev-blog/2013/07/the-plan-for-rspec-3#what_about_the_old_expectationmock_syntax">這裡</a>。</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/83">進一步討論由此去 &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | test all possible cases" href="https://twitter.com/share" data-url="http://betterspecs.org/#expect" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#expect" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
 
 </article>
 
