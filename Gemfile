@@ -6,6 +6,7 @@ gem 'nanoc3'
 gem 'builder'
 gem 'adsf'
 gem 'foreman'
+gem 'eventmachine', github: 'eventmachine/eventmachine'
 
 # Thin to serve content from Heroku
 gem 'thin'

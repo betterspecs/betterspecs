@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/eventmachine/eventmachine.git
+  revision: cbd3773636272c11447a8f9a81605bdcd42fe400
+  specs:
+    eventmachine (1.0.8)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -6,7 +12,6 @@ GEM
     builder (3.0.0)
     cri (2.0.2)
     daemons (1.1.5)
-    eventmachine (0.12.10)
     foreman (0.57.0)
       thor (>= 0.13.6)
     mime-types (1.17.2)
@@ -29,6 +34,7 @@ PLATFORMS
 DEPENDENCIES
   adsf
   builder
+  eventmachine!
   foreman
   mime-types
   nanoc3
@@ -37,3 +43,6 @@ DEPENDENCIES
   rack-rewrite
   rake
   thin
+
+BUNDLED WITH
+   1.11.2
