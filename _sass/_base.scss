@@ -85,7 +85,7 @@ a:hover {
     position: relative;
     z-index: 100;
     display: block;
-    margin: 0 -8px 0 0;
+    margin: 0 2px 0 0;
     padding: 0 0 0.6em 0;
     text-indent: 3px;
     letter-spacing: 3px;
@@ -224,6 +224,16 @@ a:hover {
     font-size: 1em;
     letter-spacing: 2px;
     text-transform: uppercase;
+    margin-bottom: 0;
+
+    a { color: #5c5edc; }
+}
+
+.dummy-subtitle {
+    margin: 0;
+    font-size: .9em;
+
+    a { color: #5c5edc; }
 }
 
 .content {
@@ -264,9 +274,9 @@ a:hover {
 }
 
 .content article h1 {
-    padding-top: 1em;
     font-weight: 400;
 }
+
 
 .content article .info {
     padding: 0.7em 1em;
@@ -282,6 +292,7 @@ body .spec-title {
     text-transform: uppercase;
     border: 1px solid rgb(70, 70, 70);
     border-bottom: none;
+    background-color: #eee
 }
 
 body .code-block {
@@ -290,12 +301,10 @@ body .code-block {
 
 body .spec-wrong {
     color: #CE0000;
-    background-color: #eee
 }
 
 body .spec-correct {
     color: #008000;
-    background-color: #eee
 }
 
 body #cdawrap {
