@@ -1,0 +1,1114 @@
+---
+title: 'Better Specs'
+---
+<% content_for :menu do %>
+<li><a href="/">Введение в гайдлайны rspec</a></li>
+<li class="little">&raquo; <a href="#describe">Описание методов</a></li>
+<li class="little">&raquo; <a href="#contexts">Использование контекстов</a></li>
+<li class="little">&raquo; <a href="#short">Описания должны быть короткими</a></li>
+<li class="little">&raquo; <a href="#single">Одна проверка на тест</a></li>
+<li class="little">&raquo; <a href="#all">Тестируем все возможные случаи</a></li>
+<li class="little">&raquo; <a href="#subject">Используем subject</a></li>
+<li class="little">&raquo; <a href="#let">Используем let и let!</a></li>
+<li class="little">&raquo; <a href="#mock">Используем моки (разумно)</a></li>
+<li class="little">&raquo; <a href="#data">Создаем только необходимые данные</a></li>
+<li class="little">&raquo; <a href="#factories">Используем фабрики, а не фикстуры</a></li>
+<li class="little">&raquo; <a href="#matchers">Используем читаемые матчеры</a></li>
+<li class="little">&raquo; <a href="#sharedexamples">Выносим код в Shared Examples</a></li>
+<li class="little">&raquo; <a href="#integration">Тестируем то, что видимо</a></li>
+<li class="little">&raquo; <a href="#should">Не используем should</a></li>
+<li class="little">&raquo; <a href="#guard">Прогоняем тесты автоматически</a></li>
+<li class="little">&raquo; <a href="#spork">Более быстрые тесты (с предзагрузкой окружения)</a></li>
+<li class="little">&raquo; <a href="#http">Прячем HTTP запросы</a></li>
+<li class="little">&raquo; <a href="#formatter">Форматируем вывод с пользой</a></li>
+<li><a href="#books">Книги</a></li>
+<li><a href="#presentations">Презентации</a></li>
+<li><a href="#resources">Ресурсы в сети</a></li>
+<li><a href="#screencasts">Скринкасты</a></li>
+<li><a href="#libraries">Докуменация</a></li>
+<li><a href="#styleguide">Стиль</a></li>
+<li><a href="#improving">Улучшение Better Specs</a></li>
+<li><a href="#credits">Благодарности</a></li>
+<li><a href="#help">Помогите нам</a></li>
+<% end %>
+
+<div class="content">
+<article>
+
+<aside class="menu">
+
+<h1>Полезные книги</h1>
+<%= render "partials/books" %>
+
+</aside>
+
+</article>
+
+<article>
+
+<iframe src="http://ghbtns.com/github-btn.html?user=andreareginato&repo=betterspecs&type=watch&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
+
+<iframe src="http://ghbtns.com/github-btn.html?user=andreareginato&repo=betterspecs&type=fork&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
+
+<iframe src="http://ghbtns.com/github-btn.html?user=andreareginato&repo=betterspecs&type=follow&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="300px" height="30px"></iframe>
+
+</article>
+
+</br>
+
+<article>
+
+<p>
+<a href="https://www.relishapp.com/rspec/">RSpec</a> - это великолепный инструмент для behavior-driven development (BDD),
+необходимый для написания читаемых спецификаций (тестов), способных направлять и валидировать процесс разработки.
+</p>
+
+<p>
+В сети существует множество ресурсов, которые могут дать вам полное представление о возможностях RSpec.
+Но очень мало ресурсов посвящено тому, как писать отличные RSpec тесты.
+<p>
+
+<p>
+Better Specs - это попытка заполнить эту нишу, собрав все возможные "best practices", к которым другие разработчики
+приходят с годами опыта.
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="describe">Описание методов</a></h1>
+
+<p>
+Явно указывайте тестируемый метод. К примеру, используйте соглашение, принятое в документации Ruby, об использовании
+<code>.</code> (или <code>::</code>) при описании метода класса и <code>#</code> при описании метода
+экземпляра класса.
+</p>
+
+<p class="wrong">плохо</p>
+
+<div>
+<pre><code class="ruby">describe 'the authenticate method for User' do
+describe 'if the user is an admin' do
+</code></pre>
+</div>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby">describe '.authenticate' do
+describe '#admin?' do
+</code></pre>
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/2">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | how to describe your methods" data-url="http://betterspecs.org/#describe" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#describe" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="contexts">Использование контекстов</a></h1>
+
+<p>
+Контексты - отличный способ привести тесты в чистоту и порядок. Их использование сохранит Ваши тесты читаемыми
+в долгосрочной перспективе.
+</p>
+
+<p class="wrong">плохо</p>
+
+<div>
+<pre><code class="ruby">it 'has 200 status code if logged in' do
+  response.should respond_with 200
+end
+it 'has 401 status code if not logged in' do
+  response.should respond_with 401
+end
+</code></pre>
+</div>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby">context 'when logged in' do
+  it { is_expected.to respond_with 200 }
+end
+context 'when logged out' do
+  it { is_expected.to respond_with 401 }
+end
+</code></pre>
+</div>
+
+<p>
+  При описании контекста, начинайте строку с "when" или "with".
+<p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/3">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | use contexts" data-url="http://betterspecs.org/#contexts" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#contexts" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="short">Описания должны быть короткими</a></h1>
+
+<p>
+Длина описания спеки не должна быть больше, чем 40 символов. Если такое происходит, то необходимо разделить описание
+с помощью контекста.
+</p>
+
+<p class="wrong">плохо</p>
+
+<div>
+<pre><code class="ruby">it 'has 422 status code if an unexpected params will be added' do
+</code></pre>
+</div>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby">context 'when not valid' do
+  it { should respond_with 422 }
+end
+</code></pre>
+</div>
+
+<p>
+В примере мы удалили описание, относящееся к коду статуса, и заменили его на ожидание
+<code>it { should respond_with 422 }</code>.
+Если прогнать этот тест с помощью <code>rspec filename</code>, результат будет хорошо читаем.
+</p>
+
+<p class="base">Вывод</p>
+
+<div>
+<pre><code>when not valid
+  it should respond with 422
+</code></pre>
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/4">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | keep your description short" href="https://twitter.com/share" data-url="http://betterspecs.org/#short" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#contexts" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="single">Одна проверка на тест</a></h1>
+
+<p>
+Каждый тест должен производить только одну проверку.
+Таким образом становится проще находить возможные ошибки, моментально перемещаясь прямо к упавшему тесту.
+Также, код попросту становится более читаемым.
+</p>
+
+<p>
+В изолированном юнит-тесте подразумевается, что каждый отдельный пример описывает одну (и только одну) ситуацию.
+Множество проверок в одном и том же примере сигнализирует о том, что скорее всего Вы описываете сразу несколько ситуаций, что плохо.
+</p>
+
+<p>
+Тем не менее, в тестах которые не являются изолированными (например, в тех, которые интегрированы с БД, внешним сервисом и т.п.),
+от того, что приходится каждый раз снова и снова производить одну и ту же подготовку для каждого отдельного теста,
+очень сильно падает производительность. В таких случаях несколько проверок в одном тесте допустимы.
+</p>
+
+<p class="correct">хорошо (изолированная ситуация)</p>
+
+<div>
+<pre><code class="ruby">it { should respond_with_content_type(:json) }
+it { should assign_to(:resource) }
+</code></pre>
+</div>
+
+<p>
+
+<p class="correct">хорошо (не изолированная ситуация)</p>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  response.should respond_with_content_type(:json)
+  response.should assign_to(:resource)
+end
+</code></pre>
+</div>
+
+<a href="https://github.com/andreareginato/betterspecs/issues/5">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | single expectation test" href="https://twitter.com/share" data-url="http://betterspecs.org/#single" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#single" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="all">Тестируем все возможные случаи</a></h1>
+
+<p>
+Тестирование это хорошо, но если не тестируются все возможные пограничные случаи, оно не принесет пользы.
+Тестируйте правильный, пограничный и неправильный исходы. К примеру:
+</p>
+
+<p class="base">Destroy action</p>
+
+<div>
+<pre><code class="ruby">before_filter :find_owned_resources
+before_filter :find_resource
+
+def destroy
+  render 'show'
+  @consumption.destroy
+end</code></pre>
+</div>
+
+<p>
+Довольно частая ошибка состоит в том, что тестируется только ситуация, в которой ресурс был действительно удален.
+Но здесь возможны как минимум два других исхода: в котором ресурс не найден и в котором он не принадлежит пользователю.
+Думайте о всех возможных исходах, исходя из собственного опыта, и проверяйте каждый.
+</p>
+
+<p class="wrong">плохо</p>
+
+<div>
+<pre><code class="ruby">it 'shows the resource'
+</code></pre>
+</div>
+
+<p class="correct">хорошо</p>
+
+<div>
+<div class="correct">
+<pre><code class="ruby">describe '#destroy' do
+
+  context 'when resource is found' do
+    it 'responds with 200'
+    it 'shows the resource'
+  end
+
+  context 'when resource is not found' do
+    it 'responds with 404'
+  end
+
+  context 'when resource is not owned' do
+    it 'responds with 404'
+  end
+end
+</code></pre>
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/6">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | test all possible cases" href="https://twitter.com/share" data-url="http://betterspecs.org/#all" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#all" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="subject">Используем subject</a></h1>
+
+<p>
+Если несколько тестов относятся к одному и тому же объекту, то использование <code>subject{}</code> позволит
+избавить код от излишних повторений.
+</p>
+
+<p class="wrong">плохо</p>
+
+<div>
+<pre><code class="ruby">it { assigns('message').should match /it was born in Belville/ }
+</code></pre>
+</div>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby">subject { assigns('message') }
+it { should match /it was born in Billville/ }
+</code></pre>
+</div>
+
+<p>
+В RSpec также есть возможность использовать именованный subject.
+</p>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby">subject(:hero) { Hero.first }
+it "should be equipped with a sword" do
+  hero.equipment.should include "sword"
+end
+</code></pre>
+</div>
+
+<p>
+Больше информации об использовании subject можно найти <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/subject">в документации</a>.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/7">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | use subject" href="https://twitter.com/share" data-url="http://betterspecs.org/#subject" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#subject" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="let">Используем let и let!</a></h1>
+
+<p>
+
+    <code>let</code> дает возможнось ленивой загрузки переменных - код в блоке <code>let</code> исполняется
+    только после первого реального использования переменной в тесте и кешируется до тех пор, пока тест
+    не дойдет до конца. Хорошее и подробное описание возможностей <code>let</code> можно найти в этом
+    <a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">ответе на stackoverflow</a>.
+
+</p>
+
+<p class="wrong">плохо</p>
+
+<div>
+<pre><code class="ruby">describe '#type_id' do
+  before { @resource = FactoryGirl.create :device }
+  before { @type     = Type.find @resource.type_id }
+
+  it 'sets the type_id field' do
+    @resource.type_id.should equal(@type.id)
+  end
+end
+</code></pre>
+</div>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby">describe '#type_id' do
+  let(:resource) { FactoryGirl.create :device }
+  let(:type)     { Type.find resource.type_id }
+
+  it 'sets the type_id field' do
+    resource.type_id.should equal(type.id)
+  end
+end
+</code></pre>
+</div>
+
+<p>
+Используйте <code>let</code> для ленивого выполнения необходимых действий.
+</p>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby">context 'when updates a not existing property value' do
+  let(:properties) { { id: Settings.resource_id, value: 'on'} }
+
+  def update
+    resource.properties = properties
+  end
+
+  it 'raises a not found error' do
+    expect { update }.to raise_error Mongoid::Errors::DocumentNotFound
+  end
+end
+</code></pre>
+</div>
+
+<p>
+Еще существует <code>let!</code>, который выполняется сразу после объявления.
+Это может быть полезным для заполнения базы необходимыми данными, поскольку на момент выполнения теста они гарантированно будут доступны.
+</p>
+
+<p>
+Вот как это все работает.
+</p>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby"># this:
+let(:foo) { Foo.new }
+
+# is very nearly equivalent to this:
+def foo
+  @foo ||= Foo.new
+end
+</code></pre>
+</div>
+
+<p>
+Больше информации <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/helper-methods/let-and-let">в документации</a>.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/8">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | use let and let!" href="https://twitter.com/share" data-url="http://betterspecs.org/#let" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#let" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="mock">Используем моки (разумно)</a></h1>
+
+<p>
+На данный момент в сообществе нет единого мнения о реальной пользе моков. Безусловно, они полезны,
+но злоупотреблять ими не стоит - там, где это возможно, лучше тестировать реальное поведение системы.
+Тесты, которые задействуют реальные кейсы, бесценны при рефакторинге.
+</p>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby"># simulate a not found resource
+context "when not found" do
+  before { allow(Resource).to receive(:where).with(created_from: params[:id]).and_return(false) }
+  it { should respond_with 404 }
+end
+</code></pre>
+</div>
+
+<p>
+С моками ваши спеки становятся быстрее, но моки сложны в использовании. Чтобы пользоваться ими с выгодой,
+нужно в них хорошо разобраться. Можно узнать о них больше из <a href="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">этой статьи</a>.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/9">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | mock or not to mock" href="https://twitter.com/share" data-url="http://betterspecs.org/#mock" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#mock" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="data">Создаем только необходимые данные</a></h1>
+
+<p>
+Если вы когда-либо работали в проекте среднего размера (да и в маленьком тоже), то вы знаете,
+что спеки со временем могут стать очень тяжелыми. Чтобы избежать этого, очень важно не создавать данных больше,
+чем реально необходимо. Если вы считаете, что для теста вам потребуются десятки записей, то скорее всего вы
+делаете что-то не так.
+</p>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby">describe "User"
+  describe ".top" do
+    before { FactoryGirl.create_list(:user, 3) }
+    it { User.top(2).should have(2).item }
+  end
+end
+</code></pre>
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/10">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | create only tha data you need" href="https://twitter.com/share" data-url="http://betterspecs.org/#data" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#data" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="factories">Используем фабрики, а не фикстуры</a></h1>
+
+<p>
+Это довольно старая тема для обсуждения, но она не теряет актуальности. Не следует использовать фикстуры,
+потому что их сложно контроллировать. Используйте фабрики вместо них. Это позволит вам писать более лаконичный код.
+</p>
+
+<p class="wrong">плохо</p>
+
+<div>
+<pre><code class="ruby">user = User.create(
+  name: 'Genoveffa',
+  surname: 'Piccolina',
+  city: 'Billyville',
+  birth: '17 Agoust 1982',
+  active: true
+)
+</code></pre>
+</div>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby">user = FactoryGirl.create :user
+</code></pre>
+</div>
+
+<p>
+Важное замечание. Когда речь идет о юнит тестах, то считается, что обоих подходов следует избегать.
+Выделяйте максимум логики в библиотеки, которые могут быть протестированы без необходимости в
+сложной и долгой загрузке фабрик либо фикстур. Можно почитать об этом
+<a href="http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl">здесь</a>
+</p>
+
+<p>
+Больше информации можно найти на странице <a href="https://github.com/thoughtbot/factory_girl">Factory Girl</a>.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/11">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | use factories and not fixtures" href="https://twitter.com/share" data-url="http://betterspecs.org/#factories" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#factories" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="matchers">Используем читаемые матчеры</a></h1>
+
+<p>
+Используйте читаемые матчеры и дважды проверяйте, не написаны ли они <a href="https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers">до вас</a>.
+</p>
+
+<p class="wrong">плохо</p>
+
+<div>
+<pre><code class="ruby">lambda { model.save! }.should raise_error Mongoid::Errors::DocumentNotFound
+</code></pre>
+</div>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby">expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
+</code></pre>
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/12">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | easy to read matcher #betterspecs" href="https://twitter.com/share" data-url="http://betterspecs.org/#matchers" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#matchers" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="sharedexamples">Выносим код в Shared Examples</a></h1>
+
+<p>
+Писать тесты хорошо, и день за днем вы становитесь в этом деле все подкованнее. Но спустя некоторое время, вы начнете
+замечать все больше и больше дублированного кода. Используйте Shared Examples, чтобы избавляться от повторений.
+</p>
+
+<p class="wrong">плохо</p>
+
+<div>
+<pre><code class="ruby">describe 'GET /devices' do
+  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let(:uri) { '/devices' }
+
+  context 'when shows all resources' do
+    let!(:not_owned) { FactoryGirl.create factory }
+
+    it 'shows all owned resources' do
+      page.driver.get uri
+      page.status_code.should be(200)
+      contains_owned_resource resource
+      does_not_contain_resource not_owned
+    end
+  end
+
+  describe '?start=:uri' do
+    it 'shows the next page' do
+      page.driver.get uri, start: resource.uri
+      page.status_code.should be(200)
+      contains_resource resources.first
+      page.should_not have_content resource.id.to_s
+    end
+  end
+end
+</code></pre>
+</div>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby">describe 'GET /devices' do
+
+  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let(:uri)       { '/devices' }
+
+  it_behaves_like 'a listable resource'
+  it_behaves_like 'a paginable resource'
+  it_behaves_like 'a searchable resource'
+  it_behaves_like 'a filterable list'
+end
+</code></pre>
+</div>
+
+<p>
+По нашему опыту, shared examples чаще всего используются для контроллеров. В отличие от моделей, чаще всего в них не так много различной логики.
+</p>
+
+<p>
+Почитать об этом <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/example-groups/shared-examples">можно тут</a>.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/13">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | shared examples" href="https://twitter.com/share" data-url="http://betterspecs.org/#sharedexamples" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#sharedexamples" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="integration">Тестируем то, что видимо</a></h1>
+
+<p>
+<strong>Тщательно тестируйте ваши модели и поведение приложения (интеграционными тестами).
+Не усложняйте тестовую базу тестами контроллеров.</strong>
+</p>
+
+<p>
+Когда я только начинал тестировать свои приложения, я тестировал и контроллеры.
+Больше я так не делаю. Сейчас я ограничиваюсь интеграционными тестами на RSpec и Capybara.
+Почему? Потому что я уверен, что тестировать нужно то, что видно глазу, а тестирование контроллеров
+- это лишний шаг, который на самом деле не нужен. Большинство интеграционных тестов и так заглядывают
+в модели, к тому же они могут быть легко вынесены в shared example, что дает возможность
+писать чистые и читаемые тесты.
+</p>
+
+<p>
+В Руби-сообществе ведутся дебаты на эту тему, и у каждой из сторон есть свои хорошие аргументы.
+Люди, которые выступают за необходимость тестирования контроллеров, скажут вам, что интеграционные
+тесты не покрывают всех кейсов, а также о том, что эти тесты медленные.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/14">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | test what you see" href="https://twitter.com/share" data-url="http://betterspecs.org/#integration" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#integration" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="should">Не используем should</a></h1>
+
+<p>
+Не следует использовать should внутри своих тестов. Тексты тестов должны быть написаны в третьем лице,
+в настоящем времени. А еще лучше - начните использовать
+<a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">новый синтаксис</a>.
+</p>
+
+<p class="wrong">плохо</p>
+
+<div>
+<pre><code class="ruby">it 'should not change timings' do
+  consumption.occur_at.should == valid.occur_at
+end
+</code></pre>
+</div>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby">it 'does not change timings' do
+  expect(consumption.occur_at).to equal(valid.occur_at)
+end
+</code></pre>
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/15">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | don't use should" href="https://twitter.com/share" data-url="http://betterspecs.org/#should" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#should" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="guard">Прогоняем тесты автоматически</a></h1>
+
+<p>
+Прогонять все тесты проекта после каждого изменения в коде довольно накладно. Этот процесс
+занимает много времени и может сбить рабочий темп. Guard поможет вам прогонять только те тесты,
+которые относятся к только что измененному коду спеки, модели, контроллера или файла, над
+которым вы работаете.
+</p>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby">bundle exec guard
+</code></pre>
+</div>
+
+Вот пример конфигурационного файла (Guardfile) с некоторыми базовыми правилами.
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby">guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
+  # run every updated spec file
+  watch(%r{^spec/.+_spec\.rb$})
+  # run the lib specs when a file in lib/ changes
+  watch(%r{^lib/(.+)\.rb$}) { |m| "spec/lib/#{m[1]}_spec.rb" }
+  # run the model specs related to the changed model
+  watch(%r{^app/(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
+  # run the view specs related to the changed view
+  watch(%r{^app/(.*)(\.erb|\.haml)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
+  # run the integration specs related to the changed controller
+  watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
+  # run all integration tests when application controller change
+  watch('app/controllers/application_controller.rb') { "spec/requests" }
+end
+</code></pre>
+</div>
+
+<p>
+Guard - это хороший инструмент, но он, конечно же, не может покрыть сразу все ваши нужды.
+Иногда продуктивнее всего работа идет в паре с горячими клавишами, которые позволяют запускать
+только желаемые тесты. А в самом конце, перед коммитом, уже можно прогнать все остальные тесты.
+<a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#L61-103">Вот настройки</a> для vim.
+</p>
+
+<p>
+Читать больше о <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/16">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | automatic tests with guard" href="https://twitter.com/share" data-url="http://betterspecs.org/#guard" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#guard" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="spork">Более быстрые тесты (с предзагрузкой окружения)</a></h1>
+
+<p>
+Для того, чтобы прогнать тесты в Rails, загружается все приложение. Это действие
+может занять довольно много времени и нарушить рабочий ритм. Для того, чтобы этого
+не произошло, принято использовать такие инструменты как
+<a href="https://github.com/burke/zeus">Zeus</a>,
+<a href="https://github.com/jstorimer/spin">Spin</a> или
+<a href="https://github.com/sporkrb/spork">Spork</a>.
+Все они будут держать в памяти те библиотеки, которые не нужно перезагружать каждый раз.
+</p>
+
+<p>
+Вот пример <a href="https://gist.github.com/3821012">spec helper</a> и конфигурации
+<a href="https://gist.github.com/3821031">Guardfile</a> для Spork.
+С этими настройками приложение будет перезагружено полностью только если изменятся определенные файлы
+(например, config/initializers), а в остальных же случаях вы почувствуете очень-очень большой прирост
+в скорости прогона спек.
+</p>
+
+<p>
+Есть и подводные камни в использовании таких решений, которые могут всплыть, если вы активно
+используете monkey-патчинг в коде. Вы можете потерять порядочное количество времени в попытках
+понять, почему же код не работает. Если у вас есть примеры таких ситуаций,
+<a href="https://github.com/andreareginato/betterspecs/issues/17">дайте нам знать</a>.
+</p>
+
+<p>
+В сторону подобных решений направлено очень много критики. Эти библиотеки лишь устраняют симптомы
+более серьезных проблем, которые на самом деле следует решать более качественным проектированием.
+Можно почитать дискуссии,
+<a href="https://github.com/andreareginato/betterspecs/issues/17">ведущиеся на этот счет</a>.
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/17">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | faster tests with spork" href="https://twitter.com/share" data-url="http://betterspecs.org/#spork" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#spork" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="http">Прячем HTTP запросы</a></h1>
+
+<p>
+Иногда в тестах вам необходимо получать доступ к внешним сервисам (API).
+В таких случаях не стоит полагаться на реальный сервис, вместо этого нужно
+закрывать их стабами при помощи средств вроде <a href="https://github.com/bblimke/webmock">webmock</a>.
+</p>
+
+<p class="correct">хорошо</p>
+<div>
+<pre><code class="ruby">context "with unauthorized access" do
+  let(:uri) { 'http://api.lelylan.com/types' }
+  before    { stub_request(:get, uri).to_return(status: 401, body: fixture('401.json')) }
+  it "gets a not authorized notification" do
+    page.driver.get uri
+    page.should have_content 'Access denied'
+  end
+end
+</code></pre>
+</div>
+
+<p>
+Больше информации можно найти на страницах <a href="https://github.com/bblimke/webmock">webmock</a> и
+<a href="https://github.com/vcr/vcr">VCR</a>. Вот
+<a href="http://marnen.github.com/webmock-presentation/webmock.html">хорошая презентация</a>
+о том, как использовать их вместе.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/18">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | mocking http requests" href="https://twitter.com/share" data-url="http://betterspecs.org/#http" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#http" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="formatter">Форматируем вывод с пользой</a></h1>
+
+<p>
+Используйте форматтер, который может сообщить вам полезную информацию о тестах.
+Лично мне нравится fuubar. Чтобы начать его использовать, добавьте в проект сам гем
+и установите fuubar в качестве форматтера по умолчанию (внутри Guardfile).
+</p>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby"># Gemfile
+group :development, :test do
+  gem 'fuubar'
+</code></pre>
+</div>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby"># Guardfile
+guard 'rspec' do
+  # ...
+end
+</code></pre>
+</div>
+
+<p class="correct">хорошо</p>
+
+<div>
+<pre><code class="ruby"># .rspec
+--drb
+--format Fuubar
+--color
+</code></pre>
+</div>
+
+<p>
+Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafailing-rspec-progress-bar-formatter/">fuubar</a>.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/19">Обсудить рекомендацию &rarr;</a>
+</p>
+
+<a href="https://twitter.com/share" data-text="betterspecs.org | useful formatter" href="https://twitter.com/share" data-url="http://betterspecs.org/#formatter" class="twitter-share-button" data-related="jasoncosta" data-lang="en" data-size="medium" data-counturl="http://betterspecs.org" data-count="vertical">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://betterspecs.org/#formatter" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+
+</article>
+
+<article>
+
+<h1><a name="books">Книги</a></h1>
+  <%= render "partials/books" %>
+
+</article>
+
+<article>
+
+<h1><a name="presentations">Презентации</a></h1>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/7050468" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="http://www.slideshare.net/andrea.reginato/rspec-2-best-practices" title="RSpec 2 Best practices" target="_blank">RSpec 2 Best practices</a> </strong> from <strong><a href="http://www.slideshare.net/andrea.reginato" target="_blank">Andrea Reginato</a></strong> </div>
+
+</article>
+
+<article>
+
+<h1><a name="resources">Ресурсы в сети</a></h1>
+
+<ol>
+<li><a href="https://leanpub.com/everydayrailsrspec">Everyday Rails Spec</a></li>
+<li><a href="http://eggsonbread.com/2010/03/28/my-rspec-best-practices-and-tips/">Eggs on Bread Best Practices</a></li>
+<li><a href="http://blog.carbonfive.com/2010/10/21/rspec-best-practices/">The Carbon Emitter Best Practices</a></li>
+<li><a href="http://blog.andyvanasse.com/post/503615383/rspec-best-practices">Andy Vanasse Best Practices</a></li>
+<li><a href="http://bitfluxx.com/2011/05/23/some-rspec-tips-and-best-practices.html">Bitfluxx Best Practices</a></li>
+<li><a href="http://kpumuk.info/ruby-on-rails/my-top-7-rspec-best-practices/">Dmytro Shteflyuk Best Practices</a></li>
+<li><a href="https://learn.thoughtbot.com/rspec">thoughtbot's RSpec Related Reading</a></li>
+
+</ol>
+
+</article>
+
+<article>
+
+<h1><a name="screencasts">Скринкасты</a></h1>
+
+<ol>
+<li><a href="https://peepcode.com/screencasts/rspec">RSpec on PeepCode</a></li>
+<li><a href="http://www.codeschool.com/courses/testing-with-rspec">Testing With RSpec Code School course</a></li>
+<li><a href="http://railscasts.com/episodes/285-spork">Spork Railscast</a></li>
+<li><a href="http://vimeo.com/46795747">Using Zeus to speed up your tests</a></li>
+<li><a href="http://www.codeschool.com/code_tv/guard-and-spork">Code TV Screencast on Guard and Spork</a></li>
+<li><a href="https://www.destroyallsoftware.com/screencasts/">Many of Destroy All Software screencasts</a></li>
+</ol>
+
+</article>
+
+<article>
+
+<h1><a name="libraries">Документация</a></h1>
+
+<ol>
+<li><a href="https://www.relishapp.com/rspec">Rspec Documentation</a></li>
+<li><a href="https://github.com/jnicklas/capybara">Capybara Documentation</a></li>
+<li><a href="https://github.com/thoughtbot/factory_girl">Factory Girl Documentation</a></li>
+<li><a href="https://github.com/bblimke/webmock">Webmock Documentation</a></li>
+<li><a href="https://github.com/travisjeffery/timecop">Timecop Documentation</a></li>
+<li><a href="http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/frames">Shoulda Matchers</a></li>
+<li><a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafailing-rspec-progress-bar-formatter/">Fuubar Release</a></li>
+</ol>
+
+</article>
+
+<article>
+
+<h1><a name="styleguide">Стиль</a></h1>
+
+<p>
+Мы находимся в поиске эталонных гайдлайнов по написанию "читаемых" спек. Сейчас
+можно с уверенностью брать пример с
+<a class="see" href="https://github.com/mongoid/mongoid/tree/master/spec/mongoid">тестов Mongoid</a>.
+Они написаны очень чисто и легко читаются, а также соответствуют практически всем правилам,
+описанным здесь.
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="improving">Улучшение Better Specs</a></h1>
+
+<p>
+Это опенсорсный проект. Если что-то кажется вам неверным, либо если чего-то не хватает,
+просто заведите
+<a class="see" href="https://github.com/andreareginato/betterspecs/issues">issue</a>
+для обсуждения. Также, загляните сюда:
+
+<ul>
+  <li><a href="https://github.com/andreareginato/betterspecs/issues/20">Мультиязычность</a> -
+  сейчас вы читаете перевод с английского, который может отставать от оригинала. Не стесняйтесь вносить правки!</li>
+</ul>
+
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="credits">Благодарности</a></h1>
+
+<p>
+Этот документ изначально создал <a href="http://twitter.com/andreareginato">Andrea Reginato</a>.
+Отдельная благодарность <a href="http://lelylan.com">Lelylan Team</a>. Документ использует лицензию MIT License.
+Перевод на русский язык произведен командой <a href="http://evrone.ru/">Evrone</a>.
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="help">Помогите нам</a></h1>
+
+<p>
+Если вы нашли для себя что-то полезное, что помогло вам в вашей работе, то мы будем благодарны за ваше пожертвование.
+Любое пожертвование будет использовано для того, чтобы сделать этот сайт еще более полным источником информации о качественном тестировании в Руби.
+</p>
+
+<div style="margin-left: 200px;">
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+    ">
+    <input type="image" src="https://dl.dropbox.com/u/7048149/donate-9" border="0" name="submit" alt="PayPal - Il metodo rapido, affidabile e innovativo per pagare e farsi pagare.">
+    <img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
+  </form>
+</div>
+
+</article>
+
+<br><br><hr><br><br>
+
+<iframe src="http://ghbtns.com/github-btn.html?user=andreareginato&repo=betterspecs&type=watch&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
+
+<iframe src="http://ghbtns.com/github-btn.html?user=andreareginato&repo=betterspecs&type=fork&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
+
+<iframe src="http://ghbtns.com/github-btn.html?user=andreareginato&repo=betterspecs&type=follow&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="300px" height="30px"></iframe>
+
+</div>

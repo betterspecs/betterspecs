@@ -1,0 +1,1087 @@
+---
+title: 'Better Specs(한국어)'
+---
+<% content_for :menu do %>
+<li><a href="/ko/index.html">rspec 가이드라인의 소개</a></li>
+<li class="little">&raquo; <a href="#describe">함수를 설명하는 방법</a></li>
+<li class="little">&raquo; <a href="#contexts">Contexts 사용하기</a></li>
+<li class="little">&raquo; <a href="#short">설명을 짧게 유지하기</a></li>
+<li class="little">&raquo; <a href="#single">단일 조건 테스트</a></li>
+<li class="little">&raquo; <a href="#all">모든 가능한 케이스를 테스트하기</a></li>
+<li class="little">&raquo; <a href="#expect">Expect vs Should 문법</a></li>
+<li class="little">&raquo; <a href="#subject">Subject 사용하기</a></li>
+<li class="little">&raquo; <a href="#let">let 과 let! 사용하기</a></li>
+<li class="little">&raquo; <a href="#mock">Mock을 하느냐 마느냐</a></li>
+<li class="little">&raquo; <a href="#data">필요한 데이터만 만들기</a></li>
+<li class="little">&raquo; <a href="#factories">픽스쳐대신 팩토리 사용하기</a></li>
+<li class="little">&raquo; <a href="#matchers">읽기 쉬운 matcher 사용하기</a></li>
+<li class="little">&raquo; <a href="#sharedexamples">Shared examples</a></li>
+<li class="little">&raquo; <a href="#integration">보이는것을 테스트 하기</a></li>
+<li class="little">&raquo; <a href="#should">should를 쓰지 않기</a></li>
+<li class="little">&raquo; <a href="#guard">guard로하는 테스트 자동화</a></li>
+<li class="little">&raquo; <a href="#spork">레일즈를 미리 로드해두어 빠른 테스트하기</a></li>
+<li class="little">&raquo; <a href="#http">HTTP 리퀘스트를 mock하기</a></li>
+<li class="little">&raquo; <a href="#formatter">유용한 formatter</a></li>
+<li><a href="#books">Books</a></li>
+<li><a href="#presentations">Presentations</a></li>
+<li><a href="#resources">Resources on the web</a></li>
+<li><a href="#libraries">Libraries</a></li>
+<li><a href="#styleguide">Styleguide</a></li>
+<li><a href="#improving">Improving Better Specs</a></li>
+<li><a href="#credits">Credits</a></li>
+<li><a href="#help">Help us</a></li>
+<% end %>
+
+<div class="content">
+<article>
+
+<aside class="menu">
+
+<h1>Affiliate books</h1>
+<%= render "partials/books" %>
+
+</aside>
+
+</article>
+
+<article>
+
+<iframe src="http://ghbtns.com/github-btn.html?user=andreareginato&repo=betterspecs&type=watch&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
+
+<iframe src="http://ghbtns.com/github-btn.html?user=andreareginato&repo=betterspecs&type=fork&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
+
+<iframe src="http://ghbtns.com/github-btn.html?user=andreareginato&repo=betterspecs&type=follow&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="300px" height="30px"></iframe>
+
+</article>
+
+</br>
+
+<article>
+
+<p>
+<a href="https://www.relishapp.com/rspec/">RSpec</a>은 BDD프로세스에서 쓰는 훌륭한 툴입니다. (BDD 어플리케이션의 개발과정을 확인하는 사람이 읽을 수 있는 명세서를 적는 일을 말합니다.)
+</p>
+
+<p>
+웹에서는 RSpec를 어떻게 사용하는지를 설명하고 _무엇을_ 할 수 있는 지 설명한 전체 오버뷰를 찾을 수 있습니다. 하지만 RSpec으로 좋은 테스트 스위트를 만드는 지를 설명한 글을 찾기란 쉽지 않습니다.
+</p>
+
+<p>
+Better Specs 은 대부분의 가이드라인의 누락 된 부분을 모으고자 노력했습니다. - 이건 개발자들의 수년간의 경험에서 배운 방법이죠.
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="describe">함수를 설명하는 방법</a></h1>
+
+<p>
+어떤 함수를 설명하려는지 명확하게 하세요. 예를들어, 클래스 함수를 참조할 때는 <code>.</code>(아니면 <code>::</code>) 를 접두어로, 인스턴스 함수를 참조할 때는 <code>#</code>를 접두어로 사용하는 루비 문서 규칙을 사용하세요.
+</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">describe 'the authenticate method for User' do
+describe 'if the user is an admin' do
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">describe '.authenticate' do
+describe '#admin?' do
+</code></pre>
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/2">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | 함수를 설명하는 방법", url: "http://betterspecs.org/#describe" %>
+
+</article>
+
+<article>
+
+<h1><a name="contexts">Contexts 사용하기</a></h1>
+
+<p>
+Contexts는 테스트를 명확하고 잘 조직되게하는 강력한 방법입니다.
+장기적으로 이 방법은 테스트를 읽기 편하게 만듭니다.
+</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">it 'has 200 status code if logged in' do
+  expect(response).to respond_with 200
+end
+it 'has 401 status code if not logged in' do
+  expect(response).to respond_with 401
+end
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">context 'when logged in' do
+  it { is_expected.to respond_with 200 }
+end
+context 'when logged out' do
+  it { is_expected.to respond_with 401 }
+end
+</code></pre>
+</div>
+
+<p>
+  Contexts는 "when"이나 "with"로 설명을 시작하세요.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/3">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | Contexts 사용하기", url: "http://betterspecs.org/#contexts" %>
+
+</article>
+
+<article>
+
+<h1><a name="short">설명을 짧게 유지하기</a></h1>
+
+<p>
+명세의 설명은 40문자를 넘으면 안됩니다. 40문자를 넘을때는 context를 사용해 쪼개야 합니다.
+</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">it 'has 422 status code if an unexpected params will be added' do
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">context 'when not valid' do
+  it { is_expected.to respond_with 422 }
+end
+</code></pre>
+</div>
+
+<p>
+예제에서 <code>it { is_expected.to respond_with 422 }</code> 조건문으로 바꿈으로써 스테이더스 코드에 관한 설명을 제거했습니다.
+<code>rspec filename</code>를 쳐서 이 테스트를 실행해보면 읽을 수 있는 출력을 얻을 것입니다.
+</p>
+
+<p class="base">Formatted Output</p>
+
+<div>
+<pre><code>when not valid
+  it should respond with 422
+</code></pre>
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/4">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | 설명을 짧게 유지하기", url: "http://betterspecs.org/#short" %>
+
+</article>
+
+<article>
+
+<h1><a name="single">단일 조건 테스트</a></h1>
+
+<p>
+'단일 조건'에 관한 팁은 '각 테스트는 한가지만 확인해야 한다.'로 더 널리 알려저 있습니다.
+이것은 에러를 찾을 때 도움이 되고, 실패하는 테스트를 바로 찾을수 있게 하고, 코드를 읽기 편하게 합니다.
+</p>
+
+<p>
+독립된 유닛 스팩에서, 일반적으로 각 예제는 단(!) 하나의 행동만 테스트 하길 바랄 것 입니다. 같은 예제 안에서 여러 예상치가 나온다면 여러 행동으로 나누어야 할것 같다는 신호입니다.
+</p>
+
+<p>
+어쨋든 분리되지 않은 테스트에서(예를 들어 디비나 외부 서비스와 연동하거나 끝에서 끝까지 테스트 하는 경우), 분리하기만하면 같은 셋업을 여러번 하게 되어 테스트가 무거워지는 현상이 나타납니다. 이런 종류의 무거운 테스트에선 굳이 나누지 않아도 괜찮을 것 같아요.
+</p>
+
+<p class="correct">good (isolated)</p>
+
+<div>
+<pre><code class="ruby">it { is_expected.to respond_with_content_type(:json) }
+it { is_expected.to assign_to(:resource) }
+</code></pre>
+</div>
+
+<p class="correct">Good (not isolated)</p>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  expect(response).to respond_with_content_type(:json)
+  expect(response).to assign_to(:resource)
+end
+</code></pre>
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/5">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | 단일 조건 테스트", url: "http://betterspecs.org/#single" %>
+
+</article>
+
+<article>
+
+<h1><a name="all">모든 가능한 케이스를 테스트하기</a></h1>
+
+<p>
+테스트는 하는게 좋습니다만, 모든 케이스를 테스트 하지 않으면, 유용하지 않게 됩니다. 유효한 경우와 유효하지 않은 경우를 모두 테스트 하세요. 예를들어 이런 액션이 있다고 해봅시다.
+</p>
+
+<p class="base">Destroy action</p>
+
+<div>
+<pre><code class="ruby">before_filter :find_owned_resources
+before_filter :find_resource
+
+def destroy
+  render 'show'
+  @consumption.destroy
+end</code></pre>
+</div>
+
+<p>
+흔히 보는 에러로 리소스가 잘 제거되었는지만 테스트하고 있습니다.
+하지만 최소한 두개의 경계 케이스가 존재합니다: 리소스를 찾지 못했을 때와 소유하지 않았을 때. 모든 일반적으로 가능한 입력을 생각해보고 테스트 해야합니다.
+</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">it 'shows the resource'
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div class="correct">
+<pre><code class="ruby">describe '#destroy' do
+
+  context 'when resource is found' do
+    it 'responds with 200'
+    it 'shows the resource'
+  end
+
+  context 'when resource is not found' do
+    it 'responds with 404'
+  end
+
+  context 'when resource is not owned' do
+    it 'responds with 404'
+  end
+end
+</code></pre>
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/6">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | 모든 가능한 케이스를 테스트하기", url: "http://betterspecs.org/#all" %>
+
+</article>
+
+<article>
+
+<h1><a name="expect">Expect vs Should 문법</a></h1>
+
+<p>
+새 프로젝트에서는 항상 <code>expect</code> 문법만 사용합니다.
+</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  response.should respond_with_content_type(:json)
+end</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">it 'creates a resource' do
+  expect(response).to respond_with_content_type(:json)
+end</code></pre>
+</div>
+
+<p>Rspec을 새로운 문법만 허용하도록 설정할수있습니다. 모든 코드에서 2의 문법을 사용 못하도록 말이죠.</p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># spec_helper.rb
+RSpec.configure do |config|
+  # ...
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+end</code></pre>
+</div>
+
+<p>한 줄의 expectation이나 묵시적 subject를 사용할 경우 <code>is_expected.to</code>를 사용해야합니다.</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">context 'when not valid' do
+  it { should respond_with 422 }
+end
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">context 'when not valid' do
+  it { is_expected.to respond_with 422 }
+end
+</code></pre>
+</div>
+
+<p>오래된 프로젝트에선 <a href="https://github.com/yujinakayama/transpec">transpec</a> 을 사용해 새로운 문법으로 변환할 수 있습니다.</p>
+
+<p>새Rspec expectation 문법에 대한 정보가 더필요하시면 <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">여기</a> 와 <a href="http://myronmars.to/n/dev-blog/2013/07/the-plan-for-rspec-3#what_about_the_old_expectationmock_syntax">여기</a>를 보세요.</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/83">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | Expect vs Should 문법", url: "http://betterspecs.org/#expect" %>
+
+</article>
+
+<article>
+
+<h1><a name="subject">Subject 사용하기</a></h1>
+
+<p>
+만약 같은 subject에 대해 여러 테스트를 하고있다면, <code>subject{}</code> 를 이용해 반복을 제거(DRY) 합니다.
+</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">it { expect(assigns('message')).to match /it was born in Belville/ }
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">subject { assigns('message') }
+it { is_expected.to match /it was born in Billville/ }
+</code></pre>
+</div>
+
+<p>
+RSpec은 명시적인 subject도 지원합니다.
+</p>
+
+<p class="correct">Good</p>
+
+<div>
+<pre><code class="ruby">subject(:hero) { Hero.first }
+it "carries a sword" do
+  expect(hero.equipment).to include "sword"
+end
+</code></pre>
+</div>
+
+<p>
+<a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/subject">rspec subject</a>에 대해 좀 더 알아보기.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/7">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | Subject 사용하기", url: "http://betterspecs.org/#subject" %>
+
+</article>
+
+<article>
+
+<h1><a name="let">let 과 let! 사용하기</a></h1>
+
+<p>
+만약 <code>before</code> 인스턴스 변수를 만들지 않고 변수를 할당해야 한다면, <code>let</code>을 사용합시다. <code>let</code> 사용하면 변수를 테스트에서 처음 사용 될때만 lazy load하고 테스트 명세가 끝날때까지 캐슁할 수 있습니다.
+이 <a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">스택오버 플로우 글</a>에서 <code>let</code>에 대해  설명해 놓았네요.
+</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">describe '#type_id' do
+  before { @resource = FactoryGirl.create :device }
+  before { @type     = Type.find @resource.type_id }
+
+  it 'sets the type_id field' do
+    expect(@resource.type_id).to equal(@type.id)
+  end
+end
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">describe '#type_id' do
+  let(:resource) { FactoryGirl.create :device }
+  let(:type)     { Type.find resource.type_id }
+
+  it 'sets the type_id field' do
+    expect(resource.type_id).to equal(type.id)
+  end
+end
+</code></pre>
+</div>
+
+<p>
+액션을 초기화하기 위해 <code>let</code>을 사용하면 명세을 테스트할때 lazy load됩니다.
+</p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">context 'when updates a not existing property value' do
+  let(:properties) { { id: Settings.resource_id, value: 'on'} }
+
+  def update
+    resource.properties = properties
+  end
+
+  it 'raises a not found error' do
+    expect { update }.to raise_error Mongoid::Errors::DocumentNotFound
+  end
+end
+</code></pre>
+</div>
+
+<p>
+블록이 정의 될때 변수가 정의되길 원한다면<code>let!</code>을 사용하세요.
+이것은 쿼리나 스코프같은 데이터베이스 테스트를 할때 유용합니다.
+</p>
+
+<p>
+let이 무엇인지에 대한 예제입니다.
+</p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># this:
+let(:foo) { Foo.new }
+
+# is very nearly equivalent to this:
+def foo
+  @foo ||= Foo.new
+end
+</code></pre>
+</div>
+
+<p>
+<a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/helper-methods/let-and-let">rspec let</a>에 대해 더 알아보기.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/8">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | let 과 let! 사용하기", url: "http://betterspecs.org/#let" %>
+
+</article>
+
+<article>
+
+<h1><a name="mock">Mock을 하느냐 마느냐</a></h1>
+
+<p>
+논쟁은 진행중입니다. 가능한한 (과도하게) mock을 사용하지 말고 실제 행동을 테스트해야 합니다.
+실제 케이스를 테스트 하는것은 흐름을 변경 할때 유용합니다.
+</p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># simulate a not found resource
+context "when not found" do
+  before { allow(Resource).to receive(:where).with(created_from: params[:id]).and_return(false) }
+  it { is_expected.to respond_with 404 }
+end
+</code></pre>
+</div>
+
+<p>
+mock은 스팩을 빠르게 하지만 사용하기 힘듭니다. 그래서 잘 사용하려면 mock을 잘 이해해야 합니다. <a href="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">이 글</a>을 읽어 보세요.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/9">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | Mock을 하느냐 마느냐", url: "http://betterspecs.org/#mock" %>
+
+</article>
+
+<article>
+
+<h1><a name="data">필요한 데이터만 만들기</a></h1>
+
+<p>
+만약 중형(혹은 소형) 프로젝트에서 일한 경험밖에 없다면, 테스트 스위트는 무거워 질 수 있습니다. 이 문제를 해결하기 위해, 필요이상의 데이터를 로드하지 않는 것은 중요합니다. 또한 여러 데이터가 필요하다고 하면 아마도 생각이 틀렸을 가능성이 있습니다.
+</p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">describe "User" do
+  describe ".top" do
+    before { FactoryGirl.create_list(:user, 3) }
+    it { expect(User.top(2)).to have(2).item }
+  end
+end
+</code></pre>
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/10">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | 필요한 데이터만 만들기", url: "http://betterspecs.org/#data" %>
+
+</article>
+
+<article>
+
+<h1><a name="factories">픽스쳐대신 팩토리 사용하기</a></h1>
+
+<p>
+이것은 오래된 이야기입니다만, 여전히 언급할 가치가 있습니다. 픽스쳐를 사용하지마세요. 왜냐하면 픽스쳐는 사용하기 어렵기 때문입니다. 대신 팩토리를 사용하세요. 팩토리를 사용하면 새로운 데이터를 생성할 때 코드를 줄일 수 있습니다.
+</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">user = User.create(
+  name: 'Genoveffa',
+  surname: 'Piccolina',
+  city: 'Billyville',
+  birth: '17 Agoust 1982',
+  active: true
+)
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">user = FactoryGirl.create :user
+</code></pre>
+</div>
+
+<p>
+주의! 베스트 프락티스에서 유닛테스트에 대해 이야기할때는 픽스쳐도 팩토리도 사용하지 않았습니다.
+복잡하게 팩토리나 픽스쳐 셋업을 하는데 시간낭비하지 않으면, 라이브러리에 로직을 추가하는 시간을 벌 수 있습니다.
+<a href="http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl">이 글</a>을 읽어보세요.
+</p>
+
+<p>
+<a href="https://github.com/thoughtbot/factory_girl">Factory Girl</a>에 대해 더 알아보기.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/11">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | 픽스쳐대신 팩토리 사용하기", url: "http://betterspecs.org/#factories" %>
+
+</article>
+
+<article>
+
+<h1><a name="matchers">읽기 쉬운 matcher 사용하기</a></h1>
+
+<p>
+읽기 쉬운 matcher를 사용하세요. <a href="https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers">rspec matcher</a>를 보세요. 두번 보세요.
+</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">lambda { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
+</code></pre>
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/12">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | 읽기 쉬운 matcher 사용하기", url: "http://betterspecs.org/#matchers" %>
+
+</article>
+
+<article>
+
+<h1><a name="sharedexamples">Shared Examples</a></h1>
+
+<p>
+테스트를 만드는것은 좋은 일이며 매일 조금씩 더 자신감을 갖게합니다. 그러나 결국 중복코드가 여기저기 발생하는 것을 보게 되는데요. shared example을 이용해서 테스트 스위트의 중복을 제거하세요.
+</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">describe 'GET /devices' do
+  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let(:uri) { '/devices' }
+
+  context 'when shows all resources' do
+    let!(:not_owned) { FactoryGirl.create factory }
+
+    it 'shows all owned resources' do
+      page.driver.get uri
+      expect(page.status_code).to be(200)
+      contains_owned_resource resource
+      does_not_contain_resource not_owned
+    end
+  end
+
+  describe '?start=:uri' do
+    it 'shows the next page' do
+      page.driver.get uri, start: resource.uri
+      expect(page.status_code).to be(200)
+      contains_resource resources.first
+      expect(page).to_not have_content resource.id.to_s
+    end
+  end
+end
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">describe 'GET /devices' do
+
+  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let(:uri)       { '/devices' }
+
+  it_behaves_like 'a listable resource'
+  it_behaves_like 'a paginable resource'
+  it_behaves_like 'a searchable resource'
+  it_behaves_like 'a filterable list'
+end
+</code></pre>
+</div>
+
+<p>
+경험에 의하면, shared example은 주로 컨트롤러에 사용됩니다. 모델은 서로 꽤나 다르게 생겨서, (보통은) 많은 부분을 공유하지 않습니다.
+</p>
+
+<p>
+<a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/example-groups/shared-examples">rspec shared examples</a>에 대해 더 알아보기.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/13">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | shared examples", url: "http://betterspecs.org/#sharedexamples" %>
+
+</article>
+
+<article>
+
+<h1><a name="integration">보이는것을 테스트 하기</a></h1>
+
+<p>
+<strong>모델과 어플리케이션의 행동를 깊게 (통합) 테스트합니다.
+컨트롤러를 테스트 하느라 쓸데없는 복정성을 넣지 마세요.</strong>
+</p>
+
+<p>
+내가 처음 어플을 테스트했을때는 컨트롤러를 테스트했지만, 지금은 하지 않습니다.
+지금 나는 RSpec과 Capybara를 사용한 통합 테스트만 만듭니다. 왜나구요? 왜냐면 진짜로 보이는 것을 테스트해야한다고 믿고 있고 컨트롤러를 테스트 하는것은 불필요한 단계라 생각하기 때문입니다. 하다보면 테스트들은 모델과 통합테스트로 들어가고, 그것들은 쉽게 shared examples로 묶어지고, 깨끗하고 읽기 편한 테스트 스위트를 만들게 될 것 입니다.
+</p>
+
+<p>
+이 사안은 루비 커뮤니티에서 아직 토론중이며 양측 다 주장을 보충해줄 좋은 근거들을 가지고 있습니다. 컨트롤러를 테스트 할 필요가 있다고 주장하는 측은 인테그레이션 테스트로 모든 기능을 커버할수없고 느리다고 주장합니다.
+</p>
+
+<p>
+둘 다 아닙니다.당신은 쉽게 모든 기능을 커버할 수 있으시고 (안 그러신가요?) Guard같은 자동화 툴을 이용해 한파일만 테스트 할 수 있습니다. 이렇게하면 흐름을 끊기지 않는 범위내에서 필요한 사양만 테스트할 수 있게 됩니다.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/14">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | 보이는것을 테스트 하기", url: "http://betterspecs.org/#integration" %>
+
+</article>
+
+<article>
+
+<h1><a name="should">should를 쓰지 않기</a></h1>
+
+<p>
+테스트를 설명할때 should를 사용하지 마세요. 현제 시제의 3인칭 시점으로 작성합시다.
+새로나온 <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">expectation</a> 를 사용하시면 더욱 좋습니다.
+</p>
+
+<p class="wrong">bad</p>
+
+<div>
+<pre><code class="ruby">it 'should not change timings' do
+  consumption.occur_at.should == valid.occur_at
+end
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">it 'does not change timings' do
+  expect(consumption.occur_at).to equal(valid.occur_at)
+end
+</code></pre>
+</div>
+
+<p>
+should를 사용하지 않도록 강제할때 사용할 수 있는 <a href="https://github.com/should-not/should_not">should_not</a>잼을 확인해보세요.
+그리고 이미 작성된 rspec에서 "should."로 시작되는 예문을 지워주는 <a href="https://github.com/siyelo/should_clean">the should_clean</a>잼도 확인 해보세요.
+</p>
+
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/15">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | should를 쓰지 않기", url: "http://betterspecs.org/#should" %>
+
+</article>
+
+<article>
+
+<h1><a name="guard">guard로하는 테스트 자동화</a></h1>
+
+<p>
+앱을 변경할때마다 테스트 스위트를 돌리는 일은 성가실수 있습니다. 그건 매우 시간이 오래걸리고 흐름을 끊을 수 있습니다. Guard를 사용하면 갱신된 사양, 모델, 컨트롤러, 파일에 대해서만 테스트를 수행하도록 테스트 스위트를 자동화 할 수 있습니다.
+</p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">bundle exec guard
+</code></pre>
+</div>
+
+기본적인 리로딩 룰이 적혀있는 샘플 Guardfile 입니다.
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby">guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
+  # 모든 갱신된 사양 파일에 대해서 실행
+  watch(%r{^spec/.+_spec\.rb$})
+  # lib/폴더안의 파일이 변경되었을때 lib사양을 실행
+  watch(%r{^lib/(.+)\.rb$}) { |m| "spec/lib/#{m[1]}_spec.rb" }
+  # 모델이 변경 되었을때 관련된 모델사양을 실행
+  watch(%r{^app/(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
+  # 뷰가 변경 되었을때 관련된 뷰사양을 실행
+  watch(%r{^app/(.*)(\.erb|\.haml)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
+  # 컨트롤러가 변경되었을때 관련된 통합 사양을 실행
+  watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
+  # 어플리케이션 컨트롤러가 변경 되었을때 모든 통합테스트를 실행
+  watch('app/controllers/application_controller.rb') { "spec/requests" }
+end
+</code></pre>
+</div>
+
+<p>
+Guard는 좋은 툴이지만 보통 모든 요구사항을 충족하지 못합니다. TDD로 일하면서 단축키설정해서 원할때 실행하는게 가장 좋을때도 있습니다. 그리고 푸쉬하기 전에 rake로 전체 코드를 테스트 하는 거죠.<a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#L61-103">여기</a>에 vim의 단축키 설정이 있습니다.
+</p>
+
+<p>
+<a href="https://github.com/guard/guard-rspec">guard-rspec</a>에 대해 더 알아보기.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/16">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | guard로하는 테스트 자동화", url: "http://betterspecs.org/#guard" %>
+
+</article>
+
+<article>
+
+<h1><a name="spork">레일즈를 미리 로드해두어 빠른 테스트하기</a></h1>
+
+<p>
+레일즈에서 테스트를 실행할때는 전채 레일즈 앱을 로딩합니다. 이것은 시간이 걸리고 일의 흐름을 끊을 수 있습니다. 이 문제를 해결하기 위해선 <a href="https://github.com/burke/zeus">Zeus</a>나
+<a href="https://github.com/jstorimer/spin">Spin</a>나
+<a href="https://github.com/sporkrb/spork">Spork</a>같은 것을 사용할 수 있습니다. Spork는 (보통) 변경되지 않은 컨트롤러, 모델, 뷰, 팩토리와 자주 변경하는 파일 같은 모든 라이브러리를 미리 로드합니다.
+</p>
+
+<p>
+여기에 Spork용 <a href="https://gist.github.com/3821012">spec helper</a> 와
+<a href="https://gist.github.com/3821031">Guardfile</a> 설정이 있습니다. 이 설정을 사용하면 미리 로드된 (initializers같은) 파일이 변경되면 전체 어플을 리로드 시키고, 단일 테스트를 매우 매우 빠르게 실행 할 수 있습니다.
+</p>
+
+
+<p>
+Spork는 굉장히 많은 부분을 몽키 패치하기 때문에 쓰다보면 파일이 리로드 되지 않는 이유를 파악하기 위해 몇시간을 허비하는 일이 있습니다.
+만약에 Spin 이나 다른 솔루션의 예제가 있으시다면 <a href="https://github.com/andreareginato/betterspecs/issues/17">알려주세요</a>.
+</p>
+
+<p>
+Zeus를 사용하기 위한 <a href="https://gist.github.com/HuffMoody/5912373">Guardfile</a> 설정은 여기 있습니다.
+spec_helper는 수정하실 필요가 없지만, 테스트를 하시기 전에 콘솔에서 `zeus start`를 실행하셔야합니다.
+</p>
+
+<p>
+모든면에서 Zeus는Spork보다 덜 공격적인 방법을 사용합니다. 단점이라면 요구사항이 꽤 엄격한 편입니다.
+Ruby 1.9.3이상(backported GC를 쓸수 있는 루비 2.0 이상을 권장합니다) FSEvents 나 inotify를 사용할 수 있는 OS를 필요로 합니다.
+</p>
+
+<p>
+많은 사람들이 Spork에서 다른 솔루션으로 옮겼습니다. 이 솔루션들은 좋은 설계로 앞선 문제의 나은 해결책이 되고, 의도적으로 필요한 부분만 로딩하고있습니다.
+더 알고싶으시면 <a href="https://github.com/andreareginato/betterspecs/issues/17">관련 토론</a>을 읽어보세요.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/17">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | 레일즈를 미리 로드해두어 빠른 테스트하기", url: "http://betterspecs.org/#spork" %>
+
+</article>
+
+<article>
+
+<h1><a name="http">HTTP 리퀘스트를 mock하기</a></h1>
+
+<p>
+가끔 외부서비스를 억세스할 필요할 때가 있습니다. 이런 경우 실제 서비스에 의존시키지 말고, webmock같은 솔루션을 이용해 stub해야 합니다.
+</p>
+
+<p class="correct">good</p>
+<div>
+<pre><code class="ruby">context "with unauthorized access" do
+  let(:uri) { 'http://api.lelylan.com/types' }
+  before    { stub_request(:get, uri).to_return(status: 401, body: fixture('401.json')) }
+  it "gets a not authorized notification" do
+    page.driver.get uri
+    expect(page).to have_content 'Access denied'
+  end
+end
+</code></pre>
+</div>
+
+<p>
+<a href="https://github.com/bblimke/webmock">webmock</a> 과
+<a href="https://github.com/vcr/vcr">VCR</a>에 대해 더 알아보기. 둘을 어떻게 같이 쓰는 지 설명한
+<a href="http://marnen.github.com/webmock-presentation/webmock.html">좋은 프리젠테이션</a>
+도 있습니다.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/18">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | HTTP 리퀘스트를 mock하기", url: "http://betterspecs.org/#http" %>
+
+</article>
+
+<article>
+
+<h1><a name="formatter">유용한 formatter</a></h1>
+
+<p>
+formatter를 사용하면 테스트 스위트에관한 유용한 정보를 얻을수있습니다. 개인적으로는 fuubar가 굉장히 좋았습니다. 실행하시 위해선 gem을 설치하고 Guardfile에 fuubar를 기본 formatter로 설정하면 됩니다.
+</p>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># Gemfile
+group :development, :test do
+  gem 'fuubar'
+</code></pre>
+</div>
+
+<p class="correct">good</p>
+
+<div>
+<pre><code class="ruby"># .rspec
+--drb
+--format Fuubar
+--color
+</code></pre>
+</div>
+
+<p>
+<a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafailing-rspec-progress-bar-formatter/">fuubar</a>에 대해 더 알아보기.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/19">이 가이드라인에 대해 토론하기 &rarr;</a>
+</p>
+
+<%= render "partials/share", text: "betterspecs.org | 유용한 formatter", url: "http://betterspecs.org/#formatter" %>
+
+</article>
+
+<article>
+
+<h1><a name="books">Books</a></h1>
+<%= render "partials/books" %>
+</article>
+
+<article>
+
+<h1><a name="presentations">Presentations</a></h1>
+
+<iframe src="http://www.slideshare.net/slideshow/embed_code/7050468" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="http://www.slideshare.net/andrea.reginato/rspec-2-best-practices" title="RSpec 2 Best practices" target="_blank">RSpec 2 Best practices</a> </strong> from <strong><a href="http://www.slideshare.net/andrea.reginato" target="_blank">Andrea Reginato</a></strong> </div>
+
+</article>
+
+<article>
+
+<h1><a name="resources">Resources on the web</a></h1>
+
+<ol>
+<li><a href="https://leanpub.com/everydayrailsrspec">Everyday Rails Spec</a></li>
+<li><a href="http://eggsonbread.com/2010/03/28/my-rspec-best-practices-and-tips/">Eggs on Bread Best Practices</a></li>
+<li><a href="http://blog.carbonfive.com/2010/10/21/rspec-best-practices/">The Carbon Emitter Best Practices</a></li>
+<li><a href="http://blog.andyvanasse.com/post/503615383/rspec-best-practices">Andy Vanasse Best Practices</a></li>
+<li><a href="http://bitfluxx.com/2011/05/23/some-rspec-tips-and-best-practices.html">Bitfluxx Best Practices</a></li>
+<li><a href="http://kpumuk.info/ruby-on-rails/my-top-7-rspec-best-practices/">Dmytro Shteflyuk Best Practices</a></li>
+<li><a href="https://learn.thoughtbot.com/rspec">thoughtbot's RSpec Related Reading</a></li>
+
+</ol>
+
+</article>
+
+<article>
+
+<h1><a name="screencasts">Screencasts</a></h1>
+
+<ol>
+<li><a href="https://peepcode.com/screencasts/rspec">RSpec on PeepCode</a></li>
+<li><a href="http://www.codeschool.com/courses/testing-with-rspec">Testing With RSpec Code School course</a></li>
+<li><a href="http://railscasts.com/episodes/285-spork">Spork Railscast</a></li>
+<li><a href="http://vimeo.com/46795747">Using Zeus to speed up your tests</a></li>
+<li><a href="http://www.codeschool.com/code_tv/guard-and-spork">Code TV Screencast on Guard and Spork</a></li>
+<li><a href="https://www.destroyallsoftware.com/screencasts/">Many of Destroy All Software screencasts</a></li>
+</ol>
+
+</article>
+
+<article>
+
+<h1><a name="libraries">Libraries (documentation)</a></h1>
+
+<ol>
+<li><a href="https://www.relishapp.com/rspec">Rspec Documentation</a></li>
+<li><a href="https://github.com/jnicklas/capybara">Capybara Documentation</a></li>
+<li><a href="https://github.com/thoughtbot/factory_girl">Factory Girl Documentation</a></li>
+<li><a href="https://github.com/bblimke/webmock">Webmock Documentation</a></li>
+<li><a href="https://github.com/travisjeffery/timecop">Timecop Documentation</a></li>
+<li><a href="http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/frames">Shoulda Matchers</a></li>
+<li><a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafailing-rspec-progress-bar-formatter/">Fuubar Release</a></li>
+</ol>
+
+</article>
+
+<article>
+
+<h1><a name="styleguide">Styleguide</a></h1>
+
+<p>
+We are seeking for the best guidelines to write "nice to read" specs. Right now a good
+starting point is for sure the
+<a class="see" href="https://github.com/mongoid/mongoid/tree/master/spec/mongoid">Mongoid test suite</a>.
+It uses a clean style and easy-to-read specs, following most of the guidelines
+described here.
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="improving">Improving Better Specs</a></h1>
+
+<p>
+This is an open source project. If something is missing or incorrect just file an
+<a class="see" href="https://github.com/andreareginato/betterspecs/issues">issue</a>
+to discuss the topic. Also check the following issues:
+
+<ul>
+  <li><a href="https://github.com/andreareginato/betterspecs/issues/20">Multilanguage</a> (file an issue if you want to translate this guide)</li>
+</ul>
+
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="credits">Credits</a></h1>
+
+<p>
+This project was created by <a href="http://twitter.com/andreareginato"></a> and released as
+open-source thanks to <a href="http://lelylan.com">Lelylan</a>, a new platform to monitor and
+control your devices through a simple, open and robust REST API.
+</p>
+
+<p>
+If you like what <a href="http://twitter.com/andreareginato">I'm</a> doing offer me a coffe
+<script data-gittip-username="andreareginato"
+        data-gittip-widget="button"
+        src="//gttp.co/v1.js"></script>
+</p>
+
+</article>
+
+<br><br><hr><br><br>
+
+<iframe src="http://ghbtns.com/github-btn.html?user=andreareginato&repo=betterspecs&type=watch&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
+
+<iframe src="http://ghbtns.com/github-btn.html?user=andreareginato&repo=betterspecs&type=fork&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
+
+<iframe src="http://ghbtns.com/github-btn.html?user=andreareginato&repo=betterspecs&type=follow&count=true&size=large"
+  allowtransparency="true" frameborder="0" scrolling="0" width="300px" height="30px"></iframe>
+
+</div>
