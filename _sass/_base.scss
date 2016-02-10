@@ -105,8 +105,8 @@ a:hover {
 .bp-tooltip:hover:before {
     content: attr(data-content);
     font-size: 110%;
-    font-weight: 700;
-    line-height: 1.2;
+    font-weight: 400;
+    line-height: 1.4;
     position: absolute;
     top: 1.5em;
     right: 0;
@@ -128,10 +128,12 @@ a:hover {
 .bp-nav__item {
     position: relative;
     display: inline-block;
-    width: 2.5em;
-    height: 2.5em;
+    width: 2em;
+    height: 2em;
+    padding: 0.3em 0;
     margin: 0 0.1em;
-    text-align: left;
+    text-align: center;
+    font-size: .9em;
     border-radius: 50%;
 }
 
@@ -231,7 +233,7 @@ a:hover {
 }
 
 .content--loading {
-    background: url(../img/loading.svg) no-repeat 50% 50%;
+    background: url(../images/loading.svg) no-repeat 50% 50%;
 }
 
 .products {
@@ -281,7 +283,7 @@ body #cdawrap a:hover.carbon-poweredby {
     color: #fff;
 }
 
-@media screen and (max-width: 40em) {
+@media screen and (max-width: 50em) {
     .bp-header {
         padding-top: 3em;
     }

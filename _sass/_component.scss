@@ -75,10 +75,10 @@
 }
 
 .menu__link {
-  font-weight: 600;
+  font-weight: 400;
   position: relative;
   display: block;
-  padding: 1em 2.5em 1em 1.5em;
+  padding: .5em 2.5em .5em 1.5em;
   color: #bdbdbd;
   -webkit-transition: color 0.1s;
   transition: color 0.1s;
@@ -315,7 +315,7 @@
   color: #45464e;
 }
 
-@media screen and (max-width: 40em) {
+@media screen and (max-width: 50em) {
   .action--open,
   .action--close {
     display: block;
