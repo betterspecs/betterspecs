@@ -1,0 +1,305 @@
+/* General Blueprint Style */
+
+@font-face {
+    font-family: 'bpicons';
+    font-weight: normal;
+    font-style: normal;
+    src: url('../fonts/bpicons/bpicons.eot');
+    src: url('../fonts/bpicons/bpicons.eot?#iefix') format('embedded-opentype'), url('../fonts/bpicons/bpicons.woff') format('woff'), url('../fonts/bpicons/bpicons.ttf') format('truetype'), url('../fonts/bpicons/bpicons.svg#bpicons') format('svg');
+}/* Made with http://icomoon.io/ */
+
+
+/* Resets */
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+
+/* Helper classes */
+
+.cf:before,
+.cf:after {
+    content: ' ';
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+
+/* Main styles */
+
+body {
+    font-family: 'Avenir Next', Avenir, 'Helvetica Neue', 'Lato', 'Segoe UI', Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    margin: 0;
+    color: #cecece;
+    background: #2a2b30;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    outline: none;
+}
+
+a:hover {
+    color: #ddd;
+}
+
+.container {
+    overflow-y: auto;
+    height: 100vh;
+}
+
+
+/* Blueprint header */
+
+.bp-header {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.bp-header__main {
+    margin: 0 0 0 auto;
+    padding: 2em 3em 0;
+    text-align: right;
+}
+
+.bp-header__title {
+    font-size: 1.3em;
+    font-weight: 400;
+    line-height: 1.3;
+    margin: 0.25em 0 0;
+}
+
+.bp-header__present {
+    font-size: 0.75em;
+    font-weight: 700;
+    position: relative;
+    z-index: 100;
+    display: block;
+    margin: 0 -8px 0 0;
+    padding: 0 0 0.6em 0;
+    text-indent: 3px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #5c5edc;
+}
+
+.bp-tooltip:after {
+    position: relative;
+    top: -8px;
+    left: -8px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+}
+
+.bp-tooltip:hover:before {
+    content: attr(data-content);
+    font-size: 110%;
+    font-weight: 700;
+    line-height: 1.2;
+    position: absolute;
+    top: 1.5em;
+    right: 0;
+    width: 50vw;
+    padding: 0.8em 1em;
+    text-align: right;
+    text-indent: 0;
+    letter-spacing: 0;
+    text-transform: none;
+    color: #fff;
+    background: #5c5edc;
+}
+
+.bp-nav {
+    margin: 0.5em 0 0 auto;
+    text-align: right;
+}
+
+.bp-nav__item {
+    position: relative;
+    display: inline-block;
+    width: 2.5em;
+    height: 2.5em;
+    margin: 0 0.1em;
+    text-align: left;
+    border-radius: 50%;
+}
+
+.bp-nav__item > span {
+    display: none;
+}
+
+.bp-nav__item:hover:before {
+    content: attr(data-info);
+    font-size: 0.85em;
+    font-weight: bold;
+    position: absolute;
+    top: 120%;
+    right: 0;
+    width: 600%;
+    text-align: right;
+    pointer-events: none;
+    color: #595a5f;
+}
+
+.bp-nav__item:hover {
+    background: #5c5edc;
+}
+
+.bp-icon:after {
+    font-family: 'bpicons';
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    text-align: center;
+    text-transform: none;
+    color: #5c5edc;
+    -webkit-font-smoothing: antialiased;
+    speak: none;
+}
+
+.bp-nav .bp-icon:after {
+    line-height: 2.4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-indent: 0;
+}
+
+.bp-nav a:hover:after {
+    color: #fff;
+}
+
+.bp-icon--next:after {
+    content: '\e000';
+}
+
+.bp-icon--drop:after {
+    content: '\e001';
+}
+
+.bp-icon--archive:after {
+    content: '\e002';
+}
+
+.bp-icon--about:after {
+    content: '\e003';
+}
+
+.bp-icon--prev:after {
+    content: '\e004';
+}
+
+.dummy-logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 120px;
+    padding: 1em 0 0 0;
+    text-align: center;
+    color: #3b3d4a;
+    background: #1c1d22;
+}
+
+.dummy-icon {
+    font-size: 4em;
+}
+
+.dummy-heading {
+    font-size: 0.75em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.content {
+    position: relative;
+    min-height: 300px;
+    margin: 0 0 0 300px;
+}
+
+.content--loading {
+    background: url(../img/loading.svg) no-repeat 50% 50%;
+}
+
+.products {
+    margin: 0;
+    padding: 2em;
+    text-align: center;
+}
+
+.product {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 5px;
+    background: #1c1d22;
+}
+
+.product .foodicon {
+    font-size: 4em;
+    line-height: 190px;
+    color: #3b3d4a;
+}
+
+.info {
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 20vh 1em 0;
+    text-align: center;
+    color: #47484c;
+}
+
+body #cdawrap {
+    top: auto;
+    bottom: 15px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+body #cdawrap .carbon-text {
+    color: #505158;
+}
+
+body #cdawrap a.carbon-poweredby {
+    color: #7883c4;
+}
+
+body #cdawrap a:hover.carbon-poweredby {
+    color: #fff;
+}
+
+@media screen and (max-width: 40em) {
+    .bp-header {
+        padding-top: 3em;
+    }
+    .bp-header__main,
+    .bp-nav {
+        width: 100%;
+        text-align: center;
+    }
+    .dummy-logo {
+        display: none;
+    }
+    .content {
+        margin: 0;
+    }
+    body,
+    .container {
+        height: auto;
+        overflow: auto;
+    }
+}
+
