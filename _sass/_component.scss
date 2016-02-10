@@ -36,10 +36,10 @@
 
 .menu {
   position: fixed;
-  top: 120px;
+  top: 70px;
   left: 0;
   width: 300px;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 70px);
   background: #1c1d22;
 }
 
@@ -62,6 +62,7 @@
   height: 100%;
   margin: 0;
   padding: 0;
+  padding-bottom: 1em;
   list-style-type: none;
 }
 
@@ -100,11 +101,11 @@
 
 .menu__link--current::before {
   content: '\00B7';
-  font-size: 1.5em;
+  font-size: 3.5em;
   line-height: 0;
   position: absolute;
   top: 50%;
-  left: 0.5em;
+  left: 0.12em;
   height: 4px;
   color: #5c5edc;
 }

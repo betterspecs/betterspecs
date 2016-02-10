@@ -209,11 +209,11 @@ a:hover {
     top: 0;
     left: 0;
     width: 300px;
-    height: 120px;
+    height: 70px;
     padding: 1em 0 0 0;
-    text-align: center;
-    color: #3b3d4a;
+    text-align: left;
     background: #1c1d22;
+    padding-left: 1.5em;
 }
 
 .dummy-icon {
@@ -221,7 +221,7 @@ a:hover {
 }
 
 .dummy-heading {
-    font-size: 0.75em;
+    font-size: 1em;
     letter-spacing: 2px;
     text-transform: uppercase;
 }
@@ -257,12 +257,45 @@ a:hover {
     color: #3b3d4a;
 }
 
-.info {
-    font-size: 1.1em;
-    font-weight: bold;
-    padding: 20vh 1em 0;
-    text-align: center;
-    color: #47484c;
+.content article {
+    padding: .5em 2em;
+    color: #bbb;
+    font-size: 1em;
+}
+
+.content article h1 {
+    padding-top: 1em;
+    font-weight: 400;
+}
+
+.content article .info {
+    padding: 0.7em 1em;
+    border-radius: 5px;
+    border: 1px solid rgb(70, 70, 70);
+    background-color: rgba(49, 50, 56, 0.97);
+}
+
+body .spec-title {
+    font-size: .9em;    
+    margin: 0;
+    padding: .8em 1.5em;
+    text-transform: uppercase;
+    border: 1px solid rgb(70, 70, 70);
+    border-bottom: none;
+}
+
+body .code-block {
+    padding: .5em 0;
+}
+
+body .spec-wrong {
+    color: #CE0000;
+    background-color: #eee
+}
+
+body .spec-correct {
+    color: #008000;
+    background-color: #eee
 }
 
 body #cdawrap {

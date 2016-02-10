@@ -9,7 +9,7 @@
 title: "Better Specs. Testing Guidelines for Developers."
 email: "bettterspecs@lelylan.com"
 description: > # this means to ignore newlines until "baseurl:"
-  Better Specs is a collection of simple best practices developers 
+  Better Specs is a collection of best practices developers 
   learned while testing apps that you can use to improve your coding 
   skills, or simply for inspiration.
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -19,3 +19,6 @@ github_username:  lelylan
 
 # Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge

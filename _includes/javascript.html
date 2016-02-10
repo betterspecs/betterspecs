@@ -35,7 +35,7 @@
   var gridWrapper = document.querySelector('.content');
 
   function loadDummyData(ev, itemName) {
-    ev.preventDefault();
+    // ev.preventDefault();
 
     closeMenu();
     // gridWrapper.innerHTML = '';
@@ -45,5 +45,13 @@
     //   gridWrapper.innerHTML = '<ul class="products">' + dummyData[itemName] + '<ul>';
     // }, 700);
   }
+
+  function externalLinks() {
+    for(var c = document.getElementsByTagName("a"), a = 0;a < c.length;a++) {
+      var b = c[a];
+      b.getAttribute("href") && b.hostname !== location.hostname && (b.target = "_blank")
+    }
+  }; externalLinks();
+
 })();
 </script>
