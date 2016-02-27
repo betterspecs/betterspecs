@@ -6,8 +6,8 @@ lang: en
 <button class="action action--open" aria-label="Open Menu"><span class="icon icon--menu"></span></button>
 <nav id="ml-menu" class="menu">
   <button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
-  <div class="menu__wrap">
 
+  <div class="menu__wrap">
     <ul data-menu="main" class="menu__level">
       <li class="menu__item"><a class="menu__link" href="#describe">{{ 'menu.describe' | translate }}</a></li>
       <li class="menu__item"><a class="menu__link" href="#contexts">{{ 'menu.contexts' | translate }}</a></li>
@@ -30,201 +30,173 @@ lang: en
       <li class="menu__item"><a class="menu__link" href="#formatter">{{ 'menu.formatter' | translate }}</a></li>
       <li class="menu__item"><a class="menu__link" href="#contributing">{{ 'menu.contributing' | translate }}</a></li>
     </ul>
-
   </div>
 </nav>
 <div class="content">
-
   <article>
-
-    <h1><a name="what">What is Better Specs</a></h1>
+    <h1><a name="what">{{ 'what.title' | translate }}</a></h1>
 
     <p>
       {{ site.description }}
-      Better Specs came to life at <a target="_blank" href="https://lelylan.com">Lelylan</a> (open source IoT cloud platform) and <a target="_blank" href="https://github.com/lelylan/lelylan">checking out its test suite</a> may be of inspiration.
+      {{ 'what.body' | translate }}
     </p>
 
-    <p class="info">
-       Better Specs focus on Rails testing, but our goal is to create testing guidelines covering most languages and frameworks out there (e.g. Scala, Elixir, React). If you want to add your favourite language testing guidelines <a target="_blank" href="https://github.com/lelylan/betterspecs/issues">open an issue</a>.
-    </p>
-
-    <p>
-
-  </p>
-
+    <p class="info">{{ 'what.info' | translate }}</p>
   </article>
 
+  <article>
+    <h1><a name="describe">{{ 'describe.title' | translate }}</a></h1>
 
-<article>
+    <p>{{ 'describe.body' | translate }}</p>
 
-<h1><a name="describe">Describe Your Methods</a></h1>
+    <div class="code-block">
+      <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
-<p>
-Be clear about what method you are describing. For instance, use the Ruby documentation convention of
-<code>.</code> (or <code>::</code>) when referring to a class method's name and <code>#</code> when
-referring to an instance method's name.
-</p>
+      {% highlight ruby %}
+      describe 'the authenticate method for User' do
+      describe 'if the user is an admin' do
+      {% endhighlight %}
+    </div>
 
-<div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-{% highlight ruby %}
-describe 'the authenticate method for User' do
-describe 'if the user is an admin' do
-{% endhighlight %}
-</div>
+      {% highlight ruby %}
+      describe '.authenticate' do
+      describe '#admin?' do
+      {% endhighlight %}
+    </div>
 
-<div class="code-block">
-<p class="spec-title spec-correct">good</p>
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/2">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
 
-{% highlight ruby %}
-describe '.authenticate' do
-describe '#admin?' do
-{% endhighlight %}
-</div>
+  <article>
+    <h1><a name="contexts">{{ 'contexts.title' | translate }}</a></h1>
 
-<p>
-<a href="https://github.com/andreareginato/betterspecs/issues/2">Discuss this guideline &rarr;</a>
-</p>
+    <p>{{ 'contexts.body' | translate }}</p>
 
-</article>
+    <div class="code-block">
+      <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
-<article>
+      {% highlight ruby %}
+      it 'has 200 status code if logged in' do
+        expect(response).to respond_with 200
+      end
 
-<h1><a name="contexts">Use contexts</a></h1>
+      it 'has 401 status code if not logged in' do
+        expect(response).to respond_with 401
+      end
+      {% endhighlight %}
+    </div>
 
-<p>
-Contexts are a powerful method to make your tests clear and well organized (they keep tests easy to read). When describing a context, start its description with "when", "with" or "without".
-</p>
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-<div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
+      {% highlight ruby %}
+      context 'when logged in' do
+        it { is_expected.to respond_with 200 }
+      end
 
-{% highlight ruby %}
-it 'has 200 status code if logged in' do
-  expect(response).to respond_with 200
-end
+      context 'when logged out' do
+        it { is_expected.to respond_with 401 }
+      end
+      {% endhighlight %}
+    </div>
 
-it 'has 401 status code if not logged in' do
-  expect(response).to respond_with 401
-end
-{% endhighlight %}
-</div>
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/3">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
 
-<div class="code-block">
-<p class="spec-title spec-correct">good</p>
+  <article>
+    <h1><a name="short">{{ 'short.title' | translate }}</a></h1>
 
-{% highlight ruby %}
-context 'when logged in' do
-  it { is_expected.to respond_with 200 }
-end
+    <p>{{ 'short.body' | translate }}</p>
 
-context 'when logged out' do
-  it { is_expected.to respond_with 401 }
-end
-{% endhighlight %}
-</div>
+    <div class="code-block">
+      <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
-<p>
-<a href="https://github.com/andreareginato/betterspecs/issues/3">Discuss this guideline &rarr;</a>
-</p>
+      {% highlight ruby %}
+      it 'has 422 status code if an unexpected params will be added' do
+      {% endhighlight %}
+    </div>
 
-</article>
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
+      {% highlight ruby %}
+      context 'when not valid' do
+        it { is_expected.to respond_with 422 }
+      end
+      {% endhighlight %}
+    </div>
 
-
-
-<article>
-
-<h1><a name="short">Keep your description short</a></h1>
-
-<p>
-A spec description should never be longer than 40 characters. If this happens you should split it using a context.
-</p>
-
-<div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
-
-{% highlight ruby %}
-it 'has 422 status code if an unexpected params will be added' do
-{% endhighlight %}
-</div>
-
-<div class="code-block">
-<p class="spec-title spec-correct">Good</p>
-
-{% highlight ruby %}
-context 'when not valid' do
-  it { is_expected.to respond_with 422 }
-end
-{% endhighlight %}
-</div>
-
-<p>
-In the example we removed the description related to the status code, which has been replaced by the expectation <code>is_expected</code>. If you run this test typing <code>rspec filename</code> you will obtain a readable output.
-</p>
+    <p>{{ 'short.example.description' | translate }}</p>
 
 
-<div class="code-block">
-<p class="spec-title">Formatted output</p>
+    <div class="code-block">
+      <p class="spec-title">{{ 'short.example.title' }}</p>
 
-{% highlight ruby %}
-when not valid
-  it should respond with 422
-{% endhighlight %}
-</div>
+      {% highlight ruby %}
+      when not valid
+        it should respond with 422
+      {% endhighlight %}
+    </div>
 
-<p>
-<a href="https://github.com/andreareginato/betterspecs/issues/4">Discuss this guideline &rarr;</a>
-</p>
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/4">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
 
-</article>
+  <article>
+    <h1><a name="single">Single expectation test</a></h1>
 
+    <p>
+      The 'one expectation' tip is more broadly expressed as 'each test should make only one assertion'. This helps you on finding possible errors, going directly to the failing test, and to make your code readable. In isolated unit specs, you want each example to specify one (and only one) behavior. Multiple expectations in the same example are a signal that you may be specifying multiple behaviors.
+    </p>
 
+    <div class="code-block">
+      <p class="spec-title spec-correct">good (isolated)</p>
 
-<article>
+      {% highlight ruby %}
+      it { is_expected.to respond_with_content_type(:json) }
+      it { is_expected.to assign_to(:resource) }
+      {% endhighlight %}
+    </div>
 
-<h1><a name="single">Single expectation test</a></h1>
+    <p>
+      Anyway, in tests that are not isolated (e.g. ones that integrate with a DB, an external webservice,
+      or end-to-end-tests), you take a massive performance hit to do the same setup over and over
+      again, just to set a different expectation in each test. In these sorts of slower tests, I
+      think it's fine to specify more than one isolated behavior.
+    </p>
 
-<p>
-The 'one expectation' tip is more broadly expressed as 'each test should make only one assertion'. This helps you on finding possible errors, going directly to the failing test, and to make your code readable. In isolated unit specs, you want each example to specify one (and only one) behavior. Multiple expectations in the same example are a signal that you may be specifying multiple behaviors.
-</p>
+    <div class="code-block">
+      <p class="spec-title spec-correct">good (not isolated)</p>
 
-<div class="code-block">
-<p class="spec-title spec-correct">good (isolated)</p>
+      {% highlight ruby %}
+      it 'creates a resource' do
+        expect(response).to respond_with_content_type(:json)
+        expect(response).to assign_to(:resource)
+      end
+      {% endhighlight %}
+    </div>
 
-{% highlight ruby %}
-it { is_expected.to respond_with_content_type(:json) }
-it { is_expected.to assign_to(:resource) }
-{% endhighlight %}
-</div>
-
-<p>
-Anyway, in tests that are not isolated (e.g. ones that integrate with a DB, an external webservice,
-or end-to-end-tests), you take a massive performance hit to do the same setup over and over
-again, just to set a different expectation in each test. In these sorts of slower tests, I
-think it's fine to specify more than one isolated behavior.
-</p>
-
-<div class="code-block">
-<p class="spec-title spec-correct">good (not isolated)</p>
-
-{% highlight ruby %}
-it 'creates a resource' do
-  expect(response).to respond_with_content_type(:json)
-  expect(response).to assign_to(:resource)
-end
-{% endhighlight %}
-</div>
-
-<p>
-<a href="https://github.com/andreareginato/betterspecs/issues/5">Discuss this guideline &rarr;</a>
-</p>
-
-</article>
-
-
-
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/5">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+  
 <article>
 
 <h1><a name="all">Test all possible cases</a></h1>
@@ -253,7 +225,7 @@ owned. As a rule of thumb think of all the possible inputs and test them.
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
+<p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
 {% highlight ruby %}
 it 'shows the resource'
@@ -261,7 +233,7 @@ it 'shows the resource'
 </div>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 describe '#destroy' do
@@ -282,7 +254,7 @@ end
 {% endhighlight %}
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/6">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/6">{{ 'shared.discussion' | translate }}</a>
 </p>
 
 </article>
@@ -298,7 +270,7 @@ On new projects always use the <code>expect</code> syntax.
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
+<p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
 {% highlight ruby %}
 it 'creates a resource' do
@@ -308,7 +280,7 @@ end
 </div>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 it 'creates a resource' do
@@ -320,7 +292,7 @@ end
 <p>Configure the RSpec to only accept the new syntax on new projects, to avoid having the 2 syntax all over the place.</p>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 # spec_helper.rb
@@ -336,7 +308,7 @@ end
 <p>On one line expectations or with implicit subject we should use <code>is_expected.to</code>.</p>
 
 <div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
+<p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
 {% highlight ruby %}
 context 'when not valid' do
@@ -346,7 +318,7 @@ end
 </div>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 context 'when not valid' do
@@ -358,7 +330,7 @@ end
 <p>On old projects you can use the <a href="https://github.com/yujinakayama/transpec">transpec</a> to convert them to the new syntax. More about the new RSpec expectation syntax can be found <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">here</a> and <a href="http://myronmars.to/n/dev-blog/2013/07/the-plan-for-rspec-3#what_about_the_old_expectationmock_syntax">here</a>.</p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/83">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/83">{{ 'shared.discussion' | translate }}</a>
 </p>
 
 </article>
@@ -375,7 +347,7 @@ If you have several tests related to the same subject use
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
+<p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
 {% highlight ruby %}
 it { expect(assigns('message')).to match /it was born in Belville/ }
@@ -383,7 +355,7 @@ it { expect(assigns('message')).to match /it was born in Belville/ }
 </div>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 subject { assigns('message') }
@@ -396,7 +368,7 @@ RSpec has also the ability to use a named subject (learn more about <a href="htt
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 subject(:hero) { Hero.first }
@@ -407,7 +379,7 @@ end
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/7">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/7">{{ 'shared.discussion' | translate }}</a>
 </p>
 
 </article>
@@ -424,7 +396,7 @@ When you have to assign a variable instead of using a <code>before</code> block 
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
+<p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
 {% highlight ruby %}
 describe '#type_id' do
@@ -439,7 +411,7 @@ end
 </div>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 describe '#type_id' do
@@ -458,7 +430,7 @@ Use <code>let</code> to initialize actions that are lazy loaded to test your spe
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 context 'when updates a not existing property value' do
@@ -494,7 +466,7 @@ end
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/8">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/8">{{ 'shared.discussion' | translate }}</a>
 </p>
 
 </article>
@@ -510,7 +482,7 @@ As general rule do not (over)use mocks and test real behavior when possible, as 
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 # simulate a not found resource
@@ -531,7 +503,7 @@ Mocking makes your specs faster but they are difficult to use. You need to under
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/9">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/9">{{ 'shared.discussion' | translate }}</a>
 </p>
 
 </article>
@@ -547,7 +519,7 @@ If you have ever worked in a medium size project (but also in small ones), test 
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 describe "User" do
@@ -560,7 +532,7 @@ end
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/10">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/10">{{ 'shared.discussion' | translate }}</a>
 </p>
 
 </article>
@@ -578,7 +550,7 @@ on creating new data (learn about <a href="https://github.com/thoughtbot/factory
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
+<p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
 {% highlight ruby %}
 user = User.create(
@@ -592,7 +564,7 @@ user = User.create(
 </div>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 user = FactoryGirl.create :user
@@ -605,7 +577,7 @@ One important note. When talking about unit tests the best practice would be to 
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/11">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/11">{{ 'shared.discussion' | translate }}</a>
 </p>
 
 </article>
@@ -621,7 +593,7 @@ Use readable matchers and double check the available <a href="https://www.relish
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
+<p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
 {% highlight ruby %}
 lambda { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
@@ -629,7 +601,7 @@ lambda { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
 </div>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
@@ -637,7 +609,7 @@ expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/12">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/12">{{ 'shared.discussion' | translate }}</a>
 </p>
 
 </article>
@@ -653,7 +625,7 @@ Making tests is great and you get more confident day after day. But in the end y
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
+<p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
 {% highlight ruby %}
 describe 'GET /devices' do
@@ -688,7 +660,7 @@ end
 </div>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 describe 'GET /devices' do
@@ -710,7 +682,7 @@ different from each other, they (usually) do not share much logic. Learn more ab
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/13">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/13">{{ 'shared.discussion' | translate }}</a>
 </p>
 
 </article>
@@ -737,7 +709,7 @@ you that your integration tests don't cover all use cases and that they are slow
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/14">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/14">{{ 'shared.discussion' | translate }}</a>
 </p>
 
 </article>
@@ -754,7 +726,7 @@ Do not use should when describing your tests. Use the third person in the presen
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
+<p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
 {% highlight ruby %}
 it 'should not change timings' do
@@ -764,7 +736,7 @@ end
 </div>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 it 'does not change timings' do
@@ -779,7 +751,7 @@ and <a href="https://github.com/siyelo/should_clean">the should_clean</a> gem fo
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/15">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/15">{{ 'shared.discussion' | translate }}</a>
 </p>
 
 </article>
@@ -795,7 +767,7 @@ Running all the test suite every time you change your app can be cumbersome. It 
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 bundle exec guard
@@ -806,7 +778,7 @@ Here you can see a sample Guardfile with some basic reloading rules.
 
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
@@ -831,7 +803,7 @@ Guard is a fine tool but as usual it doesn't fit all of your needs. Sometimes yo
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/16">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/16">{{ 'shared.discussion' | translate }}</a>
 </p>
 
 </article>
@@ -869,7 +841,7 @@ Many criticisms are moved to those solutions. Those libraries are a band aid on 
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/17">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/17">{{ 'shared.discussion' | translate }}</a>
 </p>
 
 </article>
@@ -885,7 +857,7 @@ Sometimes you need to access external services. In these cases you can't rely on
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 context "with unauthorized access" do
@@ -910,7 +882,7 @@ explaining how to mix them together.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/18">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/18">{{ 'shared.discussion' | translate }}</a>
 </p>
 
 </article>
@@ -926,7 +898,7 @@ Use a formatter that can give you useful information about the test suite. I per
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
 # Gemfile
@@ -944,7 +916,7 @@ Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafaili
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/19">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/19">{{ 'shared.discussion' | translate }}</a>
 </p>
 
 </article>

@@ -20,3 +20,23 @@ en:
     stubbing: Stubbing HTTP requests
     formatter: Formatter
     contributing: Contributing
+  what:
+    title: What is Better Specs
+    body: "Better Specs came to life at <a target='_blank' href='https://lelylan.com'>Lelylan</a> (open source IoT cloud platform) and <a target='_blank' href='https://github.com/lelylan/lelylan'>checking out its test suite</a> may be of inspiration."
+    info: "Better Specs focus on Rails testing, but our goal is to create testing guidelines covering most languages and frameworks out there (e.g. Scala, Elixir, React). If you want to add your favourite language testing guidelines <a target='_blank' href='https://github.com/lelylan/betterspecs/issues'>open an issue</a>."
+  describe:
+    title: Describe Your Methods
+    body: "Be clear about what method you are describing. For instance, use the Ruby documentation convention of <code>.</code> (or <code>::</code>) when referring to a class method's name and <code>#</code> when referring to an instance method's name."
+  contexts:
+    title: Use contexts
+    body: Contexts are a powerful method to make your tests clear and well organized (they keep tests easy to read). When describing a context, start its description with "when", "with" or "without".
+  short:
+    title: Keep your description short
+    body: A spec description should never be longer than 40 characters. If this happens you should split it using a context.
+    example:
+      description: In the example we removed the description related to the status code, which has been replaced by the expectation <code>is_expected</code>. If you run this test typing <code>rspec filename</code> you will obtain a readable output.
+      title: Formatted output
+  shared:
+    good_code: good
+    bad_code: bad
+    discussion: Discuss this guideline &rarr;
