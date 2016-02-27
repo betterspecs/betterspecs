@@ -128,6 +128,3 @@ PLATFORMS
 DEPENDENCIES
   foreman
   github-pages
-
-BUNDLED WITH
-   1.11.2

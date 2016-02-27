@@ -1,0 +1,22 @@
+en:
+  menu:
+    describe: Describe methods
+    contexts: Use contexts
+    short: Short description
+    single: Single expectation
+    all: All possible cases
+    expect: Expect vs should
+    subject: Use subject
+    let: Use let and let!
+    mock: Mock or not to mock
+    data: Create the data you need
+    factories: Use factories
+    matchers: Easy to use matchers
+    shared: Shared examples
+    integration: Test what you see
+    should: Do not use should
+    continuous: Continuous testing
+    faster: Faster tests
+    stubbing: Stubbing HTTP requests
+    formatter: Formatter
+    contributing: Contributing
