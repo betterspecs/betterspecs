@@ -51,19 +51,19 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
-      {% highlight ruby %}
-      describe 'the authenticate method for User' do
-      describe 'if the user is an admin' do
-      {% endhighlight %}
+{% highlight ruby %}
+describe 'the authenticate method for User' do
+describe 'if the user is an admin' do
+{% endhighlight %}
     </div>
 
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      describe '.authenticate' do
-      describe '#admin?' do
-      {% endhighlight %}
+{% highlight ruby %}
+describe '.authenticate' do
+describe '#admin?' do
+{% endhighlight %}
     </div>
 
     <p>
@@ -81,29 +81,29 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
-      {% highlight ruby %}
-      it 'has 200 status code if logged in' do
-        expect(response).to respond_with 200
-      end
+{% highlight ruby %}
+it 'has 200 status code if logged in' do
+  expect(response).to respond_with 200
+end
 
-      it 'has 401 status code if not logged in' do
-        expect(response).to respond_with 401
-      end
-      {% endhighlight %}
+it 'has 401 status code if not logged in' do
+  expect(response).to respond_with 401
+end
+{% endhighlight %}
     </div>
 
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      context 'when logged in' do
-        it { is_expected.to respond_with 200 }
-      end
+{% highlight ruby %}
+context 'when logged in' do
+  it { is_expected.to respond_with 200 }
+end
 
-      context 'when logged out' do
-        it { is_expected.to respond_with 401 }
-      end
-      {% endhighlight %}
+context 'when logged out' do
+  it { is_expected.to respond_with 401 }
+end
+{% endhighlight %}
     </div>
 
     <p>
@@ -121,19 +121,19 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
-      {% highlight ruby %}
-      it 'has 422 status code if an unexpected params will be added' do
-      {% endhighlight %}
+{% highlight ruby %}
+it 'has 422 status code if an unexpected params will be added' do
+{% endhighlight %}
     </div>
 
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      context 'when not valid' do
-        it { is_expected.to respond_with 422 }
-      end
-      {% endhighlight %}
+{% highlight ruby %}
+context 'when not valid' do
+  it { is_expected.to respond_with 422 }
+end
+{% endhighlight %}
     </div>
 
     <p>{{ 'short.example.description' | translate }}</p>
@@ -142,10 +142,10 @@ layout: default
     <div class="code-block">
       <p class="spec-title">{{ 'short.example.title' }}</p>
 
-      {% highlight ruby %}
-      when not valid
-        it should respond with 422
-      {% endhighlight %}
+{% highlight ruby %}
+when not valid
+  it should respond with 422
+{% endhighlight %}
     </div>
 
     <p>
@@ -163,10 +163,10 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_isolated_code' | translate }}</p>
 
-      {% highlight ruby %}
-      it { is_expected.to respond_with_content_type(:json) }
-      it { is_expected.to assign_to(:resource) }
-      {% endhighlight %}
+{% highlight ruby %}
+it { is_expected.to respond_with_content_type(:json) }
+it { is_expected.to assign_to(:resource) }
+{% endhighlight %}
     </div>
 
     <p>{{ 'single.body.second' | translate }}</p>
@@ -174,12 +174,12 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_not_isolated_code' | translate }}</p>
 
-      {% highlight ruby %}
-      it 'creates a resource' do
-        expect(response).to respond_with_content_type(:json)
-        expect(response).to assign_to(:resource)
-      end
-      {% endhighlight %}
+{% highlight ruby %}
+it 'creates a resource' do
+  expect(response).to respond_with_content_type(:json)
+  expect(response).to assign_to(:resource)
+end
+{% endhighlight %}
     </div>
 
     <p>
@@ -198,15 +198,15 @@ layout: default
     <div class="code-block">
       <p class="spec-title">{{ 'all.example_title' | translate }}</p>
 
-      {% highlight ruby %}
-      before_filter :find_owned_resources
-      before_filter :find_resource
+{% highlight ruby %}
+before_filter :find_owned_resources
+before_filter :find_resource
 
-      def destroy
-        render 'show'
-        @consumption.destroy
-      end
-      {% endhighlight %}
+def destroy
+  render 'show'
+  @consumption.destroy
+end
+{% endhighlight %}
     </div>
 
     <p>{{ 'all.body.second' | translate }}</p>
@@ -214,31 +214,31 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
-      {% highlight ruby %}
-      it 'shows the resource'
-      {% endhighlight %}
+{% highlight ruby %}
+it 'shows the resource'
+{% endhighlight %}
     </div>
 
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      describe '#destroy' do
+{% highlight ruby %}
+describe '#destroy' do
 
-        context 'when resource is found' do
-          it 'responds with 200'
-          it 'shows the resource'
-        end
+  context 'when resource is found' do
+    it 'responds with 200'
+    it 'shows the resource'
+  end
 
-        context 'when resource is not found' do
-          it 'responds with 404'
-        end
+  context 'when resource is not found' do
+    it 'responds with 404'
+  end
 
-        context 'when resource is not owned' do
-          it 'responds with 404'
-        end
-      end
-      {% endhighlight %}
+  context 'when resource is not owned' do
+    it 'responds with 404'
+  end
+end
+{% endhighlight %}
     </div>
 
     <p>
@@ -256,21 +256,21 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
-      {% highlight ruby %}
-      it 'creates a resource' do
-        response.should respond_with_content_type(:json)
-      end
-      {% endhighlight %}
+{% highlight ruby %}
+it 'creates a resource' do
+  response.should respond_with_content_type(:json)
+end
+{% endhighlight %}
     </div>
 
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      it 'creates a resource' do
-        expect(response).to respond_with_content_type(:json)
-      end
-      {% endhighlight %}
+{% highlight ruby %}
+it 'creates a resource' do
+  expect(response).to respond_with_content_type(:json)
+end
+{% endhighlight %}
     </div>
 
     <p>{{ 'expect.body.second' | translate }}</p>
@@ -278,15 +278,15 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      # spec_helper.rb
-      RSpec.configure do |config|
-        # ...
-        config.expect_with :rspec do |c|
-          c.syntax = :expect
-        end
-      end
-      {% endhighlight %}
+{% highlight ruby %}
+# spec_helper.rb
+RSpec.configure do |config|
+  # ...
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+end
+{% endhighlight %}
     </div>
 
     <p>{{ 'expect.body.third' | translate }}</p>
@@ -294,21 +294,21 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
-      {% highlight ruby %}
-      context 'when not valid' do
-        it { should respond_with 422 }
-      end
-      {% endhighlight %}
+{% highlight ruby %}
+context 'when not valid' do
+  it { should respond_with 422 }
+end
+{% endhighlight %}
     </div>
 
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      context 'when not valid' do
-        it { is_expected.to respond_with 422 }
-      end
-      {% endhighlight %}
+{% highlight ruby %}
+context 'when not valid' do
+  it { is_expected.to respond_with 422 }
+end
+{% endhighlight %}
     </div>
 
     <p>{{ 'expect.body.fourth' | translate }}</p>
@@ -328,18 +328,18 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
-      {% highlight ruby %}
-      it { expect(assigns('message')).to match /it was born in Belville/ }
-      {% endhighlight %}
+{% highlight ruby %}
+it { expect(assigns('message')).to match /it was born in Belville/ }
+{% endhighlight %}
     </div>
 
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      subject { assigns('message') }
-      it { is_expected.to match /it was born in Billville/ }
-      {% endhighlight %}
+{% highlight ruby %}
+subject { assigns('message') }
+it { is_expected.to match /it was born in Billville/ }
+{% endhighlight %}
     </div>
 
     <p>{{ 'subject.body.second' | translate }}</p>
@@ -347,12 +347,12 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      subject(:hero) { Hero.first }
-      it "carries a sword" do
-        expect(hero.equipment).to include "sword"
-      end
-      {% endhighlight %}
+{% highlight ruby %}
+subject(:hero) { Hero.first }
+it "carries a sword" do
+  expect(hero.equipment).to include "sword"
+end
+{% endhighlight %}
     </div>
 
     <p>
@@ -370,31 +370,31 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
-      {% highlight ruby %}
-      describe '#type_id' do
-        before { @resource = FactoryGirl.create :device }
-        before { @type     = Type.find @resource.type_id }
+{% highlight ruby %}
+describe '#type_id' do
+  before { @resource = FactoryGirl.create :device }
+  before { @type     = Type.find @resource.type_id }
 
-        it 'sets the type_id field' do
-          expect(@resource.type_id).to equal(@type.id)
-        end
-      end
-      {% endhighlight %}
+  it 'sets the type_id field' do
+    expect(@resource.type_id).to equal(@type.id)
+  end
+end
+{% endhighlight %}
     </div>
 
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      describe '#type_id' do
-        let(:resource) { FactoryGirl.create :device }
-        let(:type)     { Type.find resource.type_id }
+{% highlight ruby %}
+describe '#type_id' do
+  let(:resource) { FactoryGirl.create :device }
+  let(:type)     { Type.find resource.type_id }
 
-        it 'sets the type_id field' do
-          expect(resource.type_id).to equal(type.id)
-        end
-      end
-      {% endhighlight %}
+  it 'sets the type_id field' do
+    expect(resource.type_id).to equal(type.id)
+  end
+end
+{% endhighlight %}
     </div>
 
     <p>{{ 'let.body.second' | translate }}</p>
@@ -402,19 +402,19 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      context 'when updates a not existing property value' do
-        let(:properties) { { id: Settings.resource_id, value: 'on'} }
+{% highlight ruby %}
+context 'when updates a not existing property value' do
+  let(:properties) { { id: Settings.resource_id, value: 'on'} }
 
-        def update
-          resource.properties = properties
-        end
+  def update
+    resource.properties = properties
+  end
 
-        it 'raises a not found error' do
-          expect { update }.to raise_error Mongoid::Errors::DocumentNotFound
-        end
-      end
-      {% endhighlight %}
+  it 'raises a not found error' do
+    expect { update }.to raise_error Mongoid::Errors::DocumentNotFound
+  end
+end
+{% endhighlight %}
     </div>
 
     <p>{{ 'let.body.third' | translate }}</p>
@@ -422,15 +422,15 @@ layout: default
     <div class="code-block">
       <p class="spec-title">Explenation</p>
 
-      {% highlight ruby %}
-      # this use of let
-      let(:foo) { Foo.new }
+{% highlight ruby %}
+# this use of let
+let(:foo) { Foo.new }
 
-      # is very nearly equivalent to this:
-      def foo
-        @foo ||= Foo.new
-      end
-      {% endhighlight %}
+# is very nearly equivalent to this:
+def foo
+  @foo ||= Foo.new
+end
+{% endhighlight %}
     </div>
 
     <p>
@@ -448,18 +448,18 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      # simulate a not found resource
-      context "when not found" do
+{% highlight ruby %}
+# simulate a not found resource
+context "when not found" do
 
-        before do
-          allow(Resource).to receive(:where).with(created_from: params[:id])
-            .and_return(false)
-        end
+  before do
+    allow(Resource).to receive(:where).with(created_from: params[:id])
+      .and_return(false)
+  end
 
-        it { is_expected.to respond_with 404 }
-      end
-      {% endhighlight %}
+  it { is_expected.to respond_with 404 }
+end
+{% endhighlight %}
     </div>
 
     <p>{{ 'mock.body.second' | translate }}</p>
@@ -479,14 +479,14 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      describe "User" do
-        describe ".top" do
-          before { FactoryGirl.create_list(:user, 3) }
-          it { expect(User.top(2)).to have(2).item }
-        end
-      end
-      {% endhighlight %}
+{% highlight ruby %}
+describe "User" do
+  describe ".top" do
+    before { FactoryGirl.create_list(:user, 3) }
+    it { expect(User.top(2)).to have(2).item }
+  end
+end
+{% endhighlight %}
     </div>
 
     <p>
@@ -504,23 +504,23 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
-      {% highlight ruby %}
-      user = User.create(
-        name: 'Genoveffa',
-        surname: 'Piccolina',
-        city: 'Billyville',
-        birth: '17 Agoust 1982',
-        active: true
-      )
-      {% endhighlight %}
+{% highlight ruby %}
+user = User.create(
+  name: 'Genoveffa',
+  surname: 'Piccolina',
+  city: 'Billyville',
+  birth: '17 Agoust 1982',
+  active: true
+)
+{% endhighlight %}
     </div>
 
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      user = FactoryGirl.create :user
-      {% endhighlight %}
+{% highlight ruby %}
+user = FactoryGirl.create :user
+{% endhighlight %}
     </div>
 
     <p>{{ 'factories.body.second' | translate }}</p>
@@ -540,17 +540,17 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
-      {% highlight ruby %}
-      lambda { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
-      {% endhighlight %}
+{% highlight ruby %}
+lambda { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
+{% endhighlight %}
     </div>
 
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
-      {% endhighlight %}
+{% highlight ruby %}
+expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
+{% endhighlight %}
     </div>
 
     <p>
@@ -568,53 +568,53 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
-      {% highlight ruby %}
-      describe 'GET /devices' do
+{% highlight ruby %}
+describe 'GET /devices' do
 
-        let!(:resource) { FactoryGirl.create :device, created_from: user.id }
-        let!(:uri)      { '/devices' }
+  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let!(:uri)      { '/devices' }
 
-        context 'when shows all resources' do
+  context 'when shows all resources' do
 
-          let!(:not_owned) { FactoryGirl.create factory }
+    let!(:not_owned) { FactoryGirl.create factory }
 
-          it 'shows all owned resources' do
-            page.driver.get uri
-            expect(page.status_code).to be(200)
-            contains_owned_resource resource
-            does_not_contain_resource not_owned
-          end
-        end
+    it 'shows all owned resources' do
+      page.driver.get uri
+      expect(page.status_code).to be(200)
+      contains_owned_resource resource
+      does_not_contain_resource not_owned
+    end
+  end
 
-        describe '?start=:uri' do
+  describe '?start=:uri' do
 
-          it 'shows the next page' do
+    it 'shows the next page' do
 
-            page.driver.get uri, start: resource.uri
-            expect(page.status_code).to be(200)
-            contains_resource resources.first
-            expect(page).to_not have_content resource.id.to_s
-          end
-        end
-      end
-      {% endhighlight %}
+      page.driver.get uri, start: resource.uri
+      expect(page.status_code).to be(200)
+      contains_resource resources.first
+      expect(page).to_not have_content resource.id.to_s
+    end
+  end
+end
+{% endhighlight %}
     </div>
 
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      describe 'GET /devices' do
+{% highlight ruby %}
+describe 'GET /devices' do
 
-        let!(:resource) { FactoryGirl.create :device, created_from: user.id }
-        let!(:uri)       { '/devices' }
+  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let!(:uri)       { '/devices' }
 
-        it_behaves_like 'a listable resource'
-        it_behaves_like 'a paginable resource'
-        it_behaves_like 'a searchable resource'
-        it_behaves_like 'a filterable list'
-      end
-      {% endhighlight %}
+  it_behaves_like 'a listable resource'
+  it_behaves_like 'a paginable resource'
+  it_behaves_like 'a searchable resource'
+  it_behaves_like 'a filterable list'
+end
+{% endhighlight %}
     </div>
 
     <p>{{ 'shared_examples.body.second' | translate }}</p>
@@ -650,21 +650,21 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
 
-      {% highlight ruby %}
-      it 'should not change timings' do
-        consumption.occur_at.should == valid.occur_at
-      end
-      {% endhighlight %}
+{% highlight ruby %}
+it 'should not change timings' do
+  consumption.occur_at.should == valid.occur_at
+end
+{% endhighlight %}
     </div>
 
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      it 'does not change timings' do
-        expect(consumption.occur_at).to equal(valid.occur_at)
-      end
-      {% endhighlight %}
+{% highlight ruby %}
+it 'does not change timings' do
+  expect(consumption.occur_at).to equal(valid.occur_at)
+end
+{% endhighlight %}
     </div>
 
     <p>{{ 'should.body.second' | translate }}</p>
@@ -684,9 +684,9 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      bundle exec guard
-      {% endhighlight %}
+{% highlight ruby %}
+bundle exec guard
+{% endhighlight %}
     </div>
 
     <p>{{ 'continuous.body.second' | translate }}</p>
@@ -695,22 +695,22 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
-        # run every updated spec file
-        watch(%r{^spec/.+_spec\.rb$})
-        # run the lib specs when a file in lib/ changes
-        watch(%r{^lib/(.+)\.rb$}) { |m| "spec/lib/#{m[1]}_spec.rb" }
-        # run the model specs related to the changed model
-        watch(%r{^app/(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
-        # run the view specs related to the changed view
-        watch(%r{^app/(.*)(\.erb|\.haml)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
-        # run the integration specs related to the changed controller
-        watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
-        # run all integration tests when application controller change
-        watch('app/controllers/application_controller.rb') { "spec/requests" }
-      end
-      {% endhighlight %}
+{% highlight ruby %}
+guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
+  # run every updated spec file
+  watch(%r{^spec/.+_spec\.rb$})
+  # run the lib specs when a file in lib/ changes
+  watch(%r{^lib/(.+)\.rb$}) { |m| "spec/lib/#{m[1]}_spec.rb" }
+  # run the model specs related to the changed model
+  watch(%r{^app/(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
+  # run the view specs related to the changed view
+  watch(%r{^app/(.*)(\.erb|\.haml)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
+  # run the integration specs related to the changed controller
+  watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
+  # run all integration tests when application controller change
+  watch('app/controllers/application_controller.rb') { "spec/requests" }
+end
+{% endhighlight %}
     </div>
 
     <p>{{ 'continuous.body.third' | translate }}</p>
@@ -750,18 +750,18 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      context "with unauthorized access" do
+{% highlight ruby %}
+context "with unauthorized access" do
 
-        let(:uri) { 'http://api.lelylan.com/types' }
-        before    { stub_request(:get, uri).to_return(status: 401, body: fixture('401.json')) }
+  let(:uri) { 'http://api.lelylan.com/types' }
+  before    { stub_request(:get, uri).to_return(status: 401, body: fixture('401.json')) }
 
-        it "gets a not authorized notification" do
-          page.driver.get uri
-          expect(page).to have_content 'Access denied'
-        end
-      end
-      {% endhighlight %}
+  it "gets a not authorized notification" do
+    page.driver.get uri
+    expect(page).to have_content 'Access denied'
+  end
+end
+{% endhighlight %}
     </div>
 
 
@@ -782,16 +782,16 @@ layout: default
     <div class="code-block">
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
-      {% highlight ruby %}
-      # Gemfile
-      group :development, :test do
-        gem 'fuubar'
+{% highlight ruby %}
+# Gemfile
+group :development, :test do
+  gem 'fuubar'
 
-      # .rspec configuration file
-      --drb
-      --format Fuubar
-      --color
-      {% endhighlight %}
+# .rspec configuration file
+--drb
+--format Fuubar
+--color
+{% endhighlight %}
     </div>
 
     <p>{{ 'formatter.body.second' | translate }}</p>
