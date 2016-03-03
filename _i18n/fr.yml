@@ -1,0 +1,299 @@
+en:
+  menu:
+    describe: Comment décrire vos méthodes
+    contexts: Utiliser «context»
+    short: Garder vos descriptions courtes
+    single: Single expectation
+    all: Test de tous les cas possibles
+    expect: «Expect» contre «Should»
+    subject: Utiliser «subject»
+    let: Utiliser «let» et «let!»
+    mock: «Mock or not to mock»
+    data: Créer uniquement les données requises
+    factories: Utiliser les «factories» et ne pas utiliser les «fixtures»
+    matchers: Des «matchers» facile à lire
+    shared: Exemples partagés<
+    integration: Tester ce que vous voyez
+    should: Ne pas utiliser «should»
+    continuous: Tester en continue
+    faster: Tester plus rapidement
+    stubbing: Émuler des requêtes HTTP
+    formatter: Formatter intelligemment
+    contributing: Contribuer
+  what:
+    title: Qu'est ce que Better Specs?
+    body: "Better Specs a été créé chez <a target='_blank' \
+      href='https://lelylan.com'>Lelylan</a> (open source IoT cloud platform) \
+      et <a target='_blank' href='https://github.com/lelylan/lelylan'>visiter \
+      ça suite de teste</a> pourrait être une source d'inspiration"
+    info: "Better Specs se concentre sur les tests de Rails, mais notre but est de \
+      créer des règles qui couvrent de nombreux languages (comme Scala, Elixir, \
+      React). Si vous souhaitez ajouter vos règles de test favorites \
+      <a target='_blank' href='https://github.com/lelylan/betterspecs/issues'>\
+      ouvrer une issue</a>."
+  describe:
+    title: Comment décrire vos méthodes
+    body: "Soyez clair dans la description de vos méthodes. Par exemple, \
+      utiliser la convention issue de la documentation Ruby qui consiste \
+      à utiliser <code>.</code> (ou <code>::</code>) lorsque vous faites \
+      référence à une méthode de classe, et <code>#</code> lorsque vous \
+      faites référence à une méthode d'instance."
+  contexts:
+    title: Utiliser «context»
+    body: "«Context» est une méthode qui permet d'obtenir des tests clairs, \
+      et une bonne organisation. Sur le long terme, elle devrait vous \
+      permettre de garder des tests lisibles. Quand vous utilisez «context», \
+      commencer votre description avec «when» ou avec «with»."
+  short:
+    title: Garder vos descriptions courtes
+    body: "Vos descriptions ne doivent jamais dépasser 40 caractères. \
+      Si c'est le cas, découpez les en utilisant «context»."
+    example:
+      description: "Dans cet exemple, nous avons supprimé la description \
+        par <code>it { should respond_with 422 }</code>. En lançant ce test, \
+        vous obtenez une réponse lisible."
+      title: Sortie formatée
+  single:
+    title: Test d'attente unitaire
+    body:
+      first: "Une seule affirmation par test. Ce qui vous permet de \
+        détecter le test qui a échoué, et également de déceler les \
+        erreurs possibles. Ce conseil contribue à rendre votre code plus \
+        lisible. Dans une spécification unitaire isolée, spécifier \
+        un seul comportement. Des attentes multiples dans un même \
+        exemple sont le signe que vous devriez spécifier plusieurs comportements."
+      second: "Dans le cas de tests non isolés (intégration avec une base \
+        de donnée, un service web externe), vous noterez une baisse de \
+        performance en assignant un comportement différent pour chaque \
+        test. Dans ce cas uniquement spécifier plus d'un comportement \
+        par test."
+  all:
+    title: Test de tous les cas possibles
+    example_title: Destroy Action
+    body:
+      "Tester est une bonne pratique, mais est inutile si vous ne \
+       testez pas tous les cas possibles. Par exemple, dans l'exemple suivant."
+      first: ""
+      second: "L'erreur que je vois souvent est que l'on teste seulement \
+        si la ressource a été supprimée. Mais il y a au moins deux autres \
+        cas : quand la ressource n'est pas trouvée et quand vous n'êtes \
+        pas le propriétaire de la ressource. En règle générale, penser \
+        à toutes les entrées possibles, et tester les."
+  expect:
+    title: «Expect» contre «Should»
+    body:
+      first: Dans vos nouveaux projets, utiliser la syntaxe <code>expect</code>.
+      second: "Configurer RSpec pour qu'il n'accepte que la nouvelle \
+        syntaxe dans vos nouveaux projets, et ainsi éviter d'avoir les \
+        deux syntaxes qui cohabitent."
+      third: "Dans les attentes d'une seule ligne ou avec un sujet implicite \
+        utiliser la syntaxe <code>is_expected.to</code>."
+      fourth: "Sur un vieux project vous pouvez toujours utiliser \
+        <a href='https://github.com/yujinakayama/transpec'>transpec</a> pour \
+        les convertir dans la nouvelle syntaxe. Pour en savoir plus sur la nouvelle syntaxe \
+        <a href='http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax'>c'est ici</a> \
+        et <a href='http://myronmars.to/n/dev-blog/2013/07/the-plan-for-rspec-3#what_about_the_old_expectationmock_syntax'>ici</a>."
+  subject:
+    title: Utiliser «subject"
+    body:
+      first: "Si vous avez plusieurs tests qui possèdent le même sujet, \
+        utiliser <code>subject{}</code> pour éviter la duplication de code."
+      second: "Vous pouvez également utiliser des sujets nommés avec RSpec. \
+        pour en savoir plus <a href='https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/subject'>\
+        rspec subject</a>)."
+  let:
+    title: Utiliser «let» et «let!»
+    body:
+      first: "Lors de l'assignation d'une variable, vous pouvez à la place de \
+        créer un bloc <code>before</code> utiliser <code>let</code>. L'utilisation \
+        de <code>let</code> rend la variable longue à charger la première fois, \
+        mais elle est ensuite mise en cache jusqu'à la fin du test. Une très bonne \
+        description de <code>let</code> peut être trouvée dans cette \
+        <a href='http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979'>réponse stackoverflow</a>."
+      second: "Utiliser <code>let</code> pour initialiser des actions longues \
+        à charger pour tester vos spécifications."
+      third: "Utiliser <code>let!</code> si vous souhaitez définir une variable \
+        quand le bloc est défini. C'est utile lorsque vous peuplez votre base \
+        de données pour tester des requêtes ou des portées."
+  mock:
+    title: «Mock or not to mock»
+    body:
+      first: "Ne pas (trop) utiliser les «mocks» et tester le comportement \
+        réel quand c'est possible. Tester les cas réels est utile lors de la \
+        mise à jour du flux de votre application."
+      second: "Utiliser des «mocks» rend vos spécifications plus rapides \
+        mais elles sont plus difficiles à utiliser. Vous avez besoin de \
+        les maîtriser pour bien les utiliser. Lire plus \
+        <a href='http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking'>à propos</a>."
+  data:
+    title: Créer seulement les données requises
+    body: "Si vous avez déjà travaillé sur des projets de taille moyenne \
+     (mais également sur des petits), les tests peuvent être long à exécuter. \
+     Pour résoudre ce problème, c'est important de ne pas charger plus de \
+     données que nécessaire. Si vous pensez que vous avez besoin de douzaines \
+     d'enregistrements, vous avez probablement tort."
+  factories:
+    title: Utiliser les «factories» et ne pas utiliser les «fixtures»
+    body:
+      first: "Ne pas utiliser les «fixtures» car elles sont difficiles \
+        à maîtriser. Utiliser des «factories» à la place qui permettent \
+        de réduire la verbosité dans la création de nouvelles données."
+      second: "Quand nous parlons de tests unitaires la bonne pratique \
+        devrait de n'utiliser ni les «fixtures», ni les «factories». \
+        Mettez le maximum de logique dans des bibliothèques qui peuvent \
+        être testées sans complexité. Lire plus dans \
+        <a href='http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl'>\
+        cet article</a>"
+  matchers:
+    title: Des «matchers» facile à lire
+    body: "Utilisez des «matchers» lisibles et jetez un œil sur \
+      <a href='https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers'>\
+      rspec matchers</a>."
+  shared_examples:
+    title: Exemples partagés
+    body:
+      first: "Écrire des tests est bien, et vous devriez gagner en confiance \
+        chaque jour. Mais vous devriez commencer à voir de la duplication de \
+        code. Utiliser les exemples partagés pour réduire le nombre de répétitions."
+      second: "De notre propre expérience, les exemples partagés sont \
+        utilisés principalement dans les contrôleurs. Les modèles sont \
+        très différents les un des autres, ils  partagent peu de logique. \
+        En apprendre plus à propos des \
+        <a href='https://www.relishapp.com/rspec/rspec-core/v/3-2/docs/example-groups/shared-examples'>\
+        exemples partagés</a>."
+  integration:
+    title: Tester ce que vous voyez
+    body:
+      first: "Tester profondément vos modèles, et le comportement de votre \
+        application (tests d'intégration). N'ajouter pas de tests inutiles \
+        pour vos contrôleurs."
+      second: "Quand j'ai commencé à tester mes applications je testais \
+        les contrôleurs, maintenant je ne le fais plus. Maintenant je crée \
+        seulement des tests d'intégration en utilisant RSpec et Capybara. \
+        Pourquoi ? Parce que je crois que vous devriez tester ce que vous \
+        voyez et parce que tester les contrôleurs est une étape supplémentaire \
+        qui n'est pas nécessaire. Vous devriez trouver que la plupart de vos \
+        tests concernant les modèles et les tests d'intégration peuvent être \
+        facilement groupés avec des exemples partagés, et ainsi construire une \
+        suite de tests claire et lisible."
+      third: "C'est un débat ouvert dans la communauté Ruby, avec des deux \
+        côtés de très bons arguments supportant leur idée. Les personnes \
+        qui supportent le besoin de tester les contrôleurs devraient dire \
+        que les tests d'intégration ne couvrent pas tous les cas et qu'ils \
+        sont lent. Les deux ont tort. Vous pouvez facilement couvrir tous \
+        les cas et vous pouvez lancer seulement un seul fichier spec en \
+        utilisant des outils automatisés comme Guard. Dans cette voie, \
+        vous devriez pouvoir lancer seulement les spécifications que vous \
+        avez besoin de tester rapidement sans ralentir votre flux de tâches."
+  should:
+    title: Ne pas utiliser «should»
+    body:
+      first: "N'utiliser pas 'should' quand vous décrivez vos tests. \
+        Utiliser la troisième personne au présent simple. Encore mieux \
+        commencer à utiliser la nouvelle syntaxe \
+        <a href='http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax'>\
+        «should»</a>
+syntax."
+      second: "Voir <a href='https://github.com/should-not/should_not'>\
+        le «should_not» gem</a> pour utiliser cette solution dans RSpec \
+        et <a href='https://github.com/siyelo/should_clean'>le «should_clean»\
+        </a> gem pour nettoyer les exemples RSpec qui commencent par «should»."
+  continuous:
+    title: Exécuter automatiquement les tests avec Guard
+    body:
+      first: "Lancer la totalité des tests à chaque changement devrait \
+        être pesant. Cela prend du temps, et casse votre flux de tâches. \
+        Avec Guard, vous pouvez automatiser votre suite de tests en lançant \
+        seulement les tests liés à la spécification sur laquelle vous êtes \
+        en train de travailler."
+      second: "Ici vous pouvez voir un exemple d'un fichier Guardfile avec \
+        des règles de rechargement basiques."
+      third: "Guard est un bon outil mais il ne couvre pas tous les besoins. \
+        Quelquefois votre flux TDD travaille mieux avec des raccourcis clavier \
+        qui rendent le lancement d'exemple unitaire aisé. Vous pouvez alors \
+        utiliser les tâches rake pour lancer la totalité des tests avant de \
+        pousser votre code.
+        <a href='https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#L61-103'>\
+        Voici</a> quelques exemples des raccourcis vim."
+  faster:
+    title: Tester plus rapidement
+    body:
+      first: "Quand vous lancez un test avec Rails l'application Rails entière \
+        est chargée. Ce qui peut prendre du temps et casser votre flux de \
+        développement. Pour résoudre ce problème utiliser des solutions comme \
+        <a href='https://github.com/burke/zeus'>Zeus</a>, \
+        <a href='https://github.com/jstorimer/spin'>Spin</a> ou \
+        <a href='https://github.com/sporkrb/spork'>Spork</a>. \
+        Ces solutions devraient préchargées toutes les bibliothèques qui \
+        n'ont pas changées et recharger les contrôleurs, modèles, vues et \
+        «factories» ainsi que les fichiers qui changent régulièrement."
+      second: "Vous pouvez trouver un <a href='https://gist.github.com/3821012'>spec helper</a> \
+        et un fichier de <a href='https://gist.github.com/3821031'>configuration Guardfile</a> \
+        basé sur Spork. Avec cette configuration l'application ne sera entièrement \
+        rechargée que si un fichier préchargé (comme initializers) change et \
+        devrait lancer les tests uniques très rapidement."
+      third: "L'inconvénient d'utiliser Spork est que vous risquez de perdre \
+        quelques heures à essayer de comprendre pourquoi un fichier n'est \
+        pas rechargé. Si vous avec quelques exemples de code utilisant Spin \
+        or n'importe quelles autres solutions \
+        <a href='https://github.com/andreareginato/betterspecs/issues/17'>\
+        faites le nous savoir</a>."
+      fourth: "Vous pouvez trouver ici un fichier de configuration\
+        <a href='https://gist.github.com/HuffMoody/5912373'>Guardfile</a> \
+        pour utiliser Zeus. Le spec_helper n'a pas besoin d'être modifié, \
+        mais vous devriez lancer `zeus start` dans une console pour démarrer \
+        le serveur zeus avant de lancer vos tests. Bien que Zeus a une \
+        approche moins agressive que Spork, l'inconvénient majeur est ses \
+        exigences strictes; Ruby 1.9.3+ (recommended using backported GC \
+        from Ruby 2.0) et un système d'exploitation qui supporte FSEVENTS ou inotify."
+      fifth: "Ces solutions subissent de nombreuses critiques. Ces bibliothèques \
+        sont un pansement à un problème qui devrait être résolu par une meilleure \
+        conception, et par le chargement intentionnel des dépendances nécessaires. \
+        En apprendre plus en lisant \
+        <a href='https://github.com/andreareginato/betterspecs/issues/17'>\
+        la conversation liée</a>."
+  stubbing:
+    title: Émuler des requêtes HTTP
+    body:
+      first: "Quelquefois vous avez besoin d’accéder à des services web \
+        externes. Dans ces cas vous ne pouvez pas relier au service réel \
+        mais vous pouvez le simuler avec des solutions comme webmock."
+      second: "En apprendre plus sur <a href='https://github.com/bblimke/webmock'>\
+        webmock</a> et <a href='https://github.com/vcr/vcr'>VCR</a>. Ici une \
+        <a href='http://marnen.github.com/webmock-presentation/webmock.html'>\
+        bonne présentation</a> qui explique comment les utiliser ensemble."
+  formatter:
+    title: Formater intelligemment
+    body:
+      first: "Utiliser un format qui peut vous donner des informations utiles \
+        sur la suite de tests. Je trouve que fuubar est vraiment intéressant. \
+        Pour le faire fonctionner ajouter le gem et ajouter fuubar comme format \
+        par défaut dans votre fichier Guardfile."
+      second: "En apprendre plus sur \
+        <a href='http://jeffkreeftmeijer.com/2010/fuubar-the-instafailing-rspec-progress-bar-formatter/'>fuubar</a>."
+  contributing:
+    title: Contribuer
+    body:
+      first: "“Vous êtes libre de nous soumettre une PR” sont des mots régulièrement \
+        lisible sur github mais ils effraient encore beaucoup. Commencer par contribuer \
+        à de l'open source n'ext pas toujours simple et peut être difficile. Si vous êtes \
+        nouveaux, regardez ces \
+        <a href='https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github'>videos</a> \
+        et vous serrez équipé avec les outils, connaissances et la compréhension \
+        dont vous avez besoin pour commmencer à contribuer à des projets open \
+        source. Particulierement sur Better Specs nous avons besoin d'aide pour les \
+        taches suivantes."
+      second: "&rarr; Ajouter des règles de tests pour des nouveaux languages \
+        <a target='_blank' href='https://github.com/lelylan/betterspecs/issues'>\
+        ouvrir une issue</a>).<br> &rarr; Fixer les best practices qui sont périmées. \
+        <br> &rarr; Ajouter ou modifier une traduction existante \
+        <a target='_blank' href='https://github.com/lelylan/betterspecs/issues'>\
+        ouvrir une issue</a>).<br>"
+      third: "Merci pour votre temps, bon coding et commencer à contribuer aux projets que \
+        vous aimez et utilisez dès aujourd'hui."
+  shared:
+    good_code: bien
+    good_isolated_code: bien (isolé)
+    good_not_isolated_code: bien (non isolé)
+    bad_code: mauvais
+    discussion: Discuter cette recommendation &rarr;
