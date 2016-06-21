@@ -225,8 +225,8 @@ end
 <p class="correct">good (isolated)</p>
 
 <div>
-<pre><code class="ruby">it { should respond_with_content_type(:json) }
-it { should assign_to(:resource) }
+<pre><code class="ruby">it { is_expected.to respond_with_content_type(:json) }
+it { is_expected.to assign_to(:resource) }
 </code></pre>
 </div>
 
@@ -236,8 +236,8 @@ it { should assign_to(:resource) }
 
 <div>
 <pre><code class="ruby">it 'creates a resource' do
-  response.should respond_with_content_type(:json)
-  response.should assign_to(:resource)
+  expect(response).to respond_with_content_type(:json)
+  expect(response).to assign_to(:resource)
 end
 </code></pre>
 </div>
@@ -327,8 +327,8 @@ end
 <p class="wrong">bad</p>
 
 <div>
-<pre><code class="ruby">it { assigns('message').should match /it was born in belville/ }
-it { assigns('message').creator.should match /topolino/ }
+<pre><code class="ruby">it { expect(assigns('message')).to match /it was born in belville/ }
+it { expect(assigns('message').creator).to match /topolino/ }
 </code></pre>
 </div>
 
@@ -336,7 +336,7 @@ it { assigns('message').creator.should match /topolino/ }
 
 <div>
 <pre><code class="ruby">subject { assigns('message') }
-it { should match /it was born in billville/ }
+it { is_expected.to match /it was born in billville/ }
 </code></pre>
 </div>
 
@@ -349,7 +349,7 @@ RSpec 也可以给 subject 命名。
 <div>
 <pre><code class="ruby">subject(:hero) { hero.first }
 it "carries a sword" do
-  hero.equipment.should include "sword"
+  expect(hero.equipment).to include "sword"
 end
 </code></pre>
 </div>
