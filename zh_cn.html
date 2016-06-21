@@ -390,7 +390,7 @@ lazy load 的机制，只有在第一次用到的时候才会加载，然后就�
   before { @type     = type.find @resource.type_id }
 
   it 'sets the type_id field' do
-    @resource.type_id.should equal(@type.id)
+    expect(@resource.type_id).to equal(@type.id)
   end
 end
 </code></pre>
@@ -404,7 +404,7 @@ end
   let(:type)     { type.find resource.type_id }
 
   it 'sets the type_id field' do
-    resource.type_id.should equal(type.id)
+    expect(resource.type_id).to equal(type.id)
   end
 end
 </code></pre>
@@ -481,7 +481,7 @@ end
 <pre><code class="ruby"># 模拟一个没有找到的资源
 context "when not found" do
   before { resource.stub(:where).with(created_from: params[:id]).and_return(false) }
-  it { should respond_with 404 }
+  it { is_expected.to respond_with 404 }
 end
 </code></pre>
 </div>
@@ -516,7 +516,7 @@ mock 能加快你们测试的速度，但它真的很难上手。你必须要对
 <pre><code class="ruby">describe "user"
   describe ".top" do
     before { FactoryGirl.create_list(:user, 3) }
-    it { User.top(2).should have(2).item }
+    it { expect(User.top(2)).to have(2).item }
   end
 end
 </code></pre>
@@ -635,7 +635,7 @@ end
 
     it 'shows all owned resources' do
       page.driver.get uri
-      page.status_code.should be(200)
+      expect(page.status_code).to be(200)
       contains_owned_resource resource
       does_not_contain_resource not_owned
     end
@@ -644,9 +644,9 @@ end
   describe '?start=:uri' do
     it 'shows the next page' do
       page.driver.get uri, start: resource.uri
-      page.status_code.should be(200)
+      expect(page.status_code).to be(200)
       contains_resource resources.first
-      page.should_not have_content resource.id.to_s
+      expect(page).to_not have_content resource.id.to_s
     end
   end
 end
@@ -897,7 +897,7 @@ spec_helper 不用被修改。但你在跑任何测试之前，必须先在命�
   before    { stub_request(:get, uri).to_return(status: 401, body: fixture('401.json')) }
   it "gets a not authorized notification" do
     page.driver.get uri
-    page.should have_content 'Access denied'
+    expect(page).to have_content 'Access denied'
   end
 end
 </code></pre>
