@@ -121,10 +121,10 @@ contexts 非常强大，它能让测试更清晰，有条理。在漫长的开�
 
 <div>
 <pre><code class="ruby">it 'has 200 status code if logged in' do
-  response.should respond_with 200
+  expect(reponse).to respond_with 200
 end
 it 'has 401 status code if not logged in' do
-  response.should respond_with 401
+  expect(response).to respond_with 401
 end
 </code></pre>
 </div>
