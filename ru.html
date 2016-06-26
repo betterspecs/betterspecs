@@ -127,10 +127,10 @@ describe '#admin?' do
 
 <div>
 <pre><code class="ruby">it 'has 200 status code if logged in' do
-  response.should respond_with 200
+  expect(response).to respond_with 200
 end
 it 'has 401 status code if not logged in' do
-  response.should respond_with 401
+  expect(response).to respond_with 401
 end
 </code></pre>
 </div>
@@ -181,14 +181,14 @@ end
 
 <div>
 <pre><code class="ruby">context 'when not valid' do
-  it { should respond_with 422 }
+  it { is_expected.to respond_with 422 }
 end
 </code></pre>
 </div>
 
 <p>
 В примере мы удалили описание, относящееся к коду статуса, и заменили его на ожидание
-<code>it { should respond_with 422 }</code>.
+<code>is_expected</code>.
 Если прогнать этот тест с помощью <code>rspec filename</code>, результат будет хорошо читаем.
 </p>
 
@@ -234,8 +234,8 @@ end
 <p class="correct">хорошо (изолированная ситуация)</p>
 
 <div>
-<pre><code class="ruby">it { should respond_with_content_type(:json) }
-it { should assign_to(:resource) }
+<pre><code class="ruby">it { is_expected.to respond_with_content_type(:json) }
+it { is_expected.to assign_to(:resource) }
 </code></pre>
 </div>
 
@@ -245,8 +245,8 @@ it { should assign_to(:resource) }
 
 <div>
 <pre><code class="ruby">it 'creates a resource' do
-  response.should respond_with_content_type(:json)
-  response.should assign_to(:resource)
+  expect(response).to respond_with_content_type(:json)
+  expect(response).to assign_to(:resource)
 end
 </code></pre>
 </div>
@@ -338,7 +338,7 @@ end
 <p class="wrong">плохо</p>
 
 <div>
-<pre><code class="ruby">it { assigns('message').should match /it was born in Belville/ }
+<pre><code class="ruby">it { expect(assigns('message')).to match /it was born in Belville/ }
 </code></pre>
 </div>
 
@@ -346,7 +346,7 @@ end
 
 <div>
 <pre><code class="ruby">subject { assigns('message') }
-it { should match /it was born in Billville/ }
+it { is_expected.to match /it was born in Billville/ }
 </code></pre>
 </div>
 
@@ -358,8 +358,8 @@ it { should match /it was born in Billville/ }
 
 <div>
 <pre><code class="ruby">subject(:hero) { Hero.first }
-it "should be equipped with a sword" do
-  hero.equipment.should include "sword"
+it "carries a sword" do
+  expect(hero.equipment).to include "sword"
 end
 </code></pre>
 </div>
@@ -399,7 +399,7 @@ end
   before { @type     = Type.find @resource.type_id }
 
   it 'sets the type_id field' do
-    @resource.type_id.should equal(@type.id)
+    expect(@resource.type_id).to equal(@type.id)
   end
 end
 </code></pre>
@@ -413,7 +413,7 @@ end
   let(:type)     { Type.find resource.type_id }
 
   it 'sets the type_id field' do
-    resource.type_id.should equal(type.id)
+    expect(resource.type_id).to equal(type.id)
   end
 end
 </code></pre>
@@ -491,8 +491,11 @@ end
 <div>
 <pre><code class="ruby"># simulate a not found resource
 context "when not found" do
-  before { allow(Resource).to receive(:where).with(created_from: params[:id]).and_return(false) }
-  it { should respond_with 404 }
+  before do
+    allow(Resource).to receive(:where).with(created_from: params[:id])
+      .and_return(false)
+  end
+  it { is_expected.to respond_with 404 }
 end
 </code></pre>
 </div>
@@ -529,7 +532,7 @@ end
 <pre><code class="ruby">describe "User"
   describe ".top" do
     before { FactoryGirl.create_list(:user, 3) }
-    it { User.top(2).should have(2).item }
+    it { expect(User.top(2)).to have(2).item }
   end
 end
 </code></pre>
@@ -606,7 +609,7 @@ end
 <p class="wrong">плохо</p>
 
 <div>
-<pre><code class="ruby">lambda { model.save! }.should raise_error Mongoid::Errors::DocumentNotFound
+<pre><code class="ruby">lambda { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
 </code></pre>
 </div>
 
@@ -648,7 +651,7 @@ end
 
     it 'shows all owned resources' do
       page.driver.get uri
-      page.status_code.should be(200)
+      expect(page.status_code).to be(200)
       contains_owned_resource resource
       does_not_contain_resource not_owned
     end
@@ -657,9 +660,9 @@ end
   describe '?start=:uri' do
     it 'shows the next page' do
       page.driver.get uri, start: resource.uri
-      page.status_code.should be(200)
+      expect(page.status_code).to be(200)
       contains_resource resources.first
-      page.should_not have_content resource.id.to_s
+      expect(page).to_not have_content resource.id.to_s
     end
   end
 end
@@ -895,7 +898,7 @@ Guard - это хороший инструмент, но он, конечно ж
   before    { stub_request(:get, uri).to_return(status: 401, body: fixture('401.json')) }
   it "gets a not authorized notification" do
     page.driver.get uri
-    page.should have_content 'Access denied'
+    expect(page).to have_content 'Access denied'
   end
 end
 </code></pre>
