@@ -239,8 +239,8 @@ Testing is a good practice, but if you do not test the edge cases, it will not b
 <p class="spec-title">Destroy Action</p>
 
 {% highlight ruby %}
-before_filter :find_owned_resources
-before_filter :find_resource
+before_action :find_owned_resources
+before_action :find_resource
 
 def destroy
   render 'show'
