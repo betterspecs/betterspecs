@@ -35,6 +35,8 @@ h2{font:20px arial,lucida,helvetica,arial,sans-serif;font-weight:normal}
   height:40px;line-height:40px;padding:0 0 0 41px;margin:0;font-size:22px;text-align:left;}
 #header h1 span{font-size:14px;}
 #header h1 a{color:inherit;text-shadow:0 1px 0 #888}
+#header ul.langs { float: right;overflow: hidden; }
+#header ul.langs li { float: left;display: inline-block; padding: 0 5px; }
 #header h2{-moz-box-shadow:inset 0 1px 0 rgba(255,255,255,0.40);-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,0.40);-moz-box-shadow:inset 0 1px 0 rgba(255,255,255,0.40);-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,0.40);box-shadow:inset 0 1px 0 rgba(255,255,255,0.40);background:#f4f4f4;background:-webkit-gradient(linear,left top,left bottom,from(#f4f4f4),to(#dcdcdc));background:-moz-linear-gradient(top,#f4f4f4,#dcdcdc);background:linear-gradient(top,#f4f4f4,#dcdcdc);
   padding:0 0 0 41px;margin:0;text-align:left;height:40px;line-height:40px;border-bottom:1px solid #c7c7c7}
 #header h2 .breadcrumbs{ margin-left: 118px; }
