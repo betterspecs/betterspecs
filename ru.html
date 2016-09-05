@@ -272,8 +272,8 @@ end
 <p class="base">Destroy action</p>
 
 <div>
-<pre><code class="ruby">before_filter :find_owned_resources
-before_filter :find_resource
+<pre><code class="ruby">before_action :find_owned_resources
+before_action :find_resource
 
 def destroy
   render 'show'
