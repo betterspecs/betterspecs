@@ -551,10 +551,10 @@ If you have ever worked in a medium size project (but also in small ones), test 
 <p class="spec-title spec-correct">good</p>
 
 {% highlight ruby %}
-describe "User" do
+RSpec.describe User do
   describe ".top" do
     before { FactoryGirl.create_list(:user, 3) }
-    it { expect(User.top(2)).to have(2).item }
+    it { expect(described_class.top(2).size).to eq 2 }
   end
 end
 {% endhighlight %}
