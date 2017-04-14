@@ -13,7 +13,7 @@ title: 'Better Specs(한국어)'
 <li class="little">&raquo; <a href="#let">let 과 let! 사용하기</a></li>
 <li class="little">&raquo; <a href="#mock">Mock을 하느냐 마느냐</a></li>
 <li class="little">&raquo; <a href="#data">필요한 데이터만 만들기</a></li>
-<li class="little">&raquo; <a href="#factories">픽스쳐대신 팩토리 사용하기</a></li>
+<li class="little">&raquo; <a href="#factories">픽스쳐 대신 팩토리 사용하기</a></li>
 <li class="little">&raquo; <a href="#matchers">읽기 쉬운 matcher 사용하기</a></li>
 <li class="little">&raquo; <a href="#sharedexamples">Shared examples</a></li>
 <li class="little">&raquo; <a href="#integration">보이는것을 테스트 하기</a></li>
@@ -425,7 +425,7 @@ end
 <h1><a name="let">let 과 let! 사용하기</a></h1>
 
 <p>
-만약 <code>before</code> 인스턴스 변수를 만들지 않고 변수를 할당해야 한다면, <code>let</code>을 사용합시다. <code>let</code> 사용하면 변수를 테스트에서 처음 사용 될때만 lazy load하고 테스트 명세가 끝날때까지 캐슁할 수 있습니다.
+변수를 선언해야 할 때, <code>before</code> 블록에서 인스턴스 변수를 생성하는 대신, <code>let</code>을 사용합시다. <code>let</code> 사용하면 변수를 테스트에서 처음 사용 될때만 lazy load하고 테스트 명세가 끝날때까지 캐슁할 수 있습니다.
 이 <a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">스택오버 플로우 글</a>에서 <code>let</code>에 대해  설명해 놓았네요.
 </p>
 
@@ -574,7 +574,7 @@ end
 
 <article>
 
-<h1><a name="factories">픽스쳐대신 팩토리 사용하기</a></h1>
+<h1><a name="factories">픽스쳐 대신 팩토리 사용하기</a></h1>
 
 <p>
 이것은 오래된 이야기입니다만, 여전히 언급할 가치가 있습니다. 픽스쳐를 사용하지마세요. 왜냐하면 픽스쳐는 사용하기 어렵기 때문입니다. 대신 팩토리를 사용하세요. 팩토리를 사용하면 새로운 데이터를 생성할 때 코드를 줄일 수 있습니다.
