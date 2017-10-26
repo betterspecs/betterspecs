@@ -496,7 +496,7 @@ finished. A really good and deep description of what <code>let</code> can be fou
 
 <div>
 <pre><code class="ruby">describe '#type_id' do
-  before { @resource = FactoryGirl.create :device }
+  before { @resource = FactoryBot.create :device }
   before { @type     = Type.find @resource.type_id }
 
   it 'sets the type_id field' do
@@ -510,7 +510,7 @@ end
 
 <div>
 <pre><code class="ruby">describe '#type_id' do
-  let(:resource) { FactoryGirl.create :device }
+  let(:resource) { FactoryBot.create :device }
   let(:type)     { Type.find resource.type_id }
 
   it 'sets the type_id field' do
@@ -651,7 +651,7 @@ Also, if you think you need dozens of records, you are probably wrong.
 <div>
 <pre><code class="ruby">describe "User"
   describe ".top" do
-    before { FactoryGirl.create_list(:user, 3) }
+    before { FactoryBot.create_list(:user, 3) }
     it { expect(User.top(2)).to have(2).item }
   end
 end
@@ -696,7 +696,7 @@ on creating new data.
 <p class="correct">good</p>
 
 <div>
-<pre><code class="ruby">user = FactoryGirl.create :user
+<pre><code class="ruby">user = FactoryBot.create :user
 </code></pre>
 </div>
 
@@ -715,10 +715,10 @@ needing complex, time consuming setup with either factories or fixtures. Read mo
 
 
 <!-- <p>
-Learn more about <a href="https://github.com/thoughtbot/factory_girl">Factory Girl</a>.
+Learn more about <a href="https://github.com/thoughtbot/factory_bot">Factory Bot</a>.
 </p> -->
 <p>
-<a href="https://github.com/thoughtbot/factory_girl">Factory Girl</a>をもっと学ぶ。
+<a href="https://github.com/thoughtbot/factory_bot">Factory Bot</a>をもっと学ぶ。
 </p>
 
 <p>
@@ -779,11 +779,11 @@ Use shared examples to DRY your test suite up.
 
 <div>
 <pre><code class="ruby">describe 'GET /devices' do
-  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let!(:resource) { FactoryBot.create :device, created_from: user.id }
   let(:uri) { '/devices' }
 
   context 'when shows all resources' do
-    let!(:not_owned) { FactoryGirl.create factory }
+    let!(:not_owned) { FactoryBot.create factory }
 
     it 'shows all owned resources' do
       page.driver.get uri
@@ -810,7 +810,7 @@ end
 <div>
 <pre><code class="ruby">describe 'GET /devices' do
 
-  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let!(:resource) { FactoryBot.create :device, created_from: user.id }
   let(:uri)       { '/devices' }
 
   it_behaves_like 'a listable resource'
@@ -1283,7 +1283,7 @@ Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafaili
 <ol>
 <li><a href="https://www.relishapp.com/rspec">RSpec Documentation</a></li>
 <li><a href="https://github.com/jnicklas/capybara">Capybara Documentation</a></li>
-<li><a href="https://github.com/thoughtbot/factory_girl">Factory Girl Documentation</a></li>
+<li><a href="https://github.com/thoughtbot/factory_bot">Factory Bot Documentation</a></li>
 <li><a href="https://github.com/bblimke/webmock">Webmock Documentation</a></li>
 <li><a href="https://github.com/travisjeffery/timecop">Timecop Documentation</a></li>
 <li><a href="http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/frames">Shoulda Matchers</a></li>

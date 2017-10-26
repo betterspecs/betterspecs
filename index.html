@@ -429,7 +429,7 @@ When you have to assign a variable instead of using a <code>before</code> block 
 
 {% highlight ruby %}
 describe '#type_id' do
-  before { @resource = FactoryGirl.create :device }
+  before { @resource = FactoryBot.create :device }
   before { @type     = Type.find @resource.type_id }
 
   it 'sets the type_id field' do
@@ -444,7 +444,7 @@ end
 
 {% highlight ruby %}
 describe '#type_id' do
-  let(:resource) { FactoryGirl.create :device }
+  let(:resource) { FactoryBot.create :device }
   let(:type)     { Type.find resource.type_id }
 
   it 'sets the type_id field' do
@@ -553,7 +553,7 @@ If you have ever worked in a medium size project (but also in small ones), test 
 {% highlight ruby %}
 RSpec.describe User do
   describe ".top" do
-    before { FactoryGirl.create_list(:user, 3) }
+    before { FactoryBot.create_list(:user, 3) }
     it { expect(described_class.top(2).size).to eq 2 }
   end
 end
@@ -574,7 +574,7 @@ end
 
 <p>
 This is an old topic, but it's still good to remember it. Do not use fixtures because they are difficult to control, use factories instead. Use them to reduce the verbosity
-on creating new data (learn about <a href="https://github.com/thoughtbot/factory_girl">Factory Girl</a>).
+on creating new data (learn about <a href="https://github.com/thoughtbot/factory_bot">Factory Bot</a>).
 </p>
 </p>
 
@@ -596,7 +596,7 @@ user = User.create(
 <p class="spec-title spec-correct">good</p>
 
 {% highlight ruby %}
-user = FactoryGirl.create :user
+user = FactoryBot.create :user
 {% endhighlight %}
 </div>
 
@@ -659,12 +659,12 @@ Making tests is great and you get more confident day after day. But in the end y
 {% highlight ruby %}
 describe 'GET /devices' do
 
-  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let!(:resource) { FactoryBot.create :device, created_from: user.id }
   let!(:uri)      { '/devices' }
 
   context 'when shows all resources' do
 
-    let!(:not_owned) { FactoryGirl.create factory }
+    let!(:not_owned) { FactoryBot.create factory }
 
     it 'shows all owned resources' do
       page.driver.get uri
@@ -694,7 +694,7 @@ end
 {% highlight ruby %}
 describe 'GET /devices' do
 
-  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let!(:resource) { FactoryBot.create :device, created_from: user.id }
   let!(:uri)       { '/devices' }
 
   it_behaves_like 'a listable resource'
