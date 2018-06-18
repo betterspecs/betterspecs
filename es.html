@@ -432,7 +432,7 @@ Una descripción muy buena y detallada de  <code>let</code> puede ser, se puede 
 
 <div>
 <pre><code class="ruby">describe '#type_id' do
-  before { @resource = FactoryGirl.create :device }
+  before { @resource = FactoryBot.create :device }
   before { @type     = Type.find @resource.type_id }
 
   it 'sets the type_id field' do
@@ -446,7 +446,7 @@ end
 
 <div>
 <pre><code class="ruby">describe '#type_id' do
-  let(:resource) { FactoryGirl.create :device }
+  let(:resource) { FactoryBot.create :device }
   let(:type)     { Type.find resource.type_id }
 
   it 'sets the type_id field' do
@@ -559,7 +559,7 @@ Incluso si piensas que necesitas docenas de registros, probablemente estés equi
 <div>
 <pre><code class="ruby">describe "User"
   describe ".top" do
-    before { FactoryGirl.create_list(:user, 3) }
+    before { FactoryBot.create_list(:user, 3) }
     it { User.top(2).should have(2).item }
   end
 end
@@ -600,7 +600,7 @@ durante la creación de nuevos datos.
 <p class="correct">Correcto</p>
 
 <div>
-<pre><code class="ruby">user = FactoryGirl.create :user
+<pre><code class="ruby">user = FactoryBot.create :user
 </code></pre>
 </div>
 
@@ -612,7 +612,7 @@ necesidad de configuraciones lentas y complejas ya sea con factories o fixtures.
 </p>
 
 <p>
-Aprender más sobre <a href="https://github.com/thoughtbot/factory_girl">Factory Girl</a>.
+Aprender más sobre <a href="https://github.com/thoughtbot/factory_bot">Factory Bot</a>.
 </p>
 
 <p>
@@ -666,11 +666,11 @@ Utiliza ejemplos compartidos para limpiar la suite de pruebas.
 
 <div>
 <pre><code class="ruby">describe 'GET /devices' do
-  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let!(:resource) { FactoryBot.create :device, created_from: user.id }
   let(:uri) { '/devices' }
 
   context 'when shows all resources' do
-    let!(:not_owned) { FactoryGirl.create factory }
+    let!(:not_owned) { FactoryBot.create factory }
 
     it 'shows all owned resources' do
       page.driver.get uri
@@ -697,7 +697,7 @@ end
 <div>
 <pre><code class="ruby">describe 'GET /devices' do
 
-  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let!(:resource) { FactoryBot.create :device, created_from: user.id }
   let(:uri)       { '/devices' }
 
   it_behaves_like 'a listable resource'
@@ -1061,7 +1061,7 @@ Aprender más sobre <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafa
 <ol>
 <li><a href="https://www.relishapp.com/rspec">Documentación de RSpec</a></li>
 <li><a href="https://github.com/jnicklas/capybara">Documentación de Capybara</a></li>
-<li><a href="https://github.com/thoughtbot/factory_girl">Documentación de Factory Girl</a></li>
+<li><a href="https://github.com/thoughtbot/factory_bot">Documentación de Factory Bot</a></li>
 <li><a href="https://github.com/bblimke/webmock">Documentación de Webmock</a></li>
 <li><a href="https://github.com/travisjeffery/timecop">Documentación de Timecop</a></li>
 <li><a href="http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/frames">Shoulda Matchers</a></li>
