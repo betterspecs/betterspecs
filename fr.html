@@ -252,8 +252,8 @@ Tester est une bonne pratique, mais est inutile si vous ne testez pas tous les c
 <p class="base">Destroy action</p>
 
 <div>
-<pre><code class="ruby">before_filter :find_owned_resources
-before_filter :find_resource
+<pre><code class="ruby">before_action :find_owned_resources
+before_action :find_resource
 
 def destroy
   render 'show'
@@ -418,7 +418,7 @@ Lors de l'assignation d'une variable, vous pouvez à la place de créer un bloc 
 
 <div>
 <pre><code class="ruby">describe '#type_id' do
-  before { @resource = FactoryGirl.create :device }
+  before { @resource = FactoryBot.create :device }
   before { @type     = Type.find @resource.type_id }
 
   it 'sets the type_id field' do
@@ -432,7 +432,7 @@ end
 
 <div>
 <pre><code class="ruby">describe '#type_id' do
-  let(:resource) { FactoryGirl.create :device }
+  let(:resource) { FactoryBot.create :device }
   let(:type)     { Type.find resource.type_id }
 
   it 'sets the type_id field' do
@@ -540,7 +540,7 @@ Si vous avez déjà travaillé sur des projets de taille moyenne (mais égalemen
 <div>
 <pre><code class="ruby">describe "User"
   describe ".top" do
-    before { FactoryGirl.create_list(:user, 3) }
+    before { FactoryBot.create_list(:user, 3) }
     it { expect(User.top(2)).to have(2).item }
   end
 end
@@ -580,7 +580,7 @@ Ne pas utiliser les «fixtures» car elles sont difficiles à maîtriser. Utilis
 <p class="correct">bon</p>
 
 <div>
-<pre><code class="ruby">user = FactoryGirl.create :user
+<pre><code class="ruby">user = FactoryBot.create :user
 </code></pre>
 </div>
 
@@ -589,7 +589,7 @@ Quand nous parlons de tests unitaires la bonne pratique devrait de n'utiliser ni
 </p>
 
 <p>
-En apprendre plus sur <a href="https://github.com/thoughtbot/factory_girl">Factory Girl</a>.
+En apprendre plus sur <a href="https://github.com/thoughtbot/factory_bot">Factory Bot</a>.
 </p>
 
 <p>
@@ -644,11 +644,11 @@ Utilisez des «matchers» lisibles et jetez un œil sur <a href="https://www.rel
 
 <div>
 <pre><code class="ruby">describe 'GET /devices' do
-  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let!(:resource) { FactoryBot.create :device, created_from: user.id }
   let(:uri) { '/devices' }
 
   context 'when shows all resources' do
-    let!(:not_owned) { FactoryGirl.create factory }
+    let!(:not_owned) { FactoryBot.create factory }
 
     it 'shows all owned resources' do
       page.driver.get uri
@@ -675,7 +675,7 @@ end
 <div>
 <pre><code class="ruby">describe 'GET /devices' do
 
-  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let!(:resource) { FactoryBot.create :device, created_from: user.id }
   let(:uri)       { '/devices' }
 
   it_behaves_like 'a listable resource'
@@ -979,7 +979,7 @@ En apprendre plus sur <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-insta
 <li><a href="http://blog.andyvanasse.com/post/503615383/rspec-best-practices">Andy Vanasse Best Practices</a></li>
 <li><a href="http://bitfluxx.com/2011/05/23/some-rspec-tips-and-best-practices.html">Bitfluxx Best Practices</a></li>
 <li><a href="http://kpumuk.info/ruby-on-rails/my-top-7-rspec-best-practices/">Dmytro Shteflyuk Best Practices</a></li>
-<li><a href="https://learn.thoughtbot.com/rspec">thoughtbot's RSpec Related Reading</a></li>
+<li><a href="https://robots.thoughtbot.com/tags/rspec">thoughtbot's RSpec Related Reading</a></li>
 
 </ol>
 
@@ -1007,7 +1007,7 @@ En apprendre plus sur <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-insta
 <ol>
 <li><a href="https://www.relishapp.com/rspec">RSpec Documentation</a></li>
 <li><a href="https://github.com/jnicklas/capybara">Capybara Documentation</a></li>
-<li><a href="https://github.com/thoughtbot/factory_girl">Factory Girl Documentation</a></li>
+<li><a href="https://github.com/thoughtbot/factory_bot">Factory Bot Documentation</a></li>
 <li><a href="https://github.com/bblimke/webmock">Webmock Documentation</a></li>
 <li><a href="https://github.com/travisjeffery/timecop">Timecop Documentation</a></li>
 <li><a href="http://rubydoc.info/github/thoughtbot/shoulda-matchers/master/frames">Shoulda Matchers</a></li>
