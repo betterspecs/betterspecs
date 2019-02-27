@@ -450,7 +450,7 @@ Utiliser <code>let</code> pour initialiser des actions longues à charger pour t
 
 <div>
 <pre><code class="ruby">context 'when updates a not existing property value' do
-  let(:properties) { { id: Settings.resource_id, value: 'on'} }
+  let(:properties) { { id: Settings.resource_id, value: 'on' } }
 
   def update
     resource.properties = properties
