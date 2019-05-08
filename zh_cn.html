@@ -390,7 +390,7 @@ lazy load 的机制，只有在第一次用到的时候才会加载，然后就�
   before { @type     = type.find @resource.type_id }
 
   it 'sets the type_id field' do
-    expect(@resource.type_id).to equal(@type.id)
+    expect(@resource.type_id).to eq(@type.id)
   end
 end
 </code></pre>
@@ -404,7 +404,7 @@ end
   let(:type)     { type.find resource.type_id }
 
   it 'sets the type_id field' do
-    expect(resource.type_id).to equal(type.id)
+    expect(resource.type_id).to eq(type.id)
   end
 end
 </code></pre>
@@ -750,7 +750,7 @@ end
 
 <div>
 <pre><code class="ruby">it 'does not change timings' do
-  expect(consumption.occur_at).to equal(valid.occur_at)
+  expect(consumption.occur_at).to eq(valid.occur_at)
 end
 </code></pre>
 </div>

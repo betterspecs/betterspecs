@@ -433,7 +433,7 @@ describe '#type_id' do
   before { @type     = Type.find @resource.type_id }
 
   it 'sets the type_id field' do
-    expect(@resource.type_id).to equal(@type.id)
+    expect(@resource.type_id).to eq(@type.id)
   end
 end
 {% endhighlight %}
@@ -448,7 +448,7 @@ describe '#type_id' do
   let(:type)     { Type.find resource.type_id }
 
   it 'sets the type_id field' do
-    expect(resource.type_id).to equal(type.id)
+    expect(resource.type_id).to eq(type.id)
   end
 end
 {% endhighlight %}
@@ -769,7 +769,7 @@ end
 
 {% highlight ruby %}
 it 'does not change timings' do
-  expect(consumption.occur_at).to equal(valid.occur_at)
+  expect(consumption.occur_at).to eq(valid.occur_at)
 end
 {% endhighlight %}
 </div>
