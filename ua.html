@@ -15,9 +15,9 @@ layout: default
       <li class="menu__item"><a class="menu__link" href="#single">Єдиний очикуваний результат</a></li>
       <li class="menu__item"><a class="menu__link" href="#all">Всі можливі випадки</a></li>
       <li class="menu__item"><a class="menu__link" href="#expect">Expect проти should</a></li>
-      <li class="menu__item"><a class="menu__link" href="#subject">Use subject</a></li>
-      <li class="menu__item"><a class="menu__link" href="#let">Use let and let!</a></li>
-      <li class="menu__item"><a class="menu__link" href="#mock">Mock or not to mock</a></li>
+      <li class="menu__item"><a class="menu__link" href="#subject">Використовуйте subject</a></li>
+      <li class="menu__item"><a class="menu__link" href="#let">Використовуйте let і let!</a></li>
+      <li class="menu__item"><a class="menu__link" href="#mock">Мокати чи не мокати</a></li>
       <li class="menu__item"><a class="menu__link" href="#data">Create the data you need</a></li>
       <li class="menu__item"><a class="menu__link" href="#factories">Use factories</a></li>
       <li class="menu__item"><a class="menu__link" href="#matchers">Easy to read matchers</a></li>
@@ -430,12 +430,15 @@ end
 <h1><a name="let">Використовуєте let і let!</a></h1>
 
 <p>
-When you have to assign a variable instead of using a <code>before</code> block to create an instance variable, use <code>let</code>. Using <code>let</code> the variable lazy loads only when it is used the first time in the test and get cached until that specific test is finished. A really good and deep description of what <code>let</code> does can be found in this
-<a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">stackoverflow answer</a>.
+Використовуйте <code>let</code> коли вам необхідно присвоїти значення крім тих випадків
+коли можна використовувати <code>before</code>. При використанні <code>let</code> відбувається
+ледаче завантаження(lazy loads), змінна завантажується тільки в той момент, коли до неї звертаються в перший раз в конкретному тесті, і кашується до тих пір поки тест не закінчеться.
+Дійсно хороший і глибокий опис того, що таке <code>let</code> ви можете знайти в цій
+<a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">відповіді на stackoverflow</a>.
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
+<p class="spec-title spec-wrong">Погано</p>
 
 {% highlight ruby %}
 describe '#type_id' do
@@ -450,7 +453,7 @@ end
 </div>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">Добре</p>
 
 {% highlight ruby %}
 describe '#type_id' do
@@ -465,11 +468,12 @@ end
 </div>
 
 <p>
-Use <code>let</code> to initialize actions that are lazy loaded to test your specs.
+Використовуйте <code>let</code> щоб ініціалізувати величини через ледаче завантаження(lazy load)
+у ваших тестах.
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">Добре</p>
 
 {% highlight ruby %}
 context 'when updates a not existing property value' do
@@ -487,11 +491,12 @@ end
 </div>
 
 <p>
-Use <code>let!</code> if you want to define the variable when the block is defined. This can be useful to populate your database to test queries or scopes. Here an example of what let actually is (learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/helper-methods/let-and-let">rspec let</a>).
+Використовуйте <code>let!</code>, коли ви хочете оголосити змінну, коли блок вже визначенний.
+Це може бути корисно коли вам необхідно заповнити базу даних, для тестування заптів(queries) або  скоупів(scopes). Ось приклад того, що таке let насправді <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/helper-methods/let-and-let">rspec let</a>).
 </p>
 
 <div class="code-block">
-<p class="spec-title">Explenation</p>
+<p class="spec-title">Пояснення</p>
 
 {% highlight ruby %}
 # this use of let
@@ -505,7 +510,7 @@ end
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/8">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/8">Обговорити цю рекомендацію &rarr;</a>
 </p>
 
 </article>
@@ -514,14 +519,15 @@ end
 
 <article>
 
-<h1><a name="mock">Mock or not to mock</a></h1>
+<h1><a name="mock">Мокати запити(mock) чи не мокати</a></h1>
 
 <p>
-As general rule do not (over)use mocks and test real behavior when possible, as testing real cases is useful when validating your application flow.
+Глобально не зловживайте моками і тестуйте реальну поведінку, коли це можливо. Бо тестування
+реальних кейсів корисне коли ви перевіряєте реальні процеси вашого застосунку.
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">Добре</p>
 
 {% highlight ruby %}
 # simulate a not found resource
@@ -538,11 +544,12 @@ end
 </div>
 
 <p>
-Mocking makes your specs faster but they are difficult to use. You need to understand them well to use them well. Read <a href="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">this article</a> to learn more abou mocks.
+Моки роблять ваші тести швидшими, але їх важко використовувати. Ви маєте добро розуміти їх
+щоб використовувати їх за призначенням. Почитайте <a href="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">цю статтю</a> щоб дізнатися більше про моки.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/9">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/9">Обговорити цю рекомендацію &rarr;</a>
 </p>
 
 </article>
