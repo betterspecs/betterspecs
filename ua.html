@@ -1,0 +1,986 @@
+---
+layout: default
+---
+
+
+<button class="action action--open" aria-label="Open Menu"><span class="icon icon--menu"></span></button>
+<nav id="ml-menu" class="menu">
+  <button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
+  <div class="menu__wrap">
+
+    <ul data-menu="main" class="menu__level">
+      <li class="menu__item"><a class="menu__link" href="#describe">Опишіть методи</a></li>
+      <li class="menu__item"><a class="menu__link" href="#contexts">Використовуйте context</a></li>
+      <li class="menu__item"><a class="menu__link" href="#short">Лаконічний опис</a></li>
+      <li class="menu__item"><a class="menu__link" href="#single">Єдиний очикуваний результат</a></li>
+      <li class="menu__item"><a class="menu__link" href="#all">Всі можливі випадки</a></li>
+      <li class="menu__item"><a class="menu__link" href="#expect">Expect проти should</a></li>
+      <li class="menu__item"><a class="menu__link" href="#subject">Use subject</a></li>
+      <li class="menu__item"><a class="menu__link" href="#let">Use let and let!</a></li>
+      <li class="menu__item"><a class="menu__link" href="#mock">Mock or not to mock</a></li>
+      <li class="menu__item"><a class="menu__link" href="#data">Create the data you need</a></li>
+      <li class="menu__item"><a class="menu__link" href="#factories">Use factories</a></li>
+      <li class="menu__item"><a class="menu__link" href="#matchers">Easy to read matchers</a></li>
+      <li class="menu__item"><a class="menu__link" href="#shared">Shared Examples</a></li>
+      <li class="menu__item"><a class="menu__link" href="#integration">Test what you see</a></li>
+      <li class="menu__item"><a class="menu__link" href="#should">Do not use should</a></li>
+      <li class="menu__item"><a class="menu__link" href="#continuous">Continuous testing</a></li>
+      <li class="menu__item"><a class="menu__link" href="#faster">Faster tests</a></li>
+      <li class="menu__item"><a class="menu__link" href="#stubbing">Stubbing HTTP requests</a></li>
+      <li class="menu__item"><a class="menu__link" href="#formatter">Formatter</a></li>
+      <li class="menu__item"><a class="menu__link" href="#contributing">Contributing</a></li>
+    </ul>
+
+  </div>
+</nav>
+<div class="content">
+
+
+  <article>
+
+    <h1><a name="what">Що таке Better Specs</a></h1>
+
+    <p>
+      {{ site.description }}
+      Better Specs був створенний <a target="_blank" href="https://lelylan.com">Lelylan</a> (open source IoT хмарній платформі <a target="_blank" href="https://github.com/lelylan/lelylan"> зацініть їхні test suite</a> це може надихнути вас)
+    </p>
+
+    <p class="info">
+       Better Specs зфокусоване більше на тестування Rails, але наша мета створити тестові рекомендації для більшості мов і фреймворків(таких як Scala, Elixir, React). Якщо ви
+       бажаєте додати рекомендації для своєї улюбленної мови програмування <a target="_blank" href="https://github.com/lelylan/betterspecs/issues">додайте issue</a>.
+
+    </p>
+
+    <p>
+
+  </p>
+
+  </article>
+
+
+<article>
+
+<h1><a name="describe">Опишіть ващі методи</a></h1>
+
+<p>
+Будьте впевнені який метод ви описуєте. Використовуєте Ruby конвенцію по іменуванню,
+<code>.</code> (or <code>::</code>) для методів класу і <code>#</code> для методів об'єкта
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-wrong">Погано</p>
+
+{% highlight ruby %}
+describe 'the authenticate method for User' do
+describe 'if the user is an admin' do
+{% endhighlight %}
+</div>
+
+<div class="code-block">
+<p class="spec-title spec-correct">Добре</p>
+
+{% highlight ruby %}
+describe '.authenticate' do
+describe '#admin?' do
+{% endhighlight %}
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/2">Обговорити цю рекомендацію &rarr;</a>
+</p>
+
+</article>
+
+<article>
+
+<h1><a name="contexts">Використовуйте контекст</a></h1>
+
+<p>
+Contexts це потужний метод, щоб зробити ваші тести чистими і впорядкованними(вони роблять тести
+легкими для читання). Коли описуєте контекст, текст має починатися зі слів "when", "with" or "without".
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-wrong">Погано</p>
+
+{% highlight ruby %}
+it 'has 200 status code if logged in' do
+  expect(response).to respond_with 200
+end
+
+it 'has 401 status code if not logged in' do
+  expect(response).to respond_with 401
+end
+{% endhighlight %}
+</div>
+
+<div class="code-block">
+<p class="spec-title spec-correct">Добре</p>
+
+{% highlight ruby %}
+context 'when logged in' do
+  it { is_expected.to respond_with 200 }
+end
+
+context 'when logged out' do
+  it { is_expected.to respond_with 401 }
+end
+{% endhighlight %}
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/3">Обговорити цю рекомендацію &rarr;</a>
+</p>
+
+</article>
+
+
+
+
+<article>
+
+<h1><a name="short">Лаконічний опис</a></h1>
+
+<p>
+Опис spec не має перевищувати 40 символів. Якщо це трапляється, розділіть його за допомогою context.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-wrong">Погано</p>
+
+{% highlight ruby %}
+it 'has 422 status code if an unexpected params will be added' do
+{% endhighlight %}
+</div>
+
+<div class="code-block">
+<p class="spec-title spec-correct">Добре</p>
+
+{% highlight ruby %}
+context 'when not valid' do
+  it { is_expected.to respond_with 422 }
+end
+{% endhighlight %}
+</div>
+
+<p>
+В даному випадку ми видалили частину опису, що відносилась до коду статусу, яке було замінено
+очікуваним результатом <code>is_expected</code>. Якщо ви запустите тест командою <code>rspec filename</code> ви отримаєте читаємий результат.
+</p>
+
+
+<div class="code-block">
+<p class="spec-title">Відформатованний результат</p>
+
+{% highlight ruby %}
+when not valid
+  it should respond with 422
+{% endhighlight %}
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/4">Обговорити цю рекомендацію &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="single">Єдиний очикуваний результат на тест</a></h1>
+
+<p>
+Єдиний очикуваний результат розуміється більш ширше, як кожний тест має тільки одне твердження.
+Це допоможе вам в пошуку можливих помилок, ідучи прямо то тесту, що впав, і робить ваш коди більши читаємим. В ізольванних юніт тестах, ви прагнете щоб кожен ваш приклад уточнював одну і тільки одну поведінку. Декілька очікванть в одному тесті це знак, що можливо ви уточнюєте декілька поведінок.
+
+The 'one expectation' tip is more broadly expressed as 'each test should make only one assertion'. This helps you on finding possible errors, going directly to the failing test, and to make your code readable. In isolated unit specs, you want each example to specify one (and only one) behavior. Multiple expectations in the same example are a signal that you may be specifying multiple behaviors.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-correct">Добре (iзольовано)</p>
+
+{% highlight ruby %}
+it { is_expected.to respond_with_content_type(:json) }
+it { is_expected.to assign_to(:resource) }
+{% endhighlight %}
+</div>
+
+<p>
+В будь якому разі, в не ізольованних тестах(ті що інтегруютья з БД, зовнішні вебсервіси, чи end-to-end тести), ви отримуєте массоий удар по продуктивності системи, в той час коли одне й те саме налаштування виконується кожний раз, тільки для того щоб зробити окреме очікування в кожному тесті. Для таких повільних тестів, це нормально перевіряти більше ніж одну очікувану поведінку.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-correct">Добре(не ізольовано)</p>
+
+{% highlight ruby %}
+it 'creates a resource' do
+  expect(response).to respond_with_content_type(:json)
+  expect(response).to assign_to(:resource)
+end
+{% endhighlight %}
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/5">Обговорити цю рекомендацію &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="all">Тестуйте всі можливі випадки</a></h1>
+
+<p>
+Тестування це хороша практика, але якщо ви не тестуєте граничні випадки, з цього не буде користі.
+Тестуйте валідні, граничні і не валідні випадки. Наприклад, розглянемо наступний випадок.
+
+</p>
+
+
+<div class="code-block">
+<p class="spec-title">Destroy Action</p>
+
+{% highlight ruby %}
+before_action :find_owned_resources
+before_action :find_resource
+
+def destroy
+  render 'show'
+  @consumption.destroy
+end
+{% endhighlight %}
+
+<p>
+Розповсюджена помилка: Цей тест перевіряє тільки чи був видалений ресурс. Але існує іще як мінімум два випдка граничні випадки: перший - ресурс не знайдений, дргуий - ресурс не належить. Візьміть за правило: думати про всі можливі вхідні дані і тестуйте їх
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-wrong">Погано</p>
+
+{% highlight ruby %}
+it 'shows the resource'
+{% endhighlight %}
+</div>
+
+<div class="code-block">
+<p class="spec-title spec-correct">Добре</p>
+
+{% highlight ruby %}
+describe '#destroy' do
+
+  context 'when resource is found' do
+    it 'responds with 200'
+    it 'shows the resource'
+  end
+
+  context 'when resource is not found' do
+    it 'responds with 404'
+  end
+
+  context 'when resource is not owned' do
+    it 'responds with 404'
+  end
+end
+{% endhighlight %}
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/6">Обговорити цю рекомендацію &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="expect">Expect проти Should синтаксису</a></h1>
+
+<p>
+В нових проектах використовуєте тільки <code>expect</code> синтаксис.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-wrong">Погано</p>
+
+{% highlight ruby %}
+it 'creates a resource' do
+  response.should respond_with_content_type(:json)
+end
+{% endhighlight %}
+</div>
+
+<div class="code-block">
+<p class="spec-title spec-correct">Добре</p>
+
+{% highlight ruby %}
+it 'creates a resource' do
+  expect(response).to respond_with_content_type(:json)
+end
+{% endhighlight %}
+</div>
+
+<p>
+Налаштуйте RSpec таким чином, щоб він приймав тільки новий синтаксис. Таки чином вдасться запобігти появі повсюду обох синтаксисів.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-correct">Добре</p>
+
+{% highlight ruby %}
+# spec_helper.rb
+RSpec.configure do |config|
+  # ...
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+end
+{% endhighlight %}
+</div>
+
+<p>
+  Очікувакння однією строкою або при наявному предметі тестування треба використовувати <code>is_expected.to</code>.
+  </p>
+
+<div class="code-block">
+<p class="spec-title spec-wrong">Погано</p>
+
+{% highlight ruby %}
+context 'when not valid' do
+  it { should respond_with 422 }
+end
+{% endhighlight %}
+</div>
+
+<div class="code-block">
+<p class="spec-title spec-correct">Добре</p>
+
+{% highlight ruby %}
+context 'when not valid' do
+  it { is_expected.to respond_with 422 }
+end
+{% endhighlight %}
+</div>
+
+<p>
+  Для старих проектів ви можете використовувати <a href="https://github.com/yujinakayama/transpec">transpec</a> для конвертування тестів з Should у новий синтаксис. Більше інформації про новий синтаксис RSpec з expectation дивіться <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">here</a> та <a href="http://myronmars.to/n/dev-blog/2013/07/the-plan-for-rspec-3#what_about_the_old_expectationmock_syntax">тут</a>.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/83">Обговорити цю рекомендацію &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="subject">Використовуєте subject</a></h1>
+
+<p>
+Якщо у вас є кілька тестів, що відносяться до однієї теми
+використовуєте <code>subject{}</code> щоб зробити їх DRY.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-wrong">Погано</p>
+
+{% highlight ruby %}
+it { expect(assigns('message')).to match /it was born in Belville/ }
+{% endhighlight %}
+</div>
+
+<div class="code-block">
+<p class="spec-title spec-correct">Добре</p>
+
+{% highlight ruby %}
+subject { assigns('message') }
+it { is_expected.to match /it was born in Billville/ }
+{% endhighlight %}
+</div>
+
+<p>
+RSpec також має можливість використовувати subject з іменами(читайте більше <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/subject">rspec subject</a>).
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-correct">Добре</p>
+
+{% highlight ruby %}
+subject(:hero) { Hero.first }
+it "carries a sword" do
+  expect(hero.equipment).to include "sword"
+end
+{% endhighlight %}
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/7">Обговорити цю рекомендацію &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="let">Використовуєте let і let!</a></h1>
+
+<p>
+When you have to assign a variable instead of using a <code>before</code> block to create an instance variable, use <code>let</code>. Using <code>let</code> the variable lazy loads only when it is used the first time in the test and get cached until that specific test is finished. A really good and deep description of what <code>let</code> does can be found in this
+<a href="http://stackoverflow.com/questions/5359558/when-to-use-rspec-let/5359979#5359979">stackoverflow answer</a>.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-wrong">bad</p>
+
+{% highlight ruby %}
+describe '#type_id' do
+  before { @resource = FactoryBot.create :device }
+  before { @type     = Type.find @resource.type_id }
+
+  it 'sets the type_id field' do
+    expect(@resource.type_id).to equal(@type.id)
+  end
+end
+{% endhighlight %}
+</div>
+
+<div class="code-block">
+<p class="spec-title spec-correct">good</p>
+
+{% highlight ruby %}
+describe '#type_id' do
+  let(:resource) { FactoryBot.create :device }
+  let(:type)     { Type.find resource.type_id }
+
+  it 'sets the type_id field' do
+    expect(resource.type_id).to equal(type.id)
+  end
+end
+{% endhighlight %}
+</div>
+
+<p>
+Use <code>let</code> to initialize actions that are lazy loaded to test your specs.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-correct">good</p>
+
+{% highlight ruby %}
+context 'when updates a not existing property value' do
+  let(:properties) { { id: Settings.resource_id, value: 'on' } }
+
+  def update
+    resource.properties = properties
+  end
+
+  it 'raises a not found error' do
+    expect { update }.to raise_error Mongoid::Errors::DocumentNotFound
+  end
+end
+{% endhighlight %}
+</div>
+
+<p>
+Use <code>let!</code> if you want to define the variable when the block is defined. This can be useful to populate your database to test queries or scopes. Here an example of what let actually is (learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/helper-methods/let-and-let">rspec let</a>).
+</p>
+
+<div class="code-block">
+<p class="spec-title">Explenation</p>
+
+{% highlight ruby %}
+# this use of let
+let(:foo) { Foo.new }
+
+# is very nearly equivalent to this:
+def foo
+  @foo ||= Foo.new
+end
+{% endhighlight %}
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/8">Discuss this guideline &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="mock">Mock or not to mock</a></h1>
+
+<p>
+As general rule do not (over)use mocks and test real behavior when possible, as testing real cases is useful when validating your application flow.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-correct">good</p>
+
+{% highlight ruby %}
+# simulate a not found resource
+context "when not found" do
+
+  before do
+    allow(Resource).to receive(:where).with(created_from: params[:id])
+      .and_return(false)
+  end
+
+  it { is_expected.to respond_with 404 }
+end
+{% endhighlight %}
+</div>
+
+<p>
+Mocking makes your specs faster but they are difficult to use. You need to understand them well to use them well. Read <a href="http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking">this article</a> to learn more abou mocks.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/9">Discuss this guideline &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="data">Create only the data you need</a></h1>
+
+<p>
+If you have ever worked in a medium size project (but also in small ones), test suites can be heavy to run. To solve this problem, it's important not to load more data than needed. Also, if you think you need dozens of records, you are probably wrong.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-correct">good</p>
+
+{% highlight ruby %}
+RSpec.describe User do
+  describe ".top" do
+    before { FactoryBot.create_list(:user, 3) }
+    it { expect(described_class.top(2).size).to eq 2 }
+  end
+end
+{% endhighlight %}
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/10">Discuss this guideline &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="factories">Use factories and not fixtures</a></h1>
+
+<p>
+This is an old topic, but it's still good to remember it. Do not use fixtures because they are difficult to control, use factories instead. Use them to reduce the verbosity
+on creating new data (learn about <a href="https://github.com/thoughtbot/factory_bot">Factory Bot</a>).
+</p>
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-wrong">bad</p>
+
+{% highlight ruby %}
+user = User.create(
+  name: 'Genoveffa',
+  surname: 'Piccolina',
+  city: 'Billyville',
+  birth: '17 Agoust 1982',
+  active: true
+)
+{% endhighlight %}
+</div>
+
+<div class="code-block">
+<p class="spec-title spec-correct">good</p>
+
+{% highlight ruby %}
+user = FactoryBot.create :user
+{% endhighlight %}
+</div>
+
+<p>
+One important note. When talking about unit tests the best practice would be to use neither fixtures or factories. Put as much of your domain logic in libraries that can be tested without needing complex, time consuming setup with either factories or fixtures. Read more in
+<a href="http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl">this article</a>.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/11">Discuss this guideline &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="matchers">Easy to read matcher</a></h1>
+
+<p>
+Use readable matchers and double check the available <a href="https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers">rspec matchers</a>.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-wrong">bad</p>
+
+{% highlight ruby %}
+lambda { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
+{% endhighlight %}
+</div>
+
+<div class="code-block">
+<p class="spec-title spec-correct">good</p>
+
+{% highlight ruby %}
+expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
+{% endhighlight %}
+</div>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/12">Discuss this guideline &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="shared">Shared Examples</a></h1>
+
+<p>
+Making tests is great and you get more confident day after day. But in the end you will start to see code duplication coming up everywhere. Use shared examples to DRY your test suite up.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-wrong">bad</p>
+
+{% highlight ruby %}
+describe 'GET /devices' do
+
+  let!(:resource) { FactoryBot.create :device, created_from: user.id }
+  let!(:uri)      { '/devices' }
+
+  context 'when shows all resources' do
+
+    let!(:not_owned) { FactoryBot.create factory }
+
+    it 'shows all owned resources' do
+      page.driver.get uri
+      expect(page.status_code).to be(200)
+      contains_owned_resource resource
+      does_not_contain_resource not_owned
+    end
+  end
+
+  describe '?start=:uri' do
+
+    it 'shows the next page' do
+
+      page.driver.get uri, start: resource.uri
+      expect(page.status_code).to be(200)
+      contains_resource resources.first
+      expect(page).to_not have_content resource.id.to_s
+    end
+  end
+end
+{% endhighlight %}
+</div>
+
+<div class="code-block">
+<p class="spec-title spec-correct">good</p>
+
+{% highlight ruby %}
+describe 'GET /devices' do
+
+  let!(:resource) { FactoryBot.create :device, created_from: user.id }
+  let!(:uri)       { '/devices' }
+
+  it_behaves_like 'a listable resource'
+  it_behaves_like 'a paginable resource'
+  it_behaves_like 'a searchable resource'
+  it_behaves_like 'a filterable list'
+end
+{% endhighlight %}
+</div>
+
+<p>
+In our experience, shared examples are used mainly for controllers. Since models are pretty
+different from each other, they (usually) do not share much logic. Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/3-2/docs/example-groups/shared-examples">rspec shared examples</a>.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/13">Discuss this guideline &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="integration">Test what you see</a></h1>
+
+<p>
+Deeply test your models and your application behaviour (integration tests). Do not add useless complexity testing controllers.
+</p>
+
+<p>
+When I first started testing my apps I was testing controllers, now I don't. Now I only create integration tests using RSpec and Capybara. Why? Because I
+believe that you should test what you see and because testing controllers is an extra step you wont usually need. You'll find out that most of your tests go into the
+models and that integration tests can be easily grouped into shared examples, building a clear and readable test suite.
+</p>
+
+<p>
+This is an open debate in the Ruby community and both sides have good arguments supporting their idea. People supporting the need of testing controllers will tell
+you that your integration tests don't cover all use cases and that they are slow. Both are wrong. You can easily cover all use cases (why shouldn't you?) and you can run single file specs using automated tools like Guard. In this way you will run only the specs you need to test blazing fast without stopping your flow.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/14">Discuss this guideline &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="should">Don't use should</a></h1>
+
+<p>
+Do not use should when describing your tests. Use the third person in the present tense. Even better start using the new
+<a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">expectation</a> syntax.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-wrong">bad</p>
+
+{% highlight ruby %}
+it 'should not change timings' do
+  consumption.occur_at.should == valid.occur_at
+end
+{% endhighlight %}
+</div>
+
+<div class="code-block">
+<p class="spec-title spec-correct">good</p>
+
+{% highlight ruby %}
+it 'does not change timings' do
+  expect(consumption.occur_at).to equal(valid.occur_at)
+end
+{% endhighlight %}
+</div>
+
+<p>
+See <a href="https://github.com/should-not/should_not">the should_not gem</a> for a way to enforce this in RSpec
+and <a href="https://github.com/siyelo/should_clean">the should_clean</a> gem for a way to clean up existing RSpec examples that begin with "should."
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/15">Discuss this guideline &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="continuous">Automatic tests with guard</a></h1>
+
+<p>
+Running all the test suite every time you change your app can be cumbersome. It takes a lot of time and it can break your flow. With Guard you can automate your test suite running only the tests related to the updated spec, model, controller or file you are working at.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-correct">good</p>
+
+{% highlight ruby %}
+bundle exec guard
+{% endhighlight %}
+</div>
+
+Here you can see a sample Guardfile with some basic reloading rules.
+
+
+<div class="code-block">
+<p class="spec-title spec-correct">good</p>
+
+{% highlight ruby %}
+guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
+  # run every updated spec file
+  watch(%r{^spec/.+_spec\.rb$})
+  # run the lib specs when a file in lib/ changes
+  watch(%r{^lib/(.+)\.rb$}) { |m| "spec/lib/#{m[1]}_spec.rb" }
+  # run the model specs related to the changed model
+  watch(%r{^app/(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
+  # run the view specs related to the changed view
+  watch(%r{^app/(.*)(\.erb|\.haml)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
+  # run the integration specs related to the changed controller
+  watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
+  # run all integration tests when application controller change
+  watch('app/controllers/application_controller.rb') { "spec/requests" }
+end
+{% endhighlight %}
+</div>
+
+<p>
+Guard is a fine tool but as usual it doesn't fit all of your needs. Sometimes your TDD workflow works best with a keybinding that makes it easy to run just the examples you want when you want to. Then, you can use a rake task to run the entire suite before pushing code. Find an example vim keybinding <a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#L61-103">here</a> and learn more about <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/16">Discuss this guideline &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="faster">Faster tests (preloading Rails)</a></h1>
+
+<p>
+When running a test on Rails the whole Rails app is loaded. This can take time and it can break your development flow. To solve this problem use solutions like <a href="https://github.com/burke/zeus">Zeus</a>,
+<a href="https://github.com/jstorimer/spin">Spin</a> or
+<a href="https://github.com/sporkrb/spork">Spork</a>.
+Those solutions will preload all libraries you (usually) do not change and reload controllers, models, view, factories and all the files you change most often.
+</p>
+
+<p>
+Here you can find a <a href="https://gist.github.com/3821012">spec helper</a> and a <a href="https://gist.github.com/3821031">Guardfile</a> configuration based on Spork.
+With this configuration you will reload the whole app if a preloaded file (like initializers) change and you will run the single tests really, really fast.
+</p>
+
+<p>
+The drawback of using Spork is that it aggressively monkey-patches your code and you could lose some hours trying to understand why a file is not reloaded. If you have some
+code examples using Spin or any other solution <a href="https://github.com/lelylan/betterspecs/issues/17">let us know</a>.
+</p>
+
+<p>
+Here you can find a <a href="https://gist.github.com/HuffMoody/5912373">Guardfile</a> configuration for using Zeus.  The spec_helper does not need to be modified, however, you will have to run `zeus start` in a console to start the zeus server before running your tests. Although Zeus takes a less aggressive approach than Spork, one major drawback is the fairly strict usage requirements; Ruby 1.9.3+ (recommended using backported GC from Ruby 2.0)
+as well as an operating system that supports FSEvents or inotify is required.
+</p>
+
+<p>
+Many criticisms are moved to those solutions. Those libraries are a band aid on a problem that is better solved through better design, and being intentional about only loading the dependencies that you need. Learn more reading the <a href="https://github.com/lelylan/betterspecs/issues/17">related discussion</a>.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/17">Discuss this guideline &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="stubbing">Stubbing HTTP requests</a></h1>
+
+<p>
+Sometimes you need to access external services. In these cases you can't rely on the real service but you should stub it with solutions like webmock.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-correct">good</p>
+
+{% highlight ruby %}
+context "with unauthorized access" do
+
+  let(:uri) { 'http://api.lelylan.com/types' }
+  before    { stub_request(:get, uri).to_return(status: 401, body: fixture('401.json')) }
+
+  it "gets a not authorized notification" do
+    page.driver.get uri
+    expect(page).to have_content 'Access denied'
+  end
+end
+{% endhighlight %}
+</div>
+
+
+<p>
+Learn more about <a href="https://github.com/bblimke/webmock">webmock</a> and
+<a href="https://github.com/vcr/vcr">VCR</a>. Here is a
+<a href="http://marnen.github.com/webmock-presentation/webmock.html">nice presentation</a>
+explaining how to mix them together.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/18">Discuss this guideline &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="formatter">Useful formatter</a></h1>
+
+<p>
+Use a formatter that can give you useful information about the test suite. I personally find fuubar really nice. To make it work add the gem and set fuubar as default formatter in your Guardfile.
+</p>
+
+<div class="code-block">
+<p class="spec-title spec-correct">good</p>
+
+{% highlight ruby %}
+# Gemfile
+group :development, :test do
+  gem 'fuubar'
+
+# .rspec configuration file
+--drb
+--format Fuubar
+--color
+{% endhighlight %}
+
+<p>
+Learn more about <a href="http://jeffkreeftmeijer.com/2010/fuubar-the-instafailing-rspec-progress-bar-formatter/">fuubar</a>.
+</p>
+
+<p>
+<a href="https://github.com/andreareginato/betterspecs/issues/19">Discuss this guideline &rarr;</a>
+</p>
+
+</article>
+
+
+
+<article>
+
+<h1><a name="contributing">Contributing</a></h1>
+
+<p>
+“Feel free to submit a PR” are words often found in GitHub, but met with confusion and fear by many. Getting started with contributing open source is not always straightforward and can be tricky. If you are new to contribution, watch these <a href="https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github">videos</a> and you’ll be equipped with the the tools, knowledge, and understanding you need to start on contributing to the world of open source projects. In particular, Better Specs needs your help on the following tasks.
+</p>
+
+<p class="info">
+  &rarr; Add testing guide lines for new languages (<a target="_blank" href="https://github.com/lelylan/betterspecs/issues">open an issue</a>).<br>
+
+   &rarr; Fix outdated best practices which has changed during time (<a target="_blank" href="https://github.com/lelylan/betterspecs/issues">open an issue</a>).<br>
+
+   &rarr; Add or update existing translations (<a target="_blank" href="https://github.com/lelylan/betterspecs/issues">open an issue</a>).<br>
+  </span>
+</p>
+
+<p>
+Thanks for your time, enjoy the coding and start contributing to the projects you use and love today.
+</p>
+
+</article>
