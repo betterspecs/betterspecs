@@ -558,14 +558,15 @@ end
 
 <article>
 
-<h1><a name="data">Create only the data you need</a></h1>
+<h1><a name="data">Створюйте тільки ті дані, які вам потрібні</a></h1>
 
 <p>
-If you have ever worked in a medium size project (but also in small ones), test suites can be heavy to run. To solve this problem, it's important not to load more data than needed. Also, if you think you need dozens of records, you are probably wrong.
+Якщо ви колись працювали в проектах середнього розміру(хоча це також можливо в малих проектах),
+тести можуть бути важкими. Рішення - не завантажувати більше даних ніж це необхідно. Також якщо вам здається, що необхідно завантажити дюжину записів - вірогідно ви помиляєтесь.
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">Добре</p>
 
 {% highlight ruby %}
 RSpec.describe User do
@@ -578,7 +579,7 @@ end
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/10">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/10">Обговорити цю рекомендацію &rarr;</a>
 </p>
 
 </article>
@@ -587,16 +588,15 @@ end
 
 <article>
 
-<h1><a name="factories">Use factories and not fixtures</a></h1>
+<h1><a name="factories">Використовуйте фабрики а не фікстури</a></h1>
 
 <p>
-This is an old topic, but it's still good to remember it. Do not use fixtures because they are difficult to control, use factories instead. Use them to reduce the verbosity
-on creating new data (learn about <a href="https://github.com/thoughtbot/factory_bot">Factory Bot</a>).
+Це стара рекомендація, але її слід гарно пам'ятати. Не використовуєте фікстури, оскільки їх важко контролювати, замість них використовуйте фабрики. Використовуєте їх, щоб уникнути багатослівності при створенні тестових даних(дізнайтеся більше про<a href="https://github.com/thoughtbot/factory_bot">Factory Bot</a>).
 </p>
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
+<p class="spec-title spec-wrong">Погано</p>
 
 {% highlight ruby %}
 user = User.create(
@@ -610,7 +610,7 @@ user = User.create(
 </div>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">Добре</p>
 
 {% highlight ruby %}
 user = FactoryBot.create :user
@@ -618,12 +618,12 @@ user = FactoryBot.create :user
 </div>
 
 <p>
-One important note. When talking about unit tests the best practice would be to use neither fixtures or factories. Put as much of your domain logic in libraries that can be tested without needing complex, time consuming setup with either factories or fixtures. Read more in
-<a href="http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl">this article</a>.
+Одне важливе уточнення. Коли йде мова про юніт тести, найкраща практика буде не використовувати ні фікстури ні фабрики. Вмістить максимум доменної логіки в библиотеки, які можна тестувати без
+складних, тривалих сетапів з фабриками чи фікстурами. Читайте більше в<a href="http://blog.steveklabnik.com/posts/2012-07-14-why-i-don-t-like-factory_girl">цій статті</a>.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/11">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/11">Обговорити цю рекомендацію &rarr;</a>
 </p>
 
 </article>
@@ -632,14 +632,14 @@ One important note. When talking about unit tests the best practice would be to 
 
 <article>
 
-<h1><a name="matchers">Easy to read matcher</a></h1>
+<h1><a name="matchers">Прості матчери</a></h1>
 
 <p>
-Use readable matchers and double check the available <a href="https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers">rspec matchers</a>.
+Використовуйте читаємі матчери і двічі перевірте вже доступні. <a href="https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers">rspec матчери</a>.
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
+<p class="spec-title spec-wrong">Погано</p>
 
 {% highlight ruby %}
 lambda { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
@@ -647,7 +647,7 @@ lambda { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
 </div>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">Добре</p>
 
 {% highlight ruby %}
 expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
@@ -655,7 +655,7 @@ expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
 </div>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/12">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/12">Обговорити цю рекомендацію &rarr;</a>
 </p>
 
 </article>
@@ -667,11 +667,11 @@ expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
 <h1><a name="shared">Shared Examples</a></h1>
 
 <p>
-Making tests is great and you get more confident day after day. But in the end you will start to see code duplication coming up everywhere. Use shared examples to DRY your test suite up.
+Писати тести це чудово і з кожним днем ви пишите тести впевненіше. З часом ви почнете помічати дублювання коду повсемісно. Використовуйте Shared Examples щоб зробити свої тести DRY.
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-wrong">bad</p>
+<p class="spec-title spec-wrong">Погано</p>
 
 {% highlight ruby %}
 describe 'GET /devices' do
@@ -706,7 +706,7 @@ end
 </div>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">Добре</p>
 
 {% highlight ruby %}
 describe 'GET /devices' do
@@ -723,12 +723,11 @@ end
 </div>
 
 <p>
-In our experience, shared examples are used mainly for controllers. Since models are pretty
-different from each other, they (usually) do not share much logic. Learn more about <a href="https://www.relishapp.com/rspec/rspec-core/v/3-2/docs/example-groups/shared-examples">rspec shared examples</a>.
+З нашого досвіду, shared examples в основному використовують для контроллерів. Оскільки моделі переважно відрізняються одна від одної, в значній мірі. Дізнайтесь більше <a href="https://www.relishapp.com/rspec/rspec-core/v/3-2/docs/example-groups/shared-examples">rspec shared examples</a>.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/13">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/13">Обговорити цю рекомендацію &rarr;</a>
 </p>
 
 </article>
@@ -737,7 +736,7 @@ different from each other, they (usually) do not share much logic. Learn more ab
 
 <article>
 
-<h1><a name="integration">Test what you see</a></h1>
+<h1><a name="integration">Тестуйте те що ви бачете</a></h1>
 
 <p>
 Deeply test your models and your application behaviour (integration tests). Do not add useless complexity testing controllers.
