@@ -739,22 +739,19 @@ end
 <h1><a name="integration">Тестуйте те що ви бачете</a></h1>
 
 <p>
-Deeply test your models and your application behaviour (integration tests). Do not add useless complexity testing controllers.
+Глибоко тестуйте ващі моделі і повідінку вашого додатку(інтеграційні тести). Не тестуйте контроллери, це лише додасть зайвої складності вашим тестам.
 </p>
 
 <p>
-When I first started testing my apps I was testing controllers, now I don't. Now I only create integration tests using RSpec and Capybara. Why? Because I
-believe that you should test what you see and because testing controllers is an extra step you wont usually need. You'll find out that most of your tests go into the
-models and that integration tests can be easily grouped into shared examples, building a clear and readable test suite.
+Коли я тільки починав тестувати мої системи - я тестував контролери, тепер - ні. Тепер я лише створюю інтеграціїні тести використовуючи RSpec і Capybara. Чому? Я вірю що треба тестувати те що ти бачиш, окрім цього тестування контроллерів це додаткова робота,  яка зазвичай не стане у нагоді. Ви побачете, що більшість ваших тестів відносяться до моделей, а інтеграційні тести можуть легко групуватися в shared examples. Таким чином ви будуватимете чисте і читаєме тестове покриття.
 </p>
 
 <p>
-This is an open debate in the Ruby community and both sides have good arguments supporting their idea. People supporting the need of testing controllers will tell
-you that your integration tests don't cover all use cases and that they are slow. Both are wrong. You can easily cover all use cases (why shouldn't you?) and you can run single file specs using automated tools like Guard. In this way you will run only the specs you need to test blazing fast without stopping your flow.
+Це досі тема дебатів в Ruby ком'юніті, і обидві сторони мають хорошу аргументацію, на підтримку своєї позиції. Сторона, що виступає за тестування контроллерів, скаже що ващі інтеграціїні тести не покривають всі випадки і що вони повільні. Обидва твердження хибні. Ви можете тестуванит всі випадки(чому б ні?) і ви можете запускати окремі файли з тестами, використовуючі автоматичні інструменти таки як Guard. В цьому випадку ви будете запускати лише ті тести, як потрібно не перериваючи процесс.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/14">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/14">Обговорити цю рекомендацію &rarr;</a>
 </p>
 
 </article>
@@ -763,11 +760,10 @@ you that your integration tests don't cover all use cases and that they are slow
 
 <article>
 
-<h1><a name="should">Don't use should</a></h1>
+<h1><a name="should">Не використовуйте should</a></h1>
 
 <p>
-Do not use should when describing your tests. Use the third person in the present tense. Even better start using the new
-<a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">expectation</a> syntax.
+Не використовуйте should коли описуєте свої тести. Використовуйте третю особу і теперішній час. Краще поінчть використовувати новий <a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">expectation</a> синтаксис.
 </p>
 
 <div class="code-block">
@@ -781,7 +777,7 @@ end
 </div>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">Добре</p>
 
 {% highlight ruby %}
 it 'does not change timings' do
@@ -791,12 +787,11 @@ end
 </div>
 
 <p>
-See <a href="https://github.com/should-not/should_not">the should_not gem</a> for a way to enforce this in RSpec
-and <a href="https://github.com/siyelo/should_clean">the should_clean</a> gem for a way to clean up existing RSpec examples that begin with "should."
+Читайте <a href="https://github.com/should-not/should_not">the should_not gem</a> для примусового використання нового синтаксису в RSpec, а також <a href="https://github.com/siyelo/should_clean">the should_clean</a> gem для чистки RSpec тестів, які починаються на "should."
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/15">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/15">Обговорити цю рекомендацію &rarr;</a>
 </p>
 
 </article>
