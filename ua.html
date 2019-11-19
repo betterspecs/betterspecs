@@ -18,17 +18,17 @@ layout: default
       <li class="menu__item"><a class="menu__link" href="#subject">Використовуйте subject</a></li>
       <li class="menu__item"><a class="menu__link" href="#let">Використовуйте let і let!</a></li>
       <li class="menu__item"><a class="menu__link" href="#mock">Мокати чи не мокати</a></li>
-      <li class="menu__item"><a class="menu__link" href="#data">Create the data you need</a></li>
-      <li class="menu__item"><a class="menu__link" href="#factories">Use factories</a></li>
-      <li class="menu__item"><a class="menu__link" href="#matchers">Easy to read matchers</a></li>
+      <li class="menu__item"><a class="menu__link" href="#data">Створюйте дані,які вам потрібні</a></li>
+      <li class="menu__item"><a class="menu__link" href="#factories">Використовуйте фабрики</a></li>
+      <li class="menu__item"><a class="menu__link" href="#matchers">Легкі для розуміння метчери</a></li>
       <li class="menu__item"><a class="menu__link" href="#shared">Shared Examples</a></li>
-      <li class="menu__item"><a class="menu__link" href="#integration">Test what you see</a></li>
-      <li class="menu__item"><a class="menu__link" href="#should">Do not use should</a></li>
-      <li class="menu__item"><a class="menu__link" href="#continuous">Continuous testing</a></li>
-      <li class="menu__item"><a class="menu__link" href="#faster">Faster tests</a></li>
-      <li class="menu__item"><a class="menu__link" href="#stubbing">Stubbing HTTP requests</a></li>
+      <li class="menu__item"><a class="menu__link" href="#integration">Тестуйте те що бачете</a></li>
+      <li class="menu__item"><a class="menu__link" href="#should">Не використовуйте should</a></li>
+      <li class="menu__item"><a class="menu__link" href="#continuous">Безперервне тестування</a></li>
+      <li class="menu__item"><a class="menu__link" href="#faster">Швидщі тести</a></li>
+      <li class="menu__item"><a class="menu__link" href="#stubbing">Запишіть HTTP запити</a></li>
       <li class="menu__item"><a class="menu__link" href="#formatter">Formatter</a></li>
-      <li class="menu__item"><a class="menu__link" href="#contributing">Contributing</a></li>
+      <li class="menu__item"><a class="menu__link" href="#contributing">Долучитися до проекту</a></li>
     </ul>
 
   </div>
@@ -800,10 +800,10 @@ end
 
 <article>
 
-<h1><a name="continuous">Automatic tests with guard</a></h1>
+<h1><a name="continuous">Автоматизуйте тести за допомогою guard</a></h1>
 
 <p>
-Running all the test suite every time you change your app can be cumbersome. It takes a lot of time and it can break your flow. With Guard you can automate your test suite running only the tests related to the updated spec, model, controller or file you are working at.
+Запускати всі тести, після кожної зміни вашого проекту, може бути накладно. Це віднімає багато часу і може порушувати робочій процес. За допомогою Guard ви можете автоматизувати ваші тести, запускаючи лише ті, які повязані з оновленними тестами, моделями, контролерами чи файлами з якими ви працюєте.
 </p>
 
 <div class="code-block">
@@ -814,11 +814,10 @@ bundle exec guard
 {% endhighlight %}
 </div>
 
-Here you can see a sample Guardfile with some basic reloading rules.
-
+Нижче ви можете бачити приклад Guardfile, з деякими базовими правилами.
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">Добре</p>
 
 {% highlight ruby %}
 guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
@@ -839,11 +838,11 @@ end
 </div>
 
 <p>
-Guard is a fine tool but as usual it doesn't fit all of your needs. Sometimes your TDD workflow works best with a keybinding that makes it easy to run just the examples you want when you want to. Then, you can use a rake task to run the entire suite before pushing code. Find an example vim keybinding <a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#L61-103">here</a> and learn more about <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.
+Guard це чудовий інструмент, але як правило він не відповідає всім вашим потребам. Іноді ваш TDD процес працює найкраще з привязкою до клавіш(keybinding) що дозволяє запускати лише ті тести, які вам потрібні. Потім, ви можете запустити всі тести запускаючи rake task. Дивіться приклад keybinding для vim <a href="https://github.com/myronmarston/vim_files/blob/5bd4faad7c020ebcbf62dcbc59985262b4eacb53/vimrc.after#L61-103">тут</a> і дізнатися більше про <a href="https://github.com/guard/guard-rspec">guard-rspec</a>.>
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/16">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/16">Обговорити цю рекомендацію &rarr;</a>
 </p>
 
 </article>
@@ -852,36 +851,33 @@ Guard is a fine tool but as usual it doesn't fit all of your needs. Sometimes yo
 
 <article>
 
-<h1><a name="faster">Faster tests (preloading Rails)</a></h1>
+<h1><a name="faster">Швидші тести(предзавантажте Rails)</a></h1>
 
 <p>
-When running a test on Rails the whole Rails app is loaded. This can take time and it can break your development flow. To solve this problem use solutions like <a href="https://github.com/burke/zeus">Zeus</a>,
-<a href="https://github.com/jstorimer/spin">Spin</a> or
+Коли запускається тест в Rails, також весь додаток Rails завантажується. Це потребує часу і це може зіпсувати ваш процес розробки. Щоб вирішити цю проблему використовуйте рішення типу <a href="https://github.com/burke/zeus">Zeus</a>,
+<a href="https://github.com/jstorimer/spin">Spin</a> чи
 <a href="https://github.com/sporkrb/spork">Spork</a>.
-Those solutions will preload all libraries you (usually) do not change and reload controllers, models, view, factories and all the files you change most often.
+Ці рішення передзавантажують ті бібліотеки, які(зазвичай) не змінюються. Вони перезавантажують ті частини додатки які зазвичай змінюються контролери, моделі, в'юхи фабрики та інше.
 </p>
 
 <p>
-Here you can find a <a href="https://gist.github.com/3821012">spec helper</a> and a <a href="https://gist.github.com/3821031">Guardfile</a> configuration based on Spork.
-With this configuration you will reload the whole app if a preloaded file (like initializers) change and you will run the single tests really, really fast.
+Тут ви можете знайти налаштування <a href="https://gist.github.com/3821012">spec helper</a> і  <a href="https://gist.github.com/3821031">Guardfile</a> на основі Spork. З цими налаштуваннями ви будете перезавантажувати весь додаток тільки якщо один з передзавантаженних файлів змінився(наприклад initializers). В цьому випадку окремі тести будуть запускатися надшвидко.
 </p>
 
 <p>
-The drawback of using Spork is that it aggressively monkey-patches your code and you could lose some hours trying to understand why a file is not reloaded. If you have some
-code examples using Spin or any other solution <a href="https://github.com/lelylan/betterspecs/issues/17">let us know</a>.
+Мінус використання Spork є те, ви можете витратити години на те щоб зрозуміти чому один з файлів не перезавантажується, оскільки Spork жорстко патчить ваш код. Якщо у вас є приклади використання Spin чи іншого рішення <a href="https://github.com/lelylan/betterspecs/issues/17">дайте нам знати</a>.
 </p>
 
 <p>
-Here you can find a <a href="https://gist.github.com/HuffMoody/5912373">Guardfile</a> configuration for using Zeus.  The spec_helper does not need to be modified, however, you will have to run `zeus start` in a console to start the zeus server before running your tests. Although Zeus takes a less aggressive approach than Spork, one major drawback is the fairly strict usage requirements; Ruby 1.9.3+ (recommended using backported GC from Ruby 2.0)
-as well as an operating system that supports FSEvents or inotify is required.
+За посиланням ви можете знайти налаштування <a href="https://gist.github.com/HuffMoody/5912373">Guardfile</a> для використання Zeus. В цьому випадку немає потреби модифікувати spec_helper, єдине що треб буде зробити - виконати `zeus start` в консолі, щоб запустити zeus сервер, до того, як запустити тести. Окрім цього Zeus має менш агресивний підхід ніж Spork, один суттєвий недолік - жорсткі вимоги до системи: Ruby 2.0 чи вишче, а також операційна система що підтримує FSEvents або обов'язковий inotify.
 </p>
 
 <p>
-Many criticisms are moved to those solutions. Those libraries are a band aid on a problem that is better solved through better design, and being intentional about only loading the dependencies that you need. Learn more reading the <a href="https://github.com/lelylan/betterspecs/issues/17">related discussion</a>.
+Ці рішення часто критикуються. Це свого роду лейкопластир для проблеми, що вирішується через корректну архітектуру тестів, якщо завантажувати тільки необхідні залежності. Дізнайтесь більше в цьом  <a href="https://github.com/lelylan/betterspecs/issues/17">обговоренні</a>.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/17">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/17">Обговорити цю рекомендацію &rarr;</a>
 </p>
 
 </article>
@@ -890,14 +886,14 @@ Many criticisms are moved to those solutions. Those libraries are a band aid on 
 
 <article>
 
-<h1><a name="stubbing">Stubbing HTTP requests</a></h1>
+<h1><a name="stubbing">Запишіть HTTP запити</a></h1>
 
 <p>
-Sometimes you need to access external services. In these cases you can't rely on the real service but you should stub it with solutions like webmock.
+Іноді вам вам необхід використання зовнішніх сервісів. В цьому випадку ви маєте записати ваші запити(stub) за допомогю, наприклад, webmock. Оскільки не варто покладатися на сторонні сервіси.
 </p>
 
 <div class="code-block">
-<p class="spec-title spec-correct">good</p>
+<p class="spec-title spec-correct">Добре</p>
 
 {% highlight ruby %}
 context "with unauthorized access" do
@@ -915,14 +911,11 @@ end
 
 
 <p>
-Learn more about <a href="https://github.com/bblimke/webmock">webmock</a> and
-<a href="https://github.com/vcr/vcr">VCR</a>. Here is a
-<a href="http://marnen.github.com/webmock-presentation/webmock.html">nice presentation</a>
-explaining how to mix them together.
+Дізнайтесь більше про <a href="https://github.com/bblimke/webmock">webmock</a> і <a href="https://github.com/vcr/vcr">VCR</a>. А також  <a href="http://marnen.github.com/webmock-presentation/webmock.html">непогана презентація</a> як зміксувати їх разом.
 </p>
 
 <p>
-<a href="https://github.com/andreareginato/betterspecs/issues/18">Discuss this guideline &rarr;</a>
+<a href="https://github.com/andreareginato/betterspecs/issues/18">Обговорити цю рекомендацію &rarr;</a>
 </p>
 
 </article>
