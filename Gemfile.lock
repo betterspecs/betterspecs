@@ -6,7 +6,7 @@ GEM
     builder (3.0.0)
     cri (2.0.2)
     daemons (1.1.5)
-    eventmachine (0.12.10)
+    eventmachine (1.2.7)
     foreman (0.57.0)
       thor (>= 0.13.6)
     mime-types (1.17.2)
@@ -37,3 +37,6 @@ DEPENDENCIES
   rack-rewrite
   rake
   thin
+
+BUNDLED WITH
+   2.0.2
