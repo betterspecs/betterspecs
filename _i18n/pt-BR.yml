@@ -1,0 +1,22 @@
+pt-BR:
+  menu:
+    describe: Como descrever seus métodos
+    contexts: Use contexts
+    short:  Mantenha a descrição curta
+    single: Expectativa única
+    all: Teste todos os casos possíveis
+    expect: Expect vs should
+    subject: Use subject
+    let: Use let e let!
+    mock: Utilizar ou não mocks
+    data: Crie apenas os dados necessários
+    factories: Use factories, não fixtures
+    matchers: Matchers fáceis de ler
+    shared: Shared examples
+    integration: Teste o que você vê
+    should: Não use should
+    continuous: Testes contínuos
+    faster: Testes mais rápidos
+    stubbing: '"Fingindo" requisições HTTP'
+    formatter: Formatadores úteis
+    contributing: Contribuindo
