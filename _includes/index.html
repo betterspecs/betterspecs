@@ -1,0 +1,815 @@
+---
+layout: default
+---
+
+<button class="action action--open" aria-label="Open Menu"><span class="icon icon--menu"></span></button>
+<nav id="ml-menu" class="menu">
+  <button class="action action--close" aria-label="Close Menu"><span class="icon icon--cross"></span></button>
+
+  <div class="menu__wrap">
+    <ul data-menu="main" class="menu__level">
+      <li class="menu__item"><a class="menu__link" href="#describe">{{ 'menu.describe' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#contexts">{{ 'menu.contexts' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#short">{{ 'menu.short' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#single">{{ 'menu.single' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#all">{{ 'menu.all' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#expect">{{ 'menu.expect' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#subject">{{ 'menu.subject' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#let">{{ 'menu.let' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#mock">{{ 'menu.mock' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#data">{{ 'menu.data' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#factories">{{ 'menu.factories' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#matchers">{{ 'menu.matchers' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#shared">{{ 'menu.shared' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#integration">{{ 'menu.integration' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#should">{{ 'menu.should' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#continuous">{{ 'menu.continuous' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#faster">{{ 'menu.faster' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#stubbing">{{ 'menu.stubbing' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#formatter">{{ 'menu.formatter' | translate }}</a></li>
+      <li class="menu__item"><a class="menu__link" href="#contributing">{{ 'menu.contributing' | translate }}</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="content">
+  <article>
+    <h1><a name="what">{{ 'what.title' | translate }}</a></h1>
+
+    <p>
+      {{ site.description }}
+      {{ 'what.body' | translate }}
+    </p>
+
+    <p class="info">{{ 'what.info' | translate }}</p>
+  </article>
+
+  <article>
+    <h1><a name="describe">{{ 'describe.title' | translate }}</a></h1>
+
+    <p>{{ 'describe.body' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
+
+{% highlight ruby %}
+describe 'the authenticate method for User' do
+describe 'if the user is an admin' do
+{% endhighlight %}
+    </div>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+describe '.authenticate' do
+describe '#admin?' do
+{% endhighlight %}
+    </div>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/2">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="contexts">{{ 'contexts.title' | translate }}</a></h1>
+
+    <p>{{ 'contexts.body' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
+
+{% highlight ruby %}
+it 'has 200 status code if logged in' do
+  expect(response).to respond_with 200
+end
+
+it 'has 401 status code if not logged in' do
+  expect(response).to respond_with 401
+end
+{% endhighlight %}
+    </div>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+context 'when logged in' do
+  it { is_expected.to respond_with 200 }
+end
+
+context 'when logged out' do
+  it { is_expected.to respond_with 401 }
+end
+{% endhighlight %}
+    </div>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/3">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="short">{{ 'short.title' | translate }}</a></h1>
+
+    <p>{{ 'short.body' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
+
+{% highlight ruby %}
+it 'has 422 status code if an unexpected params will be added' do
+{% endhighlight %}
+    </div>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+context 'when not valid' do
+  it { is_expected.to respond_with 422 }
+end
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'short.example.description' | translate }}</p>
+
+
+    <div class="code-block">
+      <p class="spec-title">{{ 'short.example.title' }}</p>
+
+{% highlight ruby %}
+when not valid
+  it should respond with 422
+{% endhighlight %}
+    </div>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/4">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="single">{{ 'single.title' | translate }}</a></h1>
+
+    <p>{{ 'single.body.first' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_isolated_code' | translate }}</p>
+
+{% highlight ruby %}
+it { is_expected.to respond_with_content_type(:json) }
+it { is_expected.to assign_to(:resource) }
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'single.body.second' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_not_isolated_code' | translate }}</p>
+
+{% highlight ruby %}
+it 'creates a resource' do
+  expect(response).to respond_with_content_type(:json)
+  expect(response).to assign_to(:resource)
+end
+{% endhighlight %}
+    </div>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/5">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="all">{{ 'all.title' | translate }}</a></h1>
+
+    <p>{{ 'all.body.first' | translate }}</p>
+
+
+    <div class="code-block">
+      <p class="spec-title">{{ 'all.example_title' | translate }}</p>
+
+{% highlight ruby %}
+before_filter :find_owned_resources
+before_filter :find_resource
+
+def destroy
+  render 'show'
+  @consumption.destroy
+end
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'all.body.second' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
+
+{% highlight ruby %}
+it 'shows the resource'
+{% endhighlight %}
+    </div>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+describe '#destroy' do
+
+  context 'when resource is found' do
+    it 'responds with 200'
+    it 'shows the resource'
+  end
+
+  context 'when resource is not found' do
+    it 'responds with 404'
+  end
+
+  context 'when resource is not owned' do
+    it 'responds with 404'
+  end
+end
+{% endhighlight %}
+    </div>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/6">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="expect">{{ 'expect.title' | translate }}</a></h1>
+
+    <p>{{ 'expect.body.first' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
+
+{% highlight ruby %}
+it 'creates a resource' do
+  response.should respond_with_content_type(:json)
+end
+{% endhighlight %}
+    </div>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+it 'creates a resource' do
+  expect(response).to respond_with_content_type(:json)
+end
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'expect.body.second' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+# spec_helper.rb
+RSpec.configure do |config|
+  # ...
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+end
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'expect.body.third' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
+
+{% highlight ruby %}
+context 'when not valid' do
+  it { should respond_with 422 }
+end
+{% endhighlight %}
+    </div>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+context 'when not valid' do
+  it { is_expected.to respond_with 422 }
+end
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'expect.body.fourth' | translate }}</p>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/83">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="subject">{{ 'subject.title' | translate }}</a></h1>
+
+    <p>{{ 'subject.body.first' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
+
+{% highlight ruby %}
+it { expect(assigns('message')).to match /it was born in Belville/ }
+{% endhighlight %}
+    </div>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+subject { assigns('message') }
+it { is_expected.to match /it was born in Billville/ }
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'subject.body.second' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+subject(:hero) { Hero.first }
+it "carries a sword" do
+  expect(hero.equipment).to include "sword"
+end
+{% endhighlight %}
+    </div>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/7">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="let">{{ 'let.title' | translate }}</a></h1>
+
+    <p>{{ 'let.body.first' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
+
+{% highlight ruby %}
+describe '#type_id' do
+  before { @resource = FactoryGirl.create :device }
+  before { @type     = Type.find @resource.type_id }
+
+  it 'sets the type_id field' do
+    expect(@resource.type_id).to equal(@type.id)
+  end
+end
+{% endhighlight %}
+    </div>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+describe '#type_id' do
+  let(:resource) { FactoryGirl.create :device }
+  let(:type)     { Type.find resource.type_id }
+
+  it 'sets the type_id field' do
+    expect(resource.type_id).to equal(type.id)
+  end
+end
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'let.body.second' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+context 'when updates a not existing property value' do
+  let(:properties) { { id: Settings.resource_id, value: 'on'} }
+
+  def update
+    resource.properties = properties
+  end
+
+  it 'raises a not found error' do
+    expect { update }.to raise_error Mongoid::Errors::DocumentNotFound
+  end
+end
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'let.body.third' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title">Explenation</p>
+
+{% highlight ruby %}
+# this use of let
+let(:foo) { Foo.new }
+
+# is very nearly equivalent to this:
+def foo
+  @foo ||= Foo.new
+end
+{% endhighlight %}
+    </div>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/8">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="mock">{{ 'mock.title' | translate }}</a></h1>
+
+    <p>{{ 'mock.body.first' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+# simulate a not found resource
+context "when not found" do
+
+  before do
+    allow(Resource).to receive(:where).with(created_from: params[:id])
+      .and_return(false)
+  end
+
+  it { is_expected.to respond_with 404 }
+end
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'mock.body.second' | translate }}</p>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/9">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="data">{{ 'data.title' | translate }}</a></h1>
+
+    <p>{{ 'data.body' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+describe "User" do
+  describe ".top" do
+    before { FactoryGirl.create_list(:user, 3) }
+    it { expect(User.top(2)).to have(2).item }
+  end
+end
+{% endhighlight %}
+    </div>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/10">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="factories">{{ 'factories.title' | translate }}</a></h1>
+
+    <p>{{ 'factories.body.first' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
+
+{% highlight ruby %}
+user = User.create(
+  name: 'Genoveffa',
+  surname: 'Piccolina',
+  city: 'Billyville',
+  birth: '17 Agoust 1982',
+  active: true
+)
+{% endhighlight %}
+    </div>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+user = FactoryGirl.create :user
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'factories.body.second' | translate }}</p>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/11">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="matchers">{{ 'matchers.title' | translate }}</a></h1>
+
+    <p>{{ 'matchers.body' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
+
+{% highlight ruby %}
+lambda { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
+{% endhighlight %}
+    </div>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
+{% endhighlight %}
+    </div>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/12">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="shared">{{ 'shared_examples.title' | translate }}</a></h1>
+
+    <p>{{ 'shared_examples.body.first' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
+
+{% highlight ruby %}
+describe 'GET /devices' do
+
+  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let!(:uri)      { '/devices' }
+
+  context 'when shows all resources' do
+
+    let!(:not_owned) { FactoryGirl.create factory }
+
+    it 'shows all owned resources' do
+      page.driver.get uri
+      expect(page.status_code).to be(200)
+      contains_owned_resource resource
+      does_not_contain_resource not_owned
+    end
+  end
+
+  describe '?start=:uri' do
+
+    it 'shows the next page' do
+
+      page.driver.get uri, start: resource.uri
+      expect(page.status_code).to be(200)
+      contains_resource resources.first
+      expect(page).to_not have_content resource.id.to_s
+    end
+  end
+end
+{% endhighlight %}
+    </div>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+describe 'GET /devices' do
+
+  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let!(:uri)       { '/devices' }
+
+  it_behaves_like 'a listable resource'
+  it_behaves_like 'a paginable resource'
+  it_behaves_like 'a searchable resource'
+  it_behaves_like 'a filterable list'
+end
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'shared_examples.body.second' | translate }}</p>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/13">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="integration">{{ 'integration.title' | translation }}</a></h1>
+
+    <p>{{ 'integration.body.first' | translate }}</p>
+
+    <p>{{ 'integration.body.second' | translate }}</p>
+
+    <p>{{ 'integration.body.third' | translate }}</p>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/14">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="should">{{ 'should.title' | translate }}</a></h1>
+
+    <p>{{ 'should.body.first' | transl }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>
+
+{% highlight ruby %}
+it 'should not change timings' do
+  consumption.occur_at.should == valid.occur_at
+end
+{% endhighlight %}
+    </div>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+it 'does not change timings' do
+  expect(consumption.occur_at).to equal(valid.occur_at)
+end
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'should.body.second' | translate }}</p>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/15">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="continuous">{{ 'continuous.title' | translate }}</a></h1>
+
+    <p>{{ 'continuous.body.first' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+bundle exec guard
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'continuous.body.second' | translate }}</p>
+
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
+  # run every updated spec file
+  watch(%r{^spec/.+_spec\.rb$})
+  # run the lib specs when a file in lib/ changes
+  watch(%r{^lib/(.+)\.rb$}) { |m| "spec/lib/#{m[1]}_spec.rb" }
+  # run the model specs related to the changed model
+  watch(%r{^app/(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }
+  # run the view specs related to the changed view
+  watch(%r{^app/(.*)(\.erb|\.haml)$}) { |m| "spec/#{m[1]}#{m[2]}_spec.rb" }
+  # run the integration specs related to the changed controller
+  watch(%r{^app/controllers/(.+)\.rb}) { |m| "spec/requests/#{m[1]}_spec.rb" }
+  # run all integration tests when application controller change
+  watch('app/controllers/application_controller.rb') { "spec/requests" }
+end
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'continuous.body.third' | translate }}</p>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/16">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="faster">{{ 'faster.title' | translate }}</a></h1>
+
+    <p>{{ 'faster.body.first' | translate }}</p>
+
+    <p>{{ 'faster.body.second' | translate }}</p>
+
+    <p>{{ 'faster.body.third' | translate }}</p>
+
+    <p>{{ 'faster.body.fourth' | translate }}</p>
+
+    <p>{{ 'faster.body.fifth' | translate }}</p>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/17">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="stubbing">{{ 'stubbing.title' | translate }}</a></h1>
+
+    <p>{{ 'stubbing.body.first' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+context "with unauthorized access" do
+
+  let(:uri) { 'http://api.lelylan.com/types' }
+  before    { stub_request(:get, uri).to_return(status: 401, body: fixture('401.json')) }
+
+  it "gets a not authorized notification" do
+    page.driver.get uri
+    expect(page).to have_content 'Access denied'
+  end
+end
+{% endhighlight %}
+    </div>
+
+
+    <p>{{ 'stubbing.body.second' | translate }}</p>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/18">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="formatter">{{ 'formatter.title' | translate }}</a></h1>
+
+    <p>{{ 'formatter.body.first' | translate }}</p>
+
+    <div class="code-block">
+      <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
+
+{% highlight ruby %}
+# Gemfile
+group :development, :test do
+  gem 'fuubar'
+
+# .rspec configuration file
+--drb
+--format Fuubar
+--color
+{% endhighlight %}
+    </div>
+
+    <p>{{ 'formatter.body.second' | translate }}</p>
+
+    <p>
+      <a href="https://github.com/andreareginato/betterspecs/issues/19">
+        {{ 'shared.discussion' | translate }}
+      </a>
+    </p>
+  </article>
+
+  <article>
+    <h1><a name="contributing">{{ 'contributing.title' | translate }}</a></h1>
+
+    <p>{{ 'contributing.body.first' | translate }}</p>
+
+    <p class="info">{{ 'contributing.body.second' | translate }}</p>
+
+    <p>{{ 'contributing.body.third' | translate }}</p>
+  </article>
+</div>
