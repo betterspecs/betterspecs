@@ -22,6 +22,8 @@ RSpec Best Practices website is tested against MRI 1.9.3.
 
 Fork the repo on github and send a pull requests with topic branches.
 
+Please remember to fork from `gh-pages` and not `master`.
+
 ## Feedback
 
 Use the [issue tracker](https://github.com/andreareginato/betterspecs/issues) for bugs.
