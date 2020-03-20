@@ -29,7 +29,7 @@ fr:
     info: "Better Specs se concentre sur les tests de Rails, mais notre but est de \
       créer des règles qui couvrent de nombreux languages (comme Scala, Elixir, \
       React). Si vous souhaitez ajouter vos règles de test favorites \
-      <a target='_blank' href='https://github.com/lelylan/betterspecs/issues'>\
+      <a target='_blank' href='https://github.com/betterspecs/betterspecs/issues'>\
       ouvrer une issue</a>."
   describe:
     title: Comment décrire vos méthodes
@@ -283,10 +283,10 @@ syntax."
         source. Particulierement sur Better Specs nous avons besoin d'aide pour les \
         taches suivantes."
       second: "&rarr; Ajouter des règles de tests pour des nouveaux languages \
-        <a target='_blank' href='https://github.com/lelylan/betterspecs/issues'>\
+        <a target='_blank' href='https://github.com/betterspecs/betterspecs/issues'>\
         ouvrir une issue</a>).<br> &rarr; Fixer les best practices qui sont périmées. \
         <br> &rarr; Ajouter ou modifier une traduction existante \
-        <a target='_blank' href='https://github.com/lelylan/betterspecs/issues'>\
+        <a target='_blank' href='https://github.com/betterspecs/betterspecs/issues'>\
         ouvrir une issue</a>).<br>"
       third: "Merci pour votre temps, bon coding et commencer à contribuer aux projets que \
         vous aimez et utilisez dès aujourd'hui."

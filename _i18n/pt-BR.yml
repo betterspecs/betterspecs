@@ -31,7 +31,7 @@ pt-BR:
     info: "Better Specs é focado em testes para Rails, mas nosso objetivo é criar
       orientações para diversas linguagens e frameworks que existem (como Scala, Elixir, React).
       Se você quiser adicionar orientações para testes na sua linguagem favorita
-      <a target='_blank' href='https://github.com/lelylan/betterspecs/issues'> abra uma issue</a>."
+      <a target='_blank' href='https://github.com/betterspecs/betterspecs/issues'> abra uma issue</a>."
   describe:
     title: Descreva seus métodos
     body: "Seja claro sobre o método que você está descrevendo. Por exemplo, use 
@@ -275,9 +275,9 @@ pt-BR:
       second: "&rarr; Adicionar orientações para novas linguagens 
         (<a target='_blank' href='https://github.com/betterspecs/betterspecs/issues'>abrir uma issue</a>).
         <br> &rarr; Corrigir boas práticas que ficaram ultrapassadas com o 
-          passar do tempo (<a target='_blank' href='https://github.com/lelylan/betterspecs/issues'>abrir uma issue</a>).
+          passar do tempo (<a target='_blank' href='https://github.com/betterspecs/betterspecs/issues'>abrir uma issue</a>).
           <br> &rarr; Adicionar ou atualizar traduções 
-          (<a target='_blank' href='https://github.com/lelylan/betterspecs/issues'>abrir uma issue</a>).<br>"
+          (<a target='_blank' href='https://github.com/betterspecs/betterspecs/issues'>abrir uma issue</a>).<br>"
       third: "Obrigado pelo seu tempo, se divirta programando e começe hoje a 
         contribuir para os projetos que você usa e ama."
   shared:
