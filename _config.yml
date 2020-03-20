@@ -12,8 +12,7 @@ description: > # this means to ignore newlines until "baseurl:"
   Better Specs is a collection of best practices developers 
   learned while testing apps that you can use to improve your coding 
   skills, or simply for inspiration.
-# baseurl: "/betterspecs" # the subpath of your site, e.g. /blog
-url: "http://betterspecs.github.io/betterspecs" # the base hostname & protocol for your site
+url: "https://alpha.betterspecs.org" # the base hostname & protocol for your site
 twitter_username: betterspecs
 github_username:  lelylan
 
