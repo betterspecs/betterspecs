@@ -247,7 +247,7 @@ DEPENDENCIES
   github-pages
 
 RUBY VERSION
-   ruby 2.6.5p114
+   ruby 2.7.0p0
 
 BUNDLED WITH
-   1.17.2
+   2.1.2
