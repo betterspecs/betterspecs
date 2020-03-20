@@ -35,10 +35,7 @@ layout: default
   <article>
     <h1><a name="what">{{ 'what.title' | translate }}</a></h1>
 
-    <p>
-      {{ site.description }}
-      {{ 'what.body' | translate }}
-    </p>
+    <p>{{ 'what.body' | translate }}</p>
 
     <p class="info">{{ 'what.info' | translate }}</p>
   </article>
@@ -140,7 +137,7 @@ end
 
 
     <div class="code-block">
-      <p class="spec-title">{{ 'short.example.title' }}</p>
+      <p class="spec-title">{{ 'short.example.title' | translate }}</p>
 
 {% highlight ruby %}
 when not valid
@@ -627,7 +624,7 @@ end
   </article>
 
   <article>
-    <h1><a name="integration">{{ 'integration.title' | translation }}</a></h1>
+    <h1><a name="integration">{{ 'integration.title' | translate }}</a></h1>
 
     <p>{{ 'integration.body.first' | translate }}</p>
 
@@ -645,7 +642,7 @@ end
   <article>
     <h1><a name="should">{{ 'should.title' | translate }}</a></h1>
 
-    <p>{{ 'should.body.first' | transl }}</p>
+    <p>{{ 'should.body.first' | translate }}</p>
 
     <div class="code-block">
       <p class="spec-title spec-wrong">{{ 'shared.bad_code' | translate }}</p>

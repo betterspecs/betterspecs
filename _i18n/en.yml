@@ -22,7 +22,9 @@ en:
     contributing: Contributing
   what:
     title: What is Better Specs
-    body: "Better Specs came to life at <a target='_blank' \
+    body: "Better Specs is a collection of best practices developers 
+      learned while testing apps that you can use to improve your coding 
+      skills, or simply for inspiration. Better Specs came to life at <a target='_blank' \
       href='https://lelylan.com'>Lelylan</a> (open source IoT cloud platform) \
       and <a target='_blank' href='https://github.com/lelylan/lelylan'>checking \
       out its test suite</a> may be of inspiration."
