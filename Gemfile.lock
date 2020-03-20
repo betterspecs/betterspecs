@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (6.0.2.1)
+    activesupport (6.0.2.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
@@ -219,7 +219,7 @@ GEM
     rouge (3.13.0)
     ruby-enum (0.7.2)
       i18n
-    rubyzip (2.2.0)
+    rubyzip (2.3.0)
     safe_yaml (1.0.5)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -245,6 +245,9 @@ PLATFORMS
 DEPENDENCIES
   foreman
   github-pages
+
+RUBY VERSION
+   ruby 2.6.5p114
 
 BUNDLED WITH
    1.17.2

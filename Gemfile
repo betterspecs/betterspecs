@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
-gem 'github-pages'
+
+ruby '2.6.5'
+
 gem 'foreman'
+gem 'github-pages'
