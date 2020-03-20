@@ -31,7 +31,7 @@ en:
     info: "Better Specs focus on Rails testing, but our goal is to create \
       testing guidelines covering most languages and frameworks out there (e.g. \
       Scala, Elixir, React). If you want to add your favourite language testing \
-      guidelines <a target='_blank' href='https://github.com/lelylan/betterspecs/issues'>\
+      guidelines <a target='_blank' href='https://github.com/betterspecs/betterspecs/issues'>\
       open an issue</a>."
   describe:
     title: Describe Your Methods
@@ -222,7 +222,7 @@ en:
       third: "The drawback of using Spork is that it aggressively monkey-patches \
         your code and you could lose some hours trying to understand why a file \
         is not reloaded. If you have some code examples using Spin or any other \
-        solution <a href='https://github.com/lelylan/betterspecs/issues/17'>\
+        solution <a href='https://github.com/betterspecs/betterspecs/issues/17'>\
         let us know</a>."
       fourth: "Here you can find a <a href='https://gist.github.com/HuffMoody/5912373'>\
         Guardfile</a> configuration for using Zeus.  The spec_helper does not \
@@ -235,7 +235,7 @@ en:
       fifth: "Many criticisms are moved to those solutions. Those libraries are \
         a band aid on a problem that is better solved through better design, \
         and being intentional about only loading the dependencies that you need. \
-        Learn more reading the <a href='https://github.com/lelylan/betterspecs/issues/17'>\
+        Learn more reading the <a href='https://github.com/betterspecs/betterspecs/issues/17'>\
         related discussion</a>."
   stubbing:
     title: Stubbing HTTP requests
@@ -267,11 +267,11 @@ en:
         you need to start on contributing to the world of open source projects. \
         In particular, Better Specs needs your help on the following tasks."
       second: "&rarr; Add testing guide lines for new languages (\
-        <a target='_blank' href='https://github.com/lelylan/betterspecs/issues'>\
+        <a target='_blank' href='https://github.com/betterspecs/betterspecs/issues'>\
         open an issue</a>).<br> &rarr; Fix outdated best practices which has \
-        changed during time (<a target='_blank' href='https://github.com/lelylan/betterspecs/issues'>\
+        changed during time (<a target='_blank' href='https://github.com/betterspecs/betterspecs/issues'>\
         open an issue</a>).<br> &rarr; Add or update existing translations (\
-        <a target='_blank' href='https://github.com/lelylan/betterspecs/issues'>\
+        <a target='_blank' href='https://github.com/betterspecs/betterspecs/issues'>\
         open an issue</a>).<br>"
       third: "Thanks for your time, enjoy the coding and start contributing to \
         the projects you use and love today."
