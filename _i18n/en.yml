@@ -126,7 +126,7 @@ en:
       second: "Mocking makes your specs faster but they are difficult to use. \
         You need to understand them well to use them well. Read \
         <a href='http://myronmars.to/n/dev-blog/2012/06/thoughts-on-mocking'>this article</a> \
-        to learn more abou mocks."
+        to learn more about mocks."
   data:
     title: Create only the data you need
     body: "If you have ever worked in a medium size project (but also in small \
