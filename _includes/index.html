@@ -369,7 +369,7 @@ end
 
 {% highlight ruby %}
 describe '#type_id' do
-  before { @resource = FactoryGirl.create :device }
+  before { @resource = FactoryBot.create :device }
   before { @type     = Type.find @resource.type_id }
 
   it 'sets the type_id field' do
@@ -384,7 +384,7 @@ end
 
 {% highlight ruby %}
 describe '#type_id' do
-  let(:resource) { FactoryGirl.create :device }
+  let(:resource) { FactoryBot.create :device }
   let(:type)     { Type.find resource.type_id }
 
   it 'sets the type_id field' do
@@ -479,7 +479,7 @@ end
 {% highlight ruby %}
 describe "User" do
   describe ".top" do
-    before { FactoryGirl.create_list(:user, 3) }
+    before { FactoryBot.create_list(:user, 3) }
     it { expect(User.top(2)).to have(2).item }
   end
 end
@@ -516,7 +516,7 @@ user = User.create(
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
-user = FactoryGirl.create :user
+user = FactoryBot.create :user
 {% endhighlight %}
     </div>
 
@@ -568,12 +568,12 @@ expect { model.save! }.to raise_error Mongoid::Errors::DocumentNotFound
 {% highlight ruby %}
 describe 'GET /devices' do
 
-  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let!(:resource) { FactoryBot.create :device, created_from: user.id }
   let!(:uri)      { '/devices' }
 
   context 'when shows all resources' do
 
-    let!(:not_owned) { FactoryGirl.create factory }
+    let!(:not_owned) { FactoryBot.create factory }
 
     it 'shows all owned resources' do
       page.driver.get uri
@@ -603,7 +603,7 @@ end
 {% highlight ruby %}
 describe 'GET /devices' do
 
-  let!(:resource) { FactoryGirl.create :device, created_from: user.id }
+  let!(:resource) { FactoryBot.create :device, created_from: user.id }
   let!(:uri)       { '/devices' }
 
   it_behaves_like 'a listable resource'

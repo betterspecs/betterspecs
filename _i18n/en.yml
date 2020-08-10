@@ -139,7 +139,7 @@ en:
       first: "This is an old topic, but it's still good to remember it. Do not \
         use fixtures because they are difficult to control, use factories \
         instead. Use them to reduce the verbosity on creating new data (learn \
-        about <a href='https://github.com/thoughtbot/factory_girl'>Factory Girl</a>)."
+        about <a href='https://github.com/thoughtbot/factory_bot'>Factory Bot</a>)."
       second: "One important note. When talking about unit tests the best \
         practice would be to use neither fixtures or factories. Put as much of \
         your domain logic in libraries that can be tested without needing \
