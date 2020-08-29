@@ -196,8 +196,8 @@ end
       <p class="spec-title">{{ 'all.example_title' | translate }}</p>
 
 {% highlight ruby %}
-before_filter :find_owned_resources
-before_filter :find_resource
+before_action :find_owned_resources
+before_action :find_resource
 
 def destroy
   render 'show'
