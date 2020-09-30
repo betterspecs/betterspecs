@@ -1,4 +1,4 @@
-# betterspecs.org
+# betterspecs.org - AN AMAZING CONCEPT
 
 Source code for [alpha.betterspecs.org](https://alpha.betterspecs.org)
 
