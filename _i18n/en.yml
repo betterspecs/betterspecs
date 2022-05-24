@@ -245,7 +245,7 @@ en:
         solutions like webmock."
       second: "Learn more about <a href='https://github.com/bblimke/webmock'>\
         webmock</a> and <a href='https://github.com/vcr/vcr'>VCR</a>. Here a \
-        <a href='http://marnen.github.com/webmock-presentation/webmock.html'>\
+        <a href='http://marnen.github.io/webmock-presentation/webmock.html'>\
         nice presentation</a> explaining how to mix them together."
   formatter:
     title: Useful formatter

@@ -259,7 +259,7 @@ syntax."
         mais vous pouvez le simuler avec des solutions comme webmock."
       second: "En apprendre plus sur <a href='https://github.com/bblimke/webmock'>\
         webmock</a> et <a href='https://github.com/vcr/vcr'>VCR</a>. Ici une \
-        <a href='http://marnen.github.com/webmock-presentation/webmock.html'>\
+        <a href='http://marnen.github.io/webmock-presentation/webmock.html'>\
         bonne présentation</a> qui explique comment les utiliser ensemble."
   formatter:
     title: Formater intelligemment

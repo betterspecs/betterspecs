@@ -251,7 +251,7 @@ pt-BR:
       second: "Aprenda mais sobre 
         <a href='https://github.com/bblimke/webmock'>webmock</a> e 
         <a href='https://github.com/vcr/vcr'>VCR</a>. Aqui uma 
-        <a href='http://marnen.github.com/webmock-presentation/webmock.html'>boa apresentação</a> 
+        <a href='http://marnen.github.io/webmock-presentation/webmock.html'>boa apresentação</a>
         explicando como utilizá-los em conjunto."
   formatter:
     title: Formatadores úteis
