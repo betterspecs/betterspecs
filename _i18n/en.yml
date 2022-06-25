@@ -10,6 +10,7 @@ en:
     let: Use let and let!
     mock: Mock or not to mock
     data: Create the data you need
+    separate: Separate setup
     factories: Use factories
     matchers: Easy to use matchers
     shared: Shared examples
@@ -133,6 +134,20 @@ en:
       ones), test suites can be heavy to run. To solve this problem, it's \
       important not to load more data than needed. Also, if you think you need \
       dozens of records, you are probably wrong."
+  separate:
+    title: Separate setup from tests
+    body:
+      first: "Keep the body of tests focused on the actions under test. Move \
+        setup steps to a <code>before</code>, <code>let</code>, or \
+        <code>subject</code>."
+      second: "This structure highlights what action is being tested, and \
+        makes it clear which parts are only necessary for setup. In this \
+        example we're communicating that all the tests describing a User will \
+        need <code>User.create</code>, but only tests of the \
+        <code>#fiddle</code> method need to setup a mock Fiddle.
+
+        Related to this, when a context describes a new variation, put the \
+        setup which creates that variation right below it."
   factories:
     title: Use factories and not fixtures
     body:
