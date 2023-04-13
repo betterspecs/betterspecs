@@ -99,7 +99,7 @@ en:
       first: "If you have several tests related to the same subject use \
         <code>subject{}</code> to DRY them up."
       second: "RSpec has also the ability to use a named subject (learn more about \
-        <a href='https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/subject'>\
+        <a href='https://rspec.info/features/3-12/rspec-core/subject/'>\
         rspec subject</a>)."
   let:
     title: Use let and let!
@@ -116,7 +116,7 @@ en:
       third: "Use <code>let!</code> if you want to define the variable when \
         the block is defined. This can be useful to populate your database to \
         test queries or scopes. Here an example of what let actually is (learn more about \
-        <a href='https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/helper-methods/let-and-let'>rspec let</a>)."
+        <a href='https://rspec.info/features/3-12/rspec-core/helper-methods/let/'>rspec let</a>)."
   mock:
     title: Mock or not to mock
     body:
@@ -148,7 +148,7 @@ en:
   matchers:
     title: Easy to read matchers
     body: "Use readable matchers and double check the available \
-      <a href='https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers'>rspec matchers</a>."
+      <a href='https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/'>rspec matchers</a>."
   shared_examples:
     title: Shared Examples
     body:
@@ -158,7 +158,7 @@ en:
       second: "In our experience, shared examples are used mainly for \
         controllers. Since models are pretty different from each other, they \
         (usually) do not share much logic. Learn more about \
-        <a href='https://www.relishapp.com/rspec/rspec-core/v/3-2/docs/example-groups/shared-examples'>\
+        <a href='https://rspec.info/features/3-12/rspec-core/example-groups/shared-examples/'>\
         rspec shared examples</a>."
   integration:
     title: Test what you see

@@ -98,7 +98,7 @@ fr:
       first: "Si vous avez plusieurs tests qui possèdent le même sujet, \
         utiliser <code>subject{}</code> pour éviter la duplication de code."
       second: "Vous pouvez également utiliser des sujets nommés avec RSpec. \
-        pour en savoir plus <a href='https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/subject'>\
+        pour en savoir plus <a href='https://rspec.info/features/3-12/rspec-core/subject/'>\
         rspec subject</a>)."
   let:
     title: Utiliser «let» et «let!»
@@ -146,7 +146,7 @@ fr:
   matchers:
     title: Des «matchers» facile à lire
     body: "Utilisez des «matchers» lisibles et jetez un œil sur \
-      <a href='https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers'>\
+      <a href='https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/'>\
       rspec matchers</a>."
   shared_examples:
     title: Exemples partagés
@@ -158,7 +158,7 @@ fr:
         utilisés principalement dans les contrôleurs. Les modèles sont \
         très différents les un des autres, ils  partagent peu de logique. \
         En apprendre plus à propos des \
-        <a href='https://www.relishapp.com/rspec/rspec-core/v/3-2/docs/example-groups/shared-examples'>\
+        <a href='https://rspec.info/features/3-12/rspec-core/example-groups/shared-examples/'>\
         exemples partagés</a>."
   integration:
     title: Tester ce que vous voyez
