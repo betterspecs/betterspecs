@@ -100,7 +100,7 @@ pt-BR:
         <code>subject{}</code> para seguir o princípio DRY (<em>Don't repeat 
         yourself</em> – não se repita)."
       second: "RSpec também tem a habilidade de usar um sujeito com nome 
-        (aprenda mais sobre <a href='https://www.relishapp.com/rspec/rspec-core/v/2-11/docs/subject'>rspec subject</a>)."
+        (aprenda mais sobre <a href='https://rspec.info/features/3-12/rspec-core/subject/'>rspec subject</a>)."
   let:
     title: Use let e let!
     body:
@@ -146,7 +146,7 @@ pt-BR:
   matchers:
     title: Matchers fáceis de ler
     body: "Use matchers fáceis de ler e cheque duas vezes os 
-      <a href='https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers'>rspec matchers</a> 
+      <a href='https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/'>rspec matchers</a> 
       disponíveis."
   shared_examples:
     title: Shared Examples
