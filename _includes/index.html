@@ -693,7 +693,7 @@ bundle exec guard
       <p class="spec-title spec-correct">{{ 'shared.good_code' | translate }}</p>
 
 {% highlight ruby %}
-guard 'rspec', cli: '--drb --format Fuubar --color', version: 2 do
+guard 'rspec', cmd: 'rspec --drb --format Fuubar --color' do
   # run every updated spec file
   watch(%r{^spec/.+_spec\.rb$})
   # run the lib specs when a file in lib/ changes
